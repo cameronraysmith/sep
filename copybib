@@ -1,0 +1,7 @@
+# copy bibtex files from local directory
+cp /home/cameron/Downloads/bibtex/theoreticalbiology.bib bib/papers.bib
+cp /home/cameron/Downloads/bibtex/books.bib bib/
+cd bib
+perl remove_url.pl papers.bib
+perl remove_url.pl books.bib
+cd ..

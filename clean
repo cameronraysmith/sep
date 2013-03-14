@@ -1,0 +1,2 @@
+# clean temporary latex files
+rm -f *.brf *.pre *.log *.aux *.dvi *.bbl *.snm *.toc *.synctex.gz *.blg *.fls *.nav *.out *.fdb_latexmk
