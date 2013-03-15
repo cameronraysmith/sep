@@ -104,7 +104,7 @@ Here we formalize the genotype-phenotype mapping. In doing so, we make use of a 
 \section*{Model description}
 
 \subsection*{Deterministic genotype-phenotype maps}
-Consider the case in which we have an arbitrary number of genetic loci indexed by $i=0,1,...$. There is a particular set of potential alleles denoted $L$. A subset of alleles will be denoted as $U \subseteq L$. We also have a set of phenotypes $P$. In principle, any allele could give rise to any phenotype. An organism is represented by a tuple of alleles $O$ and a population is a set of such tuples $\mathcal{G}$ (i.e. $O \in \mathcal{G}$). A genotype-phenotype map is thus represented as a function mapping a subset of alleles into phenotypes 
+Consider the case in which we have an arbitrary number of genetic loci indexed by $i=0,1,...$. There is a particular set of potential alleles denoted $L$. A subset of alleles will be denoted as $U \subseteq L$. We also have a set of phenotypes $P$. In principle, any allele could give rise to any phenotype. A gene regulatory network module, which in some cases may represent all of the genes in an organism, is represented by a tuple of alleles $O$ and a population is a set of such tuples $\mathcal{G}$ (i.e. $O \in \mathcal{G}$). A genotype-phenotype map is thus represented as a function mapping a subset of alleles into phenotypes 
 $$
 e \colon U \rightarrow  P.
 $$
@@ -121,17 +121,17 @@ $$
 \mathcal{E} \colon \mathcal{P}(L)^{opp} \rightarrow Set
 $$
 by exhibiting precisely how it acts on objects and morphisms in its domain category. We denote the set of all subsets of a set $X$ as $\mathcal{P}(X)$. Therefore $\mathcal{P}(L)$ is a category in which the objects are subsets of alleles and morphisms represent inclusion of a smaller subset into a larger superset (i.e. $U \subseteq U' \Rightarrow U \rightarrow U'$). The category $\mathcal{P}(L)^{opp}$ then has the same objects, but the morphisms represent restriction from a larger to a smaller subset of alleles (i.e. $U' \supseteq U \Rightarrow U' \rightarrow U$). We explicitly represent the way in which the functor $\mathcal{E}$ acts on objects and morphisms $U$ and $U \subseteq U'$ respectively as
-\begin{eqnarray*}
+\begin{eqnarray}
 \mathcal{E} \colon \mathcal{P}(L)^{opp} &\rightarrow& Set,\\
 U &\mapsto& P^U,\\
 U \subseteq U' &\mapsto& res^{U'}_{U}.
-\end{eqnarray*}
+\end{eqnarray}
 So the functor $\mathcal{E}$ takes a subset of alleles and returns the set of genotype-phenotype mappings from the given subset of alleles to the set of phenotypes. $\mathcal{E}$ is thus, by definition, a presheaf functor, which is an object in the functor category $Sets^{\mathcal{P}(L)^{opp}}$. The restriction map operates on sets deriving from the application of $\mathcal{E}$ to a subset of alleles as follows
-\begin{eqnarray*}
+\begin{eqnarray}
 res^{U'}_{U} \colon \mathcal{E}(U') &\rightarrow& \mathcal{E}(U)\\
 P^{U'} &\rightarrow& P^U\\
 e' \colon U' \rightarrow P &\mapsto& e'|_U \colon U \rightarrow P
-\end{eqnarray*}
+\end{eqnarray}
 
 \subsection*{Stochasticity among genotype-phenotype maps}
 There may be several sources for stochasticity in genotype-phenotype mapping including small numbers of the causal molecules and products of gene expression as well as environmental fluctuations upon which genotype-phenotype mappings are conditioned. Here we generalize the deterministic framework outlined above to the stochastic case.
@@ -139,58 +139,75 @@ There may be several sources for stochasticity in genotype-phenotype mapping inc
 An \emph{algebraic structure} is determined by a set and one or more finitary operations (e.g. binary multiplication) defined on the elements of that set. A \emph{monoid} is a type of algebraic structure determined by a set and a binary operation such that the latter satisfies closure, associativity and identity with respect to the given set. A \emph{semiring} is an algebraic structure determined by a set with two binary operations. One of the binary operations, addition, forms a commutative monoid and has identity element 0. The second binary operation, multiplication, is a monoid with identity element 1. These binary operations interact such that multiplication distributes over addition and multiplication by the identity element of the addition monoid annihilates all elements in the semiring. For example, the real numbers under addition and multiplication constitute a semiring whose data is described as $\left( \mathbb{R},+,0,\times,1 \right)$.
 
 Consider a function, $\phi$ from a set, $L$, to a semiring $R$ written $\phi \colon L \rightarrow R$. The \emph{support} of $\phi$, $\text{supp}(\phi)$, is then the set $\{ l \in L | \phi(l) \neq 0 \}$. A distribution with respect to the semiring $R$ on $L$ is given as a function having finite support and satisfying a constraint
-\begin{eqnarray*}
+\begin{eqnarray}
 d \colon L \rightarrow R,\\
 \sum_{l \in L} d(x) = 1
-\end{eqnarray*}
+\end{eqnarray}
 We can consider the set of all distributions with respect to a given semiring $R$ satisfying the above constraints and defined on the set $L$ as being given by a functor applied to $L$ as $\mathcal{D}_R (L)$. We can again explicitly represent the way in which the functor $\mathcal{D}_R$ acts on objects and morphisms $L$ and $f \colon L \rightarrow M$ as
-\begin{eqnarray*}
+\begin{eqnarray}
 \mathcal{D}_R \colon Set &\rightarrow& Set,\\
 L &\mapsto& \mathcal{D}_R (L),\\
 f \colon L \rightarrow M &\mapsto& \mathcal{D}_R (f) \colon \mathcal{D}_R (L) \rightarrow \mathcal{D}_R (M),
-\end{eqnarray*}
+\end{eqnarray}
 where
-\begin{eqnarray*}
+\begin{eqnarray}
 \mathcal{D}_R (f) \colon \mathcal{D}_R (L) &\rightarrow& \mathcal{D}_R (M),\\
 d &\mapsto& \left[ m \mapsto \sum_{f(l)=m} d(l) \right]. 
-\end{eqnarray*}
+\end{eqnarray}
 
 For the case in which we consider $R$ to be the semiring of non-negative real numbers $\left( \mathbb{R}_{\geq 0},+,0,\times,1 \right)$, $\mathcal{D}_R (L)$ represents the set of probability distributions on the set $L$.
 
 Recalling the presheaf functor, $\mathcal{E} \colon \mathcal{P}(L)^{opp} \rightarrow Set$, mapping genotypes to the set of maps from those genotypes to the set of phenotypes, we can now compose it with the distribution functor $\mathcal{D}_R$ to obtain a new presheaf functor $\mathcal{D}_R \circ \mathcal{E} \colon \mathcal{P}(L)^{opp} \rightarrow Set \rightarrow Set$ that assigns to each genotype a distribution over the set of maps from those genotypes to the set of possible phenotypes. The action of $\mathcal{D}_R \mathcal{E}$ on objects and morphisms in $\mathcal{P}(L)^{opp}$ yields
-\begin{eqnarray*}
+\begin{eqnarray}
 \mathcal{D}_R \mathcal{E} \colon \mathcal{P}(L)^{opp} &\rightarrow& Set,\\
 U &\mapsto& \mathcal{D}_R \mathcal{E}(U) \equiv d \colon P^U \rightarrow R,\\ 
 U \subseteq U' &\mapsto& \mathcal{D}_R \mathcal{E}(U') \rightarrow \mathcal{D}_R \mathcal{E}(U).
-\end{eqnarray*}
+\end{eqnarray}
 where
-\begin{eqnarray*}
+\begin{eqnarray}
 \mathcal{D}_R \mathcal{E}(U') &\rightarrow& \mathcal{D}_R \mathcal{E}(U),\\
 d \colon P^{U'} \rightarrow R &\rightarrow& d|U \colon P^{U} \rightarrow R
-\end{eqnarray*}
+\end{eqnarray}
 and
-\begin{eqnarray*}
+\begin{eqnarray}
 d \colon P^{U'} &\rightarrow& R,\\
 s' &\mapsto& d(s');\\
 d|U \colon P^{U} &\rightarrow& R,\\
 s &\mapsto& \sum_{s' \in \mathcal{E}(U'),\, s'|U=s} d(s').
-\end{eqnarray*}
+\end{eqnarray}
 
-\subsection*{Coverings of Genotype space}
+\subsection*{Coverings of genotype space}
 An individual may be composed of some subset of possible alleles where the set of all alleles, $L$, is viewed as a genotype space. A \emph{covering} of the genotype space, $\mathcal{G}$, satisfies $\cup_i \mathcal{G}_i = L$ and $O,O' \in \mathcal{G}$ and $O \subseteq O'$ means that $O = O'$. The first condition means that $\mathcal{G}$ covers $L$ and the second conditions means that if a given subset of alleles $O'$ is compatible in a sense to be explained more precisely in what proceeds then any smaller subset of alleles $O$ is also compatible.
 
 \subsection*{Compatibility of distributions on genotype-phenotype maps}
 Given a covering of the genotype space $\mathcal{G}$, a compatible family for $\mathcal{G}$ with respect to the distribution presheaf $\mathcal{D}_R\mathcal{E}$ is given by a family of distributions $\{d_O \colon P^O \rightarrow R | O \in \mathcal{G}\}$ such that
-\begin{eqnarray*}
+\begin{eqnarray}
 \forall O \in \mathcal{G} \left[ \exists d_O \in \mathcal{D}_R\mathcal{E}(O) \right],\\
 d_O|O \cap O' = d_{O'}|O \cap O'.
-\end{eqnarray*}
+\end{eqnarray}
 The second condition, $d_O|O \cap O' = d_{O'}|O \cap O'$, is referred to as the \emph{sheaf condition}. This condition means that any two distributions $d_O$ and $d_{O'}$ in the \emph{compatible family} of distributions produce the same values in the semiring $R$ on all of the alleles in the intersection of $O$ with $O'$. 
 
-For example, if we have two organisms given by their genotypes $O = \{l_1, l_2\}$ and $O' = \{l_1, l'_2\}$ then the sheaf condition specifies that for $e_{\{l_1\}} \in \mathcal{E}(\{l_1\})$, which assigns a particular phenotype to the genotype $\{l_1\}$, that
-\begin{eqnarray*}
+For example, if we have two gene regulatory network modules given by their genotypes $O = \{l_1, l_2\}$ and $O' = \{l_1, l'_2\}$ then the sheaf condition specifies that for $e_{\{l_1\}} \in \mathcal{E}(\{l_1\})$, which assigns a particular phenotype to the genotype $\{l_1\}$, that
+\begin{eqnarray}
 \sum_{e \in \mathcal{E}(O),\, e|l_1=e_{\{l_1\}}} d_O(e) \,\, = \sum_{e' \in \mathcal{E}(O'),\, e'|l_1=e_{\{l_1\}}} d_{O'}(e')
-\end{eqnarray*}
+\end{eqnarray}
+This condition means that the probability for gene $i=1$ to be associated to the phenotype given by $e_{\{l_1\}}$ is equivalent in case we do or do not marginalize over possible alleles for gene $i=2$.
+
+\subsection*{Global sections of distributions over genotype-phenotype maps}
+To say that the sheaf condition holds for a compatible family $\{d_O\}_{O \in \mathcal{G}}$ for the presheaf $\mathcal{D}_R\mathcal{E}$ implies the existence of a \emph{global section} $d \in \mathcal{D}_R\mathcal{E}(L)$ that is defined on the full set of alleles. This global section defines a distribution on the set of genotype-phenotype maps given by $\mathcal{E}(L) = P^L$, specifying phenotypes associated to all alleles at once instead of on subsets of $L$ associated to either $U \subseteq L$ or, what is essentially equivalent, $O \in \mathcal{G}$. Crucially, the distribution $d$ must also restrict for the subset of alleles associated to any gene regulatory network module, which in some cases may represent all of the genes in an organism, $O$ in a covering of the genotype space $\mathcal{G}$ meaning that
+\begin{eqnarray}
+\forall O \in \mathcal{G} \left[ d|O = d_O \right].
+\end{eqnarray}
+In terms of distributions, the existence of a global section $d$ for a covering of the genotype space $\mathcal{G}$ corresponds to the existence of a distribution defined on all alleles that marginalizes to yield the distributions on subsets of alleles specified by the environmental conditions.
+
+The presheaf $\mathcal{E}$ is also a sheaf because given a cover $\{U_i\}_{i \in I}$ of $U$ there is a family of sections $\{e_i \in \mathcal{E}(U_i)\}_{i \in I}$ that is compatible in the sense that
+\begin{eqnarray}
+\forall i,j \in I \left[ e_i|U_i \cap U_j = e_j|U_i \cap U_j \right].
+\end{eqnarray}
+In this case there is a unique global section $e \in \mathcal{E}(U)$ such that $\forall i \in I \left[ e|U_i = e_i \right]$. The fact that the sheaf condition holds for $\mathcal{E}$ is true because we are considering functions defined on a space with a trivial discrete topology allowing us to combine any partial functions that agree on overlapping subsets by taking the union of the data defining such functions.
+
+\subsection*{Checking for the existence of a global section in a constant environment}
+
 
 \subsection*{Subsection 2}
 
@@ -203,9 +220,9 @@ For example, if we have two organisms given by their genotypes $O = \{l_1, l_2\}
 
 A local section over an open set $U$ of a topological space $X$ is map $s$ such that:
 
-\begin{eqnarray*}
+\begin{eqnarray}
 s \colon U \rightarrow O
-\end{eqnarray*}
+\end{eqnarray}
 
 The set of sections over a particular $U$ can be noted as $O^{U}$. 
 
