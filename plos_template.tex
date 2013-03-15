@@ -47,6 +47,8 @@
 \usepackage{subcaption}
 % hyperref
 \usepackage{hyperref}
+% color table cells http://goo.gl/ZmpJv
+\usepackage[table]{xcolor}
 
 % Use the PLoS provided bibtex style
 \bibliographystyle{plos2009}
@@ -150,11 +152,14 @@ d \colon L \rightarrow R,\\
 \sum_{l \in L} d(x) = 1
 \end{eqnarray}
 We can consider the set of all distributions with respect to a given semiring $R$ satisfying the above constraints and defined on the set $L$ as being given by a functor applied to $L$ as $\mathcal{D}_R (L)$. We can again explicitly represent the way in which the functor $\mathcal{D}_R$ acts on objects and morphisms $L$ and $f \colon L \rightarrow M$ as
-\begin{eqnarray}
-\mathcal{D}_R \colon Set &\rightarrow& Set,\\
-L &\mapsto& \mathcal{D}_R (L),\\
-f \colon L \rightarrow M &\mapsto& \mathcal{D}_R (f) \colon \mathcal{D}_R (L) \rightarrow \mathcal{D}_R (M),
-\end{eqnarray}
+\begin{equation}\label{eq:distfunctor}
+\begin{split}
+\mathcal{D}_R \colon Set &\rightarrow Set,\\
+L &\mapsto \mathcal{D}_R (L),\\
+f \colon L \rightarrow M &\mapsto \mathcal{D}_R (f) \colon \mathcal{D}_R (L) \rightarrow \mathcal{D}_R (M),
+\end{split}
+\end{equation}
+
 where
 \begin{eqnarray}
 \mathcal{D}_R (f) \colon \mathcal{D}_R (L) &\rightarrow& \mathcal{D}_R (M),\\
@@ -215,42 +220,25 @@ In this case there is a unique global section $e \in \mathcal{E}(U)$ such that $
 Extending this example on an arbitrary subset $U \subseteq L$ to the whole set of alleles $L$ we have a unique global section $e \in \mathcal{E}(L) = P^L$. $e$ can be used to deterministically assign phenotypes to the universe of alleles $L$ under consideration.
 
 \subsection*{Example}
-We can begin to construct an example to make the model description, so far, more concrete. The full set of potential alleles is then $L = \{ l_1,l'_1,l_2,l'_2 \}$. Consider the case in which each of the gene regulatory network modules under consideration each has two genetic loci, $L_1$ and $L_2$, each of which is capable of containing one of two different alleles: $l_1$ or $l'_1$ for $L_1$ and $l_2$ or $l'_2$ for $L_2$. Then we have a covering of the genotype space given by $\mathcal{G} = \{\{l_1,l_2 \},\{l_1,l'_2 \},\{l'_1,l_2\},\{l'_1,l'_2\} \}$. We also have two phenotype values $P = \{0, 1\}$. Each genotype-phenotype map in Table \ref{tab:gpm} assigns phenotype values to each $O \in \mathcal{G}$. For example, $e_1 \colon	l_1 l_2 \rightarrow 00$. Table \ref{tab:probabilities} likewise assigns probabilities to each of these genotype-phenotype mappings.
+We can begin to construct an example to make the model description, so far, more concrete. For this example, we take the full set of potential alleles to be $L = \{ l_1,l'_1,l_2,l'_2 \}$. Consider the case in which each of the gene regulatory network modules under consideration each has two genetic loci, $L_1$ and $L_2$, each of which is capable of containing one of two different alleles: $l_1$ or $l'_1$ for $L_1$ and $l_2$ or $l'_2$ for $L_2$. Then we have a covering of the genotype space given by $\mathcal{G} = \{\{l_1,l_2 \},\{l_1,l'_2 \},\{l'_1,l_2\},\{l'_1,l'_2\} \}$. We also have two phenotype values $P = \{0, 1\}$. Each genotype-phenotype map in Table \ref{tab:gpm} assigns phenotype values to each $O \in \mathcal{G}$. For example, $e_1 \colon	l_1 l_2 \rightarrow 00$. Table \ref{tab:probabilities} likewise assigns probabilities to each of these genotype-phenotype mappings.
 
-We can collect all of these genotype-phenotype mappings into one set using the functor given in Equation \ref{eq:gpfunctor} as $\mathcal{E}(\mathcal{G}) = \{e_i | i=1 \ldots 16 \}$.
+\input{tex/table_example}
 
-\begin{table}
-\centering
-\begin{subtable}[t]{0.3\textwidth}
-\centering
-\begin{tabular}{ l || c | c | c | r }
-	$L_1 L_2$  &	00 & 01 & 10 & 11\\ \hline
-    $l_1 l_2$ & $e_1$ & $e_2$ & $e_3$ & $e_4$\\ \hline
-    $l_1 l'_2$ & $e_5$ & $e_6$ & $e_7$ & $e_4$\\ \hline
-    $l'_1 l_2$ & $e_9$ & $e_{10}$ & $e_{11}$ & $e_{12}$\\ \hline
-    $l'_1 l'_2$ & $e_{13}$ & $e_{14}$ & $e_{15}$ & $e_{16}$\\
-    \hline
-    \end{tabular}
-    \caption{genotype-phenotype maps}
-    \label{tab:gpm}
-\end{subtable}
-~~~~~~
-\begin{subtable}[t]{0.3\textwidth}
-\centering
-	\begin{tabular}{ l || c | c | c | r }
-	$L_1 L_2$  &	00 & 01 & 10 & 11\\ \hline
-    $l_1 l_2$ & $p_1$ & $p_2$ & $p_3$ & $p_4$\\ \hline
-    $l_1 l'_2$ & $p_5$ & $p_6$ & $p_7$ & $p_4$\\ \hline
-    $l'_1 l_2$ & $p_9$ & $p_{10}$ & $p_{11}$ & $p_{12}$\\ \hline
-    $l'_1 l'_2$ & $p_{13}$ & $p_{14}$ & $p_{15}$ & $p_{16}$\\
-    \hline
-	\end{tabular}
-	\caption{probabilities}
-    \label{tab:probabilities}
-\end{subtable}
-\caption{Genotype-phenotype mapping and associated probability tables for the two locus-two phenotype value example. We use an abbreviated notation in which we use the rewrite rules $l_1 l_2 \rightarrow \{l_1, l_2\}$ and $00 \rightarrow \{0, 0\}$ and all others analogous to avoid an excessive number of brackets.}
-\label{tab:example}
-\end{table}
+We can collect all of these genotype-phenotype mappings into one set using the functor given in Equation \ref{eq:gpfunctor} as $\mathcal{E}(\mathcal{G}) = P^{\mathcal{G}} = \{e_i | i=1 \ldots 16 \}$. We may further apply the $R$-distribution functor $\mathcal{D}_R$ given in Equation \ref{eq:distfunctor} to obtain a distribution on the genotype-phenotype mappings. Doing so yields  $\mathcal{D}_R\mathcal{E}(\mathcal{G})=d \colon P^\mathcal{G} \rightarrow R$. If we now apply this distribution function $d$ to the set of genotype-phenotype mappings we get the probabilities associated to each genotype-phenotype map $d(\{e_i | i=1 \ldots 16 \}) = \{p_i|i=1 \ldots 16\}$ given in Table \ref{tab:probabilities}. This can also be written more abstractly as $\left[\mathcal{D}_R\mathcal{E}(\mathcal{G})\right](\{e_i | i=1 \ldots 16 \}) = \left[\mathcal{D}_R\mathcal{E}(\mathcal{G})\right](P^\mathcal{G}) = \left[\mathcal{D}_R\mathcal{E}(\mathcal{G})\right](\mathcal{E}(\mathcal{G})) = \{p_i|i=1 \ldots 16\}$. Notice that we applied the functors $\mathcal{E}$ and $\mathcal{D}_R$ to a specific set, which was all of $\mathcal{G}$. We could have applied these functors to any $O \in \mathcal{G}$. In one case, for example if we take $O = \{l_1, l_2\}$, we would have gotten $\mathcal{E}(O) = \{e_i|i=1 \ldots 4\}$ and $\mathcal{D}_R\mathcal{E}(O) = d \colon P^O \rightarrow R$. In this case $\left[\mathcal{D}_R\mathcal{E}(O)\right](\mathcal{E}(O)) = \{p_i|i=1 \ldots 4\}$. Note that this is equivalent to $\left[\mathcal{D}_R\mathcal{E}(\mathcal{G})\right](\mathcal{E}(O))$ since $O \in \mathcal{G}$.
+
+Now if we put $\mathcal{G} = L$ and $O = \{l_1\}$ we may ask for the meaning of $\left[\mathcal{D}_R\mathcal{E}(L)\right](\mathcal{E}(\{l_1\}))$. We find that answering this question requires the introduction of another probability table like Table \ref{tab:il1}. Furthermore, the sheaf condition then introduces a system of equations relating and thus constraining the probability parameters, beyond the constraint that each row sum to one, indicated in like colors between the columns of Table \ref{tab:sheaf} :
+\begin{align}\label{eq:pparsys}
+p^*_1 &= p_1 + p_2 + p_5 + p_6, &
+p^*_2 &= p_3 + p_4 + p_7 + p_8,\\
+p^*_3 &= p_9 + p_{10} + p_{13} + p_{14},&
+p^*_4 &= p_{11} + p_{10} + p_{12} + p_{13},\\
+p^*_5 &= p_1 + p_3 + p_9 + p_{11},&
+p^*_6 &= p_2 + p_4 + p_{10} + p_{11},\\
+p^*_7 &= p_5 + p_7 + p_{13} + p_{15},&
+p^*_8 &= p_6 + p_8 + p_14 + p_16.
+\end{align}
+
+\input{tex/table_sheaf}
 
 \subsection*{Checking for the existence of a global section in a constant environment}
 
