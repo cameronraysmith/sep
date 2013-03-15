@@ -43,6 +43,10 @@
 
 % xy-pic for diagrams
 \usepackage[all]{xy}
+% subcaption
+\usepackage{subcaption}
+% hyperref
+\usepackage{hyperref}
 
 % Use the PLoS provided bibtex style
 \bibliographystyle{plos2009}
@@ -121,11 +125,13 @@ $$
 \mathcal{E} \colon \mathcal{P}(L)^{opp} \rightarrow Set
 $$
 by exhibiting precisely how it acts on objects and morphisms in its domain category. We denote the set of all subsets of a set $X$ as $\mathcal{P}(X)$. Therefore $\mathcal{P}(L)$ is a category in which the objects are subsets of alleles and morphisms represent inclusion of a smaller subset into a larger superset (i.e. $U \subseteq U' \Rightarrow U \rightarrow U'$). The category $\mathcal{P}(L)^{opp}$ then has the same objects, but the morphisms represent restriction from a larger to a smaller subset of alleles (i.e. $U' \supseteq U \Rightarrow U' \rightarrow U$). We explicitly represent the way in which the functor $\mathcal{E}$ acts on objects and morphisms $U$ and $U \subseteq U'$ respectively as
-\begin{eqnarray}
-\mathcal{E} \colon \mathcal{P}(L)^{opp} &\rightarrow& Set,\\
-U &\mapsto& P^U,\\
-U \subseteq U' &\mapsto& res^{U'}_{U}.
-\end{eqnarray}
+\begin{equation}\label{eq:gpfunctor}
+\begin{split}
+\mathcal{E} \colon \mathcal{P}(L)^{opp} &\rightarrow Set,\\
+U &\mapsto P^U,\\
+U \subseteq U' &\mapsto res^{U'}_{U}.
+\end{split}
+\end{equation}
 So the functor $\mathcal{E}$ takes a subset of alleles and returns the set of genotype-phenotype mappings from the given subset of alleles to the set of phenotypes. $\mathcal{E}$ is thus, by definition, a presheaf functor, which is an object in the functor category $Sets^{\mathcal{P}(L)^{opp}}$. The restriction map operates on sets deriving from the application of $\mathcal{E}$ to a subset of alleles as follows
 \begin{eqnarray}
 res^{U'}_{U} \colon \mathcal{E}(U') &\rightarrow& \mathcal{E}(U)\\
@@ -204,7 +210,47 @@ The presheaf $\mathcal{E}$ alone was already a sheaf because given a cover $\{U_
 \begin{eqnarray}
 \forall i,j \in I \left[ e_i|U_i \cap U_j = e_j|U_i \cap U_j \right].
 \end{eqnarray}
-In this case there is a unique global section $e \in \mathcal{E}(U)$ such that $\forall i \in I \left[ e|U_i = e_i \right]$. The fact that the sheaf condition holds for $\mathcal{E}$ is true because we are considering functions defined on a space with a trivial discrete topology allowing us to combine any partial functions that agree on overlapping subsets by taking the union of the data defining such functions.
+In this case there is a unique global section $e \in \mathcal{E}(U)$ such that $\forall i \in I \left[ e|U_i = e_i \right]$. The fact that the sheaf condition holds for $\mathcal{E}$ is true because we are considering functions defined on a space with a trivial discrete topology allowing us to combine any partial functions that agree on overlapping subsets by taking the union of the data defining such functions. 
+
+Extending this example on an arbitrary subset $U \subseteq L$ to the whole set of alleles $L$ we have a unique global section $e \in \mathcal{E}(L) = P^L$. $e$ can be used to deterministically assign phenotypes to the universe of alleles $L$ under consideration.
+
+\subsection*{Example}
+We can begin to construct an example to make the model description, so far, more concrete. The full set of potential alleles is then $L = \{ l_1,l'_1,l_2,l'_2 \}$. Consider the case in which each of the gene regulatory network modules under consideration each has two genetic loci, $L_1$ and $L_2$, each of which is capable of containing one of two different alleles: $l_1$ or $l'_1$ for $L_1$ and $l_2$ or $l'_2$ for $L_2$. Then we have a covering of the genotype space given by $\mathcal{G} = \{\{l_1,l_2 \},\{l_1,l'_2 \},\{l'_1,l_2\},\{l'_1,l'_2\} \}$. We also have two phenotype values $P = \{0, 1\}$. Each genotype-phenotype map in Table \ref{tab:gpm} assigns phenotype values to each $O \in \mathcal{G}$. For example, $e_1 \colon	l_1 l_2 \rightarrow 00$. Table \ref{tab:probabilities} likewise assigns probabilities to each of these genotype-phenotype mappings.
+
+We can collect all of these genotype-phenotype mappings into one set using the functor given in Equation \ref{eq:gpfunctor} as $\mathcal{E}(\mathcal{G}) = \{e_i | i=1 \ldots 16 \}$.
+
+\begin{table}
+\centering
+\begin{subtable}[t]{0.3\textwidth}
+\centering
+\begin{tabular}{ l || c | c | c | r }
+	$L_1 L_2$  &	00 & 01 & 10 & 11\\ \hline
+    $l_1 l_2$ & $e_1$ & $e_2$ & $e_3$ & $e_4$\\ \hline
+    $l_1 l'_2$ & $e_5$ & $e_6$ & $e_7$ & $e_4$\\ \hline
+    $l'_1 l_2$ & $e_9$ & $e_{10}$ & $e_{11}$ & $e_{12}$\\ \hline
+    $l'_1 l'_2$ & $e_{13}$ & $e_{14}$ & $e_{15}$ & $e_{16}$\\
+    \hline
+    \end{tabular}
+    \caption{genotype-phenotype maps}
+    \label{tab:gpm}
+\end{subtable}
+~~~~~~
+\begin{subtable}[t]{0.3\textwidth}
+\centering
+	\begin{tabular}{ l || c | c | c | r }
+	$L_1 L_2$  &	00 & 01 & 10 & 11\\ \hline
+    $l_1 l_2$ & $p_1$ & $p_2$ & $p_3$ & $p_4$\\ \hline
+    $l_1 l'_2$ & $p_5$ & $p_6$ & $p_7$ & $p_4$\\ \hline
+    $l'_1 l_2$ & $p_9$ & $p_{10}$ & $p_{11}$ & $p_{12}$\\ \hline
+    $l'_1 l'_2$ & $p_{13}$ & $p_{14}$ & $p_{15}$ & $p_{16}$\\
+    \hline
+	\end{tabular}
+	\caption{probabilities}
+    \label{tab:probabilities}
+\end{subtable}
+\caption{Genotype-phenotype mapping and associated probability tables for the two locus-two phenotype value example. We use an abbreviated notation in which we use the rewrite rules $l_1 l_2 \rightarrow \{l_1, l_2\}$ and $00 \rightarrow \{0, 0\}$ and all others analogous to avoid an excessive number of brackets.}
+\label{tab:example}
+\end{table}
 
 \subsection*{Checking for the existence of a global section in a constant environment}
 
