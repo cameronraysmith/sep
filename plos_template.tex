@@ -135,11 +135,11 @@ U \subseteq U' &\mapsto res^{U'}_{U}.
 \end{split}
 \end{equation}
 So the functor $\mathcal{E}$ takes a subset of alleles and returns the set of genotype-phenotype mappings from the given subset of alleles to the set of phenotypes. $\mathcal{E}$ is thus, by definition, a presheaf functor, which is an object in the functor category $Sets^{\mathcal{P}(L)^{opp}}$. The restriction map operates on sets deriving from the application of $\mathcal{E}$ to a subset of alleles as follows
-\begin{eqnarray}
+\begin{eqnarray*}
 res^{U'}_{U} \colon \mathcal{E}(U') &\rightarrow& \mathcal{E}(U)\\
 P^{U'} &\rightarrow& P^U\\
 e' \colon U' \rightarrow P &\mapsto& e'|_U \colon U \rightarrow P
-\end{eqnarray}
+\end{eqnarray*}
 
 \subsection*{Stochasticity among genotype-phenotype maps}
 There may be several sources for stochasticity in genotype-phenotype mapping including small numbers of the causal molecules and products of gene expression as well as environmental fluctuations upon which genotype-phenotype mappings are conditioned. Here we generalize the deterministic framework outlined above to the stochastic case.
@@ -147,10 +147,10 @@ There may be several sources for stochasticity in genotype-phenotype mapping inc
 An \emph{algebraic structure} is determined by a set and one or more finitary operations (e.g. binary multiplication) defined on the elements of that set. A \emph{monoid} is a type of algebraic structure determined by a set and a binary operation such that the latter satisfies closure, associativity and identity with respect to the given set. A \emph{semiring} is an algebraic structure determined by a set with two binary operations. One of the binary operations, addition, forms a commutative monoid and has identity element 0. The second binary operation, multiplication, is a monoid with identity element 1. These binary operations interact such that multiplication distributes over addition and multiplication by the identity element of the addition monoid annihilates all elements in the semiring. For example, the real numbers under addition and multiplication constitute a semiring whose data is described as $\left( \mathbb{R},+,0,\times,1 \right)$.
 
 Consider a function, $\phi$ from a set, $L$, to a semiring $R$ written $\phi \colon L \rightarrow R$. The \emph{support} of $\phi$, $\text{supp}(\phi)$, is then the set $\{ l \in L | \phi(l) \neq 0 \}$. A distribution with respect to the semiring $R$ on $L$ is given as a function having finite support and satisfying a constraint
-\begin{eqnarray}
+\begin{eqnarray*}
 d \colon L \rightarrow R,\\
 \sum_{l \in L} d(x) = 1
-\end{eqnarray}
+\end{eqnarray*}
 We can consider the set of all distributions with respect to a given semiring $R$ satisfying the above constraints and defined on the set $L$ as being given by a functor applied to $L$ as $\mathcal{D}_R (L)$. We can again explicitly represent the way in which the functor $\mathcal{D}_R$ acts on objects and morphisms $L$ and $f \colon L \rightarrow M$ as
 \begin{equation}\label{eq:distfunctor}
 \begin{split}
@@ -161,41 +161,41 @@ f \colon L \rightarrow M &\mapsto \mathcal{D}_R (f) \colon \mathcal{D}_R (L) \ri
 \end{equation}
 
 where
-\begin{eqnarray}
+\begin{eqnarray*}
 \mathcal{D}_R (f) \colon \mathcal{D}_R (L) &\rightarrow& \mathcal{D}_R (M),\\
 d &\mapsto& \left[ m \mapsto \sum_{f(l)=m} d(l) \right]. 
-\end{eqnarray}
+\end{eqnarray*}
 
 For the case in which we consider $R$ to be the semiring of non-negative real numbers $\left( \mathbb{R}_{\geq 0},+,0,\times,1 \right)$, $\mathcal{D}_R (L)$ represents the set of probability distributions on the set $L$.
 
 Recalling the presheaf functor, $\mathcal{E} \colon \mathcal{P}(L)^{opp} \rightarrow Set$, mapping genotypes to the set of maps from those genotypes to the set of phenotypes, we can now compose it with the distribution functor $\mathcal{D}_R$ to obtain a new presheaf functor $\mathcal{D}_R \circ \mathcal{E} \colon \mathcal{P}(L)^{opp} \rightarrow Set \rightarrow Set$ that assigns to each genotype a distribution over the set of maps from those genotypes to the set of possible phenotypes. The action of $\mathcal{D}_R \mathcal{E}$ on objects and morphisms in $\mathcal{P}(L)^{opp}$ yields
-\begin{eqnarray}
+\begin{eqnarray*}
 \mathcal{D}_R \mathcal{E} \colon \mathcal{P}(L)^{opp} &\rightarrow& Set,\\
 U &\mapsto& \mathcal{D}_R \mathcal{E}(U) \equiv d \colon P^U \rightarrow R,\\ 
 U \subseteq U' &\mapsto& \mathcal{D}_R \mathcal{E}(U') \rightarrow \mathcal{D}_R \mathcal{E}(U).
-\end{eqnarray}
+\end{eqnarray*}
 where
-\begin{eqnarray}
+\begin{eqnarray*}
 \mathcal{D}_R \mathcal{E}(U') &\rightarrow& \mathcal{D}_R \mathcal{E}(U),\\
 d \colon P^{U'} \rightarrow R &\rightarrow& d|U \colon P^{U} \rightarrow R
-\end{eqnarray}
+\end{eqnarray*}
 and
-\begin{eqnarray}
+\begin{eqnarray*}
 d \colon P^{U'} &\rightarrow& R,\\
 s' &\mapsto& d(s');\\
 d|U \colon P^{U} &\rightarrow& R,\\
 s &\mapsto& \sum_{s' \in \mathcal{E}(U'),\, s'|U=s} d(s').
-\end{eqnarray}
+\end{eqnarray*}
 
 \subsection*{Coverings of genotype space}
 An individual may be composed of some subset of possible alleles where the set of all alleles, $L$, is viewed as a genotype space. A \emph{covering} of the genotype space, $\mathcal{G}$, satisfies $\cup_i \mathcal{G}_i = L$ and $O,O' \in \mathcal{G}$ and $O \subseteq O'$ means that $O = O'$. The first condition means that $\mathcal{G}$ covers $L$ and the second conditions means that if a given subset of alleles $O'$ is compatible in a sense to be explained more precisely in what proceeds then any smaller subset of alleles $O$ is also compatible.
 
 \subsection*{Compatibility of distributions on genotype-phenotype maps}
 Given a covering of the genotype space $\mathcal{G}$, a compatible family for $\mathcal{G}$ with respect to the distribution presheaf $\mathcal{D}_R\mathcal{E}$ is given by a family of distributions $\{d_O \colon P^O \rightarrow R | O \in \mathcal{G}\}$ such that
-\begin{eqnarray}
+\begin{eqnarray*}
 \forall O \in \mathcal{G} \left[ \exists d_O \in \mathcal{D}_R\mathcal{E}(O) \right],\\
 d_O|O \cap O' = d_{O'}|O \cap O'.
-\end{eqnarray}
+\end{eqnarray*}
 The second condition, $d_O|O \cap O' = d_{O'}|O \cap O'$, is referred to as the \emph{sheaf condition}. This condition means that any two distributions $d_O$ and $d_{O'}$ in the \emph{compatible family} of distributions produce the same values in the semiring $R$ on all of the alleles in the intersection of $O$ with $O'$. 
 
 For example, if we have two gene regulatory network modules given by their genotypes $O = \{l_1, l_2\}$ and $O' = \{l_1, l'_2\}$ then the sheaf condition specifies that for $e_{\{l_1\}} \in \mathcal{E}(\{l_1\})$, which assigns a particular phenotype to the genotype $\{l_1\}$, that
@@ -279,58 +279,6 @@ Thus, when there is a global section, given by $d \in \mathcal{D}_R\mathcal{E}(L
 % authors may use "Analysis" 
 \section*{Materials and Methods}
 
-A local section over an open set $U$ of a topological space $X$ is map $s$ such that:
-
-\begin{eqnarray}
-s \colon U \rightarrow O
-\end{eqnarray}
-
-The set of sections over a particular $U$ can be noted as $O^{U}$. 
-
-A presheaf $F$ associates to each open set $U'$ a a set $O^{U'}$ of sections on $U'$ and to each open set $U \subseteq U'$ a map $F(U') \rightarrow F(U)$ that specifies the restrictions of the sections over $U'$ to $U$.
-
-Sections are locally determined whenever to sections $s_1$ and $s_2$ over $U'$ coincide when they are restricted to $U$. A locally determined presheaf is called separated. A sheaf is a separated presheaf that can be glued together when a unique section $s$  of $U'$ can be restricted to the sections of the family of open sets $U_i$ that form a cover on $U'$. compatible sections can be glued together. They have to  match on the overlaps of the covering set.
-
-Then, under some circumstances, we can glue together all the and then obtain a sheaf. If we are given a family of open sets $U
-_i$ such that they form a cover and a compatible family of sections such that:
-
-There is a unique section such that so we can glue together the local data.  
-
-
-
-The category theory generalization of the previously described mathematical structure is the presheaf functor. For a category $\mathcal{C}$ the S-valued presheaf F is a functor such that: 
- 
-$$F \colon \mathcal{C}^{opp} \rightarrow \textit{S}$$.
-
-Where $S$ can be any category like the category of sets ($Set$), commutative rings ($CRing$) or the category of Abelian groups ($Ab$). In order to recover the notion of presheaf in topological spaces, we have to take the $Set$ valued presheaf of the category $\mathcal{C}$ constituted by the posets of open sets a topological space.
-
-$$\xymatrix{
-U \ar@{^{(}->}[r] \ar@{^{(}->}[d]
-&
-U' \ar@{^{(}->}[d]
-\\
-U'' \ar@{^{(}->}[r]
-&
-U'''
-}
-\xymatrix{
- \ar[r]^-{F} &  
-}
-\xymatrix{
-O^{U}  
-&
-O^{U'}\ar[l]^{res} 
-\\
-O^{U''}\ar[u] 
-&
-O^{U'''}\ar[l]\ar[u]
-}$$
-
-Then, the presheaf functor takes the open subsets of $\mathcal{C}$ and maps them to set of sections on the open subset $O^{U}$. The morphisms of the $\mathcal{C}^{opp}$ category are indeed retractions and are mapped by the presheaf functor into restrictions of sections: $$res_{U,U'}: F(U') \rightarrow F(U)$$
-
-Such that the composition rules and identities are satisfied in order to constitute a category. The sheaf condition can be expressed also in categorical terms, but we will leave this 
-
-So the question posed at the beginning, can we use this mathematical structure to enrich our perception of what we consider a fitness landscape.
 % Do NOT remove this, even if you are not including acknowledgments
 \section*{Acknowledgments}
 
