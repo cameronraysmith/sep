@@ -199,17 +199,17 @@ d_O|O \cap O' = d_{O'}|O \cap O'.
 The second condition, $d_O|O \cap O' = d_{O'}|O \cap O'$, is referred to as the \emph{sheaf condition}. This condition means that any two distributions $d_O$ and $d_{O'}$ in the \emph{compatible family} of distributions produce the same values in the semiring $R$ on all of the alleles in the intersection of $O$ with $O'$. 
 
 For example, if we have two gene regulatory network modules given by their genotypes $O = \{l_1, l_2\}$ and $O' = \{l_1, l'_2\}$ then the sheaf condition specifies that for $e_{\{l_1\}} \in \mathcal{E}(\{l_1\})$, which assigns a particular phenotype to the genotype $\{l_1\}$, that
-\begin{eqnarray}
+\begin{eqnarray}\label{eq:sheafprob}
 \sum_{e \in \mathcal{E}(O),\, e|l_1=e_{\{l_1\}}} d_O(e) \,\, = \sum_{e' \in \mathcal{E}(O'),\, e'|l_1=e_{\{l_1\}}} d_{O'}(e')
 \end{eqnarray}
-This condition means that the probability for gene $i=1$ to be associated to the phenotype given by $e_{\{l_1\}}$ is equivalent in case we do or do not marginalize over possible alleles for gene $i=2$.
+This condition means that the probability for gene $i=1$ to be associated to the phenotype given by $e_{\{l_1\}}$ is equivalent in case we marginalize over either possible allele for gene $i=2$.
 
 \subsection*{Global sections of distributions over genotype-phenotype maps}
 To say that the sheaf condition holds for a compatible family $\{d_O\}_{O \in \mathcal{G}}$ for the presheaf $\mathcal{D}_R\mathcal{E}$ implies the existence of a \emph{global section} $d \in \mathcal{D}_R\mathcal{E}(L)$ that is defined on the full set of alleles. This global section defines a distribution on the set of genotype-phenotype maps given by $\mathcal{E}(L) = P^L$, specifying phenotypes associated to all alleles at once instead of on subsets of $L$ associated to either $U \subseteq L$ or, what is essentially equivalent, $O \in \mathcal{G}$. Crucially, the distribution $d$ must also restrict for the subset of alleles associated to any gene regulatory network module, which in some cases may represent all of the genes in an organism, $O$ in a covering of the genotype space $\mathcal{G}$ meaning that
 \begin{eqnarray}
 \forall O \in \mathcal{G} \left[ d|O = d_O \right].
 \end{eqnarray}
-In terms of distributions, the existence of a global section $d$ for a covering of the genotype space $\mathcal{G}$ corresponds to the existence of a distribution defined on all alleles that marginalizes to yield the distributions on subsets of alleles specified by the environmental conditions.
+In terms of distributions, the existence of a global section $d$ for a covering of the genotype space $\mathcal{G}$ corresponds to the existence of a distribution defined on all alleles that marginalizes to yield the distributions on subsets of alleles that may be observed empirically.
 
 The presheaf $\mathcal{E}$ alone was already a sheaf because given a cover $\{U_i\}_{i \in I}$ of $U$ there is a family of sections $\{e_i \in \mathcal{E}(U_i)\}_{i \in I}$ that is compatible in the sense that
 \begin{eqnarray}
@@ -224,23 +224,50 @@ We can begin to construct an example to make the model description, so far, more
 
 \input{tex/table_example}
 
-We can collect all of these genotype-phenotype mappings into one set using the functor given in Equation \ref{eq:gpfunctor} as $\mathcal{E}(\mathcal{G}) = P^{\mathcal{G}} = \{e_i | i=1 \ldots 16 \}$. We may further apply the $R$-distribution functor $\mathcal{D}_R$ given in Equation \ref{eq:distfunctor} to obtain a distribution on the genotype-phenotype mappings. Doing so yields  $\mathcal{D}_R\mathcal{E}(\mathcal{G})=d \colon P^\mathcal{G} \rightarrow R$. If we now apply this distribution function $d$ to the set of genotype-phenotype mappings we get the probabilities associated to each genotype-phenotype map $d(\{e_i | i=1 \ldots 16 \}) = \{p_i|i=1 \ldots 16\}$ given in Table \ref{tab:probabilities}. This can also be written more abstractly as $\left[\mathcal{D}_R\mathcal{E}(\mathcal{G})\right](\{e_i | i=1 \ldots 16 \}) = \left[\mathcal{D}_R\mathcal{E}(\mathcal{G})\right](P^\mathcal{G}) = \left[\mathcal{D}_R\mathcal{E}(\mathcal{G})\right](\mathcal{E}(\mathcal{G})) = \{p_i|i=1 \ldots 16\}$. Notice that we applied the functors $\mathcal{E}$ and $\mathcal{D}_R$ to a specific set, which was all of $\mathcal{G}$. We could have applied these functors to any $O \in \mathcal{G}$. In one case, for example if we take $O = \{l_1, l_2\}$, we would have gotten $\mathcal{E}(O) = \{e_i|i=1 \ldots 4\}$ and $\mathcal{D}_R\mathcal{E}(O) = d \colon P^O \rightarrow R$. In this case $\left[\mathcal{D}_R\mathcal{E}(O)\right](\mathcal{E}(O)) = \{p_i|i=1 \ldots 4\}$. Note that this is equivalent to $\left[\mathcal{D}_R\mathcal{E}(\mathcal{G})\right](\mathcal{E}(O))$ since $O \in \mathcal{G}$.
+We can collect all of these genotype-phenotype mappings into one set using the functor given in Equation \ref{eq:gpfunctor} as $\mathcal{E}(\mathcal{G}) = P^{\mathcal{G}} = \{e_i | i=1 \ldots 16 \}$. We may further apply the $R$-distribution functor $\mathcal{D}_R$ given in Equation \ref{eq:distfunctor} to obtain a distribution on the genotype-phenotype mappings. Doing so yields  $\mathcal{D}_R\mathcal{E}(\mathcal{G})=d \colon P^\mathcal{G} \rightarrow R$. If we now apply this distribution function $d$ to the set of genotype-phenotype mappings we get the probabilities associated to each genotype-phenotype map $d(\{e_i | i=1 \ldots 16 \}) = \{p_i|i=1 \ldots 16\}$ given in Table \ref{tab:probabilities}. This can also be written more abstractly as $\left[\mathcal{D}_R\mathcal{E}(\mathcal{G})\right](\{e_i | i=1 \ldots 16 \}) = \left[\mathcal{D}_R\mathcal{E}(\mathcal{G})\right](P^\mathcal{G}) = \left[\mathcal{D}_R\mathcal{E}(\mathcal{G})\right](\mathcal{E}(\mathcal{G})) = \{p_i|i=1 \ldots 16\}$. Notice that we applied the functors $\mathcal{E}$ and $\mathcal{D}_R$ to a specific set, which was all of $\mathcal{G}$. We could have applied these functors to any $O \in \mathcal{G}$. In one case, for example if we take $O = \{l_1, l_2\}$, we would have gotten $\mathcal{E}(O) = \{e_i|i=1 \ldots 4\}$ and $\mathcal{D}_R\mathcal{E}(O) = d \colon P^O \rightarrow R$. In this case $\left[\mathcal{D}_R\mathcal{E}(O)\right](\mathcal{E}(O)) = \{p_i|i=1 \ldots 4\}$.
 
-Now if we put $\mathcal{G} = L$ and $O = \{l_1\}$ we may ask for the meaning of $\left[\mathcal{D}_R\mathcal{E}(L)\right](\mathcal{E}(\{l_1\}))$. We find that answering this question requires the introduction of another probability table like Table \ref{tab:il1}. Furthermore, the sheaf condition then introduces a system of equations relating and thus constraining the probability parameters, beyond the constraint that each row sum to one, indicated in like colors between the columns of Table \ref{tab:sheaf} :
+Now if we put $O = \{l_1\}$ we may ask for the meaning of $\left[\mathcal{D}_R\mathcal{E}(\{l_1\})\right](\mathcal{E}(\{l_1\}))$ and similarly for the other $l \in L$. We find that answering this question requires the introduction of another probability table like Table \ref{tab:il1} . Furthermore, the sheaf condition then introduces a system of equations relating and thus constraining the probability parameters, beyond the constraint that each row sum to one. One constraint introduced by the sheaf condition is expressed in Equation \ref{eq:sheafprob}, specialized to this example by
+\begin{eqnarray}\label{eq:sheafprob2}
+\sum_{e \in \mathcal{E}(\{l\}),\, e|l=e_{\{l\}}} d_{\{l\}}(e) \,\, = \sum_{e' \in \mathcal{E}(O),\, e'|l=e_{\{l\}}} d_{O}(e'),
+\end{eqnarray}
+for each $l \in L$, $e_{\{l\}} \in \mathcal{E}(\{l\})$, and $\{O \in \mathcal{G}|l=o, o \in O\}$. The resulting equations are explicitly indicated in like colors between the columns of Table \ref{tab:sheaf} :
 \begin{align}\label{eq:pparsys}
-p^*_1 &= p_1 + p_2 + p_5 + p_6, &
-p^*_2 &= p_3 + p_4 + p_7 + p_8,\\
-p^*_3 &= p_9 + p_{10} + p_{13} + p_{14},&
-p^*_4 &= p_{11} + p_{10} + p_{12} + p_{13},\\
-p^*_5 &= p_1 + p_3 + p_9 + p_{11},&
-p^*_6 &= p_2 + p_4 + p_{10} + p_{11},\\
-p^*_7 &= p_5 + p_7 + p_{13} + p_{15},&
-p^*_8 &= p_6 + p_8 + p_14 + p_16.
+p^*_1 &= p_1 + p_2 = p_5 + p_6, &
+p^*_2 &= p_3 + p_4 = p_7 + p_8,\\
+p^*_3 &= p_9 + p_{10} = p_{13} + p_{14},&
+p^*_4 &= p_{11} + p_{10} = p_{12} + p_{13},\\
+p^*_5 &= p_1 + p_3 = p_9 + p_{11},&
+p^*_6 &= p_2 + p_4 = p_{10} + p_{11},\\
+p^*_7 &= p_5 + p_7 = p_{13} + p_{15},&
+p^*_8 &= p_6 + p_8 = p_{14} + p_{16}.
 \end{align}
 
+Consider the meaning of the sheaf condition for $\mathcal{D}_R\mathcal{E}(L)$. $d \in \mathcal{D}_R\mathcal{E}(L)$ specifies a distribution whose domain consists of deterministic functions $\mathcal{E}(L) = P^L$ that map each allele independently, and independent of the fact that some combinations of alleles  comprise gene regulatory network modules consisting of potentially interacting genes, to a phenotype. Since we have stated that $\mathcal{E}(L)$ satisfies the sheaf condition, for a given covering of the genotype space, $\mathcal{G}$, a globally compatible function $e \in  \mathcal{E}(L)$ restricts to $e|O$ for each $O \in \mathcal{G}$ such that there is of phenotypes assigned to alleles that participate in overlapping gene regulatory network modules. Each $e \in P^L$ is associated to a trivial distribution $\delta_e \in \mathcal{D}_R\mathcal{E}(L)$ such that 
+\begin{eqnarray}
+\delta_e(e') =
+\begin{cases}
+1, & e' = e,\\
+0, & e' \neq e.
+\end{cases}
+\end{eqnarray}
+For each gene regulatory network module $O$ we note that $\delta_e|O = \delta_{e|O}$. In this case, we can write the empirically determined distribution such as Table \ref{tab:probabilities} for a particular gene regulatory network module $d_O$ in terms of the distribution defined on the global set of alleles restricted to a particular gene regulatory network module $d|O$:
+\begin{equation}\label{eq:factordist}
+\begin{split}
+d_O(e) &= d|O(e)\\
+&= \sum_{e' \in \mathcal{E}(L),e'|O=e} d(e')\\
+&= \sum_{e' \in \mathcal{E}(L)} \delta_{e'|O}(e) \times d(e') = \sum_{e' \in \mathcal{E}(L)} \delta_{e'}|O(e) \times d(e')
+\end{split}
+\end{equation}
+where
+\begin{equation}
+\delta_{e'}|O(e) = \prod_{o \in O} \delta_{e'|\{o\}}(e|\{o\}).
+\end{equation}
+We recover the empirically determined distribution as a sum over the deterministic genotype-phenotype mappings weighted by the probabilities of the distribution $d \in \mathcal{D}_R\mathcal{E}(L)$ defined over the full set of such deterministic mappings.
+
+Thus, when there is a global section, given by $d \in \mathcal{D}_R\mathcal{E}(L)$, for an empirically determined distribution on genotype-phenotype mappings, for example that in Table \ref{tab:probabilities}, then it may be the case that a mechanism that stochastically selects among deterministic genotype-phenotype maps can satisfy or generate an empirically determined distribution.
 \input{tex/table_sheaf}
 
-\subsection*{Checking for the existence of a global section in a constant environment}
+\subsection*{Existence of a global section for an empirically determined distribution of genotype-phenotype mappings}
 
 
 \subsection*{Subsection 2}
