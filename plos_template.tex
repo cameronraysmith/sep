@@ -259,9 +259,9 @@ d_O(e) &= d|O(e)\\
 \end{split}
 \end{equation}
 where
-\begin{equation}
+\begin{equation*}
 \delta_{e'}|O(e) = \prod_{o \in O} \delta_{e'|\{o\}}(e|\{o\}).
-\end{equation}
+\end{equation*}
 We recover the empirically determined distribution as a sum over the deterministic genotype-phenotype mappings weighted by the probabilities of the distribution $d \in \mathcal{D}_R\mathcal{E}(L)$ defined over the full set of such deterministic mappings.
 
 Thus, when there is a global section, given by $d \in \mathcal{D}_R\mathcal{E}(L)$, for an empirically determined distribution on genotype-phenotype mappings, for example that in Table \ref{tab:probabilities}, then it may be the case that a mechanism that stochastically selects among deterministic genotype-phenotype maps can satisfy or generate an empirically determined distribution.
@@ -270,7 +270,11 @@ Thus, when there is a global section, given by $d \in \mathcal{D}_R\mathcal{E}(L
 \subsection*{Existence of a global section for an empirically determined distribution of genotype-phenotype mappings}
 Given an empirically determined distribution on the genotype-phenotype mapping process, it may be helpful to be able to classify whether or not there exists a global section satisfying the sheaf condition in order to determine the modularity requirements of the empirical distribution. If an empirically determined distribution does have a global section, then it is possible to achieve the same global biological function specified in the empirical distribution using a single gene regulatory network module that contains all of the alleles in the given universal set of alleles $L$ as is obtained using the particular cover of the genotype space $\mathcal{G}$ that is associated to the empirically determined distribution. If the empirically determined distribution does not have a global section satisfying the sheaf condition, then there is some contingency regarding interactions between genes necessitating decomposition into smaller submodules than is represented by the whole of the universal set of alleles $L$.
 
-For a cover of the genotype space, $\mathcal{G}$, we can construct an incidence matrix, $\mathbf{G}$, representing the relationship between genotype-phenotype mappings having as domain particular gene regulatory network module contexts given by the $O \in \mathcal{G}$ and those global genotype-phenotype mappings defined on $L$. In the first case we have $\{e_1, \ldots e_p\} = \coprod_{O \in \mathcal{G}} \mathcal{E}(O)$. In the second case we have $\{t_1, \ldots t_q\} = \{t_j | t_j \in P^L\}$. So we have two sets of maps, one defined on $\mathcal{E}(O) = P^O$ for each $O \in \mathcal{G}$ and the other defined on $P^L$. This yields a method of specifying the intended relationship that defines $\mathbf{G}_{p \times q}$ in terms of $e_i \in \mathcal{E}(O)$ and $t_j \in P^L$:
+For a cover of the genotype space, $\mathcal{G}$, we can construct an incidence matrix, $\mathbf{G}$, representing the relationship between genotype-phenotype mappings having as domain particular gene regulatory network module contexts given by the $O \in \mathcal{G}$ and those global genotype-phenotype mappings defined on $L$. This is equivalent to the more formal statement that there is some binary relation,
+\begin{equation}
+R \subseteq \mathcal{E}(L) \times \coprod_{O \in \mathcal{G}} \mathcal{E}(O),
+\end{equation}
+whose \href{http://en.wikipedia.org/wiki/Logical_matrix#Matrix_representation_of_a_relation}{logical matrix representation}, $\mathbf{G}$, we would like to construct. In the first case, $\mathcal{E}(L) = P^L$ we have $\{t_1, \ldots t_m\} = \{t_j | t_j \in P^L\}$. In the second case, $\coprod_{O \in \mathcal{G}} \mathcal{E}(O)$, we have $\{e_1, \ldots e_n\} = \coprod_{O \in \mathcal{G}} \mathcal{E}(O)$. So we have two sets of maps, one defined on $P^L$ and the other defined on $\mathcal{E}(O) = P^O$ for each $O \in \mathcal{G}$. This yields a method of specifying the intended relationship that defines $\mathbf{G}_{n \times m}$ in terms of $t_j \in P^L$ and $e_i \in \mathcal{E}(O)$ :
 \begin{eqnarray}
 \mathbf{G}[i,j] =
 \begin{cases}
@@ -278,8 +282,27 @@ For a cover of the genotype space, $\mathcal{G}$, we can construct an incidence 
 0, & \text{otherwise}.
 \end{cases}
 \end{eqnarray}
+This matrix can be viewed as an operator acting via matrix multiplication on distributions
+\begin{eqnarray*}
+\mathbf{G} \colon \mathcal{D}_R\mathcal{E}(L) &\rightarrow& \mathcal{D}_R\mathcal{E}(\mathcal{G}),\\
+d &\mapsto& (d|O)_{O \in \mathcal{G}},
+\end{eqnarray*}
+and thereby taking a global distribution defined on genotype-phenotype maps whose domain is the full set of alleles $L$ to the \emph{marginalized} distributions that are defined relative to gene regulatory network modules contained in a covering of the genotype space $\mathcal{G}$. This is to say that $\mathbf{G} \cdot d = (d|O)_{O \in \mathcal{G}} = \{d_O\}_{O \in \mathcal{G}}$. $\mathbf{G}$ provides a way of determining the kinds of environmentally determined distributions on genotype-phenotype mapping (i.e. $\{d_O\}_{O \in \mathcal{G}}$, Table \ref{tab:probabilities}) that can be derived from distributions (i.e. $\mathcal{D}_R \mathcal{E}(L)$) defined on the global genotype-phenotype mappings (i.e. $\mathcal{E}(L)$ as opposed to $\mathcal{E}(O)$).
 
-\subsection*{Subsection 2}
+If we have an experimentally determined distribution on genotype phenotype maps in different genetic contexts (e.g. in Table \ref{tab:probabilities}) that we refer to as $\{d_O\}_{O \in \mathcal{G}}$, then we have an assignment of a probability value in $R$ to each genotype phenotype map $e_i \in \mathcal{E}(O)$ in Table \ref{tab:gpm}. We can collect these probabilities into a vector $\mathbf{V}_{n \times 1}$ where we note that $n$ is the same as that used to specify the number of genotype-phenotype maps in the coproduct over gene regulatory network modules in a given covering of the genotype space $\{e_1, \ldots e_n\} = \coprod_{O \in \mathcal{G}} \mathcal{E}(O)$. We can specify as unknown a distribution on the set of globally defined genotype phenotype maps and collect the associated probabilities in a vector $\mathbf{X}_{m \times 1}$ where there is a probability weight associated to each $t_j \in \mathcal{E}(L)$. Now we can attempt to determine the probability distribution on globally defined genotype-phenotype mappings $\mathcal{E}(L)$ by solving the linear system of equations
+\begin{equation}
+\begin{split}
+\mathbf{G}_{n \times m} \mathbf{X}_{m \times 1} = \mathbf{V}_{n \times 1},\\
+\sum_{i=1}^{m} \mathbf{X}_{i} = 1.
+\end{split}
+\end{equation}
+The constraint that $\mathbf{X}$ sum to one in order to satisfy the definition of a probability distribution can be integrated into the matrix equation by adjoining a row containing ones to $\mathbf{G}_{n \times m}$ and a row containing a one to $\mathbf{V}_{n \times 1}$
+\begin{equation}\label{eq:auglinsys}
+\mathbf{G}_{n + 1 \times m} \mathbf{X}_{m \times 1} = \mathbf{V}_{n + 1 \times 1}.
+\end{equation}
+Solutions, if any, to Equation \ref{eq:auglinsys} serve to exhibit a global section for the empirically determined distribution specified in $\mathbf{V}$.
+
+\subsection*{Return to example}
 
 \section*{Discussion}
 
