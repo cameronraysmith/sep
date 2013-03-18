@@ -268,7 +268,16 @@ Thus, when there is a global section, given by $d \in \mathcal{D}_R\mathcal{E}(L
 \input{tex/table_sheaf}
 
 \subsection*{Existence of a global section for an empirically determined distribution of genotype-phenotype mappings}
+Given an empirically determined distribution on the genotype-phenotype mapping process, it may be helpful to be able to classify whether or not there exists a global section satisfying the sheaf condition in order to determine the modularity requirements of the empirical distribution. If an empirically determined distribution does have a global section, then it is possible to achieve the same global biological function specified in the empirical distribution using a single gene regulatory network module that contains all of the alleles in the given universal set of alleles $L$ as is obtained using the particular cover of the genotype space $\mathcal{G}$ that is associated to the empirically determined distribution. If the empirically determined distribution does not have a global section satisfying the sheaf condition, then there is some contingency regarding interactions between genes necessitating decomposition into smaller submodules than is represented by the whole of the universal set of alleles $L$.
 
+For a cover of the genotype space, $\mathcal{G}$, we can construct an incidence matrix, $\mathbf{G}$, representing the relationship between genotype-phenotype mappings having as domain particular gene regulatory network module contexts given by the $O \in \mathcal{G}$ and those global genotype-phenotype mappings defined on $L$. In the first case we have $\{e_1, \ldots e_p\} = \coprod_{O \in \mathcal{G}} \mathcal{E}(O)$. In the second case we have $\{t_1, \ldots t_q\} = \{t_j | t_j \in P^L\}$. So we have two sets of maps, one defined on $\mathcal{E}(O) = P^O$ for each $O \in \mathcal{G}$ and the other defined on $P^L$. This yields a method of specifying the intended relationship that defines $\mathbf{G}_{p \times q}$ in terms of $e_i \in \mathcal{E}(O)$ and $t_j \in P^L$:
+\begin{eqnarray}
+\mathbf{G}[i,j] =
+\begin{cases}
+1, & t_j|O = e_i,\\
+0, & \text{otherwise}.
+\end{cases}
+\end{eqnarray}
 
 \subsection*{Subsection 2}
 
