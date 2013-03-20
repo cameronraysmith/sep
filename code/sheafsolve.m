@@ -1,4 +1,4 @@
-function [exitflag, X] = sheafsolve (g,a,p)
+function [exitflag, X, V] = sheafsolve (g,a,p)
 if nargin < 1
     g = 2;
     a = 2;
@@ -19,6 +19,7 @@ mod = a^g;
 modmap = (a*p)^g;
 glomap = p^(g*a);
 
+if 0
 fprintf(['%0.0f \t g \t genetic loci\n',...
          '%0.0f \t a \t distinct alleles available to each locus\n',...
          '%0.0f \t p \t phenotype values\n',...
@@ -35,6 +36,7 @@ fprintf(['%0.0f \t g \t genetic loci\n',...
          mod,...
          modmap,...
          glomap);
+end
 
 G = [1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0;
      0 0 0 0 1 1 1 1 0 0 0 0 0 0 0 0;
@@ -65,7 +67,8 @@ V = reshape(v',16,1);
 V = [V; 1];
 
 %X = G\V %finds solutions with negative values
-[X,fval,exitflag,output,lambda]=linprog(ones(glomap,1),[],[],G,V,zeros(glomap,1),ones(glomap,1));
+%[X,fval,exitflag,output,lambda]=linprog(ones(glomap,1),[],[],G,V,zeros(glomap,1),ones(glomap,1),[],optimset('Display','off'));
+[X,fval,exitflag,output,lambda]=linprog(ones(glomap,1),[],[],G,V,zeros(glomap,1),[],[],optimset('Display','off'));
 
 end
 
