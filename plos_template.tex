@@ -78,7 +78,7 @@
 % Title must be 150 characters or less
 \begin{flushleft}
 {\Large
-\textbf{Title}
+\textbf{Modularization of global genotype-phenotype mappings enables access to a relative superset of biological functions}
 }
 % Insert Author names, affiliations and corresponding author email.
 \\
@@ -104,31 +104,30 @@ $\ast$ E-mail: Corresponding author@institute.edu
 \section*{Author Summary}
 
 \section*{Introduction}
-In order to understand biological systems, it will be necessary to clarify the relationship between genotype and phenotype. The process of doing so may require revision to either or both concepts. Determining whether or not such revision is necessary will be facilitated by formalization of these concepts. This formalization should lay bare the assumptions implicit in the respective definitions of genotype and phenotype and allow for the graded incorporation of the current state of knowledge about the intermediate processes involved in constructing the genotype-phenotype relationship that have been gained through the interplay between theory and experiment since, at least, the advent of modern molecular biology.
+In order to improve understanding of the functioning of biological systems, it will be necessary to clarify the relationship between genotype and phenotype. The process of doing so may require revision to these concepts. The current status of these concepts will be clarified by an attempt at formalization of the genotype-phenotype mapping from which we argue the genotype and phenotype concepts derive their meaning rather than vice versa. This formalization should also allow for the graded incorporation of knowledge about the intermediate processes involved in constructing the genotype-phenotype relationship that has been gained through the interplay between theory and experiment since the advent of modern molecular biology.
 
-Here we formalize the genotype-phenotype mapping. In doing so, we make use of a small fragment of the unifying mathematical language of category theory. We demonstrate the way in which expressing our results in this language facilitates expanding the domain of applicability of the model as well as connecting the model to what may seem \emph{a priori} as disparate scientific domains. In addition to the direct value of using category theory as a framework for organizing information for the purpose of constructing precise modeling descriptions, this approach suggests an efficient method of sharing modeling results between different fields of science.
+Here we suggest one formalization of the genotype-phenotype mapping. In doing so, we make use of a fragment of the mathematical language of category theory. Expressing our results in this language facilitates expanding the domain of applicability of the model described. In addition to the direct value of using category theory as a framework for organizing information for the purpose of constructing precise modeling descriptions, this approach provides an example of sharing modeling constructions between different fields of science.
 
 % Results and Discussion can be combined.
 \section*{Model description}
 
 \subsection*{Deterministic genotype-phenotype maps}
-Consider the case in which we have an arbitrary number of genetic loci indexed by $i=1, \ldots, m$. There is a particular set of potential alleles denoted $L$. A subset of alleles will be denoted as $U \subseteq L$. We also have a set of phenotypes $P$. In principle, any allele could give rise to any phenotype. A gene regulatory network module, which in some cases may represent all of the genes in an organism, is represented by a tuple of alleles $O$ and a population is a set of such tuples $\mathcal{G}$ (i.e. $O \in \mathcal{G}$). A genotype-phenotype map is thus represented as a function mapping a subset of alleles into phenotypes 
+Consider the case in which we have an arbitrary number of \emph{genetic loci} indexed by $i=1, \ldots, m$. There is a particular set of potential \emph{alleles} denoted $L$. A subset of alleles will be denoted as $U \subseteq L$. We also have a set of phenotypes $P$. In principle, any allele could give rise to any phenotype. A \emph{gene regulatory network module}, which in some cases may represent all of the genes in an organism, is represented by a tuple of alleles $O$ and a collection of gene regulatory network modules which in some cases may constitute a population of individual organisms is a set of such tuples $\mathcal{G}$ (i.e. $O \in \mathcal{G}$). A genotype-phenotype map is thus represented as a function mapping a subset of alleles into phenotypes 
 $$
 e \colon U \rightarrow  P.
 $$
 
-In the observationalist framework, our alleles $L$ are analogous to measurements $U \subseteq X$ and our phenotypes $P$ are like measurement outcomes or values $V$. An event in which outcomes $s(a)$ are observed for each $a \in U$ serve to define sections over $U$ as
+In the observationalist framework from which this modeling description derives \cite{Abramsky2011}, our alleles $L$ are analogous to measurements $U \subseteq X$ and our phenotypes $P$ are like measurement outcomes or values $V$. An event in which outcomes $s(a)$ are observed for each $a \in U$ serve to define mappings called \emph{sections} over $U$ as
 
 $$
 s \colon U \rightarrow V.
 $$
 
-In order to consider the set of all genotype-phenotype maps together, we can construct a functor
-
+We denote the set of all subsets of a set $X$ as $\mathcal{P}(X)$. Therefore $\mathcal{P}(L)$ is a category in which the objects are subsets of alleles and morphisms represent inclusion of a smaller subset into a larger superset (i.e. $U \subseteq U' \Rightarrow U \rightarrow U'$). The category $\mathcal{P}(L)^{opp}$ then has the same objects, but the morphisms represent restriction from a larger to a smaller subset of alleles (i.e. $U' \supseteq U \Rightarrow U' \rightarrow U$). In order to consider the set of all genotype-phenotype maps together, we can construct a functor
 $$
 \mathcal{E} \colon \mathcal{P}(L)^{opp} \rightarrow Set
 $$
-by exhibiting precisely how it acts on objects and morphisms in its domain category. We denote the set of all subsets of a set $X$ as $\mathcal{P}(X)$. Therefore $\mathcal{P}(L)$ is a category in which the objects are subsets of alleles and morphisms represent inclusion of a smaller subset into a larger superset (i.e. $U \subseteq U' \Rightarrow U \rightarrow U'$). The category $\mathcal{P}(L)^{opp}$ then has the same objects, but the morphisms represent restriction from a larger to a smaller subset of alleles (i.e. $U' \supseteq U \Rightarrow U' \rightarrow U$). We explicitly represent the way in which the functor $\mathcal{E}$ acts on objects and morphisms $U$ and $U \subseteq U'$ respectively as
+by exhibiting precisely how it acts on objects and morphisms in its domain category. We explicitly represent the way in which the functor $\mathcal{E}$ acts on objects and morphisms $U$ and $U \subseteq U'$ respectively as
 \begin{equation}\label{eq:gpfunctor}
 \begin{split}
 \mathcal{E} \colon \mathcal{P}(L)^{opp} &\rightarrow Set,\\
@@ -136,15 +135,16 @@ U &\mapsto P^U,\\
 U \subseteq U' &\mapsto res^{U'}_{U}.
 \end{split}
 \end{equation}
-So the functor $\mathcal{E}$ takes a subset of alleles and returns the set of genotype-phenotype mappings from the given subset of alleles to the set of phenotypes. $\mathcal{E}$ is thus, by definition, a presheaf functor, which is an object in the functor category $Sets^{\mathcal{P}(L)^{opp}}$. The restriction map operates on sets deriving from the application of $\mathcal{E}$ to a subset of alleles as follows
+So the functor $\mathcal{E}$ takes a subset of alleles and returns the set of genotype-phenotype mappings from the given subset of alleles to the set of phenotypes. The restriction map operates on sets deriving from the application of $\mathcal{E}$ to a subset of alleles as follows
 \begin{eqnarray*}
 res^{U'}_{U} \colon \mathcal{E}(U') &\rightarrow& \mathcal{E}(U)\\
 P^{U'} &\rightarrow& P^U\\
 e' \colon U' \rightarrow P &\mapsto& e'|_U \colon U \rightarrow P
 \end{eqnarray*}
+$\mathcal{E}$ is thus, by definition, a presheaf functor, which is an object in the functor category $Sets^{\mathcal{P}(L)^{opp}}$.
 
 \subsection*{Stochasticity among genotype-phenotype maps}
-There may be several sources for stochasticity in genotype-phenotype mapping including small numbers of the causal molecules and products of gene expression as well as environmental fluctuations upon which genotype-phenotype mappings are conditioned. Here we generalize the deterministic framework outlined above to the stochastic case.
+There may be several sources for stochasticity in genotype-phenotype mapping including small numbers of the causal molecules and products of gene expression as well as environmental fluctuations upon which genotype-phenotype mappings are conditioned \cite{Swain2002,Paulsson2004,Thattai2004,Acar2008a,Lestas2010,Munsky2012,Neuert2013}. Here we generalize the deterministic framework outlined above to the stochastic case.
 
 An \emph{algebraic structure} is determined by a set and one or more finitary operations (e.g. binary multiplication) defined on the elements of that set. A \emph{monoid} is a type of algebraic structure determined by a set and a binary operation such that the latter satisfies closure, associativity and identity with respect to the given set. A \emph{semiring} is an algebraic structure determined by a set with two binary operations. One of the binary operations, addition, forms a commutative monoid and has identity element 0. The second binary operation, multiplication, is a monoid with identity element 1. These binary operations interact such that multiplication distributes over addition and multiplication by the identity element of the addition monoid annihilates all elements in the semiring. For example, the real numbers under addition and multiplication constitute a semiring whose data is described as $\left( \mathbb{R},+,0,\times,1 \right)$.
 
@@ -161,13 +161,11 @@ L &\mapsto \mathcal{D}_R (L),\\
 f \colon L \rightarrow M &\mapsto \mathcal{D}_R (f) \colon \mathcal{D}_R (L) \rightarrow \mathcal{D}_R (M),
 \end{split}
 \end{equation}
-
 where
 \begin{eqnarray*}
 \mathcal{D}_R (f) \colon \mathcal{D}_R (L) &\rightarrow& \mathcal{D}_R (M),\\
 d &\mapsto& \left[ m \mapsto \sum_{f(l)=m} d(l) \right]. 
 \end{eqnarray*}
-
 For the case in which we consider $R$ to be the semiring of non-negative real numbers $\left( \mathbb{R}_{\geq 0},+,0,\times,1 \right)$, $\mathcal{D}_R (L)$ represents the set of probability distributions on the set $L$.
 
 Recalling the presheaf functor, $\mathcal{E} \colon \mathcal{P}(L)^{opp} \rightarrow Set$, mapping genotypes to the set of maps from those genotypes to the set of phenotypes, we can now compose it with the distribution functor $\mathcal{D}_R$ to obtain a new presheaf functor $\mathcal{D}_R \circ \mathcal{E} \colon \mathcal{P}(L)^{opp} \rightarrow Set \rightarrow Set$ that assigns to each genotype a distribution over the set of maps from those genotypes to the set of possible phenotypes. The action of $\mathcal{D}_R \mathcal{E}$ on objects and morphisms in $\mathcal{P}(L)^{opp}$ yields
@@ -207,7 +205,7 @@ For example, if we have two gene regulatory network modules given by their genot
 This condition means that the probability for gene $i=1$ to be associated to the phenotype given by $e_{\{l_1\}}$ is equivalent in case we marginalize over either possible allele for gene $i=2$.
 
 \subsection*{Global sections of distributions over genotype-phenotype maps}
-To say that the sheaf condition holds for a compatible family $\{d_O\}_{O \in \mathcal{G}}$ for the presheaf $\mathcal{D}_R\mathcal{E}$ implies the existence of a \emph{global section} $d \in \mathcal{D}_R\mathcal{E}(L)$ that is defined on the full set of alleles. This global section defines a distribution on the set of genotype-phenotype maps given by $\mathcal{E}(L) = P^L$, specifying phenotypes associated to all alleles at once instead of on subsets of $L$ associated to either $U \subseteq L$ or, what is essentially equivalent, $O \in \mathcal{G}$. Crucially, the distribution $d$ must also restrict for the subset of alleles associated to any gene regulatory network module, which in some cases may represent all of the genes in an organism, $O$ in a covering of the genotype space $\mathcal{G}$ meaning that
+To say that the sheaf condition holds for a compatible family $\{d_O\}_{O \in \mathcal{G}}$ for the presheaf $\mathcal{D}_R\mathcal{E}$ implies the existence of a \emph{global section} $d \in \mathcal{D}_R\mathcal{E}(L)$ that is defined on the full set of alleles. An example of a distribution that could be a global section given that it satisfies the sheaf condition is shown in Table \ref{tab:hidvarmod}. This global section defines a distribution on the set of genotype-phenotype maps given by $\mathcal{E}(L) = P^L$, specifying phenotypes associated to all alleles at once instead of on subsets of $L$ associated to either $U \subseteq L$ or, what is essentially equivalent, $O \in \mathcal{G}$. Crucially, the distribution $d$ must also restrict for the subset of alleles associated to any gene regulatory network module, which in some cases may represent all of the genes in an organism, $O$ in a covering of the genotype space $\mathcal{G}$ meaning that
 \begin{eqnarray}
 \forall O \in \mathcal{G} \left[ d|O = d_O \right].
 \end{eqnarray}
@@ -226,9 +224,9 @@ We can begin to construct an example to make the model description, so far, more
 
 We can collect all of these genotype-phenotype mappings into one set using the functor given in Equation \ref{eq:gpfunctor} as $\mathcal{E}(\mathcal{G}) = P^{\mathcal{G}} = \{e_i | i=1 \ldots 16 \}$. We may further apply the $R$-distribution functor $\mathcal{D}_R$ given in Equation \ref{eq:distfunctor} to obtain a distribution on the genotype-phenotype mappings. Doing so yields  $\mathcal{D}_R\mathcal{E}(\mathcal{G})=d \colon P^\mathcal{G} \rightarrow R$. If we now apply this distribution function $d$ to the set of genotype-phenotype mappings we get the probabilities associated to each genotype-phenotype map $d(\{e_i | i=1 \ldots 16 \}) = \{p_i|i=1 \ldots 16\}$ given in Table \ref{tab:probabilities}. This can also be written more abstractly as $\left[\mathcal{D}_R\mathcal{E}(\mathcal{G})\right](\{e_i | i=1 \ldots 16 \}) = \left[\mathcal{D}_R\mathcal{E}(\mathcal{G})\right](P^\mathcal{G}) = \left[\mathcal{D}_R\mathcal{E}(\mathcal{G})\right](\mathcal{E}(\mathcal{G})) = \{p_i|i=1 \ldots 16\}$. Notice that we applied the functors $\mathcal{E}$ and $\mathcal{D}_R$ to a specific set, which was all of $\mathcal{G}$. We could have applied these functors to any $O \in \mathcal{G}$. In one case, for example if we take $O = \{l_1, l_2\}$, we would have gotten $\mathcal{E}(O) = \{e_i|i=1 \ldots 4\}$ and $\mathcal{D}_R\mathcal{E}(O) = d \colon P^O \rightarrow R$. In this case $\left[\mathcal{D}_R\mathcal{E}(O)\right](\mathcal{E}(O)) = \{p_i|i=1 \ldots 4\}$.
 
-Now if we put $O = \{l_1\}$ we may ask for the meaning of $\left[\mathcal{D}_R\mathcal{E}(\{l_1\})\right](\mathcal{E}(\{l_1\}))$ and similarly for the other $l \in L$. We find that answering this question requires the introduction of another probability table like Table \ref{tab:il1} . Furthermore, the sheaf condition then introduces a system of equations relating and thus constraining the probability parameters, beyond the constraint that each row sum to one. One constraint introduced by the sheaf condition is expressed in Equation \ref{eq:sheafprob}, specialized to this example by
+We may also consider directly the meaning of $\left[\mathcal{D}_R\mathcal{E}(\{l_1\})\right](\mathcal{E}(\{l_1\}))$ and similarly for the other $l \in L$. The sheaf condition then introduces a system of equations relating and thus constraining the probability parameters, beyond the constraint that each row sum to one. The constraint introduced by the sheaf condition is expressed in Equation \ref{eq:sheafprob}, specialized to this example by
 \begin{eqnarray}\label{eq:sheafprob2}
-\sum_{e \in \mathcal{E}(\{l\}),\, e|l=e_{\{l\}}} d_{\{l\}}(e) \,\, = \sum_{e' \in \mathcal{E}(O),\, e'|l=e_{\{l\}}} d_{O}(e'),
+\sum_{e \in \mathcal{E}(\{l\}),\, e|l=e_{\{l\}}} d_{\{l\}}(e) \,\, = \sum_{e \in \mathcal{E}(O),\, e|l=e_{\{l\}}} d_O(e) \,\, = \sum_{e' \in \mathcal{E}(O'),\, e'|l=e_{\{l\}}} d_{O'}(e'),
 \end{eqnarray}
 for each $l \in L$, $e_{\{l\}} \in \mathcal{E}(\{l\})$, and $\{O \in \mathcal{G}|l=o, o \in O\}$. The resulting equations are explicitly indicated in like colors between the columns of Table \ref{tab:sheaf} :
 \begin{align}\label{eq:pparsys}
@@ -242,7 +240,7 @@ p^*_7 &= p_5 + p_7 = p_{13} + p_{15},&
 p^*_8 &= p_6 + p_8 = p_{14} + p_{16}.
 \end{align}
 
-Consider the meaning of the sheaf condition for $\mathcal{D}_R\mathcal{E}(L)$. $d \in \mathcal{D}_R\mathcal{E}(L)$ specifies a distribution whose domain consists of deterministic functions $\mathcal{E}(L) = P^L$ that map each allele independently, and independent of the fact that some combinations of alleles  comprise gene regulatory network modules consisting of potentially interacting genes, to a phenotype. Since we have stated that $\mathcal{E}(L)$ satisfies the sheaf condition, for a given covering of the genotype space, $\mathcal{G}$, a globally compatible function $e \in  \mathcal{E}(L)$ restricts to $e|O$ for each $O \in \mathcal{G}$ such that there is of phenotypes assigned to alleles that participate in overlapping gene regulatory network modules. Each $e \in P^L$ is associated to a trivial distribution $\delta_e \in \mathcal{D}_R\mathcal{E}(L)$ such that 
+Consider the meaning of the sheaf condition for $\mathcal{D}_R\mathcal{E}(L)$. $d \in \mathcal{D}_R\mathcal{E}(L)$ specifies a distribution whose domain consists of deterministic functions $\mathcal{E}(L) = P^L$ that map each allele independently, and independent of the fact that some combinations of alleles  comprise gene regulatory network modules consisting of potentially interacting genes, to a phenotype. Since we have stated that $\mathcal{E}(L)$ satisfies the sheaf condition, for a given covering of the genotype space, $\mathcal{G}$, a globally compatible function $e \in  \mathcal{E}(L)$ restricts to $e|O$ for each $O \in \mathcal{G}$ such that there is a tuple of phenotypes assigned to alleles that participate in overlapping gene regulatory network modules. Each $e \in P^L$ is associated to a trivial distribution $\delta_e \in \mathcal{D}_R\mathcal{E}(L)$ such that 
 \begin{eqnarray}
 \delta_e(e') =
 \begin{cases}
@@ -318,9 +316,8 @@ For the case $(g=2,a=2,p=2)$, Table \ref{tab:pars222} shows the relationship bet
 
 
 %\section*{References}
-\bibliographystyle{plos2009}
 % The bibtex filename
-\bibliography{template}
+\bibliography{bib/books,bib/papers}
 
 \section*{Figure Legends}
 %\begin{figure}[!ht]
@@ -347,6 +344,7 @@ For the case $(g=2,a=2,p=2)$, Table \ref{tab:pars222} shows the relationship bet
 %\end{flushleft}
 %\label{tab:label}
 % \end{table}
+\input{tex/table_hidvarmod}
 \input{tex/table_example}
 \input{tex/table_sheaf}
 \input{tex/table_pars222}

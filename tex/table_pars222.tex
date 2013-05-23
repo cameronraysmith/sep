@@ -1,0 +1,16 @@
+\begin{table}
+\centering
+\begin{tabular}{ c | l | c }
+	\textbf{notation} & \textbf{description} & \textbf{size}\\ \hline \hline
+	$\{l_1,l_2\}$ & set of genetic loci & $g = 2$\\ \hline
+	$\{a_1,a_2\}$ & set of distinct alleles available to each locus & $a = 2$\\ \hline
+	$\{0,1\}$ & set of phenotype values & $p = 2$\\ \hline
+	$\{(0,0),(0,1),(1,0),(1,1)\}$ & set of phenotype assignments & $p^g = 4$\\ \hline
+	$L = \{l_1,l_2,l'_1,l'_2\}$ & set of all possible alleles for all loci & $ga = 4$\\ \hline
+	$\{l_1 l_2,l'_1 l_2,l_1 l'_2,l'_1 l'_2\}$ & set of gene regulatory network modules & $a^g = 4$\\ \hline
+$\coprod_{O \in \mathcal{G}} \mathcal{E}(O)$ & set of modularized genotype-phenotype maps  & $(ap)^g = 16$\\ \hline
+	$\mathcal{E}(L) = P^L$ & set of global genotype-phenotype maps & $p^{ga} = 16$\\
+    \end{tabular}
+\caption{Summary of concrete parameter values $(g,a,p)$ in terms of abstract notation for $(g=2,a=2,p=2)$. Note that $\{l_1,l_2,l'_1,l'_2\} \equiv \{l_1,l_2\} \times \{a_1,a_2\}$.}
+\label{tab:pars222}
+\end{table}
