@@ -230,14 +230,14 @@ We may also consider directly the meaning of $\left[\mathcal{D}_R\mathcal{E}(\{l
 \end{eqnarray}
 for each $l \in L$, $e_{\{l\}} \in \mathcal{E}(\{l\})$, and $\{O \in \mathcal{G}|l=o, o \in O\}$. The resulting equations are explicitly indicated in like colors between the columns of Table \ref{tab:sheaf} :
 \begin{align}\label{eq:pparsys}
-p^*_1 &= p_1 + p_2 = p_5 + p_6, &
-p^*_2 &= p_3 + p_4 = p_7 + p_8,\\
-p^*_3 &= p_9 + p_{10} = p_{13} + p_{14},&
-p^*_4 &= p_{11} + p_{10} = p_{12} + p_{13},\\
-p^*_5 &= p_1 + p_3 = p_9 + p_{11},&
-p^*_6 &= p_2 + p_4 = p_{10} + p_{11},\\
-p^*_7 &= p_5 + p_7 = p_{13} + p_{15},&
-p^*_8 &= p_6 + p_8 = p_{14} + p_{16}.
+p^*_1 &= p_1 + p_3 = p_5 + p_7, &
+p^*_2 &= p_2 + p_4 = p_6 + p_8,\\
+p^*_3 &= p_9 + p_{11} = p_{13} + p_{15},&
+p^*_4 &= p_{10} + p_{12} = p_{14} + p_{16},\\
+p^*_5 &= p_1 + p_2 = p_9 + p_{10},&
+p^*_6 &= p_3 + p_4 = p_{11} + p_{12},\\
+p^*_7 &= p_5 + p_6 = p_{13} + p_{14},&
+p^*_8 &= p_7 + p_8 = p_{15} + p_{16}.
 \end{align}
 
 Consider the meaning of the sheaf condition for $\mathcal{D}_R\mathcal{E}(L)$. $d \in \mathcal{D}_R\mathcal{E}(L)$ specifies a distribution whose domain consists of deterministic functions $\mathcal{E}(L) = P^L$ that map each allele independently, and independent of the fact that some combinations of alleles  comprise gene regulatory network modules consisting of potentially interacting genes, to a phenotype. Since we have stated that $\mathcal{E}(L)$ satisfies the sheaf condition, for a given covering of the genotype space, $\mathcal{G}$, a globally compatible function $e \in  \mathcal{E}(L)$ restricts to $e|O$ for each $O \in \mathcal{G}$ such that there is a tuple of phenotypes assigned to alleles that participate in overlapping gene regulatory network modules. Each $e \in P^L$ is associated to a trivial distribution $\delta_e \in \mathcal{D}_R\mathcal{E}(L)$ such that 
@@ -303,6 +303,27 @@ Solutions, if any, to Equation \ref{eq:auglinsys} serve to exhibit a global sect
 There are three parameters that determine the relative size of important sets for understanding the model at hand. $g$ represents the number of genetic loci, $a$ represents the number of different alleles that can occur at each locus, and $p$ represents the number of different phenotype values that each locus can take on. From these parameters, which we use together to classify models satisfying the structural constraints described thus far, we can derive additional quantities characterizing the model. For a system with parameters $(g,a,p)$ there are $a^g$ different gene regulatory network modules to consider and each may be associated with $p^g$ phenotypes. There are thus $(ap)^g$ different genotype-phenotype maps to consider with respect to the gene regulatory network modules meaning that this is the size of the set $\coprod_{O \in \mathcal{G}} \mathcal{E}(O)$. The set of all possible alleles $L$ has size $ga$ and since there are $p$ different phenotypes that each allele can be mapped to, there are $p^{ga}$ different globally defined genotype-phenotype maps meaning that this is the size of the set $\mathcal{E}(L) = P^L$. Now we can state the size of the sets $\{t_1, \ldots t_m\} = \{t_j | t_j \in P^L\}$ and $\{e_1, \ldots e_n\} = \coprod_{O \in \mathcal{G}} \mathcal{E}(O)$ because we have explicit formulas for $n = (ap)^g$ and $m = p^{ga}$ in terms of the defining characteristics of a $(g,a,p)$ class of models. From the values of $n$ and $m$ we know the dimensions of the logical matrix representation of the relation $R$ as $\mathbf{G}_{(ap)^g \times p^{ga}}$.
 
 For the case $(g=2,a=2,p=2)$, Table \ref{tab:pars222} shows the relationship between the abstract notation used throughout the model description and the concrete parameters introduced in this example. Using the notation of Table \ref{tab:pars222}, we can also explicitly construct $\mathbf{G}_{(ap)^g \times p^{ga}}$ as in Table \ref{tab:logmat222}.
+
+In terms of the probability values expressed in tables \ref{tab:hidvarmod} and \ref{tab:probabilities} the resulting system of equations $\mathbf{G}_{n \times m} \mathbf{X}_{m \times 1} = \mathbf{V}_{n \times 1}$ is
+\begin{align}\label{eq:pparsys}
+p_1 &= q_1 + q_2 + q_3 + q_4\\
+p_2 &= q_5 + q_6 + q_7 + q_8\\
+p_3 &= q_9 + q_{10} + q_{11} + q_{12}\\
+p_4 &= q_{13} + q_{14} + q_{15} + q_{16}\\
+p_5 &= q_1 + q_3 + q_5 + q_7\\
+p_6 &= q_2 + q_4 + q_6 + q_8\\
+p_7 &= q_9 + q_{11} + q_{13} + q_{15}\\
+p_8 &= q_{10} + q_{12} + q_{14} + q_{16}\\
+p_9 &= q_1 + q_2 + q_9 + q_{10}\\
+p_{10} &= q_5 + q_6 + q_{13} + q_{14}\\
+p_{11} &= q_3 + q_4 + q_{11} + q_{12}\\
+p_{12} &= q_7 + q_8 + q_{15} + q_{16}\\
+p_{13} &= q_1 + q_5 + q_{9} + q_{13}\\
+p_{14} &= q_2 + q_6 + q_{10} + q_{14}\\
+p_{15} &= q_3 + q_7 + q_{11} + q_{15}\\
+p_{16} &= q_4 + q_8 + q_{12} + q_{16}
+\end{align}
+Adding the additional rows to $\mathbf{G}$ and $\mathbf{V}$ to ensure that $\sum_i q_i = 1$ gives the system $\mathbf{G}_{(n + 1) \times m} \mathbf{X}_{m \times 1} = \mathbf{V}_{(n + 1) \times 1}$.
 
 \section*{Discussion}
 
