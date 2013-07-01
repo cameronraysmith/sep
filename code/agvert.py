@@ -24,7 +24,7 @@ def kbits(n, k):
 def kbitl(n, k):
     """
     Return a list of bit strings of length n with k 1s
-    >>> kbitl(5,4)
+    >>> kbitl(3,2)
     [[1, 1, 0], [1, 0, 1], [0, 1, 1]]
     """
     result = []
@@ -40,7 +40,7 @@ def binmat(n):
     Return a list of bit strings of length n with all possible
     combinations of 0s and 1s
     >>> binmat(2)
-    ['00', '10', '01', '11']
+    [[0, 0], [1, 0], [0, 1], [1, 1]]
     """
     M = []
     for k in range(0,n+1):
@@ -51,22 +51,14 @@ def binmat(n):
 def contprod(n):
     """
     >>> contprod(3)
-    [[0, 0, 0, 0, 0, 0],
-     [1, 0, 0, 0, 0, 0],
-     [0, 1, 0, 0, 0, 0],
-     [0, 0, 1, 0, 0, 0],
-     [1, 1, 0, 1, 0, 0],
-     [1, 0, 1, 0, 0, 1],
-     [0, 1, 1, 0, 1, 0],
-     [1, 1, 1, 1, 1, 1]]
+    [[0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0], [1, 1, 0, 1, 0, 0], [1, 0, 1, 0, 0, 1], [0, 1, 1, 0, 1, 0], [1, 1, 1, 1, 1, 1]]
     """
     M = binmat(n)
     N = []
     for r in M:
-        for i in range(len(r)):
-            ind = (i+1) % (len(r)-1)
-            print ind
-            r.append(r[i]*r[(i+1) % (len(r)-1)])
+        l = len(r)
+        for i in range(l):
+            r.append(r[i]*r[(i+1) % l])
         N.append(r)
     return N
 
