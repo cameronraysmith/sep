@@ -25,11 +25,11 @@ def kbitl(n, k):
     """
     Return a list of bit strings of length n with k 1s
     >>> kbitl(3,2)
-    [[1, 1, 0], [1, 0, 1], [0, 1, 1]]
+    [[1, 1, -1], [1, -1, 1], [-1, 1, 1]]
     """
     result = []
     for bits in itertools.combinations(range(n), k):
-        s = [0] * n
+        s = [-1] * n
         for bit in bits:
             s[bit] = 1
         result.append(s)
@@ -37,10 +37,10 @@ def kbitl(n, k):
 
 def binmat(n):
     """
-    Return a list of bit strings of length n with all possible
+    Return a list of bits of length n with all possible
     combinations of 0s and 1s
     >>> binmat(2)
-    [[0, 0], [1, 0], [0, 1], [1, 1]]
+    [[-1, -1], [1, -1], [-1, 1], [1, 1]]
     """
     M = []
     for k in range(0,n+1):
@@ -48,10 +48,10 @@ def binmat(n):
     M = [item for sublist in M for item in sublist]
     return M
 
-def contprod(n):
+def genvertnc(n):
     """
-    >>> contprod(3)
-    [[0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0], [1, 1, 0, 1, 0, 0], [1, 0, 1, 0, 0, 1], [0, 1, 1, 0, 1, 0], [1, 1, 1, 1, 1, 1]]
+    >>> genvertnc(3)
+    [[-1, -1, -1, 1, 1, 1], [1, -1, -1, -1, 1, -1], [-1, 1, -1, -1, -1, 1], [-1, -1, 1, 1, -1, -1], [1, 1, -1, 1, -1, -1], [1, -1, 1, -1, -1, 1], [-1, 1, 1, -1, 1, -1], [1, 1, 1, 1, 1, 1]]
     """
     M = binmat(n)
     N = []
@@ -62,11 +62,46 @@ def contprod(n):
         N.append(r)
     return N
 
+def contextvert(n):
+    """
+    >>> contextvert(2)
+    [[0, 0, 1, -1], [0, 0, -1, 1]]
+    >>> contextvert(3)
+    [[0, 0, 0, 1, -1, -1], [0, 0, 0, -1, 1, -1], [0, 0, 0, -1, -1, 1]]
+    >>> contextvert(4)
+    [[0, 0, 0, 0, 1, -1, -1, -1], [0, 0, 0, 0, -1, 1, -1, -1], [0, 0, 0, 0, -1, -1, 1, -1], [0, 0, 0, 0, -1, -1, -1, 1], [0, 0, 0, 0, 1, 1, 1, -1], [0, 0, 0, 0, 1, 1, -1, 1], [0, 0, 0, 0, 1, -1, 1, 1], [0, 0, 0, 0, -1, 1, 1, 1]]
+    """
+    odds = range(1,n,2)
+    M = []
+    for k in odds:
+        M.append(kbitl(n,k))
+    M = [[0]*n+item for sublist in M for item in sublist]
+    return M
+
+def genvertnd(n):
+    """
+    >>> genvertnd(4)
+    [[-1, -1, -1, -1, 1, 1, 1, 1], [1, -1, -1, -1, -1, 1, 1, -1], [-1, 1, -1, -1, -1, -1, 1, 1], [-1, -1, 1, -1, 1, -1, -1, 1], [-1, -1, -1, 1, 1, 1, -1, -1], [1, 1, -1, -1, 1, -1, 1, -1], [1, -1, 1, -1, -1, -1, -1, -1], [1, -1, -1, 1, -1, 1, -1, 1], [-1, 1, 1, -1, -1, 1, -1, 1], [-1, 1, -1, 1, -1, -1, -1, -1], [-1, -1, 1, 1, 1, -1, 1, -1], [1, 1, 1, -1, 1, 1, -1, -1], [1, 1, -1, 1, 1, -1, -1, 1], [1, -1, 1, 1, -1, -1, 1, 1], [-1, 1, 1, 1, -1, 1, 1, -1], [1, 1, 1, 1, 1, 1, 1, 1], [0, 0, 0, 0, 1, -1, -1, -1], [0, 0, 0, 0, -1, 1, -1, -1], [0, 0, 0, 0, -1, -1, 1, -1], [0, 0, 0, 0, -1, -1, -1, 1], [0, 0, 0, 0, 1, 1, 1, -1], [0, 0, 0, 0, 1, 1, -1, 1], [0, 0, 0, 0, 1, -1, 1, 1], [0, 0, 0, 0, -1, 1, 1, 1]]
+    """
+    L = genvertnc(n)
+    M = contextvert(n)
+    N = L + M
+    return N
+
+def addOnesCol(M):
+    """
+    >>> addOnesCol(genvertnd(2))
+    [[1, -1, -1, 1, 1], [1, 1, -1, -1, -1], [1, -1, 1, -1, -1], [1, 1, 1, 1, 1], [1, 0, 0, 1, -1], [1, 0, 0, -1, 1]]
+    """
+    N = []
+    for r in M:
+        r.insert(0, 1)
+        N.append(r)
+    return N
+
 if __name__ == "__main__":
     import doctest
     doctest.testmod()
-
-    #N = contprod(3)
 
 # if __name__=='__main__':
 #     if len(sys.argv) < 2:
@@ -77,7 +112,3 @@ if __name__ == "__main__":
 #         k = int(sys.argv[2])
 
 #     kbits(n,k)
-
-
-
-
