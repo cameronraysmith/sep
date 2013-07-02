@@ -99,6 +99,18 @@ def addOnesCol(M):
         N.append(r)
     return N
 
+def writePolymakeScript(n, flag=0):
+    if flag == 1:
+        M = addOnesCol(genvertnc(n))
+    else:
+        M = addOnesCol(genvertnd(n))
+
+    f = open('pmscript.pl','w')
+
+    filestring = "$Verbose::credits=0;\nuse application \"polytope\";\nmy $ncpoints=new Matrix<Rational>(%s);\nmy $nc=new Polytope<Rational>(POINTS=>$ncpoints);\nprint $nc->VOLUME; print \"\\n\";" % str(M)
+
+    f.write(filestring)
+
 if __name__ == "__main__":
     import doctest
     doctest.testmod()
