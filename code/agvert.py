@@ -6,6 +6,7 @@ for arbitrary n-cycle context graphs
 import sys
 import numpy as np
 import itertools
+import subprocess
 
 def kbits(n, k):
     """
@@ -107,9 +108,26 @@ def writePolymakeScript(n, flag=0):
 
     f = open('pmscript.pl','w')
 
-    filestring = "$Verbose::credits=0;\nuse application \"polytope\";\nmy $ncpoints=new Matrix<Rational>(%s);\nmy $nc=new Polytope<Rational>(POINTS=>$ncpoints);\nprint $nc->VOLUME; print \"\\n\";" % str(M)
+    filestring = "$Verbose::credits=0;\nuse application \"polytope\";\nmy $ncpoints=new Matrix<Rational>(%s);\nmy $nc=new Polytope<Rational>(POINTS=>$ncpoints);\nprint $nc->VOLUME;" % str(M)
 
     f.write(filestring)
+
+def convert(s):
+    try:
+        return float(s)
+    except ValueError:
+        num, denom = s.split('/')
+        return float(num) / float(denom)
+
+def runPolymake(n):
+    writePolymakeScript(n,1)
+    vnc = subprocess.check_output(["polymake","--script","pmscript.pl"])
+    print vnc
+    writePolymakeScript(n,0)
+    vnd = subprocess.check_output(["polymake","--script","pmscript.pl"])
+    print vnd
+    vrat = convert(vnc)/convert(vnd)
+    return vrat
 
 if __name__ == "__main__":
     import doctest
