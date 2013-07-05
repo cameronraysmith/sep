@@ -49,8 +49,12 @@
 \usepackage{hyperref}
 % color table cells http://goo.gl/ZmpJv
 \usepackage[table]{xcolor}
-%rotate text in table http://goo.gl/Lb4Zd
+% rotate text in table http://goo.gl/Lb4Zd
 \usepackage{rotating}
+% listings for code highlighting in appendix
+\usepackage{listings}
+\usepackage{setspace}
+\input{tex/listingspython}
 
 % Use the PLoS provided bibtex style
 \bibliographystyle{plos2009}
@@ -78,7 +82,7 @@
 % Title must be 150 characters or less
 \begin{flushleft}
 {\Large
-\textbf{Modularization of global genotype-phenotype mappings enables access to a relative superset of biological functions}
+\textbf{Modularization of global genotype-phenotype mappings accesses a relative superset of biological functions}
 }
 % Insert Author names, affiliations and corresponding author email.
 \\
@@ -104,9 +108,12 @@ $\ast$ E-mail: Corresponding author@institute.edu
 \section*{Author Summary}
 
 \section*{Introduction}
-In order to improve understanding of the functioning of biological systems, it will be necessary to clarify the relationship between genotype and phenotype. The process of doing so may require revision to these concepts. The current status of these concepts will be clarified by an attempt at formalization of the genotype-phenotype mapping from which we argue the genotype and phenotype concepts derive their meaning rather than vice versa. This formalization should also allow for the graded incorporation of knowledge about the intermediate processes involved in constructing the genotype-phenotype relationship that has been gained through the interplay between theory and experiment since the advent of modern molecular biology.
+The genotype of an organism has a relatively straightforward definition in terms of the sequence of nucleotides comprising its genome. Phenotypes, on the other hand, can be described at different levels of organization. For example, one might consider the lowest level description of phenotype as a dynamic phenomenon requiring specification of the time-dependent transcription rates of all genes comprising an organism's genome. Historically, this level of resolution has been impossible to achieve empirically and the phenotype concept was initially defined at the level of macroscopically observable physical characteristics such as shape, size, color, and various combinations thereof. The present capability to assess phenotypes at various levels of organization raises several fundamental questions about genotype-phenotype mappings that can be described inductively. One is to define and characterize properties of the fundamental level of genotype-phenotype mapping that is embodied in the transcription process. The next is to define and characterize the manner in which higher-order "phenotype-phenotype" mappings built on top of this one are affected by the properties of each of the levels existing below, and on evolutionary timescales potentially also those above, it.
 
-Here we suggest one formalization of the genotype-phenotype mapping. In doing so, we make use of a fragment of the mathematical language of category theory. Expressing our results in this language facilitates expanding the domain of applicability of the model described. In addition to the direct value of using category theory as a framework for organizing information for the purpose of constructing precise modeling descriptions, this approach provides an example of sharing modeling constructions between different fields of science.
+These questions can be addressed to some extent from an abstract perspective that is independent of the particular physical implementation of various genotype-phenotype mappings in terms of complex networks of molecular interactions. Here we describe one formalization of the genotype-phenotype mapping that takes into account evidence that at the transcriptional, and thus potentially most fundamental, level the genotype-phenotype mapping is stochastic \cite{Swain2002,Paulsson2004,Thattai2004,Acar2008a,Lestas2010,Munsky2012,Neuert2013}. The general formalization we describe allows us to precisely pose the following question: \emph{For any genotype, given a space of probability distributions on the collection of genotype-phenotype maps, does modularization over that genotype provide access to a lesser, equivalent or greater collection of correlations among the expression patterns of genes that define phenotypes?} Modularization here refers to restricting interactions among genes in a particular way. For example, if we have four genes which can all participate in one potentially repeated ternary interaction that generates a phenotype, but we restrict interactions to a subset consisting of four of the six possible binary interactions then this represents one particular way of modularizing over a given genotype. If modularization were to ultimately result in a space of probability distributions over genotype-phenotype maps that could be included in or placed into one-to-one correspondence with the space of probability distributions over the genotype-phenotype mappings defined on the full genotype (i.e. non-modular), then one would not expect there to necessarily be a competitive advantage for organisms incorporating molecular mechanisms that explicitly impose such modularity. The relative abundance of organisms that do precisely this would then appear to be paradoxical. If, on the other hand, modularization provides access to a larger space of probability distributions over genotype-phenotype mappings than for the non-modular case, then one can imagine that certain environmental conditions would be unable to be addressed by the functions capable of being achieved by the gene expression profiles that can be achieved by non-modular genomes.
+
+For one particular kind of modularization over a genotype, we provide a precise quantitative answer to this question whose qualitative class indicates that modularization over a genotype provides access to a \emph{larger} collection of potential biological functions.  
+%In doing so, we make use of a fragment of the mathematical language of category theory. Expressing our results in this language facilitates expanding the domain of applicability of the model described. In addition to the direct value of using category theory as a framework for organizing information for the purpose of constructing precise modeling descriptions, this approach provides an example of sharing modeling constructions between different fields of science.
 
 % Results and Discussion can be combined.
 \section*{Model description}
@@ -329,20 +336,20 @@ p_{16} &= q_4 + q_8 + q_{12} + q_{16}
 \end{equation}
 Adding the additional rows to $\mathbf{G}$ and $\mathbf{V}$ to ensure that $\sum_i q_i = 1$ gives the system $\mathbf{G}_{(n + 1) \times m} \mathbf{X}_{m \times 1} = \mathbf{V}_{(n + 1) \times 1}$.
 
-\section*{Formalization of morphisms between local and global distributions over genotype-phenotype mappings}
+\section*{Geometric comparison of spaces of modular and non-modular distributions over genotype-phenotype mappings}
 We ultimately aim to determine the fraction of the space of all genotype-phenotype mappings satisfying the sheaf condition and thereby posessing a global distribution. We first describe a formalization of the morphisms between local and global distributions over genotype-phenotype mappings in terms of the simple example on two loci, two potential alleles, and two phenotype values. We then give a more general formalization for arbitrary numbers of each. The geometric object of interest for constructing the spaces of local and global distributions over genotype-phenotype mappings is the \emph{probability simplex}:
 $$
 \Delta_{m-1} = \left\{ (p_1, \ldots , p_m) \in \mathbb{R}^m \colon \sum_{i=1}^m p_i = 1 \text{ and } p_j \geq 0 \text{ for all } j \right\}.
 $$
 In the example $(2,2,2)$ case we are then interested in mappings
 $$
-H \colon \Delta_{15} \longrightarrow \Delta_3^{\otimes 4},
+F \colon \Delta_{15} \longrightarrow \Delta_3^{\otimes 4},
 $$
 and
 $$
 G \colon	 \Delta_3^{\otimes 4} \longrightarrow \Delta_{15},
 $$
-where $\Delta_{15}$ represents the space of global distributions one point of which is defined in Table \ref{tab:hidvarmod} and likewise $\Delta_3^{\otimes 4} = \Delta_3 \times \Delta_3 \times \Delta_3 \times \Delta_3$ represents the space of local distributions one point of which is defined in Table \ref{tab:probabilities}. Based upon the parameters utilized in equations \ref{eq:globsys} we can write elements of each of these spaces as $(q_1, \ldots, q_{16}) \in \Delta_{15}$ and $((p_1, \ldots , p_4), \ldots, (p_{13},\ldots,p_{16})) \in \Delta_3 \times \Delta_3 \times \Delta_3 \times \Delta_3$. The constraints necessary to define $H$ on points have already been given in equations \ref{eq:globsys} whereby
+where $\Delta_{15}$ represents the space of global distributions one point of which is defined in Table \ref{tab:hidvarmod} and likewise $\Delta_3^{\otimes 4} = \Delta_3 \times \Delta_3 \times \Delta_3 \times \Delta_3$ represents the space of local distributions one point of which is defined in Table \ref{tab:probabilities}. Based upon the parameters utilized in equations \ref{eq:globsys} we can write elements of each of these spaces as $(q_1, \ldots, q_{16}) \in \Delta_{15}$ and $((p_1, \ldots , p_4), \ldots, (p_{13},\ldots,p_{16})) \in \Delta_3 \times \Delta_3 \times \Delta_3 \times \Delta_3$. The constraints necessary to define $F$ on points have already been given in equations \ref{eq:globsys} whereby
 \begin{align*}
 (q_1, \ldots , q_{16}) \mapsto &((q_1+q_2+q_3+q_4, q_5+q_6+q_7+q_8, q_9+q_{10}+q_{11}+q_{12},q_{13}+q_{14}+q_{15}+q_{16}), \ldots \\
 &,(q_1 + q_5 + q_9 + q_{13}, q_2 + q_6 + q_{10} + q_{14}, q_3 + q_7 + q_{11} + q_{15}, q_4 + q_8 + q_{12} + q_{16} ) ).
@@ -351,6 +358,7 @@ On the other hand, the method of describing $G$ is not straightforward in the cu
 \begin{align*}
 ((p_1, \ldots , p_4), \ldots, (p_{13},\ldots,p_{16})) \mapsto & \,\,?.
 \end{align*}
+We, therefore, follow Ara\'{u}jo {\it et al.} \cite{Araujo2012} in transforming from probability to expectation value coordinates. This transformation employs the so-called Hadamard matrix. The Hadamard matrix is defined recursively as
 
 \section*{Discussion}
 
@@ -397,5 +405,173 @@ On the other hand, the method of describing $G$ is not straightforward in the cu
 \input{tex/table_sheaf}
 \input{tex/table_pars222}
 \input{tex/table_logmat222}
-\end{document}
 
+\section*{Polymake computation of the non-modular:modular volume ratio of expectation value polytopes for arbitrary n-cycle modularization constraint graphs}
+\begin{python}
+"""
+Generate polymake script and run polymake computation of the
+non-modular:modular (i.e. non-contextual:no-disturbance) volume ratio
+of expectation value polytopes for arbitrary n-cycle modularization
+constraint (i.e. measurement context) graphs
+"""
+
+import sys
+import numpy as np
+import itertools
+import subprocess
+
+def kbits(n, k):
+    """
+    Return a list of bit strings of length n with k 1s
+    >>> kbits(5,4)
+    ['11110', '11101', '11011', '10111', '01111']
+    """
+    result = []
+    for bits in itertools.combinations(range(n), k):
+        s = ['0'] * n
+        for bit in bits:
+            s[bit] = '1'
+        result.append(''.join(s))
+    return result
+
+def kbitl(n, k):
+    """
+    Return a list of bit strings of length n with k -1s
+    >>> kbitl(3,2)
+    [[-1, -1, 1], [-1, 1, -1], [1, -1, -1]]
+    """
+    result = []
+    for bits in itertools.combinations(range(n), k):
+        s = [1] * n
+        for bit in bits:
+            s[bit] = -1
+        result.append(s)
+    return result
+
+def binmat(n):
+    """
+    Return a list of bits of length n with all possible
+    combinations of -1s and 1s
+    >>> binmat(2)
+    [[-1, -1], [-1, 1], [1, -1], [1, 1]]
+    """
+    x = [-1,1]
+    M = [list(p) for p in itertools.product(x, repeat=n)]
+    return M
+
+def genvertnc(n):
+    """
+    >>> genvertnc(3) # doctest: +NORMALIZE_WHITESPACE
+    [[-1, -1, -1, 1, 1, 1], [-1, -1, 1, 1, -1, -1],
+    [-1, 1, -1, -1, -1, 1], [-1, 1, 1, -1, 1, -1],
+    [1, -1, -1, -1, 1, -1], [1, -1, 1, -1, -1, 1],
+    [1, 1, -1, 1, -1, -1], [1, 1, 1, 1, 1, 1]]
+    """
+    M = binmat(n)
+    N = []
+    for r in M:
+        l = len(r)
+        for i in range(l):
+            r.append(r[i]*r[(i+1) % l])
+        N.append(r)
+    return N
+
+def contextvert(n):
+    """
+    >>> contextvert(2)
+    [[0, 0, -1, 1], [0, 0, 1, -1]]
+    >>> contextvert(3) # doctest: +NORMALIZE_WHITESPACE
+    [[0, 0, 0, -1, 1, 1], [0, 0, 0, 1, -1, 1],
+    [0, 0, 0, 1, 1, -1], [0, 0, 0, -1, -1, -1]]
+    >>> contextvert(4) # doctest: +NORMALIZE_WHITESPACE
+    [[0, 0, 0, 0, -1, 1, 1, 1], [0, 0, 0, 0, 1, -1, 1, 1],
+    [0, 0, 0, 0, 1, 1, -1, 1], [0, 0, 0, 0, 1, 1, 1, -1],
+    [0, 0, 0, 0, -1, -1, -1, 1], [0, 0, 0, 0, -1, -1, 1, -1],
+    [0, 0, 0, 0, -1, 1, -1, -1], [0, 0, 0, 0, 1, -1, -1, -1]]
+    """
+    odds = range(1,n+1,2)
+    M = []
+    for k in odds:
+        M.append(kbitl(n,k))
+    M = [[0]*n+item for sublist in M for item in sublist]
+    return M
+
+def genvertnd(n):
+    """
+    >>> genvertnd(3) # doctest: +NORMALIZE_WHITESPACE
+    [[-1, -1, -1, 1, 1, 1], [-1, -1, 1, 1, -1, -1],
+    [-1, 1, -1, -1, -1, 1], [-1, 1, 1, -1, 1, -1],
+    [1, -1, -1, -1, 1, -1], [1, -1, 1, -1, -1, 1],
+    [1, 1, -1, 1, -1, -1], [1, 1, 1, 1, 1, 1],
+    [0, 0, 0, -1, 1, 1], [0, 0, 0, 1, -1, 1],
+    [0, 0, 0, 1, 1, -1], [0, 0, 0, -1, -1, -1]]
+    >>> genvertnd(4) # doctest: +NORMALIZE_WHITESPACE
+    [[-1, -1, -1, -1, 1, 1, 1, 1], [-1, -1, -1, 1, 1, 1, -1, -1],
+    [-1, -1, 1, -1, 1, -1, -1, 1], [-1, -1, 1, 1, 1, -1, 1, -1],
+    [-1, 1, -1, -1, -1, -1, 1, 1], [-1, 1, -1, 1, -1, -1, -1, -1],
+    [-1, 1, 1, -1, -1, 1, -1, 1], [-1, 1, 1, 1, -1, 1, 1, -1],
+    [1, -1, -1, -1, -1, 1, 1, -1], [1, -1, -1, 1, -1, 1, -1, 1],
+    [1, -1, 1, -1, -1, -1, -1, -1], [1, -1, 1, 1, -1, -1, 1, 1],
+    [1, 1, -1, -1, 1, -1, 1, -1], [1, 1, -1, 1, 1, -1, -1, 1],
+    [1, 1, 1, -1, 1, 1, -1, -1], [1, 1, 1, 1, 1, 1, 1, 1],
+    [0, 0, 0, 0, -1, 1, 1, 1], [0, 0, 0, 0, 1, -1, 1, 1],
+    [0, 0, 0, 0, 1, 1, -1, 1], [0, 0, 0, 0, 1, 1, 1, -1],
+    [0, 0, 0, 0, -1, -1, -1, 1], [0, 0, 0, 0, -1, -1, 1, -1],
+    [0, 0, 0, 0, -1, 1, -1, -1], [0, 0, 0, 0, 1, -1, -1, -1]]
+    """
+    L = genvertnc(n)
+    M = contextvert(n)
+    N = L + M
+    return N
+
+def addOnesCol(M):
+    """
+    >>> addOnesCol(genvertnd(2)) # doctest: +NORMALIZE_WHITESPACE
+    [[1, -1, -1, 1, 1], [1, -1, 1, -1, -1], [1, 1, -1, -1, -1],
+    [1, 1, 1, 1, 1], [1, 0, 0, -1, 1], [1, 0, 0, 1, -1]]
+    """
+    N = []
+    for r in M:
+        r.insert(0, 1)
+        N.append(r)
+    return N
+
+def writePolymakeScript(n, flag=0):
+    if flag == 1:
+        M = addOnesCol(genvertnc(n))
+    else:
+        M = addOnesCol(genvertnd(n))
+
+    f = open('pmscript.pl','w')
+
+    filestring = str("$Verbose::credits=0;\nuse application "
+                        "\"polytope\";\nmy $ncpoints=new "
+                        "Matrix<Rational>(%s);\nmy $nc=new "
+                        "Polytope<Rational>(POINTS=>$ncpoints);\nprint "
+                        "$nc->VOLUME;" % str(M))
+
+    f.write(filestring)
+
+def convert(s):
+    try:
+        return float(s)
+    except ValueError:
+        num, denom = s.split('/')
+        return float(num) / float(denom)
+
+def runPolymake(n):
+    writePolymakeScript(n,1)
+    vnc = subprocess.check_output(["polymake","--script","pmscript.pl"])
+    print vnc
+    writePolymakeScript(n,0)
+    vnd = subprocess.check_output(["polymake","--script","pmscript.pl"])
+    print vnd
+    vrat = convert(vnc)/convert(vnd)
+    return vrat
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+\end{python}
+
+\end{document}
