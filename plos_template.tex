@@ -427,9 +427,136 @@ H_4^{-1}\vec{E} &\geq \vec{0}
 Analogous equations hold for all other gene regulatory network modules given by $\{l'_1,l_2\}, \{l_1,l'_2\}, \{l'_1,l'_2\}$ yielding a total of $4n$ inequalities. Of these, only $2n$ are independent. Vertices of the polytopes corresponding to both the non-modular and modular spaces of probability distributions in terms of expectation value coordinates are of the form
 \begin{equation}
 \begin{aligned}\label{eq:expvalvert}
-\left( \langle l_1 \rangle, \langle l_2 \rangle, \langle l'_1 \rangle, \langle l'_2 \rangle, \langle l_1 l_2 \rangle, \langle l_1 l'_2 \rangle, \langle l'_1 l_2 \rangle, \langle l'_1 l'_2 \rangle  \right)
+\left( \langle l_1 \rangle, \langle l_2 \rangle, \langle l'_1 \rangle, \langle l'_2 \rangle, \langle l_1 l_2 \rangle, \langle l'_1 l_2 \rangle, \langle l'_1 l'_2 \rangle, \langle l_1 l'_2 \rangle  \right).
 \end{aligned}
 \end{equation} 
+In the case at hand it turns out that there are $2^n + 2^{n-1}$ vertices of the polytope corresponding to the space of modular distributions and $2^n$ are strictly non-modular while $2^{n-1}$ are strictly modular. For the $(2,2,2)$ case at hand corresponding to the $4-$cycle graph this gives $24$ vertices for the modular polytope and $16$ vertices for the non-modular polytope. The $2^n$ non-modular vertices are given by
+\begin{equation}
+\begin{aligned}\label{eq:nonmodvert}
+\left( \langle l_1 \rangle, \langle l_2 \rangle, \langle l'_1 \rangle, \langle l'_2 \rangle, \langle l_1 \rangle \langle l_2 \rangle, \langle l'_1 \rangle \langle l_2 \rangle, \langle l'_1 \rangle \langle l'_2 \rangle, \langle l_1 \rangle \langle l'_2 \rangle  \right).
+\end{aligned}
+\end{equation}
+and the $2^{n-1}$ modular vertices are given by
+\begin{equation}
+\begin{aligned}\label{eq:modvert}
+\left( 0, 0, 0, 0, \langle l_1 l_2 \rangle, \langle l'_1 l_2 \rangle, \langle l'_1 l'_2 \rangle, \langle l_1 l'_2 \rangle  \right)
+\end{aligned}
+\end{equation}
+where the $\langle l_i l_{i+1} \rangle$ take values in the set $\{+1,-1\}$ such that there are an odd number of negatives in each of the vertices indicated in \ref{eq:modvert}. To be explicit, this results for the $(2,2,2)$ case of the $4-$cycle graph in the following $2^n + 2^{n-1}$ vertices for the modular polytope
+\begin{equation}
+\begin{aligned}\label{eq:modvertexp}
+\begin{bmatrix}
+  -1 & -1 & -1 & -1 & 1 & 1 & 1 & 1\\
+  -1 & -1 & -1 & 1 & 1 & 1 & -1 & -1\\
+  -1 & -1 & 1 & -1 & 1 & -1 & -1 & 1\\
+  -1 & -1 & 1 & 1 & 1 & -1 & 1 & -1\\
+  -1 & 1 & -1 & -1 & -1 & -1 & 1 & 1\\
+  -1 & 1 & -1 & 1 & -1 & -1 & -1 & -1\\
+  -1 & 1 & 1 & -1 & -1 & 1 & -1 & 1\\
+  -1 & 1 & 1 & 1 & -1 & 1 & 1 & -1\\
+  1 & -1 & -1 & -1 & -1 & 1 & 1 & -1\\
+  1 & -1 & -1 & 1 & -1 & 1 & -1 & 1\\
+  1 & -1 & 1 & -1 & -1 & -1 & -1 & -1\\
+  1 & -1 & 1 & 1 & -1 & -1 & 1 & 1\\
+  1 & 1 & -1 & -1 & 1 & -1 & 1 & -1\\
+  1 & 1 & -1 & 1 & 1 & -1 & -1 & 1\\
+  1 & 1 & 1 & -1 & 1 & 1 & -1 & -1\\
+  1 & 1 & 1 & 1 & 1 & 1 & 1 & 1\\
+  0 & 0 & 0 & 0 & -1 & 1 & 1 & 1\\
+  0 & 0 & 0 & 0 & 1 & -1 & 1 & 1\\
+  0 & 0 & 0 & 0 & 1 & 1 & -1 & 1\\
+  0 & 0 & 0 & 0 & 1 & 1 & 1 & -1\\
+  0 & 0 & 0 & 0 & -1 & -1 & -1 & 1\\
+  0 & 0 & 0 & 0 & -1 & -1 & 1 & -1\\
+  0 & 0 & 0 & 0 & -1 & 1 & -1 & -1\\
+  0 & 0 & 0 & 0 & 1 & -1 & -1 & -1\\
+\end{bmatrix}
+\end{aligned}
+\end{equation}
+and $2^n$ vertices for the non-modular polytope
+\begin{equation}
+\begin{aligned}\label{eq:nonmodvertexp}
+\begin{bmatrix}
+  -1 & -1 & -1 & -1 & 1 & 1 & 1 & 1\\
+  -1 & -1 & -1 & 1 & 1 & 1 & -1 & -1\\
+  -1 & -1 & 1 & -1 & 1 & -1 & -1 & 1\\
+  -1 & -1 & 1 & 1 & 1 & -1 & 1 & -1\\
+  -1 & 1 & -1 & -1 & -1 & -1 & 1 & 1\\
+  -1 & 1 & -1 & 1 & -1 & -1 & -1 & -1\\
+  -1 & 1 & 1 & -1 & -1 & 1 & -1 & 1\\
+  -1 & 1 & 1 & 1 & -1 & 1 & 1 & -1\\
+  1 & -1 & -1 & -1 & -1 & 1 & 1 & -1\\
+  1 & -1 & -1 & 1 & -1 & 1 & -1 & 1\\
+  1 & -1 & 1 & -1 & -1 & -1 & -1 & -1\\
+  1 & -1 & 1 & 1 & -1 & -1 & 1 & 1\\
+  1 & 1 & -1 & -1 & 1 & -1 & 1 & -1\\
+  1 & 1 & -1 & 1 & 1 & -1 & -1 & 1\\
+  1 & 1 & 1 & -1 & 1 & 1 & -1 & -1\\
+  1 & 1 & 1 & 1 & 1 & 1 & 1 & 1\\
+\end{bmatrix}
+\end{aligned}
+\end{equation}
+The $2^{n-1}$ vertices of the modular polytope excluded from the non-modular polytope violate the $2^{n-1}$ Boole inequalities determining some of the facets of the non-modular polytope. To be explicit, there are $2^n + 2^{n-1}$ facets of the non-modular polytope given by the following inequalities
+\begin{equation}
+\begin{aligned}\label{eq:nonmodineq}
+\langle l_1 \rangle - \langle l_2 \rangle - \langle l_1 l_2 \rangle &\geq -1\\
+\langle l_1 \rangle + \langle l_2 \rangle + \langle l_1 l_2 \rangle &\geq -1\\
+\langle l_1 \rangle - \langle l'_2 \rangle - \langle l_1 l'_2 \rangle &\geq -1\\
+\langle l_1 \rangle + \langle l'_2 \rangle + \langle l_1 l'_2 \rangle &\geq -1\\
+-\langle l_1 \rangle + \langle l_2 \rangle - \langle l_1 l_2 \rangle &\geq -1\\
+-\langle l_1 \rangle - \langle l_2 \rangle + \langle l_1 l_2 \rangle &\geq -1\\
+-\langle l_1 \rangle + \langle l'_2 \rangle - \langle l_1 l'_2 \rangle &\geq -1\\
+-\langle l_1 \rangle - \langle l'_2 \rangle + \langle l_1 l'_2 \rangle &\geq -1\\
+\langle l_2 \rangle + \langle l'_1 \rangle + \langle l'_1 l_2 \rangle &\geq -1\\
+\langle l_2 \rangle - \langle l'_1 \rangle - \langle l'_1 l_2 \rangle &\geq -1\\
+-\langle l_2 \rangle + \langle l'_1 \rangle - \langle l'_1 l_2 \rangle &\geq -1\\
+-\langle l_2 \rangle - \langle l'_1 \rangle + \langle l'_1 l_2 \rangle &\geq -1\\
+\langle l'_1 \rangle - \langle l'_2 \rangle - \langle l'_1 l'_2 \rangle &\geq -1\\
+\langle l'_1 \rangle + \langle l'_2 \rangle + \langle l'_1 l'_2 \rangle &\geq -1\\
+-\langle l'_1 \rangle + \langle l'_2 \rangle - \langle l'_1 l'_2 \rangle &\geq -1\\
+-\langle l'_1 \rangle - \langle l'_2 \rangle + \langle l'_1 l'_2 \rangle &\geq -1\\
+\langle l_1 l_2 \rangle - \langle l'_1 l_2 \rangle + \langle l'_1 l'_2 \rangle + \langle l_1 l'_2 \rangle &\geq -2\\
+\langle l_1 l_2 \rangle + \langle l'_1 l_2 \rangle - \langle l'_1 l'_2 \rangle + \langle l_1 l'_2 \rangle &\geq -2\\
+\langle l_1 l_2 \rangle + \langle l'_1 l_2 \rangle + \langle l'_1 l'_2 \rangle - \langle l_1 l'_2 \rangle &\geq -2\\
+\langle l_1 l_2 \rangle - \langle l'_1 l_2 \rangle - \langle l'_1 l'_2 \rangle - \langle l_1 l'_2 \rangle &\geq -2\\
+-\langle l_1 l_2 \rangle + \langle l'_1 l_2 \rangle - \langle l'_1 l'_2 \rangle - \langle l_1 l'_2 \rangle &\geq -2\\
+-\langle l_1 l_2 \rangle - \langle l'_1 l_2 \rangle + \langle l'_1 l'_2 \rangle - \langle l_1 l'_2 \rangle &\geq -2\\
+-\langle l_1 l_2 \rangle + \langle l'_1 l_2 \rangle + \langle l'_1 l'_2 \rangle + \langle l_1 l'_2 \rangle &\geq -2\\
+-\langle l_1 l_2 \rangle - \langle l'_1 l_2 \rangle - \langle l'_1 l'_2 \rangle + \langle l_1 l'_2 \rangle &\geq -2
+\end{aligned}
+\end{equation}
+For the modular polytope, there are $2^n$ inequalities
+\begin{equation}
+\begin{aligned}\label{eq:modineq}
+\langle l_1 \rangle + \langle l'_2 \rangle + \langle l_1 l'_2 \rangle &\geq -1\\
+\langle l_1 \rangle + \langle l_2 \rangle + \langle l_1 l_2 \rangle &\geq -1\\
+\langle l_1 \rangle - \langle l'_2 \rangle - \langle l_1 l'_2 \rangle &\geq -1\\
+\langle l_1 \rangle - \langle l_2 \rangle - \langle l_1 l_2 \rangle &\geq -1\\
+-\langle l_1 \rangle + \langle l_2 \rangle - \langle l_1 l_2 \rangle &\geq -1\\
+-\langle l_1 \rangle - \langle l_2 \rangle + \langle l_1 l_2 \rangle &\geq -1\\
+-\langle l_1 \rangle - \langle l'_2 \rangle + \langle l_1 l'_2 \rangle &\geq -1\\
+-\langle l_1 \rangle + \langle l'_2 \rangle - \langle l_1 l'_2 \rangle &\geq -1\\
+\langle l_2 \rangle + \langle l'_1 \rangle + \langle l'_1 l_2 \rangle &\geq -1\\
+-\langle l_2 \rangle + \langle l'_1 \rangle - \langle l'_1 l_2 \rangle &\geq -1\\
+-\langle l_2 \rangle - \langle l'_1 \rangle + \langle l'_1 l_2 \rangle &\geq -1\\
+\langle l_2 \rangle - \langle l'_1 \rangle - \langle l'_1 l_2 \rangle &\geq -1\\
+\langle l'_1 \rangle - \langle l'_2 \rangle - \langle l'_1 l'_2 \rangle &\geq -1\\
+-\langle l'_1 \rangle + \langle l'_2 \rangle - \langle l'_1 l'_2 \rangle &\geq -1\\
+\langle l'_1 \rangle + \langle l'_2 \rangle + \langle l'_1 l'_2 \rangle &\geq -1\\
+-\langle l'_1 \rangle - \langle l'_2 \rangle + \langle l'_1 l'_2 \rangle &\geq -1
+\end{aligned}
+\end{equation}
+The modular polytope is thus not required to respect the $2^{n-1}$ Boole inequalities which enables it to possess the $2^{n-1}$ additional vertices specified in \ref{eq:modvertexp} with respect to those specified in \ref{eq:nonmodvertexp}. The relationship between the vertex (V) and facet (H) representation given by the explicit enumeration of vertices \ref{eq:modvertexp} and \ref{eq:nonmodvertexp} and inequalities \ref{eq:modineq} and \ref{eq:nonmodineq} have been verified using polymake \cite{GawrilowEwgenijD-TJoswig2000}. 
+
+We can additionally use polymake to compute the volume of each polytope and thus evaluate the relative size of the space of models contained within each of the modular and non-modular polytopes. We can compute this volume and thus compare models for arbitrary $n-$cycle graphs. The volume ratios between the non-modular and modular polytopes were computed using polymake for $n=\{3,4,5,6\}$ and are displayed in Figure \ref{fig:ncycvolrat}.
+
+\begin{figure}
+\begin{center}
+\noindent\includegraphics[width=0.6\columnwidth]{fig/ncycvolrat.pdf}
+\end{center}
+\caption{n-cycle volume ratio}
+\label{fig:ncycvolrat}
+\end{figure}
 
 
 \section*{Discussion}

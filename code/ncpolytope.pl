@@ -1,3 +1,4 @@
+$Verbose::credits=0;
 use application "polytope";
 
 # non-contextual polytope
@@ -24,7 +25,7 @@ print "\nNon-contextual polytope\n";
 print "------------------------------\n";
 
 print "constraints: \n";
-print_constraints($ncpoints);
+print_constraints($nc->FACETS);
 
 print "vertices: \n";
 print $nc->VERTICES; print "\n";

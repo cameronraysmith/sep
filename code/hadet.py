@@ -2,6 +2,7 @@
 from scipy.linalg import hadamard
 from numpy.linalg import det
 from numpy.linalg import inv
+import sys
 
 def bmatrix(a):
     """Returns a LaTeX bmatrix
@@ -24,6 +25,4 @@ def hadet(n):
    return da, a, ina
 
 if __name__== "main":
-   hadet(argv[1:])
-
-
+   hadet(sys.argv[1:])

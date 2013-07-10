@@ -1,3 +1,4 @@
+$Verbose::credits=0;
 use application "polytope";
 
 # no-disturbance polytope
@@ -32,7 +33,7 @@ print "\nNo-disturbance polytope\n";
 print "------------------------------\n";
 
 print "constraints: \n";
-print_constraints($ndpoints);
+print_constraints($nd->FACETS);
 
 print "vertices: \n";
 print $nd->VERTICES; print "\n";
