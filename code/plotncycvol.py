@@ -44,21 +44,3 @@ if __name__ == "__main__":
     #import doctest
     #doctest.testmod()
     main(sys.argv[1:])
-
-
-        # fig2 = plt.figure(2)
-        # fig2.suptitle('steady state phenotype variance vs period')
-        # ax1f2 = fig2.add_subplot(111)
-        # ax1f2.set_xlabel('steady state phenotype variance')
-        # ax1f2.set_ylabel('period')
-
-        # indper = np.argsort(simpoparray[:,0])
-        # f2p1 = plt.plot(simpoparray[indper,0], simpoparray[indper,2],
-        #                 linestyle='none',marker='o',mec='k',mfc='k')
-        # ax1f2.set_yscale('log')
-
-        # if saveplot:
-        #     plt.savefig(figdir + '/' + 'ssVarvsPer')
-        #     if showplot:
-        #         plt.show()
-        # plt.close()
