@@ -358,7 +358,79 @@ On the other hand, the method of describing $G$ is not straightforward in the cu
 \begin{align*}
 ((p_1, \ldots , p_4), \ldots, (p_{13},\ldots,p_{16})) \mapsto & \,\,?.
 \end{align*}
-We, therefore, follow Ara\'{u}jo {\it et al.} \cite{Araujo2012} in transforming from probability to expectation value coordinates. This transformation employs the so-called Hadamard matrix. The Hadamard matrix is defined recursively as
+We, therefore, follow Ara\'{u}jo {\it et al.} \cite{Araujo2012} in transforming from probability to expectation value coordinates which allow us to express the coordinates of the vertices of the polytopes corresponding to the joint distributions on non-modular genotype-phenotype mappings, $\Delta_{15}$, and the marginal distributions on modular genotype-phenotype mappings, $\Delta_3^{\otimes 4}$, in a manner that intrinsically enforces normalization and Kolmogorov consistency. Positivity of the probability coordinates can then be enforced via inequalities that result from the transformation from probability to expected value coordinates.
+
+The transformation employs the so-called Hadamard matrix. The Hadamard matrix $H$ of order $n$ has entries in the set $\{+1,-1\}$ and is defined recursively such that all rows have zero inner product and are thus orthogonal:
+\begin{equation}
+\begin{aligned}\label{eq:hadamard}
+H_1 &= [1]\\
+H_2 &= \begin{bmatrix}
+1 & 1\\
+1 & -1
+\end{bmatrix}\\
+H_{2^k} &= \begin{bmatrix}
+H_{2^{k-1}} & H_{2^{k-1}}\\
+H_{2^{k-1}} & -H_{2^{k-1}}
+\end{bmatrix}
+\end{aligned}
+\end{equation}
+For the gene regulatory network module given by $\{l_1,l_2\}$, we can describe the transformation of coordinates from the probabilities $\vec{p}_{l_1 l_2} = (p_1, p_2, p_3, p_4)$ to the expectation values $\vec{E}_{l_1 l_2} = (1, \langle l_1 \rangle, \langle l_2 \rangle, \langle l_1 l_2 \rangle)$ using the Hadamard matrix $H_{2k}$ for $k=2$ as
+\begin{equation}
+\begin{aligned}\label{eq:expecttrans}
+H_4 \vec{p}_{l_1 l_2} = \vec{E}.
+\end{aligned}
+\end{equation}
+Since the inverse of the Hadamard transform is proportional to itself (i.e. $H_{2k}^{-1} = \frac{1}{2k}H_{2k}$) we can solve this system of equations to express each probability parameter in terms of expected value coordinates
+\begin{equation}
+\begin{aligned}\label{eq:expecttransfull}
+\vec{p}_{l_1 l_2} &= H_4^{-1}\vec{E}\\
+\begin{bmatrix}
+p_1\\
+p_2\\
+p_3\\
+p_4
+\end{bmatrix} &= \frac{1}{4}\begin{bmatrix}
+  1 & 1 & 1 & 1\\
+  1 & -1 & 1 & -1\\
+  1 & 1 & -1 & -1\\
+  1 & -1 & -1 & 1\\
+\end{bmatrix} \begin{bmatrix}
+1\\
+\langle l_1 \rangle\\
+\langle l_2 \rangle\\
+\langle l_1 l_2 \rangle
+\end{bmatrix}
+\end{aligned}
+\end{equation}
+Recall that these equations enforce normalization and Kolmogorov consistency. We can additionally enforce positivity, $p_i \geq 0$, in terms of the expectation value coordinates as
+\begin{equation}
+\begin{aligned}\label{eq:kcineq}
+\begin{bmatrix}
+  1 & 1 & 1 & 1\\
+  1 & -1 & 1 & -1\\
+  1 & 1 & -1 & -1\\
+  1 & -1 & -1 & 1\\
+\end{bmatrix} \begin{bmatrix}
+1\\
+\langle l_1 \rangle\\
+\langle l_2 \rangle\\
+\langle l_1 l_2 \rangle
+\end{bmatrix} &\geq \begin{bmatrix}
+0\\
+0\\
+0\\
+0
+\end{bmatrix}\\
+H_4^{-1}\vec{E} &\geq \vec{0}
+\end{aligned}
+\end{equation} 
+Analogous equations hold for all other gene regulatory network modules given by $\{l'_1,l_2\}, \{l_1,l'_2\}, \{l'_1,l'_2\}$ yielding a total of $4n$ inequalities. Of these, only $2n$ are independent. Vertices of the polytopes corresponding to both the non-modular and modular spaces of probability distributions in terms of expectation value coordinates are of the form
+\begin{equation}
+\begin{aligned}\label{eq:expvalvert}
+\left( \langle l_1 \rangle, \langle l_2 \rangle, \langle l'_1 \rangle, \langle l'_2 \rangle, \langle l_1 l_2 \rangle, \langle l_1 l'_2 \rangle, \langle l'_1 l_2 \rangle, \langle l'_1 l'_2 \rangle  \right)
+\end{aligned}
+\end{equation} 
+
 
 \section*{Discussion}
 
