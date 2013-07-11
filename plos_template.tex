@@ -1,81 +1,4 @@
-% Template for PLoS
-% Version 1.0 January 2009
-%
-% To compile to pdf, run:
-% latex plos.template
-% bibtex plos.template
-% latex plos.template
-% latex plos.template
-% dvipdf plos.template
-
-\documentclass[10pt]{article}
-
-% amsmath package, useful for mathematical formulas
-\usepackage{amsmath}
-% amssymb package, useful for mathematical symbols
-\usepackage{amssymb}
-
-% graphicx package, useful for including eps and pdf graphics
-% include graphics with the command \includegraphics
-\usepackage{graphicx}
-
-\usepackage{bussproofs}
-
-% cite package, to clean up citations in the main text. Do not remove.
-\usepackage{cite}
-
-\usepackage{color}
-
-% Use doublespacing - comment out for single spacing
-%\usepackage{setspace}
-%\doublespacing
-
-% Text layout
-\topmargin 0.0cm
-\oddsidemargin 0.5cm
-\evensidemargin 0.5cm
-\textwidth 16cm
-\textheight 21cm
-
-% Bold the 'Figure #' in the caption and separate it with a period
-% Captions will be left justified
-\usepackage[labelfont=bf,labelsep=period,justification=raggedright]{caption}
-
-% xy-pic for diagrams
-\usepackage[all]{xy}
-% subcaption
-\usepackage{subcaption}
-% hyperref
-\usepackage{hyperref}
-% color table cells http://goo.gl/ZmpJv
-\usepackage[table]{xcolor}
-% rotate text in table http://goo.gl/Lb4Zd
-\usepackage{rotating}
-% listings for code highlighting in appendix
-\usepackage{listings}
-\usepackage{setspace}
-\input{tex/listingspython}
-
-% Use the PLoS provided bibtex style
-\bibliographystyle{plos2009}
-
-% Remove brackets from numbering in List of References
-\makeatletter
-\renewcommand{\@biblabel}[1]{\quad#1.}
-\makeatother
-
-
-% Leave date blank
-\date{}
-
-\pagestyle{myheadings}
-%% ** EDIT HERE **
-
-
-%% ** EDIT HERE **
-%% PLEASE INCLUDE ALL MACROS BELOW
-
-%% END MACROS SECTION
+\input{plos_header.tex}
 
 \begin{document}
 
@@ -124,13 +47,13 @@ $$
 e \colon U \rightarrow  P.
 $$
 
-In the observationalist framework from which this modeling description derives \cite{Abramsky2011}, our genes $L$ are analogous to measurements $U \subseteq X$ and our phenotypes $P$ are like measurement outcomes or values $V$. An event in which outcomes $s(a)$ are observed for each $a \in U$ serve to define mappings called \emph{sections} over $U$ as
+In the observationalist framework from which this modeling description derives \cite{Abramsky2011}, our genes $L$ are analogous to measurements $T \subseteq X$ and our phenotypes $P$ are like measurement outcomes or values $V$. An event in which outcomes $s(t)$ are observed for each $t \in T$ serve to define mappings called \emph{sections} over $T$ as
 
 $$
-s \colon U \rightarrow V.
+s \colon T \rightarrow V.
 $$
 
-We denote the set of all subsets of a set $X$ as $\mathcal{P}(X)$. Therefore $\mathcal{P}(L)$ is a category in which the objects are subsets of alleles and morphisms represent inclusion of a smaller subset into a larger superset (i.e. $U \subseteq U' \Rightarrow U \rightarrow U'$). The category $\mathcal{P}(L)^{opp}$ then has the same objects, but the morphisms represent restriction from a larger to a smaller subset of alleles (i.e. $U' \supseteq U \Rightarrow U' \rightarrow U$). In order to consider the set of all genotype-phenotype maps together, we can construct a functor
+We denote the set of all subsets of a set $X$ as $\mathcal{P}(X)$. Therefore $\mathcal{P}(L)$ is a category in which the objects are subsets of genes and morphisms represent inclusion of a smaller subset into a larger superset (i.e. $U \subseteq U' \Rightarrow U \rightarrow U'$). The category $\mathcal{P}(L)^{opp}$ then has the same objects, but the morphisms represent restriction from a larger to a smaller subset of alleles (i.e. $U' \supseteq U \Rightarrow U' \rightarrow U$). In order to consider the set of all genotype-phenotype maps together, we can construct a functor
 $$
 \mathcal{E} \colon \mathcal{P}(L)^{opp} \rightarrow Set
 $$
@@ -158,7 +81,7 @@ An \emph{algebraic structure} is determined by a set and one or more finitary op
 Consider a function, $\phi$ from a set, $L$, to a semiring $R$ written $\phi \colon L \rightarrow R$. The \emph{support} of $\phi$, $\text{supp}(\phi)$, is then the set $\{ l \in L | \phi(l) \neq 0 \}$. A distribution with respect to the semiring $R$ on $L$ is given as a function having finite support and satisfying a constraint
 \begin{eqnarray*}
 d \colon L \rightarrow R,\\
-\sum_{l \in L} d(x) = 1
+\sum_{l \in L} d(l) = 1
 \end{eqnarray*}
 We can consider the set of all distributions with respect to a given semiring $R$ satisfying the above constraints and defined on the set $L$ as being given by a functor applied to $L$ as $\mathcal{D}_R (L)$. We can again explicitly represent the way in which the functor $\mathcal{D}_R$ acts on objects and morphisms $L$ and $f \colon L \rightarrow M$ as
 \begin{equation}\label{eq:distfunctor}
