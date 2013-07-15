@@ -1,0 +1,57 @@
+$Verbose::credits=0;
+
+use application "polytope";
+
+open(INPUT, "< C4.eq");
+my $c4ndeq=new Matrix<Rational>(<INPUT>);
+close(INPUT);
+print $c4ndeq; print "\n";
+
+open(INPUT2, "< C4.ineq");
+my $c4ndineq=new Matrix<Rational>(<INPUT2>);
+close(INPUT2);
+print $c4ndineq; print "\n";
+
+my $c4nd=new Polytope<Rational>(EQUATIONS=>$c4ndeq,INEQUALITIES=>$c4ndineq);
+
+#my $g = projection_full($c4nd);
+#print $g->VOLUME; print "\n";
+
+#print "constraints: \n";
+#print_constraints($c4ndeq);
+
+print "linear span: \n";
+print $c4nd->LINEAR_SPAN; print "\n";
+
+print "rays: \n";
+print $c4nd->RAYS; print "\n";
+
+print "vertices: \n";
+print $c4nd->VERTICES; print "\n\n";
+
+print "facets: \n";
+#print $c4nd->FACETS; print "\n";
+print $c4nd->N_FACETS; print "\n\n";
+
+print "vertices in facets: \n";
+print $c4nd->VERTICES_IN_FACETS; print "\n\n";
+
+print "rays in inequalities: \n";
+print $c4nd->RAYS_IN_INEQUALITIES; print "\n\n";
+
+print "dimension: \n";
+print $c4nd->DIM; print "\n\n";
+
+print "lineality dimension: \n";
+print $c4nd->LINEALITY_DIM; print "\n\n";
+
+print "ambient dimension: \n";
+print $c4nd->AMBIENT_DIM; print "\n\n";
+
+print "bounded?: \n";
+print $c4nd->BOUNDED; print "\n\n";
+
+print "volume: \n";
+print $c4nd->VOLUME; print "\n";
+
+#$c4nd->VISUAL_FACE_LATTICE;
