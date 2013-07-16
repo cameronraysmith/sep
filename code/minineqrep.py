@@ -144,7 +144,7 @@ def minineqrep(argv):
         print vrat
 
     print "\n" + polyout
-    return polyout, vrat
+    return polyout
 
 if __name__ == "__main__":
     #import doctest
