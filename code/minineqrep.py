@@ -64,7 +64,7 @@ def minineqgen(eqfname):
     eqmat, poldim = redineq(eqfname)
     posmat = posineqgen(poldim)
     minineqs = eqmat.tolist() + posmat.tolist()
-    #print sp.Matrix(ineqs)
+
     return minineqs
 
 def runpolymakescript(minineqs, representation, polyproperty):
@@ -105,8 +105,6 @@ def booleverts(polyvertices):
         else:
             return
 
-    #filtverts = [[filtrat(x) for x in line.split(' ')]
-    #                         for line in polyvertices.split('\n')[:-1]]
     filtverts = [filtrat(line)
                              for line in polyvertices.split('\n')[:-1]]
     filtverts = [l for l in filtverts if l is not None]
