@@ -44,7 +44,7 @@ def redineq(eqfname):
     polrepindineqs[:, 0] = indineqs[:, -1]
     polrepindineqs = -1*polrepindineqs
 
-    poldim = polrepindineqs.shape[0]
+    poldim = polrepindineqs.shape[1] - 1
 
     return polrepindineqs, poldim
 
