@@ -67,7 +67,7 @@ def minineqgen(eqfname):
 
     return minineqs
 
-def runpolymakescript(minineqs, representation, polyproperty):
+def runpolymakescript(minineqs, representation, polyproperty, eqfname):
     """
     intermediate: filestring - polymake script with full-dimensional / minimal
                          H-representation of the Kolmogorov Consistent
@@ -82,12 +82,12 @@ def runpolymakescript(minineqs, representation, polyproperty):
                      "$nd->%s;" %
                      (str(minineqs), representation, polyproperty))
 
-    scriptname = "kcscript.pl"
+    scriptname = eqfname + "kcscript.pl"
     fname = open(scriptname,'w')
     fname.write(filestring)
     fname.close()
     polyout = subprocess.check_output(["polymake", "--script",
-                                               "kcscript.pl"])
+                                               scriptname])
 
     return polyout
 
@@ -127,14 +127,16 @@ def minineqrep(argv):
     eqfname = str(argv[0])
     polyproperty = str(argv[1])
     minineqs = minineqgen(eqfname)
-    polyout = runpolymakescript(minineqs, "INEQUALITIES", polyproperty)
+    polyout = runpolymakescript(minineqs, "INEQUALITIES",
+                                polyproperty, eqfname)
 
     if polyproperty == "VERTICES":
         boolepolyverts = booleverts(polyout)
-        volboole = runpolymakescript(boolepolyverts, "POINTS", "VOLUME")
+        volboole = runpolymakescript(boolepolyverts,
+                            "POINTS", "VOLUME", eqfname)
 
         volkolmogorov = runpolymakescript(minineqs,
-                                            "INEQUALITIES", "VOLUME")
+                                        "INEQUALITIES", "VOLUME", eqfname)
         vrat = convert(volboole) / convert(volkolmogorov)
         #print "%s/%s ~ %0.6f" % (volboole, volkolmogorov, vrat)
         print volboole
