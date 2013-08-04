@@ -58,8 +58,8 @@ im1 = np.arange(kceqsrefa.shape[1])
 mask1 = np.ones(len(im1), dtype=bool)
 mask1[ind] = False
 
-indineqs = kceqsrefa[:, im1[mask1]]
-polrepindineqs = np.zeros(shape=np.shape(indineqs), dtype=np.int)
+indineqs = kceqsrefa[:, im1[mask1]
+]polrepindineqs = np.zeros(shape=np.shape(indineqs), dtype=np.int)
 polrepindineqs[:, 1:] = indineqs[:, :-1]
 polrepindineqs[:, 0] = indineqs[:, -1]
 #polrepindineqs = -1*polrepindineqs
