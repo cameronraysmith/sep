@@ -49,12 +49,18 @@
 \usepackage{amsmath}
 \usepackage{amsthm}
 
+% subcaption
+\usepackage{subcaption}
+% color table cells http://goo.gl/ZmpJv
+%\usepackage[table]{xcolor}
+% rotate text in table http://goo.gl/Lb4Zd
+\usepackage{rotating}
 
 %\PassOptionsToPackage{all}{xy}
-\usepackage[color]{xy}
-\usepackage{xypic}
-\xyoption{2cell}
-\UseAllTwocells
+% \usepackage[color]{xy}
+% \usepackage{xypic}
+% \xyoption{2cell}
+% \UseAllTwocells
 
 % see http://tex.stackexchange.com/questions/27315/scale-tikzpicture-to-the-remaining-height-of-a-beamer-frame
 \newcounter{restofframe}
@@ -80,6 +86,6 @@
 }
 
 %% blocks
-\setbeamertemplate{blocks}[rounded][shadow=true] 
+\setbeamertemplate{blocks}[rounded][shadow=true]
 \setbeamercolor{block title}{fg=black,bg=gray!40}
 \setbeamercolor{block body}{fg=black,bg=gray!10}

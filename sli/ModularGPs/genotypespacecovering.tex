@@ -1,0 +1,6 @@
+\begin{frame}
+A \emph{gene regulatory network module} (GRNM) is represented by a tuple of genes $O$ and a collection of GRNMs, which in some cases may represent all of the genes in an organism, is a set of such tuples $\mathcal{G}$ (i.e. $O \in \mathcal{G}$). An individual may be composed of some collection of subsets of possible genes where the set of all genes, $L$, is viewed as the genotype space.
+\begin{block}{\textbf{Covering of genotype space}}
+A \emph{covering} of the genotype space, $\mathcal{G}$, satisfies $\cup_i \mathcal{G}_i = L$ and $O,O' \in \mathcal{G}$ and $O \subseteq O'$ means that $O = O'$. The first condition means that $\mathcal{G}$ covers $L$ and the second conditions means that if a given subset of genes $O'$ is \textbf{compatible}\footnote{in a sense to be explained more precisely in what proceeds} with the other GRNMs in $\mathcal{G}$ then any smaller subset of genes $O$ is also compatible.
+\end{block}
+\end{frame}

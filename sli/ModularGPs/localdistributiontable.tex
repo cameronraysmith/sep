@@ -1,0 +1,45 @@
+\begin{frame}
+\begin{columns}[c]
+\begin{column}{0.6\textwidth}
+\begin{block}{\textbf{Example: 4 gene model (C4 constraints)}}
+\begin{equation*}
+\begin{aligned}
+& L \in \mathcal{P}(L) = \{l_1,l_2,l'_1,l'_2\}\\
+& \mathcal{G} = \{\{l_1,l_2 \},\{l_1,l'_2 \},\{l'_1,l_2\},\{l'_1,l'_2\} \}\\
+& P = \{0,1\}\\
+& \coprod_{O \in \mathcal{G}} \mathcal{E}(O) = \{e \colon O \rightarrow P | O \in \mathcal{G} \}\\
+& R = \mathbb{R}_{\geq 0}\\
+& \coprod_{O \in \mathcal{G}} \mathcal{D}_R\mathcal{E}(O) = \{d_O \colon P^O \rightarrow R | O \in \mathcal{G} \}\\
+& \forall O \in \mathcal{G} \left[ \sum_{e \in P^O} d_O(e) = 1 \right]
+\end{aligned}
+\end{equation*}
+\end{block}
+\end{column}
+\begin{column}{0.4\textwidth}
+\begin{table}
+\centering
+\begin{tabular}{ l || c | c | c | r }
+$L_1 L_2$  &    00 & 01 & 10 & 11\\ \hline
+$l_1 l_2$ & $e_1$ & $e_2$ & $e_3$ & $e_4$\\ \hline
+$l_1 l'_2$ & $e_5$ & $e_6$ & $e_7$ & $e_8$\\ \hline
+$l'_1 l_2$ & $e_9$ & $e_{10}$ & $e_{11}$ & $e_{12}$\\ \hline
+$l'_1 l'_2$ & $e_{13}$ & $e_{14}$ & $e_{15}$ & $e_{16}$\\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}
+\centering
+\begin{tabular}{ l || c | c | c | r }
+$L_1 L_2$  &    00 & 01 & 10 & 11\\ \hline
+$l_1 l_2$ & $p_1$ & $p_2$ & $p_3$ & $p_4$\\ \hline
+$l_1 l'_2$ & $p_5$ & $p_6$ & $p_7$ & $p_8$\\ \hline
+$l'_1 l_2$ & $p_9$ & $p_{10}$ & $p_{11}$ & $p_{12}$\\ \hline
+$l'_1 l'_2$ & $p_{13}$ & $p_{14}$ & $p_{15}$ & $p_{16}$\\
+\hline
+\end{tabular}
+\end{table}
+\end{column}
+\end{columns}
+\end{frame}
+%\mathcal{D}_R\mathcal{E}(\mathcal{G})= \{d | d \colon P^\mathcal{G} \rightarrow R \}\\

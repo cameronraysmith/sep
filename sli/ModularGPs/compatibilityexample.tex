@@ -1,0 +1,11 @@
+\begin{frame}
+\begin{block}{\textbf{Example of two compatible GRNMs}}
+For example, if we have two gene regulatory network modules given by their genotypes $O = \{l_1, l_2\}$ and $O' = \{l_1, l'_2\}$ then the sheaf condition specifies that for $e_{\{l_1\}} \in \mathcal{E}(\{l_1\})$, which assigns a particular phenotype to the genotype $\{l_1\}$, that
+\begin{eqnarray*}\label{eq:sheafprob}
+\sum_{e \in \mathcal{E}(O),\, e|l_1=e_{\{l_1\}}} d_O(e) \,\, = \sum_{e' \in \mathcal{E}(O'),\, e'|l_1=e_{\{l_1\}}} d_{O'}(e')
+\end{eqnarray*}
+\end{block}
+This condition means that the probability for gene $i=1$ to be associated to the phenotype given by $e_{\{l_1\}}$ is equivalent in case we marginalize over either possible form of gene $i=2$.
+\end{frame}
+
+
