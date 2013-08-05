@@ -10,6 +10,7 @@ import sympy as sp
 # http://www.roard.com/docs/cookbook/cbsu5.html
 # https://oeis.org/A000088/a000088a.gif
 edgelist = [(0,2),(0,3),(1,2),(1,3)]
+edgelist = [(0,1),(1,2),(2,3),(3,0)]
 #edgelist = [(0,2),(0,3),(1,2),(1,3),(2,3)]
 #edgelist = [(0,3),(1,2),(1,3),(2,3)]
 #edgelist = [(0,1),(1,2),(2,3)]
@@ -50,7 +51,20 @@ for i,(cv,cid) in enumerate(zip(cliquevals,cliqueids)):
 #normvect = [1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1]
 #eqmat = np.vstack((eqmat, normvect))
 
-kceqsref, ind = sp.Matrix(eqmat).rref(simplified=True)
+# Convert to homogeneous coordinates
+# eqmathomogenized = np.zeros((eqmat.shape[0]+1,eqmat.shape[1]+1),dtype=np.int)
+# eqmathomogenized[:-1,:-1] = eqmat
+# eqmathomogenized[-1,-1] = 1
+# eqmat = eqmathomogenized
+
+# Read eqmat from macaulay file
+# fname = '../macaulay/C4_bin.mar'
+# with open(fname) as f:
+#     next(f)
+#     eqmat = np.array([ map(int,line.split()) for line in f ])
+
+
+kceqsref, ind = sp.Matrix(eqmat.T).rref(simplified=True)
 kceqsrefs = np.squeeze(np.asarray(kceqsref))
 kceqsrefa = kceqsrefs[~np.all(kceqsrefs == 0, axis=1)]
 
@@ -58,8 +72,8 @@ im1 = np.arange(kceqsrefa.shape[1])
 mask1 = np.ones(len(im1), dtype=bool)
 mask1[ind] = False
 
-indineqs = kceqsrefa[:, im1[mask1]
-]polrepindineqs = np.zeros(shape=np.shape(indineqs), dtype=np.int)
+indineqs = kceqsrefa[:, im1[mask1]]
+polrepindineqs = np.zeros(shape=np.shape(indineqs), dtype=np.int)
 polrepindineqs[:, 1:] = indineqs[:, :-1]
 polrepindineqs[:, 0] = indineqs[:, -1]
 #polrepindineqs = -1*polrepindineqs
