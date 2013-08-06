@@ -65,7 +65,7 @@ def minineqgen(eqfname):
                        with positivity inequalities
     """
     #eqmat, poldim = redineq(eqfname)
-    eqmat, poldim = kcfromgraph(graphdict[eqfname])
+    eqmat, poldim = kcfromgraph(graphdict[eqfname],eqfname)
     posmat = posineqgen(poldim)
     minineqs = eqmat.tolist() + posmat.tolist()
 

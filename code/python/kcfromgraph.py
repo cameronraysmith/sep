@@ -6,7 +6,8 @@ import matplotlib.pyplot as plt
 
 #import drawmaxcliques
 
-def kcfromgraph(edgelist=[(0,1),(1,2),(2,3),(3,0)], pvallength=2,
+def kcfromgraph(edgelist=[(0,1),(1,2),(2,3),(3,0)],
+                graphname="graph", pvallength=2,
                 printlevel=1):
     """
     input: edgelist = the list of edges of a graph
@@ -29,7 +30,7 @@ def kcfromgraph(edgelist=[(0,1),(1,2),(2,3),(3,0)], pvallength=2,
     #drawmaxcliques.plot_max_cliques(condindgraph,maxcliques)
     coords=nx.spring_layout(condindgraph)
     nx.draw(condindgraph,pos=coords)
-    plt.savefig('maxcliquegraph.pdf')
+    plt.savefig(graphname + 'graph.pdf')
 
     numnodes = condindgraph.number_of_nodes() # get from networkx graph
 
