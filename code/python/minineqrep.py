@@ -9,11 +9,14 @@ import numpy as np
 import sympy as sp
 import subprocess
 
+from kcfromgraph import *
+from graphlist4 import graphdict
+
 def redineq(eqfname):
     """
     input: filename containing Kolmogorov Consistency equalities
            for some hypergraph
-    output: polrepindeineqs - polymake compatible minimal
+    output: polrepindineqs - polymake compatible minimal
                               representation
             poldim - expected dimension of the resulting polytope
     """
@@ -61,13 +64,14 @@ def minineqgen(eqfname):
     output: minineqs - combine the Kolmogorov Consistency inequalities
                        with positivity inequalities
     """
-    eqmat, poldim = redineq(eqfname)
+    #eqmat, poldim = redineq(eqfname)
+    eqmat, poldim = kcfromgraph(graphdict[eqfname])
     posmat = posineqgen(poldim)
     minineqs = eqmat.tolist() + posmat.tolist()
 
     return minineqs
 
-def runpolymakescript(minineqs, representation, polyproperty, eqfname):
+def runpolymakescript(minineqs, representation, polyproperty, eqfname='graph'):
     """
     intermediate: filestring - polymake script with full-dimensional / minimal
                          H-representation of the Kolmogorov Consistent
@@ -126,6 +130,9 @@ def minineqrep(argv):
     """
     eqfname = str(argv[0])
     polyproperty = str(argv[1])
+
+    print "Name of graph: \n%s\n" % eqfname
+
     minineqs = minineqgen(eqfname)
     polyout = runpolymakescript(minineqs, "INEQUALITIES",
                                 polyproperty, eqfname)
@@ -139,11 +146,19 @@ def minineqrep(argv):
                                         "INEQUALITIES", "VOLUME", eqfname)
         vrat = convert(volboole) / convert(volkolmogorov)
         #print "%s/%s ~ %0.6f" % (volboole, volkolmogorov, vrat)
+        print "Volume of Boole polytope"
         print volboole
-        print volkolmogorov
-        print vrat
+        print ""
 
-    print "\n" + polyout
+        print "Volume of Kolmogorov polytope"
+        print volkolmogorov
+        print ""
+
+        print "Volume ratio Boole:Kolmogorov"
+        print vrat
+        print ""
+
+    print "Vertices of Kolmogorov polytope\n" + polyout
     return polyout
 
 if __name__ == "__main__":
