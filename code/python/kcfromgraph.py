@@ -3,8 +3,28 @@ import numpy as np
 import networkx as nx
 import sympy as sp
 import matplotlib.pyplot as plt
+import ipdb
 
 #import drawmaxcliques
+
+def bmatrix(a):
+    """Returns a LaTeX bmatrix
+
+    :a: numpy array
+    :returns: LaTeX bmatrix as a string
+    """
+    if isinstance(a, np.ndarray):
+        if len(a.shape) > 2:
+            raise ValueError('bmatrix can at most display two dimensions')
+        lines = str(a).replace('[', '').replace(']', '').splitlines()
+    elif isinstance(a, str):
+        lines = a.splitlines()
+    else:
+        raise ValueError('wrong input type')
+    rv = [r'\begin{bmatrix}']
+    rv += ['  ' + ' & '.join(l.split()) + r'\\' for l in lines]
+    rv +=  [r'\end{bmatrix}']
+    return '\n'.join(rv)
 
 def kcfromgraph(edgelist=[(0,1),(1,2),(2,3),(3,0)],
                 graphname="graph", pvallength=2,

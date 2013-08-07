@@ -137,6 +137,8 @@ def minineqrep(argv):
     polyout = runpolymakescript(minineqs, "INEQUALITIES",
                                 polyproperty, eqfname)
 
+    #poutbmatrix = bmatrix(polyout)
+
     if polyproperty == "VERTICES":
         boolepolyverts = booleverts(polyout)
         volboole = runpolymakescript(boolepolyverts,
