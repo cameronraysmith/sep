@@ -23,20 +23,8 @@
 		\titlepage
 	\end{frame}
 	
-	\begin{frame}
-	\begin{block}{Status and Progress since last time}
-	\begin{scriptsize}	
-	\begin{itemize}
-	\item Made friends with a category theorist and a couple more mathematicians
-	\item Moved toward a clearer thesis question: What are the implications for evolution of combining current knowledge of stochasticity in gene expression and the topological structure of genotype-phenotype mappings? 
-	\item Current answer: In accordance with the generalized `marginal problem'\footnote{\begin{tiny}
-given a list of joint distributions of certain subsets of random variables $A_1, \ldots , A_n$, is it possible to find a joint distribution for all these variables, such that this distribution marginalizes to the given ones? One obvious necessary condition [sometimes referred to as the Kolmogorov consistency conditions] is that for any two of the given distributions which can be marginalized to the same subset of variables, the resulting marginals should be the same \cite{Fritz}
-	\end{tiny}} , modularity in genotype-phenotype mappings can provide access to a relative superset of possible input-output (genotype-phenotype) relationships. Any environment consistently requiring genotype-phenotype relationships outside the space associated to the non-modular gene regulatory network architecture would induce infinite selective power in favor of various modular gene regulatory network architectures having access to these otherwise forbidden states.
-	\item Data analysis: published 3 papers, worked on 2 more in collaboration with the Edelmann and Casadevall labs; 1 previous paper in collaboration with the Skoultchi lab
-	\end{itemize}		
-	\end{scriptsize}
-	\end{block}
-	\end{frame}
+	
+	\input{sli/progress}
 
 	\section[GP maps]{Genotype-phenotype mappings}
 	\input{sli/GPmaps}
@@ -56,76 +44,9 @@ given a list of joint distributions of certain subsets of random variables $A_1,
 	\section[PD comp]{Comparing modular and non-modular genotype-phenotype maps}
 	\input{sli/PDcomp}
 	
-	\begin{frame}
-	\begin{block}{Conclusions}
-	\begin{small}	
-	\begin{itemize}
-	\item For any tree-like (i.e. no cycles in the graphical representation) set of modules, the non-modular (global) and modular (local) spaces of probability distributions on genotype-phenotype mappings have equivalent volume and overlap completely
-	\item For any collection of modules containing one or more cycles, the space of probability distributions on genotype-phenotype mappings accessed by the modular architecture relative to the non-modular architecture is \emph{larger}.
-	\item For the n-cycle, as n increases, one approaches a linear chain and the difference between the modular and non-modular spaces of probability distributions shrinks to zero
-	\item For those cases possessing nested cycles, the difference between the modular and non-modular spaces of probability distributions increases
-	\end{itemize}		
-	\end{small}
-	\end{block}
-	\end{frame}
-	
-	\begin{frame}
-	\begin{block}{Conclusions}
-	\begin{small}	
-	modularity in genotype-phenotype mappings can provide access to a relative superset of possible input-output (genotype-phenotype) relationships. Any environment consistently requiring genotype-phenotype relationships outside the space associated to the non-modular gene regulatory network architecture would induce infinite selective power in favor of various modular gene regulatory network architectures having access to these otherwise forbidden states.
-	\end{small}
-	\end{block}
-	\end{frame}
-	
-
-	\begin{frame}
-	\begin{footnotesize}	
-	\begin{block}{Future work}
-	\begin{itemize}
-	\item compute non-modular:modular ratio for 
-	\begin{enumerate}
-	\begin{footnotesize}	
-	\item more interesting network topologies on binary graphs
-	\item graphs with higher-order edges (i.e. hypergraphs)
-	\end{footnotesize}	
-	\end{enumerate}	 
-	\item examine topologies induced on spaces of genotypes, phenotypes and fitnesses by genotype-phenotype and phenotype-fitness mappings
-	\item design an experiment at the conceptual level to clarify how these ideas can be tested in principle
-	\item examine relationship to the general \textbf{marginal problem} connecting fields: logic, probability theory, algebraic geometry, machine learning, physics, and perhaps now also biology
-	\item connect to the algebraic geometric approach to graphical models developed by Bernd Sturmfels (mathematics, UC Berkeley) and Reinhard Laubenbacher (biology, Virgina Tech): \emph{algebraic statistics}
-	\end{itemize}		
-	\end{block}
-	\end{footnotesize}
-	\end{frame}
-	
-	\begin{frame}
-	\vspace{3em}
-	\begin{center}
-	\includegraphics[width=0.4\textwidth]{fig/ASCB_Cover.jpg}
-	\end{center}
-	\end{frame}
-	
-	\begin{frame}
-	\textbf{Acknowledgements}
-	\begin{block}{Systems and Computational Biology}
-	\begin{small}	
-	\begin{itemize}
-	\item Dan Biro
-	\item Aviv Bergman
-	\item Ximo Pechuan
-	\end{itemize}		
-	\end{small}
-	\end{block}
-	\begin{block}{Mathematics}
-	\begin{small}	
-	\begin{itemize}
-	\item Jay Sulzberger :: logic and combinatorics
-	\item Noson Yanofsky :: category theory
-	\item Chirag Lakhani :: algebraic geometry
-	\end{itemize}		
-	\end{small}
-	\end{block}
-	\end{frame}
+	\input{sli/conclusions}
+	\input{sli/futurework}
+	\input{sli/acknowledgements}
 	
 %	\section{References}
 %	\input{sli/Bib}
