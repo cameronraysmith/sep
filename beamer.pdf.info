@@ -1,0 +1,40 @@
+# -*- coding: iso-8859-1 -*-
+
+PageProps = {
+ 18: {
+       'skip': True
+     },
+ 19: {
+       'skip': True
+     },
+ 20: {
+       'skip': True
+     },
+ 21: {
+       'skip': True
+     },
+ 22: {
+       'skip': True
+     },
+ 23: {
+       'skip': True
+     },
+ 27: {
+       'skip': True
+     },
+ 28: {
+       'skip': True
+     },
+ 29: {
+       'skip': True
+     },
+ 36: {
+       'skip': True
+     },
+ 37: {
+       'skip': True
+     },
+ 38: {
+       'skip': True
+     }
+}
