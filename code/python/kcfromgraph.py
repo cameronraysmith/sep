@@ -1,6 +1,6 @@
 import itertools
 import numpy as np
-import networkx as nx
+#import networkx as nx
 import sympy as sp
 import matplotlib.pyplot as plt
 import ipdb
@@ -36,7 +36,7 @@ def kcfromgraph(edgelist=[(0,1),(1,2),(2,3),(3,0)],
                               representation
             poldim - expected dimension of the resulting polytope
     """
-    condindgraph = nx.Graph(edgelist)
+    #condindgraph = nx.Graph(edgelist)
 
     # enumerate maximal cliques
     # http://en.wikipedia.org/wiki/Bron-Kerbosch_algorithm\
@@ -44,15 +44,19 @@ def kcfromgraph(edgelist=[(0,1),(1,2),(2,3),(3,0)],
     #maxcliquesgen = nx.find_cliques(condindgraph)
     #maxcliques = list(maxcliquesgen)
     # assume edges are maximal cliques
-    maxcliques = map(list, condindgraph.edges())
+
+    #maxcliques = map(list, condindgraph.edges())
+    maxcliques = map(list, edgelist)
 
     # plot maximal cliques
-    #drawmaxcliques.plot_max_cliques(condindgraph,maxcliques)
-    coords=nx.spring_layout(condindgraph)
-    nx.draw(condindgraph,pos=coords)
-    plt.savefig(graphname + 'graph.pdf')
+    # drawmaxcliques.plot_max_cliques(condindgraph,maxcliques)
 
-    numnodes = condindgraph.number_of_nodes() # get from networkx graph
+    #coords=nx.spring_layout(condindgraph)
+    #nx.draw(condindgraph,pos=coords)
+    #plt.savefig(graphname + 'graph.pdf')
+
+    #numnodes = condindgraph.number_of_nodes() # get from networkx graph
+    numnodes = len(set([item for sublist in maxcliques for item in sublist]))
 
     pvals = range(pvallength)
     stateindices = itertools.product(pvals, repeat=numnodes)

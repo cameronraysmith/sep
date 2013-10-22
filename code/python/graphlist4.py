@@ -10,6 +10,10 @@ http://www.graphclasses.org/smallgraphs.html#nodes4
 http://www.artofproblemsolving.com/Wiki/index.php/Burnside's_Lemma
 """
 
+#---------------------------------
+# Binary graphs
+#---------------------------------
+
 # 2K2 = \bar{C4}
 twok2 = [(0,1),(2,3)]
 
@@ -33,6 +37,28 @@ K4 = [(0,1),(0,2),(0,3),(1,2),(2,3),(1,3)]
 
 # C3
 C3 = [(0,1),(1,2),(0,2)]
+
+#---------------------------------
+# Hypergraphs
+#---------------------------------
+
+# flagpole
+flagpole = [(0,2,3),(1,2)]
+
+# basket
+basket = [(0,2,3),(0,1),(2,1)]
+
+# tripod
+tripod = [(0,2,3),(0,1),(1,2),(1,3)]
+
+# overtwo
+overtwo = [(0,2,3),(0,1,2)]
+
+# overtwoconnect
+overtwoconnect = [(0,2,3),(0,1,2),(1,3)]
+
+# overthree
+overthree = [(0,2,3),(0,1,2),(0,1,3)]
 
 graphdict = locals()
 
