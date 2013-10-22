@@ -25,3 +25,6 @@ python minineqrep.py overtwoconnect VERTICES >> fourgraphs.data
 python minineqrep.py overthree VERTICES >> fourgraphs.data
 
 grep --no-group-separator -A1 'Name\|Volume ratio' fourgraphs.data | grep -v 'Name\|Volume ratio' > fourgraphs.summary
+
+grep --no-group-separator -A1 "Volume ratio Boole:Kolmogorov" fourgraphs.data | grep -v Volume > fourgraphs.volume
+grep -Po "((?<=dimension ).*)" fourgraphs.data > fourgraphs.dimension
