@@ -52,13 +52,16 @@ basket = [(0,2,3),(0,1),(2,1)]
 tripod = [(0,2,3),(0,1),(1,2),(1,3)]
 
 # overtwo
-overtwo = [(0,2,3),(0,1,2)]
+overtwo = [(0,1,2),(0,2,3)]
 
 # overtwoconnect
-overtwoconnect = [(0,2,3),(0,1,2),(1,3)]
+overtwoconnect = [(0,1,2),(0,2,3),(1,3)]
 
 # overthree
-overthree = [(0,2,3),(0,1,2),(0,1,3)]
+overthree = [(0,1,2),(0,1,3),(0,2,3)]
+
+# overfour
+overfour = [(0,1,2),(0,1,3),(0,2,3),(1,2,3)]
 
 graphdict = locals()
 
