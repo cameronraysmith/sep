@@ -69,3 +69,9 @@ graphlist = [twok2,
              paw,
              diamond,
              K4]
+
+hgraphlist = [flagpole,
+              basket,
+              tripod,
+              overtwoconnect,
+              overthree]

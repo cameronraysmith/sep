@@ -69,7 +69,7 @@ def minineqgen(eqfname):
     posmat = posineqgen(poldim)
     minineqs = eqmat.tolist() + posmat.tolist()
 
-    return minineqs
+    return minineqs, poldim
 
 def runpolymakescript(minineqs, representation, polyproperty, eqfname='graph'):
     """
@@ -133,7 +133,7 @@ def minineqrep(argv):
 
     print "Name of graph: \n%s\n" % eqfname
 
-    minineqs = minineqgen(eqfname)
+    minineqs, dim = minineqgen(eqfname)
     polyout = runpolymakescript(minineqs, "INEQUALITIES",
                                 polyproperty, eqfname)
 
@@ -161,7 +161,7 @@ def minineqrep(argv):
         print ""
 
     print "Vertices of Kolmogorov polytope\n" + polyout
-    return polyout
+    return vrat, dim
 
 if __name__ == "__main__":
     #import doctest
