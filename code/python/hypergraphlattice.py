@@ -1,10 +1,48 @@
 from lattice import Lattice
 import itrecipes
 import subprocess
+import re
+import dot2tex
+
+def subsetsize(ss):
+    if not map(len,ss):
+        return 0
+    else:
+        return max(map(len,ss))
 
 def removesubsets(ss):
-    fs = frozenset([m for i,m in enumerate(ss) if not any(m < n for n in ss)])
+    fs = frozenset([m for i,m in enumerate(ss)
+                    if not any(m < n for n in ss)])
     return fs
+
+def Hasse2(L):
+        graph=dict()
+        for indexS,elementS in enumerate(L.Uelements):
+            graph[indexS]=[]
+            supersets = [(indexD,elementD)
+                           for indexD,elementD in enumerate(L.Uelements)
+                           if L.wrap(elementS) <= L.wrap(elementD)]
+            supersets.remove((indexS,elementS))
+            coverindexlist = [ind for ind,cover in supersets
+                            if not any(L.wrap(cover) >= L.wrap(ostcover)
+                      for i,ostcover in supersets if ostcover != cover)]
+            graph[indexS]=coverindexlist
+        dotcode='digraph G {\nsplines="line"\nrankdir=BT\n'
+        dotcode+='\"'+str(L.TopElement.unwrap)+'\" [shape=box];\n'
+        dotcode+='\"'+str(L.BottonElement.unwrap)+'\" [shape=box];\n'
+        for s, ds in graph.iteritems():
+            for d in ds:
+                dotcode += "\""+str(L.WElementByIndex(s))+"\""
+                dotcode += " -> "
+                dotcode += "\""+str(L.WElementByIndex(d))+"\""
+                dotcode += ";\n"
+        dotcode += "}"
+        try:
+            from scapy.all import do_graph
+            do_graph(dotcode)
+        except:
+            pass
+        return dotcode
 
 def genhypergraphs(vertices):
     #vertices=[1,2,3]
@@ -23,23 +61,37 @@ def genhypergraphlattice(vertices):
     def intersection(a,b): return removesubsets(a&b)
     def union(a,b): return removesubsets(a|b)
     hgs = genhypergraphs(vertices)
+    hgs = sorted(hgs,key=subsetsize)
     L = Lattice(hgs,union,intersection)
     return L
 
 def genhypergraphhasse(vertices):
     L = genhypergraphlattice(vertices)
-    dotstring = L.Hasse()
+    dotstring = Hasse2(L) #L.Hasse()
     dotstring = dotstring.replace("set","")
     dotstring = dotstring.replace("frozen","")
+    dotstring = dotstring.replace("(","")
+    dotstring = dotstring.replace(")","")
+    dotstring = dotstring.replace("[","{")
+    dotstring = dotstring.replace("]","}")
+    dotstring = re.sub(r"\{\{(?=[0-9])","{",dotstring)
+    dotstring = re.sub(r"(?<=[0-9])\}\}","}",dotstring)
     print dotstring
     return dotstring
 
 def savedotfile(vertices):
-    fh = open("hypergraphhasse.dot","w")
+    fh = open("output/hypergraphhasse.dot","w")
     dotstring = genhypergraphhasse(vertices)
     fh.write("%s" % dotstring)
     fh.close()
-    subprocess.call("dot -Tps hypergraphhasse.dot -o hypergraphhasse.ps",shell=True)
-    subprocess.call("epstopdf hypergraphhasse.ps",shell=True)
-    subprocess.call("evince hypergraphhasse.pdf",shell=True)
+
+    texcode = dot2tex.dot2tex(dotstring, format='tikz', crop=True)
+    fh = open("output/hypergraphhasse.tikz","w")
+    fh.write("%s" % texcode)
+    fh.close()
+
+    subprocess.call("dot -Tps output/hypergraphhasse.dot -o output/hypergraphhasse.ps",shell=True)
+    subprocess.call("epstopdf output/hypergraphhasse.ps",shell=True)
+    subprocess.call("evince output/hypergraphhasse.pdf",shell=True)
+    return dotstring
 
