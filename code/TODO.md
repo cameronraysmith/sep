@@ -3,6 +3,9 @@
 ## short
 
 1. Make clustergrams from inference performed on inconsistent data
+1. Add scale bar to fig 1
+1. Draw sublattice of hypergraphs on four vertices with cycles
+1. Recompute vol rat for sublattice of hypergraphs on four vertices with cycles
 
 ## hold
 

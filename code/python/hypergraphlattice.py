@@ -86,12 +86,22 @@ def savedotfile(vertices):
     fh.close()
 
     texcode = dot2tex.dot2tex(dotstring, format='tikz', crop=True)
-    fh = open("output/hypergraphhasse.tikz","w")
+    texcode = re.sub(r"\{\}","empty",texcode)
+    fh = open("output/hypergraphhasse.tex","w")
     fh.write("%s" % texcode)
     fh.close()
 
-    subprocess.call("dot -Tps output/hypergraphhasse.dot -o output/hypergraphhasse.ps",shell=True)
-    subprocess.call("epstopdf output/hypergraphhasse.ps",shell=True)
-    subprocess.call("evince output/hypergraphhasse.pdf",shell=True)
+    subprocess.call("cd output && latexmk -pdf hypergraphhasse.tex",shell=True)
+    subprocess.call("cd output && rm hypergraphhasse.log \
+                        hypergraphhasse.fdb_latexmk \
+                        hypergraphhasse.fls \
+                        hypergraphhasse.aux",shell=True)
+    subprocess.call("evince output/hypergraphhasse.pdf &",shell=True)
+    subprocess.call("pdf2svg output/hypergraphhasse.pdf \
+                             output/hypergraphhasse.svg",shell=True)
+
+    # subprocess.call("dot -Tps output/hypergraphhasse.dot -o output/hypergraphhasse.ps",shell=True)
+    # subprocess.call("epstopdf output/hypergraphhasse.ps",shell=True)
+    # subprocess.call("evince output/hypergraphhasse.pdf",shell=True)
     return dotstring
 
