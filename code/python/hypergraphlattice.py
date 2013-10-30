@@ -86,7 +86,8 @@ def savedotfile(vertices):
     fh.close()
 
     texcode = dot2tex.dot2tex(dotstring, format='tikz', crop=True)
-    texcode = re.sub(r"\{\}","empty",texcode)
+    texcode = re.sub(r"\{\}","empty",texcode) # using node name {}
+                                              # produces a latex error
     fh = open("output/hypergraphhasse.tex","w")
     fh.write("%s" % texcode)
     fh.close()
