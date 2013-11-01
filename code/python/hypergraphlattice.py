@@ -3,6 +3,7 @@ import itrecipes
 import subprocess
 import re
 import dot2tex
+from hypergraphcycle import testcycle
 
 def subsetsize(ss):
     if not map(len,ss):
@@ -56,6 +57,9 @@ def genhypergraphs(vertices):
     hgf = map(removesubsets,hgs)
     hgf = list(set(hgf))
     return hgf
+
+def filteracyclic(hgraphlist, numverts):
+    return [hh for hh in hgraphlist if testcycle(hh,numverts)]
 
 def genhypergraphlattice(vertices):
     def intersection(a,b): return removesubsets(a&b)

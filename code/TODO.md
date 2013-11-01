@@ -4,9 +4,7 @@
 
 1. Add scale bar to fig 1 and normalize colors
 1. Draw sublattice of hypergraphs on four vertices with cycles
-    * [Depth-first search](http://en.literateprograms.org/Depth-first_search_%28Python%29)
-    * [Matrix powers of adjacency matrices](http://1stprinciples.wordpress.com/2008/03/30/some-interesting-properties-of-adjacency-matrices/)
-    * [Detecting cycles in an adjacency matrix](http://stackoverflow.com/questions/16436165/detecting-cycles-in-an-adjacency-matrix/16438379#16438379)
+    * [Graham reduction](https://en.wikipedia.org/wiki/Hypergraph#Acyclicity)
 1. Recompute vol rat for sublattice of hypergraphs on four vertices with cycles
 
 ## hold

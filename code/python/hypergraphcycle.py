@@ -2,8 +2,8 @@ from copy import deepcopy
 import numpy as np
 import hypergraph as hg
 import hypergraph.core as hgc
-from graphlist4 import graphlist
-from graphlist4 import hgraphlist
+#from graphlist4 import graphlist
+#from graphlist4 import hgraphlist
 
 def remove_ear(G):
     H = deepcopy(G)
@@ -46,21 +46,28 @@ def graham_reduce(G):
         vertex_counter += 1
     return cycle_flag
 
-for g in graphlist:
-    #print testcycle(g)
-    hh=hgc.Hypergraph(vertices=set([0,1,2,3]))
-    for e in g:
+def testcycle(edgelist,numverts):
+    hh=hgc.Hypergraph(vertices=set(range(numverts)))
+    for e in edgelist:
         hh.add_edge(hgc.Edge(e))
-    print graham_reduce(hh)
+    return graham_reduce(hh)
 
-print ""
 
-for g in hgraphlist:
-    #print testcycle(g)
-    hh=hgc.Hypergraph(vertices=set([0,1,2,3]))
-    for e in g:
-        hh.add_edge(hgc.Edge(e))
-    print graham_reduce(hh)
+# for g in graphlist:
+#     #print testcycle(g)
+#     hh=hgc.Hypergraph(vertices=set([0,1,2,3]))
+#     for e in g:
+#         hh.add_edge(hgc.Edge(e))
+#     print graham_reduce(hh)
+
+# print ""
+
+# for g in hgraphlist:
+#     #print testcycle(g)
+#     hh=hgc.Hypergraph(vertices=set([0,1,2,3]))
+#     for e in g:
+#         hh.add_edge(hgc.Edge(e))
+#     print graham_reduce(hh)
 
 
 # def testcycle(edgelist):
