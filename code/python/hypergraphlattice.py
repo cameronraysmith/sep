@@ -45,6 +45,42 @@ def Hasse2(L):
             pass
         return dotcode
 
+def Hasse3(L):
+        graph=dict()
+        for indexS,elementS in enumerate(L):
+            graph[indexS]=[]
+            supersets = [(indexD,elementD)
+                           for indexD,elementD in enumerate(L)
+                           if elementS <= elementD]
+            supersets.remove((indexS,elementS))
+            coverindexlist = [ind for ind,cover in supersets
+                            if not any(cover >= ostcover
+                      for i,ostcover in supersets if ostcover != cover)]
+            graph[indexS]=coverindexlist
+
+        vals = [val for k,v in graph.iteritems() for val in v]
+        nakedkeys = [k for k,v in graph.iteritems() if not v]
+        noionodes = [nk for nk in nakedkeys if nk not in vals]
+
+        dotcode='digraph G {\nsplines="line"\nrankdir=BT\n'
+        for g in noionodes:
+            dotcode+='\"'+str(L[g])+'\" [shape=box];\n'
+        #dotcode+='\"'+str(L.TopElement.unwrap)+'\" [shape=box];\n'
+        #dotcode+='\"'+str(L.BottonElement.unwrap)+'\" [shape=box];\n'
+        for s, ds in graph.iteritems():
+            for d in ds:
+                dotcode += "\""+str(L[s])+"\""
+                dotcode += " -> "
+                dotcode += "\""+str(L[d])+"\""
+                dotcode += ";\n"
+        dotcode += "}"
+        # try:
+        #     from scapy.all import do_graph
+        #     do_graph(dotcode)
+        # except:
+        #     pass
+        return dotcode
+
 def genhypergraphs(vertices):
     #vertices=[1,2,3]
     #baseset = [frozenset([i]) for i in range(vertices)]
@@ -69,9 +105,9 @@ def genhypergraphlattice(vertices):
     L = Lattice(hgs,union,intersection)
     return L
 
-def genhypergraphhasse(vertices):
-    L = genhypergraphlattice(vertices)
-    dotstring = Hasse2(L) #L.Hasse()
+def genhypergraphhasse(L):
+    #dotstring = Hasse2(L) #L.Hasse()
+    dotstring = Hasse3(L)
     dotstring = dotstring.replace("set","")
     dotstring = dotstring.replace("frozen","")
     dotstring = dotstring.replace("(","")
@@ -85,7 +121,12 @@ def genhypergraphhasse(vertices):
 
 def savedotfile(vertices):
     fh = open("output/hypergraphhasse.dot","w")
-    dotstring = genhypergraphhasse(vertices)
+    #L = genhypergraphlattice(vertices)
+    #dotstring = genhypergraphhasse(L)
+    ghc=genhypergraphs([1,2,3,4])
+    chg = filteracyclic(ghc,4)
+    dotstring = genhypergraphhasse(chg)
+
     fh.write("%s" % dotstring)
     fh.close()
 
