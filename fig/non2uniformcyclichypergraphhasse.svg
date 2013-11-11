@@ -36,8 +36,8 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1366"
-     inkscape:window-height="744"
+     inkscape:window-width="1920"
+     inkscape:window-height="1176"
      id="namedview4592"
      showgrid="false"
      inkscape:zoom="0.2976111"
@@ -7286,7 +7286,7 @@
      x="0.36020067"
      y="0.36050183" />
   <g
-     id="g14474">
+     id="g5175">
     <path
        transform="matrix(0.42515278,0,0,0.42515278,-2534.2432,67.318193)"
        d="m 7751.2224,20.434603 a 8.2619619,8.2619619 0 1 1 -16.5239,0 8.2619619,8.2619619 0 1 1 16.5239,0 z"
@@ -9323,16 +9323,16 @@
        id="text5269"
        y="68.203278"
        x="38.087593"
-       style="font-size:44.79999924px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:HelveticaNeueLight;-inkscape-font-specification:HelveticaNeueLight Light"
+       style="font-size:44.79999924px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:HelveticaNeue;-inkscape-font-specification:HelveticaNeue"
        xml:space="preserve"><tspan
-         style="font-size:44.79999924px"
+         style="font-size:44.79999924px;font-family:HelveticaNeue;-inkscape-font-specification:HelveticaNeue"
          y="68.203278"
          x="38.087593"
          id="tspan5271"
          sodipodi:role="line">A</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:44.79999924px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:HelveticaNeueLight;-inkscape-font-specification:HelveticaNeueLight Light"
+       style="font-size:44.79999924px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:HelveticaNeue;-inkscape-font-specification:HelveticaNeue"
        x="34.593193"
        y="357.80331"
        id="text5273"
@@ -9341,15 +9341,15 @@
          id="tspan5275"
          x="34.593193"
          y="357.80331"
-         style="font-size:44.79999924px">B</tspan></text>
+         style="font-size:44.79999924px;font-family:HelveticaNeue;-inkscape-font-specification:HelveticaNeue">B</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text5277"
        y="637.80298"
        x="36.116394"
-       style="font-size:44.79999924px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:HelveticaNeueLight;-inkscape-font-specification:HelveticaNeueLight Light"
+       style="font-size:44.79999924px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:HelveticaNeue;-inkscape-font-specification:HelveticaNeue"
        xml:space="preserve"><tspan
-         style="font-size:44.79999924px"
+         style="font-size:44.79999924px;font-family:HelveticaNeue;-inkscape-font-specification:HelveticaNeue"
          y="637.80298"
          x="36.116394"
          id="tspan5279"
