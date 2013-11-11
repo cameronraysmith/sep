@@ -74,7 +74,9 @@ graphlist = [twok2,
              K4]
 
 hgraphlist = [flagpole,
+              overtwo,
               basket,
               tripod,
               overtwoconnect,
-              overthree]
+              overthree,
+              overfour]

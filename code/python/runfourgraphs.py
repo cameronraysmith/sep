@@ -20,10 +20,12 @@ def definenames():
                  #"K4"]
 
     hgraphlist = ["flagpole",
-                  # "basket",
-                  # "tripod",
-                  # "overtwoconnect",
-                  "overthree"]
+                  "overtwo",
+                  "basket",
+                  "tripod",
+                  "overtwoconnect",
+                  "overthree",
+                  "overfour"]
 
     ffnames = ["fourgraphsvol.pdf",
                "fourgraphsdim.pdf",
