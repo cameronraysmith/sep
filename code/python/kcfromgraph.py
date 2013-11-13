@@ -27,7 +27,7 @@ def bmatrix(a):
     return '\n'.join(rv)
 
 def kcfromgraph(edgelist=[(0,1),(1,2),(2,3),(3,0)],
-                graphname="graph", pvallength=2,
+                graphname="graph", pvallist=None,
                 printlevel=1):
     """
     input: edgelist = the list of edges of a graph
@@ -58,14 +58,18 @@ def kcfromgraph(edgelist=[(0,1),(1,2),(2,3),(3,0)],
     #numnodes = condindgraph.number_of_nodes() # get from networkx graph
     numnodes = len(set([item for sublist in maxcliques for item in sublist]))
 
-    pvals = range(pvallength)
-    stateindices = itertools.product(pvals, repeat=numnodes)
+    if pvallist is None:
+        pvallist = 2*np.ones(numnodes,dtype=np.int)
+
+    #pvals = range(pvallength)
+    stateindices = itertools.product(*map(range,pvallist))
     columns_states = [list(element) for element in stateindices]
 
     cliquevals = []
     cliqueids = []
     for clique in maxcliques:
-        cliquevaliter = itertools.product(pvals, repeat=np.size(clique))
+        cliquevaliter = itertools.product(*map(range,
+                                         [pvallist[i] for i in clique]))
         for cliqueval in cliquevaliter:
             cliquevals.append(list(cliqueval))
             cliqueids.append(clique)
