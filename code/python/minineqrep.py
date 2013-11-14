@@ -135,8 +135,12 @@ def approxvol(minineqs,centroid,error_threshold):
     fname = open(scriptname,'w')
     fname.write(filestring)
     fname.close()
-    polyout = subprocess.check_output(["polymake", "--script",
-                                               scriptname])
+    #matlab -nodesktop -nojvm -nosplash -r "run polymakeVol; exit;"
+    volout = subprocess.check_output(["matlab", "-nodesktop",
+                                      "-nojvm", "-nosplash",
+                                      "-r",
+                                      "run addpath('volconvbod');"
+                                      + scriptname + "; exit;"])
 
 def minineqrep(argv):
     """
