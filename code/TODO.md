@@ -3,13 +3,14 @@
 ## short
 
 1. Add scale bar to fig 1 and normalize colors
-1. Draw sublattice of hypergraphs on four vertices with cycles
-    * [Graham reduction](https://en.wikipedia.org/wiki/Hypergraph#Acyclicity)
-1. Recompute vol rat for sublattice of hypergraphs on four vertices with cycles
 
 ## hold
 
 ## completed
+1. Approximate volume computation
+1. Draw sublattice of hypergraphs on four vertices with cycles
+    * [Graham reduction](https://en.wikipedia.org/wiki/Hypergraph#Acyclicity)
+1. Recompute vol rat for sublattice of hypergraphs on four vertices with cycles
 1. Make clustergrams from inference performed on inconsistent data
 1. Draw lattice of hypergraphs on three vertices
     * Implement proper [antichain meet and join operations](https://en.wikipedia.org/wiki/Antichain#Join_and_meet_operations)

@@ -8,6 +8,8 @@ import sys
 import numpy as np
 import sympy as sp
 import subprocess
+import re
+from fractions import Fraction
 
 from kcfromgraph import *
 from graphlist4 import graphdict
@@ -124,23 +126,34 @@ def convert(srat):
         num, denom = srat.split('/')
         return float(num) / float(denom)
 
-def approxvol(minineqs,centroid,error_threshold):
-    filestring = str("aa=%s;\n"
+def approxvol(minineqs,eqfname,error_threshold=0.2):
+    minineqstr = re.sub(r'], ',r'],\n',str(minineqs))
+    #polyout = runpolymakescript(minineqs,
+    #                        "INEQUALITIES", "CENTROID", eqfname)
+    #centroid = [float(Fraction(s)) for s in polyout.split()][1:]
+    centroid = list(0.125*np.ones(np.shape(minineqs)[1]-1))
+    filestring = str("addpath('volconvbod');\n"
+                     "aa=%s;\n"
                      "bb = [aa(:,2:end) aa(:,1)];\n"
                      "bb(:,1:end-1)=-1*bb(:,1:end-1);\n"
                      "intpoint = %s';\n"
                      "Volume(bb,[],%s,intpoint)" %
-                     (str(minineqs), centroid, error_threshold))
-    scriptname = eqfname + "Vol.m"
-    fname = open(scriptname,'w')
+                     (minineqstr, centroid, error_threshold))
+    scriptname = eqfname + "Vol"
+    fname = open(scriptname + ".m",'w')
     fname.write(filestring)
     fname.close()
     #matlab -nodesktop -nojvm -nosplash -r "run polymakeVol; exit;"
-    volout = subprocess.check_output(["matlab", "-nodesktop",
+    matprocout = subprocess.check_output(["matlab", "-nodesktop",
                                       "-nojvm", "-nosplash",
-                                      "-r",
-                                      "run addpath('volconvbod');"
-                                      + scriptname + "; exit;"])
+                                      "-logfile", scriptname + ".out",
+                                      "-r", scriptname + "; exit;"])
+    fname = open(scriptname + ".out")
+    matout = fname.read()
+    fname.close()
+    vollist = re.findall(r'(?<=Final Volume: ).*(?=,)',matout)
+    vol = float(vollist[0])
+    return vol
 
 def minineqrep(argv):
     """
