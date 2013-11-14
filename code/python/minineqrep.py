@@ -124,9 +124,23 @@ def convert(srat):
         num, denom = srat.split('/')
         return float(num) / float(denom)
 
+def approxvol(minineqs,centroid,error_threshold):
+    filestring = str("aa=%s;\n"
+                     "bb = [aa(:,2:end) aa(:,1)];\n"
+                     "bb(:,1:end-1)=-1*bb(:,1:end-1);\n"
+                     "intpoint = %s';\n"
+                     "Volume(bb,[],%s,intpoint)" %
+                     (str(minineqs), centroid, error_threshold))
+    scriptname = eqfname + "Vol.m"
+    fname = open(scriptname,'w')
+    fname.write(filestring)
+    fname.close()
+    polyout = subprocess.check_output(["polymake", "--script",
+                                               scriptname])
+
 def minineqrep(argv):
     """
-    usage: python minineqrep.py C4.eq VERTICES
+    usage: python minineqrep.py C4 VERTICES
     """
     eqfname = str(argv[0])
     polyproperty = str(argv[1])
