@@ -1,22 +1,24 @@
 # with open(fname) as f:
 #     content = f.readlines()
+import os
 import sys
 import numpy as np
 import matplotlib.pyplot as plt
 import subprocess
+import fileinput
 from matplotlib import rc
 import pandas as pd
 
 
 def plotvoldimdf(dfname,ffnames=["fourgraphsvol.pdf",
                                  "fourgraphsdim.pdf",
-                                 "fourhgraphsvol.pdf",
-                                 "fourhgraphsdim.pdf"]):
+                                 "fourhypergraphsvol.pdf",
+                                 "fourhypergraphsdim.pdf"]):
     fhandle = open(dfname,'r')
     df = pd.read_csv(fhandle)
 
-    rc('text', usetex=True)
-    rc('font', family='serif')
+    rc('text', usetex=False)
+    rc('font', family='sans-serif')
 
     dfgvr=df[df['graph type']=='graph']['volume ratio']
     dfgd=df[df['graph type']=='graph']['dimension']
@@ -46,7 +48,8 @@ def plotvoldimdf(dfname,ffnames=["fourgraphsvol.pdf",
                              fontsize=30,labelpad=20,fontweight='normal')
             ax1f1.set_xlabel('graph',fontsize=30,labelpad=10)
             ax1f1.set_xlim((0, len(l)+1))
-            ax1f1.set_ylim((0.0, max(l)+1))
+            #ax1f1.set_ylim((0.0, max(l)+1))
+            ax1f1.set_ylim((5.0, 15.0))
 
         ax1f1.tick_params(axis='both', which='major', labelsize=30)
         plt.grid(True)
@@ -57,9 +60,16 @@ def plotvoldimdf(dfname,ffnames=["fourgraphsvol.pdf",
         plt.savefig(ffnames[i],bbox_inches='tight',
             facecolor=fig1.get_facecolor(), edgecolor='none')
         plt.close()
+        svgfile = os.path.splitext(ffnames[i])[0] + ".svg"
+        subprocess.call("inkscape -l "+
+                        svgfile +
+                        " " + ffnames[i],shell=True)
+        for line in fileinput.FileInput(svgfile,inplace=1):
+            line = line.replace("Bitstream Vera Sans","HelveticaNeue")
+            line = line.replace("BitstreamVeraSans-Roman","HelveticaNeue")
+            print line,
 
-    vnc = subprocess.call("evince " + " ".join(ffnames),shell=True)
-    #vnc = subprocess.check_output(["evince",ffname])
+   vnc = subprocess.call("evince " + " ".join(ffnames),shell=True)
 
 def plotvoldim(l,ffname="fourgraphsvolrat.pdf"):
     #dfname = "fourgraphs.dat"
