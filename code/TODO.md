@@ -2,11 +2,11 @@
 
 ## short
 
-1. Add scale bar to fig 1 and normalize colors
 
 ## hold
 
 ## completed
+1. Normalize colors and redraw fig 2
 1. Approximate volume computation
 1. Draw sublattice of hypergraphs on four vertices with cycles
     * [Graham reduction](https://en.wikipedia.org/wiki/Hypergraph#Acyclicity)
