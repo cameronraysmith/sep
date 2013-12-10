@@ -126,35 +126,6 @@ def convert(srat):
         num, denom = srat.split('/')
         return float(num) / float(denom)
 
-def approxvol(minineqs,eqfname,error_threshold=0.2):
-    minineqstr = re.sub(r'], ',r'],\n',str(minineqs))
-    #polyout = runpolymakescript(minineqs,
-    #                        "INEQUALITIES", "CENTROID", eqfname)
-    #centroid = [float(Fraction(s)) for s in polyout.split()][1:]
-    centroid = list(0.125*np.ones(np.shape(minineqs)[1]-1))
-    filestring = str("addpath('volconvbod');\n"
-                     "aa=%s;\n"
-                     "bb = [aa(:,2:end) aa(:,1)];\n"
-                     "bb(:,1:end-1)=-1*bb(:,1:end-1);\n"
-                     "intpoint = %s';\n"
-                     "Volume(bb,[],%s,intpoint)" %
-                     (minineqstr, centroid, error_threshold))
-    scriptname = eqfname + "Vol"
-    fname = open(scriptname + ".m",'w')
-    fname.write(filestring)
-    fname.close()
-    #matlab -nodesktop -nojvm -nosplash -r "run polymakeVol; exit;"
-    matprocout = subprocess.check_output(["matlab", "-nodesktop",
-                                      "-nojvm", "-nosplash",
-                                      "-logfile", scriptname + ".out",
-                                      "-r", scriptname + "; exit;"])
-    fname = open(scriptname + ".out")
-    matout = fname.read()
-    fname.close()
-    vollist = re.findall(r'(?<=Final Volume: ).*(?=,)',matout)
-    vol = float(vollist[0])
-    return vol
-
 def minineqrep(argv):
     """
     usage: python minineqrep.py C4 VERTICES
