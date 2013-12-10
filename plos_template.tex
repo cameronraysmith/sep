@@ -561,15 +561,6 @@ The modular polytope is thus not required to respect the $2^{n-1}$ Boole inequal
 
 We can additionally use polymake to compute the volume of each polytope and thus evaluate the relative size of the space of models contained within each of the modular and non-modular polytopes. We can compute this volume and thus compare models for arbitrary $n-$cycle graphs. The volume ratios between the non-modular and modular polytopes were computed using polymake for $n=\{3,4,5,6\}$ and are displayed in Figure \ref{fig:ncycvolrat}.
 
-\begin{figure}
-\begin{center}
-\noindent\includegraphics[width=0.6\columnwidth]{fig/ncycvolrat.pdf}
-\end{center}
-\caption{n-cycle volume ratio}
-\label{fig:ncycvolrat}
-\end{figure}
-
-
 \section*{Discussion}
 
 % You may title this section "Methods" or "Models".
@@ -598,6 +589,42 @@ We can additionally use polymake to compute the volume of each polytope and thus
 %\label{Figure_label}
 %\end{figure}
 
+\begin{figure}[!ht]
+\centering
+\noindent\includegraphics[width=0.6\columnwidth]{fig/figure_expression_concept.pdf}
+\caption{{\bf Coarse-graining of gene expression data.}}
+\label{fig:expression_concept}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\noindent\includegraphics[width=0.6\columnwidth]{fig/inconsistentthreecycle.pdf}
+\caption{{\bf Probabilistic graphical model of inconsistent gene expression data.}}
+\label{fig:inconsistentthreecycle}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\noindent\includegraphics[width=0.9\columnwidth]{fig/conediagram.pdf}
+\caption{{\bf Relationship between gene regulatory network models and spaces of probability distributions.}}
+\label{fig:conediagram}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\noindent\includegraphics[width=0.9\columnwidth]{fig/non2uniformcyclichypergraphhasse.pdf}
+\caption{{\bf Hierarchical relationships among all possible classes of hypergraphs that are not graphs (i.e. not 2-uniform) but have cycles.}}
+\label{fig:non2uniformcyclichypergraphhasse}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\noindent\includegraphics[width=0.6\columnwidth]{fig/figure_graphs_dims.pdf}
+\caption{{\bf Non-modular to modular probability space volume ratio.}}
+\label{fig:ncycvolrat}
+\end{figure}
+
+\FloatBarrier
 
 \section*{Tables}
 %\begin{table}[!ht]
@@ -615,6 +642,8 @@ We can additionally use polymake to compute the volume of each polytope and thus
 \input{tex/table_sheaf}
 \input{tex/table_pars222}
 \input{tex/table_logmat222}
+
+\FloatBarrier
 
 \section*{Polymake computation of the non-modular:modular volume ratio of expectation value polytopes for arbitrary n-cycle modularization constraint graphs}
 \begin{python}
