@@ -19,7 +19,7 @@ tie my @file_lines, 'Tie::File', $file_name or die;
 
 # filter out lines containing 'url = {*},'
 @file_lines = grep !/url\s=\s\{.*\},/, @file_lines;
-@file_lines = grep !/annote\s=\s\{.*\},/, @file_lines;
+@file_lines = grep !/annote\s=\s\{.*\},/s, @file_lines;
 
 # close the file with untie.
 # IMPORTANT: always untie when you are done!

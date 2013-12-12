@@ -3,7 +3,7 @@ hypergraphcycle.py
 
 implementation of the Graham reduction method
 for hypergraph cycle detection
-http://web.cecs.pdx.edu/~maier/TheoryBook/MAIER/C13.pdf
+http://web.cecs.pdx.edu/~maier/TheoryBook/MAIER/C13.pdf#page=18
 section 13.3.1
 """
 

@@ -33,8 +33,8 @@ default: $(TOPPDFFILE)
 copybib:
 	cp /home/cameron/Downloads/bibtex/theoreticalbiology.bib bib/papers.bib
 	cp /home/cameron/Downloads/bibtex/books.bib bib/
-	perl bib/remove_url.pl bib/papers.bib
-	perl bib/remove_url.pl bib/books.bib
+	python bib/remove_url.py bib/papers.bib
+	python bib/remove_url.py bib/books.bib
 
 $(BIBFILES):
 	copybib
