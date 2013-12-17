@@ -32,7 +32,7 @@ e' \colon U' \rightarrow P &\mapsto& e'|_U \colon U \rightarrow P
 $\mathcal{E}$ is thus, by definition, a presheaf functor, which is an object in the functor category $Sets^{\mathcal{P}(L)^{opp}}$.
 
 \subsection*{Stochasticity among genotype-phenotype maps}
-There may be several sources for stochasticity in genotype-phenotype mapping including small numbers of the causal molecules and products of gene expression as well as environmental fluctuations upon which genotype-phenotype mappings are conditioned \cite{Swain2002,Paulsson2004,Thattai2004,Acar2008a,Lestas2010,Munsky2012,Chalancon2012,Neuert2013,Sanchez2013}. Here we generalize the deterministic framework outlined above to the stochastic case.
+There may be several sources for stochasticity in genotype-phenotype mapping including small numbers of the causal molecules and products of gene expression as well as environmental fluctuations upon which genotype-phenotype mappings are conditioned \cite{Swain2002,Paulsson2004,Thattai2004,Acar2008a,Lestas2010,Munsky2012,Chalancon2012,Neuert2013,Sanchez2013}. Regardless of the fundamental nature of stochasticity to gene expression, empirically, we observe statistical as opposed to deterministic data. Here we generalize the deterministic framework outlined above to the stochastic case.
 
 An \emph{algebraic structure} is determined by a set and one or more finitary operations (e.g. binary multiplication) defined on the elements of that set \cite{PachterLior2005,Artin2010}. A \emph{monoid} is a type of algebraic structure determined by a set and a binary operation such that the latter satisfies closure, associativity and identity with respect to the given set. A \emph{semiring} is an algebraic structure determined by a set with two binary operations. One of the binary operations, addition, forms a commutative monoid and has identity element 0. The second binary operation, multiplication, is a monoid with identity element 1. These binary operations interact such that multiplication distributes over addition and multiplication by the identity element of the addition monoid annihilates all elements in the semiring. For example, the real numbers under addition and multiplication constitute a semiring whose data is described as $\left( \mathbb{R},+,0,\times,1 \right)$.
 
@@ -74,23 +74,24 @@ s' &\mapsto& d(s');\\
 d|U \colon P^{U} &\rightarrow& R,\\
 s &\mapsto& \sum_{s' \in \mathcal{E}(U'),\, s'|U=s} d(s').
 \end{eqnarray*}
+$d|U$ is a representation of what is commonly referred to as the marginal distribution of $d$ that assigns to each genotype-phenotype mapping in the smaller collection (recall $U \subseteq U'$) of such $P^{U}$ the sum of the probabilities of all genotype-phenotype maps in the larger collection $P^{U'}$ that restrict to a given map in $P^{U}$.
 
 \subsection*{Coverings of genotype space}
-A \emph{gene regulatory network module} is represented by a tuple of genes $O$ and a collection of gene regulatory network modules, which in some cases may represent all of the genes in an organism, is a set of such tuples $\mathcal{G}$ (i.e. $O \in \mathcal{G}$). An individual may be composed of some collection of subsets of possible genes where the set of all genes, $L$, is viewed as the genotype space. A \emph{covering} of the genotype space, $\mathcal{G}$, satisfies $\cup_i \mathcal{G}_i = L$ and $O,O' \in \mathcal{G}$ and $O \subseteq O'$ means that $O = O'$. The first condition means that $\mathcal{G}$ covers $L$ and the second conditions means that if a given subset of genes $O'$ is compatible in a sense to be explained more precisely in what proceeds then any smaller subset of genes $O$ is also compatible.
+A \emph{gene regulatory network module} is represented by a subset of genes $O$ and a collection of gene regulatory network modules, which in some cases may represent all of the genes in an organism, is a set of such subsets $\mathcal{G}$ (i.e. $O,O',\ldots \in \mathcal{G}$). An individual may be composed of some collection of subsets of possible genes where the set of all genes, $L$, is viewed as the genotype space. A \emph{covering} of the genotype space, $\mathcal{G}$, satisfies 1. $\cup_i O_i = \cup \mathcal{G} = L$ and 2. if $O,O' \in \mathcal{G}$ and $O \subseteq O'$ means that $O = O'$. The first condition means that $\mathcal{G}$ covers $L$. It is thereby just a statement that $\mathcal{G}$ represents a decomposition of the collection of all genes under consideration into subsets and this is why we refer to $\mathcal{G}$ as a collection of gene regulatory network modules. The second condition means simply that we will not consider nested subsets and so we will take for our $O \in \mathcal{G}$ the biggest $O \in \mathcal{G}$ that is not a subset of some other $O' \in \mathcal{G}$. The second condition also implies that if a given subset of genes $O'$ is compatible in a sense to be explained more precisely in what proceeds then any smaller subset of genes $O$ is also compatible.
 
 \subsection*{Compatibility of distributions on genotype-phenotype maps}
-Given a covering of the genotype space $\mathcal{G}$, a compatible family for $\mathcal{G}$ with respect to the distribution presheaf $\mathcal{D}_R\mathcal{E}$ is given by a family of distributions $\{d_O \colon P^O \rightarrow R | O \in \mathcal{G}\}$ such that
-\begin{eqnarray*}
-\forall O \in \mathcal{G} \left[ \exists d_O \in \mathcal{D}_R\mathcal{E}(O) \right],\\
+Given a covering of the genotype space $\mathcal{G}$, a compatible family for $\mathcal{G}$ with respect to the distribution presheaf $\mathcal{D}_R\mathcal{E}$ is given by a family of distributions $\{d_O \colon P^O \rightarrow R | O \in \mathcal{G}\}$ such that for all $O \in \mathcal{G}$ there exists $d_O \in \mathcal{D}_R\mathcal{E}(O)$ such that for all $O' \in \mathcal{G}$
+\begin{eqnarray}\label{eq:sheafcond}
+%\forall O \in \mathcal{G} \left[ \exists d_O \in \mathcal{D}_R\mathcal{E}(O) \right],\\
 d_O|O \cap O' = d_{O'}|O \cap O'.
-\end{eqnarray*}
-The second condition, $d_O|O \cap O' = d_{O'}|O \cap O'$, is referred to as the \emph{sheaf condition}. This condition means that any two distributions $d_O$ and $d_{O'}$ in the \emph{compatible family} of distributions produce the same values in the semiring $R$ on all of the genes in the intersection of $O$ with $O'$.
+\end{eqnarray}
+The condition \ref{eq:sheafcond} is referred to as the \emph{sheaf condition}. This condition means that any two distributions $d_O$ and $d_{O'}$ in the \emph{compatible family} of distributions produce the same values in the semiring $R$ on all of the genes in the intersection of $O$ with $O'$.
 
-For example, if we have two gene regulatory network modules given by their genotypes $O = \{l_1, l_2\}$ and $O' = \{l_1, l'_2\}$ then the sheaf condition specifies that for $e_{\{l_1\}} \in \mathcal{E}(\{l_1\})$, which assigns a particular phenotype to the genotype $\{l_1\}$, that
+For example, if we have two gene regulatory network modules given by their genotypes $O = \{l_1, l_2\}$ and $O' = \{l_1, l_3\}$ then the sheaf condition specifies that for $e_{\{l_1\}} \in \mathcal{E}(\{l_1\})$, which assigns a particular phenotype to the genotype $\{l_1\}$ rather than to an entire gene regulatory network module like $O$ or $O'$, that
 \begin{eqnarray}\label{eq:sheafprob}
 \sum_{e \in \mathcal{E}(O),\, e|l_1=e_{\{l_1\}}} d_O(e) \,\, = \sum_{e' \in \mathcal{E}(O'),\, e'|l_1=e_{\{l_1\}}} d_{O'}(e')
 \end{eqnarray}
-This condition means that the probability for gene $i=1$ to be associated to the phenotype given by $e_{\{l_1\}}$ is equivalent in case we marginalize over either possible \emph{allele} for gene $i=2$.
+This condition means that the probability for gene $l_1$ to be associated to the phenotype given by $e_{\{l_1\}}$ is equivalent in case we marginalize over all the other genes contained in the gene regulatory network modules of which $l_1$ is a component. For coherence with respect to the relationship between the modeling framework described here and that used in probabilistic graphical models in machine learning, the conditions \ref{eq:sheafprob} are referred to as the marginalization constraints \cite{Wainwright2007}.
 
 \subsection*{Global sections of distributions over genotype-phenotype maps}
 To say that the sheaf condition holds for a compatible family $\{d_O\}_{O \in \mathcal{G}}$ for the presheaf $\mathcal{D}_R\mathcal{E}$ implies the existence of a \emph{global section} $d \in \mathcal{D}_R\mathcal{E}(L)$ that is defined on the full set of genes. An example of a distribution that could be a global section given that it satisfies the sheaf condition is shown in Table \ref{tab:hidvarmod}. This global section defines a distribution on the set of genotype-phenotype maps given by $\mathcal{E}(L) = P^L$, specifying phenotypes associated to all genes at once instead of on subsets of $L$ associated to either $U \subseteq L$ or, what is essentially equivalent, $O \in \mathcal{G}$. Crucially, the distribution $d$ must also restrict for the subset of genes associated to any gene regulatory network module, which in some cases may represent all of the genes in an organism, $O$ in a covering of the genotype space $\mathcal{G}$ meaning that
@@ -143,7 +144,7 @@ For each gene regulatory network module $O$ we note that $\delta_e|O = \delta_{e
 \begin{split}
 d_O(e) &= d|O(e)\\
 &= \sum_{e' \in \mathcal{E}(L),e'|O=e} d(e')\\
-&= \sum_{e' \in \mathcal{E}(L)} \delta_{e'|O}(e) \times d(e') = \sum_{e' \in \mathcal{E}(L)} \delta_{e'}|O(e) \times d(e')
+&= \sum_{e' \in \mathcal{E}(L)} \delta_{e'|O}(e) \, d(e') = \sum_{e' \in \mathcal{E}(L)} \delta_{e'}|O(e) \, d(e')
 \end{split}
 \end{equation}
 where
