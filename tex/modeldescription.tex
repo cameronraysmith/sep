@@ -5,17 +5,17 @@ $$
 e \colon U \rightarrow  P.
 $$
 
-In the observationalist framework from which this modeling description derives \cite{Abramsky2011}, our genes $L$ are analogous to measurements $T \subseteq X$ and our phenotypes $P$ are like measurement outcomes or values $V$. An event in which outcomes $s(t)$ are observed for each $t \in T$ serve to define mappings called \emph{sections} over $T$ as
+In the operationalist framework from which this modeling description derives \cite{Abramsky2011}, our genes and subsets thereof $U \subseteq L$ are analogous to measurements and subsets thereof $T \subseteq X$ and our phenotypes $P$ are like measurement outcomes or values $V$. An event in which outcomes $s(t)$ are observed for each $t \in T$ serve to define mappings called \emph{sections} over $T$ as
 
 $$
 s \colon T \rightarrow V.
 $$
 
-We denote the set of all subsets of a set $X$ as $\mathcal{P}(X)$. $\mathcal{P}(L)$ can then be viewed as a category in which the objects are subsets of genes and morphisms represent inclusion of a smaller subset into a larger superset (i.e. $U \subseteq U' \Rightarrow U \rightarrow U'$). The category $\mathcal{P}(L)^{opp}$ then has the same objects, but the morphisms represent restriction from a larger to a smaller subset of alleles (i.e. $U' \supseteq U \Rightarrow U' \rightarrow U$). In order to consider the set of all genotype-phenotype maps together, we can construct a functor
+We denote the set of all subsets of a set $X$ as $\mathcal{P}(X)$. $\mathcal{P}(L)$ can then be viewed as a category~\cite{Lane1998,MacLane1992,Awodey2006} in which the objects are subsets of genes and morphisms represent inclusion of a smaller subset into a larger superset (i.e. $U \subseteq U' \Rightarrow U \rightarrow U'$). The category $\mathcal{P}(L)^{opp}$ then has the same objects, but the morphisms represent restriction from a larger to a smaller subset of genes (i.e. $U' \supseteq U \Rightarrow U' \rightarrow U$). In order to consider the set of all genotype-phenotype maps, for a given set of genes $L$, together, we can construct a functor
 $$
 \mathcal{E} \colon \mathcal{P}(L)^{opp} \rightarrow Set
 $$
-by exhibiting precisely how it acts on objects and morphisms in its domain category. We explicitly represent the way in which the functor $\mathcal{E}$ acts on objects and morphisms $U$ and $U \subseteq U'$ respectively as
+by exhibiting precisely how it acts on objects and morphisms in its domain category. We explicitly represent the way in which the functor $\mathcal{E}$ acts on objects $U$ and morphisms $U \subseteq U'$ respectively as
 \begin{equation}\label{eq:gpfunctor}
 \begin{split}
 \mathcal{E} \colon \mathcal{P}(L)^{opp} &\rightarrow Set,\\
@@ -32,16 +32,16 @@ e' \colon U' \rightarrow P &\mapsto& e'|_U \colon U \rightarrow P
 $\mathcal{E}$ is thus, by definition, a presheaf functor, which is an object in the functor category $Sets^{\mathcal{P}(L)^{opp}}$.
 
 \subsection*{Stochasticity among genotype-phenotype maps}
-There may be several sources for stochasticity in genotype-phenotype mapping including small numbers of the causal molecules and products of gene expression as well as environmental fluctuations upon which genotype-phenotype mappings are conditioned \cite{Swain2002,Paulsson2004,Thattai2004,Acar2008a,Lestas2010,Munsky2012,Neuert2013}. Here we generalize the deterministic framework outlined above to the stochastic case.
+There may be several sources for stochasticity in genotype-phenotype mapping including small numbers of the causal molecules and products of gene expression as well as environmental fluctuations upon which genotype-phenotype mappings are conditioned \cite{Swain2002,Paulsson2004,Thattai2004,Acar2008a,Lestas2010,Munsky2012,Chalancon2012,Neuert2013,Sanchez2013}. Here we generalize the deterministic framework outlined above to the stochastic case.
 
-An \emph{algebraic structure} is determined by a set and one or more finitary operations (e.g. binary multiplication) defined on the elements of that set. A \emph{monoid} is a type of algebraic structure determined by a set and a binary operation such that the latter satisfies closure, associativity and identity with respect to the given set. A \emph{semiring} is an algebraic structure determined by a set with two binary operations. One of the binary operations, addition, forms a commutative monoid and has identity element 0. The second binary operation, multiplication, is a monoid with identity element 1. These binary operations interact such that multiplication distributes over addition and multiplication by the identity element of the addition monoid annihilates all elements in the semiring. For example, the real numbers under addition and multiplication constitute a semiring whose data is described as $\left( \mathbb{R},+,0,\times,1 \right)$.
+An \emph{algebraic structure} is determined by a set and one or more finitary operations (e.g. binary multiplication) defined on the elements of that set \cite{PachterLior2005,Artin2010}. A \emph{monoid} is a type of algebraic structure determined by a set and a binary operation such that the latter satisfies closure, associativity and identity with respect to the given set. A \emph{semiring} is an algebraic structure determined by a set with two binary operations. One of the binary operations, addition, forms a commutative monoid and has identity element 0. The second binary operation, multiplication, is a monoid with identity element 1. These binary operations interact such that multiplication distributes over addition and multiplication by the identity element of the addition monoid annihilates all elements in the semiring. For example, the real numbers under addition and multiplication constitute a semiring whose data is described as $\left( \mathbb{R},+,0,\times,1 \right)$.
 
 Consider a function, $\phi$ from a set, $L$, to a semiring $R$ written $\phi \colon L \rightarrow R$. The \emph{support} of $\phi$, $\text{supp}(\phi)$, is then the set $\{ l \in L | \phi(l) \neq 0 \}$. A distribution with respect to the semiring $R$ on $L$ is given as a function having finite support and satisfying a constraint
 \begin{eqnarray*}
 d \colon L \rightarrow R,\\
 \sum_{l \in L} d(l) = 1
 \end{eqnarray*}
-We can consider the set of all distributions with respect to a given semiring $R$ satisfying the above constraints and defined on the set $L$ as being given by a functor applied to $L$ as $\mathcal{D}_R (L)$. We can again explicitly represent the way in which the functor $\mathcal{D}_R$ acts on objects and morphisms $L$ and $f \colon L \rightarrow M$ as
+We can consider the set of all distributions with respect to a given semiring $R$ satisfying the above constraints and defined on the set $L$ as being given by a functor applied to $L$ as $\mathcal{D}_R (L)$. We can again explicitly represent the way in which the functor $\mathcal{D}_R$ acts on objects and morphisms $L$ and $f \colon L \rightarrow M$ (where $L$ and $M$ are sets viewed as sets of genes and in some special cases we may have $M=L$) as
 \begin{equation}\label{eq:distfunctor}
 \begin{split}
 \mathcal{D}_R \colon Set &\rightarrow Set,\\
@@ -54,7 +54,7 @@ where
 \mathcal{D}_R (f) \colon \mathcal{D}_R (L) &\rightarrow& \mathcal{D}_R (M),\\
 d &\mapsto& \left[ m \mapsto \sum_{f(l)=m} d(l) \right].
 \end{eqnarray*}
-For the case in which we consider $R$ to be the semiring of non-negative real numbers $\left( \mathbb{R}_{\geq 0},+,0,\times,1 \right)$, $\mathcal{D}_R (L)$ represents the set of probability distributions on the set $L$.
+For the case in which we consider $R$ to be the semiring of non-negative real numbers $\left( \mathbb{R}_{\geq 0},+,0,\times,1 \right)$, $\mathcal{D}_R (L)$ represents the set of probability distributions over the set $L$.
 
 Recalling the presheaf functor, $\mathcal{E} \colon \mathcal{P}(L)^{opp} \rightarrow Set$, mapping genotypes to the set of maps from those genotypes to the set of phenotypes, we can now compose it with the distribution functor $\mathcal{D}_R$ to obtain a new presheaf functor $\mathcal{D}_R \circ \mathcal{E} \colon \mathcal{P}(L)^{opp} \rightarrow Set \rightarrow Set$ that assigns to each genotype a distribution over the set of maps from those genotypes to the set of possible phenotypes. The action of $\mathcal{D}_R \mathcal{E}$ on objects and morphisms in $\mathcal{P}(L)^{opp}$ yields
 \begin{eqnarray*}
