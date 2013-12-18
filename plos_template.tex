@@ -2,6 +2,10 @@
 
 \begin{document}
 
+% Add Figure, Table prefixes to references
+% http://tex.stackexchange.com/a/6063/6784
+\let\ref\autoref
+
 % Title must be 150 characters or less
 \begin{flushleft}
 {\Large
@@ -21,46 +25,49 @@ $\ast$ E-mail: cameron.smith@med.einstein.yu.edu
 \end{flushleft}
 
 % Please keep the abstract between 250 and 300 words
-\section*{Abstract}
+\section{Abstract}
 \input{tex/abstract}
 
 % Please keep the Author Summary between 150 and 200 words
 % Use first person. PLoS ONE authors please skip this step.
 % Author Summary not valid for PLoS ONE submissions.
-\section*{Author Summary}
+\section{Author Summary}
 \input{tex/authorsummary}
 
-\section*{Introduction}
+\section{Introduction}
 \input{tex/introduction}
 
 % Results and Discussion can be combined.
 % otherwise
-% \section*{Discussion}
-% \section*{Discussion}
-\section*{Results}
+% \section{Discussion}
+% \section{Discussion}
+\section{Results}
 \input{tex/results}
 
-\section*{Discussion}
+\section{Discussion}
 \input{tex/discussion}
 
 % This section is often entitled "Materials and Methods"
 % You may title this section "Methods" or "Models".
 % "Models" is not a valid title for PLoS ONE authors. However, PLoS ONE
 % authors may use "Analysis"
-\section*{Models}
+\section{Methods}
+\input{tex/methods}
+
+\section{Supplementary Information}
 \input{tex/modeldescription}
-\input{tex/marginalmapconstraints}
+%\input{tex/marginalmapconstraints}
 %\input{tex/hadamardmethod}
 
 % Do NOT remove this, even if you are not including acknowledgments
-\section*{Acknowledgments}
+\section{Acknowledgments}
+We thank Jay Sulzberger for sharing important discussions and mathematical insight. We thank Noson Yonofsky and Andrew Yates for helpful discussions.
 
-
-%\section*{References}
+%\section{References}
 % The bibtex filename
 \bibliography{bib/books,bib/papers}
-
-\section*{Figure Legends}
+\pagebreak
+\section{Figure Legends}
 %\begin{figure}[!ht]
 %\begin{center}
 %%\includegraphics[width=4in]{figure_name.2.eps}
@@ -76,7 +83,7 @@ $\ast$ E-mail: cameron.smith@med.einstein.yu.edu
 
 \FloatBarrier
 
-\section*{Tables}
+\section{Tables}
 %\begin{table}[!ht]
 %\caption{
 %\bf{Table title}}
@@ -95,23 +102,29 @@ $\ast$ E-mail: cameron.smith@med.einstein.yu.edu
 
 \FloatBarrier
 
-\section*{Polymake computation of the non-modular:modular volume ratio of probability distribution polytopes for cyclic hypergraphs on three and four vertices}
+\section{Polymake computation of the non-modular:modular volume ratio of probability distribution polytopes for cyclic hypergraphs on three and four vertices}
 \input{tex/hypergraphvolrat}
 \pagebreak
 
-\section*{Example graphs on four vertices}
+\section{Example graphs on four vertices}
 \input{tex/graphlist4}
 \pagebreak
 
-\section*{Generate the lattice of hypergraphs on a given number of vertices}
+\section{Generate the lattice of hypergraphs on a given number of vertices}
 \input{tex/hypergraphlattice}
 \pagebreak
 
-\section*{Filter hypergraphs with cycles using Graham reduction}
+\section{Filter hypergraphs with cycles using Graham reduction}
 \input{tex/hypergraphcycle}
 \pagebreak
 
-\section*{Approximate volume computations}
+\section{Approximate volume computations}
 \input{tex/overfourapproxvol}
+
+% Table of contents
+\pagebreak
+\tableofcontents
+\listoffigures
+\listoftables
 
 \end{document}

@@ -1,5 +1,5 @@
 %!TEX root = ../plos_template.tex
-\subsection*{Deterministic genotype-phenotype maps}
+\subsection{Deterministic genotype-phenotype maps}
 Consider the case in which we have an arbitrary number of \emph{genes} indexed by $i=1, \ldots, m$. There is a particular set of potential \emph{genes} denoted $L$. A subset of genes will be denoted as $U \subseteq L$. We also have a set of phenotypes $P$. In principle, any gene could give rise to any phenotype. A genotype-phenotype map is thus represented as a function mapping a subset of genes into phenotypes
 $$
 e \colon U \rightarrow  P.
@@ -31,7 +31,7 @@ e' \colon U' \rightarrow P &\mapsto& e'|_U \colon U \rightarrow P
 \end{eqnarray*}
 $\mathcal{E}$ is thus, by definition, a presheaf functor, which is an object in the functor category $Sets^{\mathcal{P}(L)^{opp}}$.
 
-\subsection*{Stochasticity among genotype-phenotype maps}
+\subsection{Stochasticity among genotype-phenotype maps}
 There may be several sources for stochasticity in genotype-phenotype mapping including small numbers of the causal molecules and products of gene expression as well as environmental fluctuations upon which genotype-phenotype mappings are conditioned \cite{Swain2002,Paulsson2004,Thattai2004,Acar2008a,Lestas2010,Munsky2012,Chalancon2012,Neuert2013,Sanchez2013}. Regardless of the fundamental nature of stochasticity to gene expression, empirically, we observe statistical as opposed to deterministic data. Here we generalize the deterministic framework outlined above to the stochastic case.
 
 An \emph{algebraic structure} is determined by a set and one or more finitary operations (e.g. binary multiplication) defined on the elements of that set \cite{PachterLior2005,Artin2010}. A \emph{monoid} is a type of algebraic structure determined by a set and a binary operation such that the latter satisfies closure, associativity and identity with respect to the given set. A \emph{semiring} is an algebraic structure determined by a set with two binary operations. One of the binary operations, addition, forms a commutative monoid and has identity element 0. The second binary operation, multiplication, is a monoid with identity element 1. These binary operations interact such that multiplication distributes over addition and multiplication by the identity element of the addition monoid annihilates all elements in the semiring. For example, the real numbers under addition and multiplication constitute a semiring whose data is described as $\left( \mathbb{R},+,0,\times,1 \right)$.
@@ -76,10 +76,10 @@ s &\mapsto& \sum_{s' \in \mathcal{E}(U'),\, s'|U=s} d(s').
 \end{eqnarray*}
 $d|U$ is a representation of what is commonly referred to as the marginal distribution of $d$ that assigns to each genotype-phenotype mapping in the smaller collection (recall $U \subseteq U'$) of such $P^{U}$ the sum of the probabilities of all genotype-phenotype maps in the larger collection $P^{U'}$ that restrict to a given map in $P^{U}$.
 
-\subsection*{Coverings of genotype space}
-A \emph{gene regulatory network module} is represented by a subset of genes $O$ and a collection of gene regulatory network modules, which in some cases may represent all of the genes in an organism, is a set of such subsets $\mathcal{G}$ (i.e. $O,O',\ldots \in \mathcal{G}$). An individual may be composed of some collection of subsets of possible genes where the set of all genes, $L$, is viewed as the genotype space. A \emph{covering} of the genotype space, $\mathcal{G}$, satisfies 1. $\cup_i O_i = \cup \mathcal{G} = L$ and 2. if $O,O' \in \mathcal{G}$ and $O \subseteq O'$ means that $O = O'$. The first condition means that $\mathcal{G}$ covers $L$. It is thereby just a statement that $\mathcal{G}$ represents a decomposition of the collection of all genes under consideration into subsets and this is why we refer to $\mathcal{G}$ as a collection of gene regulatory network modules. The second condition means simply that we will not consider nested subsets and so we will take for our $O \in \mathcal{G}$ the biggest $O \in \mathcal{G}$ that is not a subset of some other $O' \in \mathcal{G}$. The second condition also implies that if a given subset of genes $O'$ is compatible in a sense to be explained more precisely in what proceeds then any smaller subset of genes $O$ is also compatible.
+\subsection{Coverings of genotype space}
+A \emph{gene regulatory network module} is represented by a subset of genes $O$ and a collection of gene regulatory network modules, which in some cases may represent all of the genes in an organism, is a set of such subsets $\mathcal{G}$ (i.e. $O,O',\ldots \in \mathcal{G}$). An individual may be composed of some collection of subsets of possible genes where the set of all genes, $L$, is viewed as the genotype space. A \emph{covering} of the genotype space, $\mathcal{G}$, satisfies 1. $\cup_i O_i = \cup \mathcal{G} = L$ and 2. if $O,O' \in \mathcal{G}$ and $O \subseteq O'$ means that $O = O'$. The first condition means that $\mathcal{G}$ covers $L$. It is thereby just a statement that $\mathcal{G}$ represents a decomposition of the collection of all genes under consideration into subsets and this is why we refer to $\mathcal{G}$ as a collection of gene regulatory network modules. The second condition means simply that we will not consider nested subsets and so we will take for our $O \in \mathcal{G}$ the biggest $O \in \mathcal{G}$ that is not a subset of some other $O' \in \mathcal{G}$. The second condition also implies that if a given subset of genes $O'$ is compatible in a sense to be explained more precisely in what proceeds then any smaller subset of genes $O$ is also compatible. Coverings $\mathcal{G}$ of the genotype space contain the necessary information to make precise what we heuristically refer to at other points in this paper as modularity in order to cohere with standard terminology in systems biology literature while attempting to submit our own precise interpretation of the relatively colloquial concept.
 
-\subsection*{Compatibility of distributions on genotype-phenotype maps}
+\subsection{Compatibility of distributions on genotype-phenotype maps}
 Given a covering of the genotype space $\mathcal{G}$, a compatible family for $\mathcal{G}$ with respect to the distribution presheaf $\mathcal{D}_R\mathcal{E}$ is given by a family of distributions $\{d_O \colon P^O \rightarrow R | O \in \mathcal{G}\}$ such that for all $O \in \mathcal{G}$ there exists $d_O \in \mathcal{D}_R\mathcal{E}(O)$ such that for all $O' \in \mathcal{G}$
 \begin{eqnarray}\label{eq:sheafcond}
 %\forall O \in \mathcal{G} \left[ \exists d_O \in \mathcal{D}_R\mathcal{E}(O) \right],\\
@@ -93,8 +93,8 @@ For example, if we have two gene regulatory network modules given by their genot
 \end{eqnarray}
 This condition means that the probability for gene $l_1$ to be associated to the phenotype given by $e_{\{l_1\}}$ is equivalent in case we marginalize over all the other genes contained in the gene regulatory network modules of which $l_1$ is a component. For coherence with respect to the relationship between the modeling framework described here and that used in probabilistic graphical models in machine learning, the conditions \ref{eq:sheafprob} are referred to as the marginalization constraints \cite{Wainwright2007}.
 
-\subsection*{Global sections of distributions over genotype-phenotype maps}
-To say that the sheaf condition holds for a compatible family $\{d_O\}_{O \in \mathcal{G}}$ for the presheaf $\mathcal{D}_R\mathcal{E}$ implies the existence of a \emph{global section} $d \in \mathcal{D}_R\mathcal{E}(L)$ that is defined on the full set of genes. An example of a distribution that could be a global section given that it satisfies the sheaf condition is shown in Table \ref{tab:hidvarmod}. This global section defines a distribution on the set of genotype-phenotype maps given by $\mathcal{E}(L) = P^L$, specifying phenotypes associated to all genes at once instead of on subsets of $L$ associated to either $U \subseteq L$ or, what is essentially equivalent, $O \in \mathcal{G}$. Crucially, the distribution $d$ must also restrict for the subset of genes associated to any gene regulatory network module, which in some cases may represent all of the genes in an organism, $O$ in a covering of the genotype space $\mathcal{G}$ meaning that
+\subsection{Global sections of distributions over genotype-phenotype maps}
+To say that the sheaf condition holds for a compatible family $\{d_O\}_{O \in \mathcal{G}}$ for the presheaf $\mathcal{D}_R\mathcal{E}$ implies the existence of a \emph{global section} $d \in \mathcal{D}_R\mathcal{E}(L)$ that is defined on the full set of genes. An example of a distribution that could be a global section given that it satisfies the sheaf condition is shown in \ref{tab:hidvarmod}. This global section defines a distribution on the set of genotype-phenotype maps given by $\mathcal{E}(L) = P^L$, specifying phenotypes associated to all genes at once instead of on subsets of $L$ associated to either $U \subseteq L$ or, what is essentially equivalent, $O \in \mathcal{G}$. Crucially, the distribution $d$ must also restrict for the subset of genes associated to any gene regulatory network module, which in some cases may represent all of the genes in an organism, $O$ in a covering of the genotype space $\mathcal{G}$ meaning that
 \begin{eqnarray}
 \forall O \in \mathcal{G} \left[ d|O = d_O \right].
 \end{eqnarray}
@@ -108,16 +108,16 @@ In this case there is a unique global section $e \in \mathcal{E}(U)$ such that $
 
 Extending this example on an arbitrary subset $U \subseteq L$ to the whole set of genes $L$ we have a unique global section $e \in \mathcal{E}(L) = P^L$. $e$ can be used to deterministically assign phenotypes to the set of genes $L$ under consideration.
 
-\subsection*{Example}
-We can construct an example to make the model description, so far, more concrete. For this example, we take the full set of potential genes to be $L = \{ l_1,l_2,l_3,l_4 \}$. Consider the case in which each of the gene regulatory network modules under consideration has two genes and we specify the covering of the genotype space given by $\mathcal{G} = \{\{l_1,l_2 \},\{l_1,l_4 \},\{l_3,l_2\},\{l_3,l_4\} \}$. The full set of genes together with a covering of the genotype space is a special case of a hypergraph $\mathcal{H} = (L,\mathcal{G})$ where the set of genes $L$ serve as the nodes or vertices and the covering $\mathcal{G}$ contains the edges or hyperedges. We also have two phenotype values $P = \{0, 1\}$. Each genotype-phenotype map in Table \ref{tab:gpm} assigns phenotype values to each $O \in \mathcal{G}$. For example, $e_1 \colon   l_1 l_2 \rightarrow 00$. Table \ref{tab:probabilities} likewise assigns probabilities to each of these genotype-phenotype mappings.
+\subsection{Example}
+We can construct an example to make the model description, so far, more concrete. For this example, we take the full set of potential genes to be $L = \{ l_1,l_2,l_3,l_4 \}$. Consider the case in which each of the gene regulatory network modules under consideration has two genes and we specify the covering of the genotype space given by $\mathcal{G} = \{\{l_1,l_2 \},\{l_1,l_4 \},\{l_3,l_2\},\{l_3,l_4\} \}$. The full set of genes together with a covering of the genotype space is a special case of a hypergraph $\mathcal{H} = (L,\mathcal{G})$ where the set of genes $L$ serve as the nodes or vertices and the covering $\mathcal{G}$ contains the edges or hyperedges. We also have two phenotype values $P = \{0, 1\}$. Each genotype-phenotype map in \ref{tab:gpm} assigns phenotype values to each $O \in \mathcal{G}$. For example, $e_1 \colon   l_1 l_2 \rightarrow 00$. \ref{tab:probabilities} likewise assigns probabilities to each of these genotype-phenotype mappings.
 
-We can collect all of these genotype-phenotype mappings into one set using the functor given in Equation \ref{eq:gpfunctor} as $\mathcal{E}(\mathcal{G}) = P^{\mathcal{G}} = \{e_i | i=1 \ldots 16 \}$. We may further apply the $R$-distribution functor $\mathcal{D}_R$ given in Equation \ref{eq:distfunctor} to obtain a distribution on the genotype-phenotype mappings. Doing so yields  $\mathcal{D}_R\mathcal{E}(\mathcal{G})=d \colon P^\mathcal{G} \rightarrow R$. If we now apply this distribution function $d$ to the set of genotype-phenotype mappings we get the probabilities associated to each genotype-phenotype map $d(\{e_i | i=1 \ldots 16 \}) = \{p_i|i=1 \ldots 16\}$ given in Table \ref{tab:probabilities}. This can also be written more abstractly as $\left[\mathcal{D}_R\mathcal{E}(\mathcal{G})\right](\{e_i | i=1 \ldots 16 \}) = \left[\mathcal{D}_R\mathcal{E}(\mathcal{G})\right](P^\mathcal{G}) = \left[\mathcal{D}_R\mathcal{E}(\mathcal{G})\right](\mathcal{E}(\mathcal{G})) = \{p_i|i=1 \ldots 16\}$. Notice that we applied the functors $\mathcal{E}$ and $\mathcal{D}_R$ to a specific set, which was all of $\mathcal{G}$. We could have applied these functors to any $O \in \mathcal{G}$. In one case, for example if we take $O = \{l_1, l_2\}$, we would have gotten $\mathcal{E}(O) = \{e_i|i=1 \ldots 4\}$ and $\mathcal{D}_R\mathcal{E}(O) = d \colon P^O \rightarrow R$. In this case $\left[\mathcal{D}_R\mathcal{E}(O)\right](\mathcal{E}(O)) = \{p_i|i=1 \ldots 4\}$.
+We can collect all of these genotype-phenotype mappings into one set using the functor given in Equation \ref{eq:gpfunctor} as $\mathcal{E}(\mathcal{G}) = P^{\mathcal{G}} = \{e_i | i=1 \ldots 16 \}$. We may further apply the $R$-distribution functor $\mathcal{D}_R$ given in Equation \ref{eq:distfunctor} to obtain a distribution on the genotype-phenotype mappings. Doing so yields  $\mathcal{D}_R\mathcal{E}(\mathcal{G})=d \colon P^\mathcal{G} \rightarrow R$. If we now apply this distribution function $d$ to the set of genotype-phenotype mappings we get the probabilities associated to each genotype-phenotype map $d(\{e_i | i=1 \ldots 16 \}) = \{p_i|i=1 \ldots 16\}$ given in \ref{tab:probabilities}. This can also be written more abstractly as $\left[\mathcal{D}_R\mathcal{E}(\mathcal{G})\right](\{e_i | i=1 \ldots 16 \}) = \left[\mathcal{D}_R\mathcal{E}(\mathcal{G})\right](P^\mathcal{G}) = \left[\mathcal{D}_R\mathcal{E}(\mathcal{G})\right](\mathcal{E}(\mathcal{G})) = \{p_i|i=1 \ldots 16\}$. Notice that we applied the functors $\mathcal{E}$ and $\mathcal{D}_R$ to a specific set, which was all of $\mathcal{G}$. We could have applied these functors to any $O \in \mathcal{G}$. In one case, for example if we take $O = \{l_1, l_2\}$, we would have gotten $\mathcal{E}(O) = \{e_i|i=1 \ldots 4\}$ and $\mathcal{D}_R\mathcal{E}(O) = d \colon P^O \rightarrow R$. In this case $\left[\mathcal{D}_R\mathcal{E}(O)\right](\mathcal{E}(O)) = \{p_i|i=1 \ldots 4\}$.
 
 We may also consider directly the meaning of $\left[\mathcal{D}_R\mathcal{E}(\{l_1\})\right](\mathcal{E}(\{l_1\}))$ and similarly for the other $l \in L$. The sheaf condition then introduces a system of equations relating and thus constraining the probability parameters, beyond the constraint that each row sum to one. The constraint introduced by the sheaf condition is expressed in Equation \ref{eq:sheafprob}, specialized to this example by
 \begin{eqnarray}\label{eq:sheafprob2}
 \sum_{e \in \mathcal{E}(\{l\}),\, e|l=e_{\{l\}}} d_{\{l\}}(e) \,\, = \sum_{e \in \mathcal{E}(O),\, e|l=e_{\{l\}}} d_O(e) \,\, = \sum_{e' \in \mathcal{E}(O'),\, e'|l=e_{\{l\}}} d_{O'}(e'),
 \end{eqnarray}
-for each $l \in L$, $e_{\{l\}} \in \mathcal{E}(\{l\})$, and $\{O \in \mathcal{G}|l=o, o \in O\}$. The resulting equations are explicitly indicated in like colors between the columns of Table \ref{tab:sheaf} :
+for each $l \in L$, $e_{\{l\}} \in \mathcal{E}(\{l\})$, and $\{O \in \mathcal{G}|l=o, o \in O\}$. The resulting equations are explicitly indicated in like colors between the columns of \ref{tab:sheaf} :
 \begin{equation}
 \begin{aligned}\label{eq:pparsys}
 p^*_1 &= p_1 + p_3 = p_5 + p_7, &
@@ -139,7 +139,7 @@ Consider the meaning of the sheaf condition for $\mathcal{D}_R\mathcal{E}(L)$. $
 0, & e' \neq e.
 \end{cases}
 \end{eqnarray}
-For each gene regulatory network module $O$ we note that $\delta_e|O = \delta_{e|O}$. In this case, we can write the empirically determined distribution such as Table \ref{tab:probabilities} for a particular gene regulatory network module $d_O$ in terms of the distribution defined on the global set of genes restricted to a particular gene regulatory network module $d|O$:
+For each gene regulatory network module $O$ we note that $\delta_e|O = \delta_{e|O}$. In this case, we can write the empirically determined distribution such as \ref{tab:probabilities} for a particular gene regulatory network module $d_O$ in terms of the distribution defined on the global set of genes restricted to a particular gene regulatory network module $d|O$:
 \begin{equation}\label{eq:factordist}
 \begin{split}
 d_O(e) &= d|O(e)\\
@@ -153,9 +153,9 @@ where
 \end{equation*}
 We recover the empirically determined distribution as a sum over the deterministic genotype-phenotype mappings weighted by the probabilities of the distribution $d \in \mathcal{D}_R\mathcal{E}(L)$ defined over the full set of such deterministic mappings.
 
-Thus, when there is a global section, given by $d \in \mathcal{D}_R\mathcal{E}(L)$, for an empirically determined distribution on genotype-phenotype mappings, for example that in Table \ref{tab:probabilities}, then it may be the case that a mechanism that stochastically selects among deterministic genotype-phenotype maps can satisfy or generate an empirically determined distribution.
+Thus, when there is a global section, given by $d \in \mathcal{D}_R\mathcal{E}(L)$, for an empirically determined distribution on genotype-phenotype mappings, for example that in \ref{tab:probabilities}, then it may be the case that a mechanism that stochastically selects among deterministic genotype-phenotype maps can satisfy or generate an empirically determined distribution.
 
-\subsection*{Existence of a global section for an empirically determined distribution of genotype-phenotype mappings}
+\subsection{Existence of a global section for an empirically determined distribution of genotype-phenotype mappings}
 Given an empirically determined distribution on the genotype-phenotype mapping process, it may be helpful to be able to classify whether or not there exists a global section satisfying the sheaf condition in order to determine the modularity requirements of the empirical distribution. If an empirically determined distribution does have a global section, then it is possible to achieve the same global biological function specified in the empirical distribution using a single gene regulatory network module that contains all of the genes in the given universal set of genes $L$ as is obtained using the particular cover of the genotype space $\mathcal{G}$ that is associated to the empirically determined distribution. If the empirically determined distribution does not have a global section satisfying the sheaf condition, then there is some contingency regarding interactions between genes necessitating decomposition into smaller submodules than is represented by the whole of the universal set of genes $L$.
 
 For a cover of the genotype space, $\mathcal{G}$, we can construct an incidence matrix, $\mathbf{G}$, representing the relationship between genotype-phenotype mappings having as domain particular gene regulatory network module contexts given by the $O \in \mathcal{G}$ and those global genotype-phenotype mappings defined on $L$. This is equivalent to the more formal statement that there is some binary relation,
@@ -175,9 +175,9 @@ This matrix can be viewed as an operator acting via matrix multiplication on dis
 \mathbf{G} \colon \mathcal{D}_R\mathcal{E}(L) &\rightarrow& \mathcal{D}_R\mathcal{E}(\mathcal{G}),\\
 d &\mapsto& (d|O)_{O \in \mathcal{G}},
 \end{eqnarray*}
-and thereby taking a global distribution defined on genotype-phenotype maps whose domain is the full set of genes $L$ to the \emph{marginalized} distributions that are defined relative to gene regulatory network modules contained in a covering of the genotype space $\mathcal{G}$. This is to say that $\mathbf{G} \cdot d = (d|O)_{O \in \mathcal{G}} = \{d_O\}_{O \in \mathcal{G}}$. $\mathbf{G}$ provides a way of determining the kinds of environmentally determined distributions on genotype-phenotype mapping (i.e. $\{d_O\}_{O \in \mathcal{G}}$, Table \ref{tab:probabilities}) that can be derived from distributions (i.e. $\mathcal{D}_R \mathcal{E}(L)$) defined on the global genotype-phenotype mappings (i.e. $\mathcal{E}(L)$ as opposed to $\mathcal{E}(O)$).
+and thereby taking a global distribution defined on genotype-phenotype maps whose domain is the full set of genes $L$ to the \emph{marginalized} distributions that are defined relative to gene regulatory network modules contained in a covering of the genotype space $\mathcal{G}$. This is to say that $\mathbf{G} \cdot d = (d|O)_{O \in \mathcal{G}} = \{d_O\}_{O \in \mathcal{G}}$. $\mathbf{G}$ provides a way of determining the kinds of environmentally determined distributions on genotype-phenotype mapping (i.e. $\{d_O\}_{O \in \mathcal{G}}$, \ref{tab:probabilities}) that can be derived from distributions (i.e. $\mathcal{D}_R \mathcal{E}(L)$) defined on the global genotype-phenotype mappings (i.e. $\mathcal{E}(L)$ as opposed to $\mathcal{E}(O)$).
 
-If we have an experimentally determined distribution on genotype phenotype maps in different genetic contexts (e.g. in Table \ref{tab:probabilities}) that we refer to as $\{d_O\}_{O \in \mathcal{G}}$, then we have an assignment of a probability value in $R$ to each genotype phenotype map $e_i \in \mathcal{E}(O)$ in Table \ref{tab:gpm}. We can collect these probabilities into a vector $\mathbf{V}_{n \times 1}$ where we note that $n$ is the same as that used to specify the number of genotype-phenotype maps in the coproduct over gene regulatory network modules in a given covering of the genotype space $\{e_1, \ldots e_n\} = \coprod_{O \in \mathcal{G}} \mathcal{E}(O)$. We can specify as unknown a distribution on the set of globally defined genotype phenotype maps and collect the associated probabilities in a vector $\mathbf{X}_{m \times 1}$ where there is a probability weight associated to each $t_j \in \mathcal{E}(L)$. Now we can attempt to determine the probability distribution on globally defined genotype-phenotype mappings $\mathcal{E}(L)$ by solving the linear system of equations
+If we have an experimentally determined distribution on genotype phenotype maps in different genetic contexts (e.g. in \ref{tab:probabilities}) that we refer to as $\{d_O\}_{O \in \mathcal{G}}$, then we have an assignment of a probability value in $R$ to each genotype phenotype map $e_i \in \mathcal{E}(O)$ in \ref{tab:gpm}. We can collect these probabilities into a vector $\mathbf{V}_{n \times 1}$ where we note that $n$ is the same as that used to specify the number of genotype-phenotype maps in the coproduct over gene regulatory network modules in a given covering of the genotype space $\{e_1, \ldots e_n\} = \coprod_{O \in \mathcal{G}} \mathcal{E}(O)$. We can specify as unknown a distribution on the set of globally defined genotype phenotype maps and collect the associated probabilities in a vector $\mathbf{X}_{m \times 1}$ where there is a probability weight associated to each $t_j \in \mathcal{E}(L)$. Now we can attempt to determine the probability distribution on globally defined genotype-phenotype mappings $\mathcal{E}(L)$ by solving the linear system of equations
 \begin{equation}
 \begin{split}
 \mathbf{G}_{n \times m} \mathbf{X}_{m \times 1} = \mathbf{V}_{n \times 1},\\
@@ -190,10 +190,10 @@ The constraint that $\mathbf{X}$ sum to one in order to satisfy the definition o
 \end{equation}
 Solutions, if any, to Equation \ref{eq:auglinsys} serve to exhibit a global section for the empirically determined distribution specified in $\mathbf{V}$.
 
-% \subsection*{Example global section determination}
+% \subsection{Example global section determination}
 % There are three parameters that determine the relative size of important sets for understanding the model at hand. $g$ represents the number of genetic loci, $a$ represents the number of different alleles that can occur at each locus, and $p$ represents the number of different phenotype values that each locus can take on. From these parameters, which we use together to classify models satisfying the structural constraints described thus far, we can derive additional quantities characterizing the model. For a system with parameters $(g,a,p)$ there are $a^g$ different gene regulatory network modules to consider and each may be associated with $p^g$ phenotypes. There are thus $(ap)^g$ different genotype-phenotype maps to consider with respect to the gene regulatory network modules meaning that this is the size of the set $\coprod_{O \in \mathcal{G}} \mathcal{E}(O)$. The set of all possible genes $L$ has size $ga$ and since there are $p$ different phenotypes that each gene can be mapped to, there are $p^{ga}$ different globally defined genotype-phenotype maps meaning that this is the size of the set $\mathcal{E}(L) = P^L$. Now we can state the size of the sets $\{t_1, \ldots t_m\} = \{t_j | t_j \in P^L\}$ and $\{e_1, \ldots e_n\} = \coprod_{O \in \mathcal{G}} \mathcal{E}(O)$ because we have explicit formulas for $n = (ap)^g$ and $m = p^{ga}$ in terms of the defining characteristics of a $(g,a,p)$ class of models. From the values of $n$ and $m$ we know the dimensions of the logical matrix representation of the relation $R$ as $\mathbf{G}_{(ap)^g \times p^{ga}}$.
 
-% For the case $(g=2,a=2,p=2)$, Table \ref{tab:pars222} shows the relationship between the abstract notation used throughout the model description and the concrete parameters introduced in this example. Using the notation of Table \ref{tab:pars222}, we can also explicitly construct $\mathbf{G}_{(ap)^g \times p^{ga}}$ as in Table \ref{tab:logmat222}.
+% For the case $(g=2,a=2,p=2)$, \ref{tab:pars222} shows the relationship between the abstract notation used throughout the model description and the concrete parameters introduced in this example. Using the notation of \ref{tab:pars222}, we can also explicitly construct $\mathbf{G}_{(ap)^g \times p^{ga}}$ as in \ref{tab:logmat222}.
 
 In terms of the probability values expressed in tables \ref{tab:hidvarmod} and \ref{tab:probabilities} the resulting system of equations $\mathbf{G}_{n \times m} \mathbf{X}_{m \times 1} = \mathbf{V}_{n \times 1}$ is
 \begin{equation}
@@ -218,8 +218,8 @@ p_{16} &= q_4 + q_8 + q_{12} + q_{16}
 \end{equation}
 Adding the additional rows to $\mathbf{G}$ and $\mathbf{V}$ to ensure that $\sum_i q_i = 1$ gives the system $\mathbf{G}_{(n + 1) \times m} \mathbf{X}_{m \times 1} = \mathbf{V}_{(n + 1) \times 1}$.
 
-\section*{Geometric comparison of spaces of modular and non-modular distributions over genotype-phenotype mappings}
-We ultimately aim to determine the fraction of the space of all genotype-phenotype mappings with respect to a given covering of the genotype space $\mathcal{G}$ satisfying the sheaf condition and thereby posessing a global distribution. We first describe a formalization of the morphisms between local and global distributions over genotype-phenotype mappings in terms of the simple example for the case $L = \{ l_1,l_2,l_3,l_4 \}$, $\mathcal{G} = \{\{l_1,l_2 \},\{l_1,l_4 \},\{l_3,l_2\},\{l_3,l_4\} \}$, $P=\{0,1\}$ where the elements of $P^L$ index the columns and elements of $\coprod_{O \in \mathcal{G}} \mathcal{E} (O)$ index the rows of the matrix given in Table \ref{tab:logmat222}. This example generalizes immediately to arbitrary $L$, $\mathcal{G}$, and $P$. One of the geometric objects of interest for constructing the spaces of local and global distributions over genotype-phenotype mappings is the \emph{probability simplex}:
+\subsection{Geometric comparison of spaces of modular and non-modular distributions over genotype-phenotype mappings}
+We ultimately aim to determine the fraction of the space of all genotype-phenotype mappings with respect to a given covering of the genotype space $\mathcal{G}$ satisfying the sheaf condition and thereby posessing a global distribution. We first describe a formalization of the morphisms between local and global distributions over genotype-phenotype mappings in terms of the simple example for the case $L = \{ l_1,l_2,l_3,l_4 \}$, $\mathcal{G} = \{\{l_1,l_2 \},\{l_1,l_4 \},\{l_3,l_2\},\{l_3,l_4\} \}$, $P=\{0,1\}$ where the elements of $P^L$ index the columns and elements of $\coprod_{O \in \mathcal{G}} \mathcal{E} (O)$ index the rows of the matrix given in \ref{tab:logmat222}. This example generalizes immediately to arbitrary $L$, $\mathcal{G}$, and $P$. One of the geometric objects of interest for constructing the spaces of local and global distributions over genotype-phenotype mappings is the \emph{probability simplex}:
 $$
 \Delta_{m-1} = \left\{ (p_1, \ldots , p_m) \in \mathbb{R}^m \colon \sum_{i=1}^m p_i = 1 \text{ and } p_j \geq 0 \text{ for all } j \right\}.
 $$
@@ -231,7 +231,7 @@ In the example case have considered the mapping
   &\,\,\,\, \Delta_{15} \longrightarrow \Delta_3^{\times 4}
 \end{aligned}
 \end{equation}
-where $\Delta_{15}$ represents the space of global distributions one point of which is defined in Table \ref{tab:hidvarmod} and likewise $\Delta_3^{\times 4} = \Delta_3 \times \Delta_3 \times \Delta_3 \times \Delta_3$ represents the space of local distributions one point of which is defined in Table \ref{tab:probabilities}. Note that the codomain $\Delta_3^{\times 4}$ of $\mathbf{G}$ is determined by $\mathcal{G} = \{\{l_1,l_2 \},\{l_1,l_4 \},\{l_3,l_2\},\{l_3,l_4\} \}$ and $P=\{0,1\}$. There are four copies, hence the $\times 4$, of the $\Delta_{4-1}$ simplex: one for each gene regulatory network module in $\mathcal{G}$. Based upon the parameters utilized in equations \ref{eq:globsys} we can write elements of each of these spaces as $(q_1, \ldots, q_{16}) \in \Delta_{15}$ and $((p_1, \ldots , p_4), \ldots, (p_{13},\ldots,p_{16})) \in \Delta_3 \times \Delta_3 \times \Delta_3 \times \Delta_3$. The constraints necessary to define $\mathbf{G}$ on points have already been given in equations \ref{eq:globsys} whereby
+where $\Delta_{15}$ represents the space of global distributions one point of which is defined in \ref{tab:hidvarmod} and likewise $\Delta_3^{\times 4} = \Delta_3 \times \Delta_3 \times \Delta_3 \times \Delta_3$ represents the space of local distributions one point of which is defined in \ref{tab:probabilities}. Note that the codomain $\Delta_3^{\times 4}$ of $\mathbf{G}$ is determined by $\mathcal{G} = \{\{l_1,l_2 \},\{l_1,l_4 \},\{l_3,l_2\},\{l_3,l_4\} \}$ and $P=\{0,1\}$. There are four copies, hence the $\times 4$, of the $\Delta_{4-1}$ simplex: one for each gene regulatory network module in $\mathcal{G}$. Based upon the parameters utilized in equations \ref{eq:globsys} we can write elements of each of these spaces as $(q_1, \ldots, q_{16}) \in \Delta_{15}$ and $((p_1, \ldots , p_4), \ldots, (p_{13},\ldots,p_{16})) \in \Delta_3 \times \Delta_3 \times \Delta_3 \times \Delta_3$. The constraints necessary to define $\mathbf{G}$ on points have already been given in equations \ref{eq:globsys} whereby
 \begin{align*}
 (q_1, \ldots , q_{16}) \mapsto &((q_1+q_2+q_3+q_4, q_5+q_6+q_7+q_8, q_9+q_{10}+q_{11}+q_{12},q_{13}+q_{14}+q_{15}+q_{16}), \ldots \\
 &,(q_1 + q_5 + q_9 + q_{13}, q_2 + q_6 + q_{10} + q_{14}, q_3 + q_7 + q_{11} + q_{15}, q_4 + q_8 + q_{12} + q_{16} ) ).
@@ -246,27 +246,117 @@ $$
 $$
 is referred to as the marginal polytope with respect to a given covering of the genotype space $\mathcal{G}$ and represents the space of globally consistent marginal distributions that have a global section and thus, in this case, a joint probability distribution defined on the set of all genes $L$. The second
 $$
-\mathbb{L}(\mathcal{G}) \equiv \{\mathbf{V} \in \mathbb{R}^{16} | \text{the constraints in Eq. \ref{eq:pparsys} hold}\}
+\mathbb{L}(\mathcal{G}) \equiv \{\mathbf{V} \in \mathbb{R}^{16} | \text{the constraints in \ref{eq:pparsys} hold}\}
 $$
 is referred to as the locally consistent polytope. More generally for arbitrary $\mathcal{G}$, $L$, $P$, and associated $\mathbf{G}$
 \begin{equation}
 \begin{aligned}\label{eq:polytopes}
 \mathbb{M}(\mathcal{G}) &\equiv \{\mathbf{V} \in \mathbb{R}^{n} | \mathbf{G}\mathbf{X}=\mathbf{V} \text{ for all } \mathbf{X} \in \Delta_{m-1}\}\\
-\mathbb{L}(\mathcal{G}) &\equiv \{\mathbf{V} \in \mathbb{R}^{n} | \text{the constraints in Eq. \ref{eq:sheafprob} hold}\}
+\mathbb{L}(\mathcal{G}) &\equiv \{\mathbf{V} \in \mathbb{R}^{n} | \text{the constraints in \ref{eq:sheafprob} hold}\}
 \end{aligned}
 \end{equation}
-In order to assess the likelihood for a given $\mathcal{G}$ of the existence of a global section satisfying the sheaf constraints givein in Eq. \ref{eq:sheafprob} we would like to compute the ratio of the volumes of these two polytopes
+In order to assess the likelihood for a given $\mathcal{G}$ of the existence of a global section satisfying the sheaf constraints givein in \ref{eq:sheafprob} we would like to compute the ratio of the volumes of these two polytopes
 \begin{equation}\label{eq:volrat}
 \frac{\text{Vol}(\mathbb{M}(\mathcal{G}))}{\text{Vol}(\mathbb{L}(\mathcal{G}))}
 \end{equation}
-this is the quantity plotted for various $\mathcal{G}$ (i.e. GRNAs) in Fig. \ref{fig:ncycvolrat}.
+this is the quantity plotted for various $\mathcal{G}$ (i.e. GRNAs) in \ref{fig:ncycvolrat}.
 
-In order to compute the quantity in Eq. \ref{eq:volrat} we use the following algorithm (code implementing this algorithm is available as Appendices):
+In order to compute the quantity in \ref{eq:volrat} we use the following algorithm (code implementing this algorithm is made available in the Appendices):
 \begin{enumerate}
-\item Determine the image of $\mathbf{G}$ by annihilating the cokernel of $\mathbf{G}$ and setting its basis equal to $0$
+\item Determine a basis for the cokernel of $\mathcal{G}$ and annihilate it by setting
 \item Reduce the dimensionality of $\mathbf{V}$ by substituting the equations from step 1 into the system of inequalities $\mathbf{V} \geq 0$ giving a representation of the polytope $\mathbb{L}(\mathcal{G})$ called an H-representation. This can be used to compute $\text{Vol}(\mathbb{L}(\mathcal{G}))$
 \item Compute the vertices of $\mathbb{L}(\mathcal{G})$ from the H-representation determined in step 2 giving a representation of $\text{Vol}(\mathbb{L}(\mathcal{G}))$ in terms of its vertices called a V-representation
 \item Filter the non-integer rational vertices from the collection computed in step 3 to produce a corresponding V-representation of $\text{Vol}(\mathbb{M}(\mathcal{G}))$ \cite{Wainwright2007}
 \item Compute $\text{Vol}(\mathbb{M}(\mathcal{G}))$ from the V-represention of $\text{Vol}(\mathbb{M}(\mathcal{G}))$
 \end{enumerate}
 For standard computations on polytopes, we make use of the standard algorithms incorporated by the polymake project \cite{Gawrilow2000}. In some cases, the volume computation is too costly to perform exactly. In those cases we use the approximation given in \cite{Cousins}. In the next section we walk through some key components of the algorithm for the running example $\mathcal{G} = \{\{l_1,l_2 \},\{l_1,l_4 \},\{l_3,l_2\},\{l_3,l_4\} \}$ and $P=\{0,1\}$.
+
+\subsection{Constraint deduction method to derive H-representation of $\mathbb{L}(\mathcal{G})$}
+The equalities derived by computing the cokernel of the matrix $\mathcal{G}$ given in \ref{tab:logmat222} and adjoining rows that enforce the normalization of the marginal distributions are represented as a matrix in \ref{eq:eqmat}.
+\begin{equation}\label{eq:eqmat}
+\begin{aligned}
+\begin{bmatrix}
+  -1 & -1 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+  0 & 0 & -1 & -1 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+  -1 & 0 & -1 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+  0 & -1 & 0 & -1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0\\
+  0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & -1 & 0 & -1 & 0 & 1 & 1 & 0 & 0 & 0\\
+  0 & 0 & 0 & 0 & -1 & 0 & -1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0\\
+  -1 & -1 & -1 & -1 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & -1 & 0 & 0 & 1 & 0\\
+  1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1\\
+  0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1\\
+  0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 1\\
+  0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1\\
+\end{bmatrix}
+\end{aligned}
+\end{equation}
+The final column represents the right-hand side of each equality. It turns out all but one of the normalization conditions is linearly dependent with respect to the other equalities and so we can reduce this set of $7+4=11$ constraints to the $8$ represented again in matrix form in \ref{eq:kceqsrefa}.
+\begin{equation}\label{eq:kceqsrefa}
+\begin{aligned}
+\begin{bmatrix}
+  1 & 0 & 0 & -1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 1\\
+  0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & -1 & -1 & 0 & 0 & 0 & 0 & 0\\
+  0 & 0 & 1 & 1 & 0 & 0 & -1 & -1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+  0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 1\\
+  0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & -1 & 0 & -1 & 0\\
+  0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 1 & 1 & 1\\
+  0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & -1 & -1 & 0\\
+  0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1\\
+\end{bmatrix}
+\end{aligned}
+\end{equation}
+These equalities can now be substituted into the positivity inequalities necessary to define any space of probability distributions. This yields a set of inequalities \ref{eq:polrepindineqs} that specify an H-representation of the polytope $\mathbb{L}(\mathcal{G})$. This is the modular polytope, which is a subspace of $\Delta_3^{\times 4}$ associated to distributions consistent with the linear transformation $\mathbf{G}$
+\begin{equation}\label{eq:polrepindineqs}
+\begin{aligned}
+\begin{bmatrix}
+  1 & 1 & -1 & -1 & -1 & -1 & 0 & 0 & 0\\
+  0 & -1 & 0 & 0 & 1 & 1 & 0 & 0 & 0\\
+  0 & -1 & 1 & 1 & 0 & 0 & 0 & 0 & 0\\
+  1 & 0 & -1 & 0 & 0 & 0 & -1 & 0 & -1\\
+  0 & 0 & 0 & -1 & 0 & 0 & 1 & 0 & 1\\
+  1 & 0 & 0 & 0 & -1 & 0 & 0 & -1 & -1\\
+  0 & 0 & 0 & 0 & 0 & -1 & 0 & 1 & 1\\
+  1 & 0 & 0 & 0 & 0 & 0 & -1 & -1 & -1\\
+  0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+  0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0\\
+  0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0\\
+  0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0\\
+  0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0\\
+  0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0\\
+  0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0\\
+  0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1\\
+\end{bmatrix}
+\end{aligned}
+\end{equation}
+A row $(a_0,a_1,...,a_d)$ corresponds to the inequality $a_0 + a_1 x_1 + ... + a_d x_d >= 0$. The embedded identity matrix has, in this particular case eight, rows that specify the positivity of the variables corresponding to each of the, in this particular case eight, dimensions. Transforming this inequality or H-representation to a vertex or V-representation of the modular polytope produces \ref{eq:vrepfromhrep}.
+\begin{equation}\label{eq:vrepfromhrep}
+\begin{aligned}
+\begin{bmatrix}
+  1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1\\
+  1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0\\
+  1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0\\
+  1 & 1/2 & 1/2 & 0 & 1/2 & 0 & 1/2 & 1/2 & 0\\
+  1 & 1/2 & 0 & 1/2 & 0 & 1/2 & 1/2 & 1/2 & 0\\
+  1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+  1 & 1/2 & 1/2 & 0 & 0 & 1/2 & 0 & 0 & 1/2\\
+  1 & 1/2 & 0 & 1/2 & 1/2 & 0 & 0 & 0 & 1/2\\
+  1 & 0 & 0 & 1/2 & 0 & 1/2 & 0 & 0 & 1/2\\
+  1 & 0 & 1/2 & 0 & 1/2 & 0 & 0 & 0 & 1/2\\
+  1 & 0 & 1/2 & 0 & 0 & 1/2 & 1/2 & 1/2 & 0\\
+  1 & 0 & 0 & 1/2 & 1/2 & 0 & 1/2 & 1/2 & 0\\
+  1 & 1 & 1 & 0 & 1 & 0 & 0 & 0 & 0\\
+  1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0\\
+  1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0\\
+  1 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 0\\
+  1 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0\\
+  1 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0\\
+  1 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 0\\
+  1 & 1 & 0 & 1 & 0 & 1 & 0 & 0 & 1\\
+  1 & 1 & 0 & 1 & 1 & 0 & 1 & 0 & 0\\
+  1 & 1 & 1 & 0 & 0 & 1 & 0 & 1 & 0\\
+  1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 1\\
+  1 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 1\\
+\end{bmatrix}
+\end{aligned}
+\end{equation}
+This completes steps 1 and 2 of the algorithm outlined in the previous section. The remaining steps 3 through 5 are trivial. They are simply represented in the Appendices containing the code that implements them.

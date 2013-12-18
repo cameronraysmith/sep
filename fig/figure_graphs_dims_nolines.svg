@@ -3973,16 +3973,16 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.40975641"
-     inkscape:cx="557.64839"
-     inkscape:cy="802.75"
+     inkscape:cx="987.17187"
+     inkscape:cy="802.74999"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1176"
+     inkscape:window-width="960"
+     inkscape:window-height="1148"
      inkscape:window-x="0"
      inkscape:window-y="24"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="0" />
   <metadata
      id="metadata15102">
     <rdf:RDF>
@@ -3991,7 +3991,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -6623,5 +6623,53 @@
        width="837.0827"
        id="rect24126"
        style="opacity:0.25;fill:url(#radialGradient24128);fill-opacity:1;fill-rule:nonzero;stroke:none" />
+    <text
+       xml:space="preserve"
+       style="font-size:37.375px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:HelveticaNeue;-inkscape-font-specification:HelveticaNeue"
+       x="-420.3183"
+       y="-1778.6444"
+       id="text4523"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4525"
+         x="-420.3183"
+         y="-1778.6444"
+         style="font-size:55px">A</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text4527"
+       y="-1778.6444"
+       x="539.6817"
+       style="font-size:37.375px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:HelveticaNeue;-inkscape-font-specification:HelveticaNeue"
+       xml:space="preserve"><tspan
+         style="font-size:55px"
+         y="-1778.6444"
+         x="539.6817"
+         id="tspan4529"
+         sodipodi:role="line">B</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:37.375px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:HelveticaNeue;-inkscape-font-specification:HelveticaNeue"
+       x="539.6817"
+       y="-1018.6444"
+       id="text4531"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4533"
+         x="539.6817"
+         y="-1018.6444"
+         style="font-size:55px">D</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text4535"
+       y="-1018.6444"
+       x="-422.51831"
+       style="font-size:37.375px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:HelveticaNeue;-inkscape-font-specification:HelveticaNeue"
+       xml:space="preserve"><tspan
+         style="font-size:55px"
+         y="-1018.6444"
+         x="-422.51831"
+         id="tspan4537"
+         sodipodi:role="line">C</tspan></text>
   </g>
 </svg>
