@@ -6,6 +6,16 @@
 % http://tex.stackexchange.com/a/6063/6784
 \let\ref\autoref
 
+% Table of contents
+% http://tex.stackexchange.com/a/7357/6784
+%\pagebreak
+\pagenumbering{gobble}
+\tableofcontents
+\listoffigures
+\listoftables
+\pagebreak
+\pagenumbering{arabic}
+
 % Title must be 150 characters or less
 \begin{flushleft}
 {\Large
@@ -54,46 +64,21 @@ $\ast$ E-mail: cameron.smith@med.einstein.yu.edu
 \section{Methods}
 \input{tex/methods}
 
-\section{Supplementary Information}
-\input{tex/modeldescription}
-%\input{tex/marginalmapconstraints}
-%\input{tex/hadamardmethod}
-
 % Do NOT remove this, even if you are not including acknowledgments
 \section{Acknowledgments}
-We thank Jay Sulzberger for sharing important discussions and mathematical insight. We thank Noson Yonofsky and Andrew Yates for helpful discussions.
+\input{tex/acknowledgements}
 
 %\section{References}
 % The bibtex filename
 \bibliography{bib/books,bib/papers}
+
 \pagebreak
 \section{Figure Legends}
-%\begin{figure}[!ht]
-%\begin{center}
-%%\includegraphics[width=4in]{figure_name.2.eps}
-%\end{center}
-%\caption{
-%{\bf Bold the first sentence.}  Rest of figure 2  caption.  Caption
-%should be left justified, as specified by the options to the caption
-%package.
-%}
-%\label{Figure_label}
-%\end{figure}
 \input{tex/figures}
 
 \FloatBarrier
 
 \section{Tables}
-%\begin{table}[!ht]
-%\caption{
-%\bf{Table title}}
-%\begin{tabular}{|c|c|c|}
-%table information
-%\end{tabular}
-%\begin{flushleft}Table caption
-%\end{flushleft}
-%\label{tab:label}
-% \end{table}
 \input{tex/table_hidvarmod}
 \input{tex/table_example}
 \input{tex/table_sheaf}
@@ -102,29 +87,13 @@ We thank Jay Sulzberger for sharing important discussions and mathematical insig
 
 \FloatBarrier
 
-\section{Polymake computation of the non-modular:modular volume ratio of probability distribution polytopes for cyclic hypergraphs on three and four vertices}
-\input{tex/hypergraphvolrat}
 \pagebreak
+\setcounter{secnumdepth}{4}
+\section{Supplementary Information}
+\input{tex/modeldescription}
+%\input{tex/marginalmapconstraints}
+%\input{tex/hadamardmethod}
 
-\section{Example graphs on four vertices}
-\input{tex/graphlist4}
-\pagebreak
-
-\section{Generate the lattice of hypergraphs on a given number of vertices}
-\input{tex/hypergraphlattice}
-\pagebreak
-
-\section{Filter hypergraphs with cycles using Graham reduction}
-\input{tex/hypergraphcycle}
-\pagebreak
-
-\section{Approximate volume computations}
-\input{tex/overfourapproxvol}
-
-% Table of contents
-\pagebreak
-\tableofcontents
-\listoffigures
-\listoftables
+\input{tex/code}
 
 \end{document}
