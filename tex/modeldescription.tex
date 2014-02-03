@@ -219,28 +219,28 @@ p_{16} &= q_4 + q_8 + q_{12} + q_{16}
 Adding the additional rows to $\mathbf{G}$ and $\mathbf{V}$ to ensure that $\sum_i q_i = 1$ gives the system $\mathbf{G}_{(n + 1) \times m} \mathbf{X}_{m \times 1} = \mathbf{V}_{(n + 1) \times 1}$.
 
 \subsection{Geometric comparison of spaces of modular and non-modular distributions over genotype-phenotype mappings}
-We ultimately aim to determine the fraction of the space of all genotype-phenotype mappings with respect to a given covering of the genotype space $\mathcal{G}$ satisfying the sheaf condition and thereby posessing a global distribution. We first describe a formalization of the morphisms between local and global distributions over genotype-phenotype mappings in terms of the simple example for the case $L = \{ l_1,l_2,l_3,l_4 \}$, $\mathcal{G} = \{\{l_1,l_2 \},\{l_1,l_4 \},\{l_3,l_2\},\{l_3,l_4\} \}$, $P=\{0,1\}$ where the elements of $P^L$ index the columns and elements of $\coprod_{O \in \mathcal{G}} \mathcal{E} (O)$ index the rows of the matrix given in \ref{tab:logmat222}. This example generalizes immediately to arbitrary $L$, $\mathcal{G}$, and $P$. One of the geometric objects of interest for constructing the spaces of local and global distributions over genotype-phenotype mappings is the \emph{probability simplex}:
+We ultimately aim to determine the fraction of the space of all genotype-phenotype mappings with respect to a given covering of the genotype space $\mathcal{G}$ satisfying the sheaf condition and thereby posessing a global distribution. We first describe the linear transformations between global and local distributions, referred to as marginalization maps, over genotype-phenotype mappings in terms of the simple example for the case $L = \{ l_1,l_2,l_3,l_4 \}$, $\mathcal{G} = \{\{l_1,l_2 \},\{l_1,l_4 \},\{l_3,l_2\},\{l_3,l_4\} \}$, $P=\{0,1\}$ where the elements of $P^L$ index the columns and elements of $\coprod_{O \in \mathcal{G}} \mathcal{E} (O)$ index the rows of the matrix given in \ref{tab:logmat222}. This example generalizes immediately to arbitrary $L$, $\mathcal{G}$, and $P$. The primary geometric object of interest for constructing the spaces of local and global distributions over genotype-phenotype mappings is the \emph{probability simplex}:
 $$
 \Delta_{m-1} = \left\{ (p_1, \ldots , p_m) \in \mathbb{R}^m \colon \sum_{i=1}^m p_i = 1 \text{ and } p_j \geq 0 \text{ for all } j \right\}.
 $$
-In the example case have considered the mapping
+In the example case we have considered the mapping
 \begin{equation}
 \begin{aligned}\label{eq:marginalmap}
 \mathbf{G} &\colon \mathbb{R}^{16} \longrightarrow \mathbb{R}^{16}\\
   &\,\,\,\, \cup \,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\, \cup\\
-  &\,\,\,\, \Delta_{15} \longrightarrow \Delta_3^{\times 4}
+  &\,\,\,\, \Delta_{15} \longrightarrow \Delta_3^{\oplus 4}
 \end{aligned}
 \end{equation}
-where $\Delta_{15}$ represents the space of global distributions one point of which is defined in \ref{tab:hidvarmod} and likewise $\Delta_3^{\times 4} = \Delta_3 \times \Delta_3 \times \Delta_3 \times \Delta_3$ represents the space of local distributions one point of which is defined in \ref{tab:probabilities}. Note that the codomain $\Delta_3^{\times 4}$ of $\mathbf{G}$ is determined by $\mathcal{G} = \{\{l_1,l_2 \},\{l_1,l_4 \},\{l_3,l_2\},\{l_3,l_4\} \}$ and $P=\{0,1\}$. There are four copies, hence the $\times 4$, of the $\Delta_{4-1}$ simplex: one for each gene regulatory network module in $\mathcal{G}$. Based upon the parameters utilized in equations \ref{eq:globsys} we can write elements of each of these spaces as $(q_1, \ldots, q_{16}) \in \Delta_{15}$ and $((p_1, \ldots , p_4), \ldots, (p_{13},\ldots,p_{16})) \in \Delta_3 \times \Delta_3 \times \Delta_3 \times \Delta_3$. The constraints necessary to define $\mathbf{G}$ on points have already been given in equations \ref{eq:globsys} whereby
+where $\Delta_{15}$ represents the space of global distributions one point of which is defined in \ref{tab:hidvarmod} and likewise $\Delta_3^{\oplus 4} = \Delta_3 \oplus \Delta_3 \oplus \Delta_3 \oplus \Delta_3$ represents the space of local distributions one point of which is defined in \ref{tab:probabilities}. Note that the codomain $\Delta_3^{\oplus 4}$ of $\mathbf{G}$ is determined by $\mathcal{G} = \{\{l_1,l_2 \},\{l_1,l_4 \},\{l_3,l_2\},\{l_3,l_4\} \}$ and $P=\{0,1\}$. There are four copies, hence the $\oplus 4$, of the $\Delta_{4-1}$ simplex: one for each gene regulatory network module in $\mathcal{G}$. Based upon the parameters utilized in equations \ref{eq:globsys} we can write elements of each of these spaces as $(q_1, \ldots, q_{16}) \in \Delta_{15}$ and $((p_1, \ldots , p_4), \ldots, (p_{13},\ldots,p_{16})) \in \Delta_3^{\oplus 4}$. The constraints necessary to define $\mathbf{G}$ on points have already been given in equations \ref{eq:globsys} whereby
 \begin{align*}
 (q_1, \ldots , q_{16}) \mapsto &((q_1+q_2+q_3+q_4, q_5+q_6+q_7+q_8, q_9+q_{10}+q_{11}+q_{12},q_{13}+q_{14}+q_{15}+q_{16}), \ldots \\
 &,(q_1 + q_5 + q_9 + q_{13}, q_2 + q_6 + q_{10} + q_{14}, q_3 + q_7 + q_{11} + q_{15}, q_4 + q_8 + q_{12} + q_{16} ) ).
 \end{align*}
-An ostensible inverse to $\mathbf{G}$, $\mathbf{G}^{-1} \colon \Delta_3^{\times 4} \longrightarrow \Delta_{15}$, is underdetermined and can only be estimated in general
+An ostensible inverse to $\mathbf{G}$, $\mathbf{G}^{-1} \colon \Delta_3^{\oplus 4} \longrightarrow \Delta_{15}$, is underdetermined and can only be estimated in general (often via maximum entropy)
 \begin{align*}
 ((p_1, \ldots , p_4), \ldots, (p_{13},\ldots,p_{16})) \mapsto & \,\,?.
 \end{align*}
-We can instead consider the relationship between two different convex polytopes. The first
+In order to estimate the quantity of interest we consider the relationship between two different convex polytopes. The first
 $$
 \mathbb{M}(\mathcal{G}) \equiv \{\mathbf{V} \in \mathbb{R}^{16} | \mathbf{G}\mathbf{X}=\mathbf{V} \text{ for all } \mathbf{X} \in \Delta_{15}\}
 $$
@@ -255,23 +255,23 @@ is referred to as the locally consistent polytope. More generally for arbitrary 
 \mathbb{L}(\mathcal{G}) &\equiv \{\mathbf{V} \in \mathbb{R}^{n} | \text{the constraints in \ref{eq:sheafprob} hold}\}
 \end{aligned}
 \end{equation}
-In order to assess the likelihood for a given $\mathcal{G}$ of the existence of a global section satisfying the sheaf constraints givein in \ref{eq:sheafprob} we would like to compute the ratio of the volumes of these two polytopes
+In order to assess the likelihood, with respect to some GRNA $\mathcal{G}$, of the existence of a global section satisfying the sheaf constraints given in \ref{eq:sheafprob} we would like to compute the ratio of the volumes of these two polytopes
 \begin{equation}\label{eq:volrat}
 \frac{\text{Vol}(\mathbb{M}(\mathcal{G}))}{\text{Vol}(\mathbb{L}(\mathcal{G}))}
 \end{equation}
-this is the quantity plotted for various $\mathcal{G}$ (i.e. GRNAs) in \ref{fig:ncycvolrat}.
+this is the quantity plotted for various GRNAs $\mathcal{G}$ in \ref{fig:ncycvolrat}.
 
-In order to compute the quantity in \ref{eq:volrat} we use the following algorithm (code implementing this algorithm is made available in the Appendices):
+\subsection{Constraint deduction method to derive H-representation of $\mathbb{L}(\mathcal{G})$}
+In order to compute the quantity in \ref{eq:volrat} we use an algorithm which we merely outline here (code implementing this algorithm is made available in the Appendices):
 \begin{enumerate}
-\item Determine a basis for the cokernel of $\mathcal{G}$ and annihilate it by setting
-\item Reduce the dimensionality of $\mathbf{V}$ by substituting the equations from step 1 into the system of inequalities $\mathbf{V} \geq 0$ giving a representation of the polytope $\mathbb{L}(\mathcal{G})$ called an H-representation. This can be used to compute $\text{Vol}(\mathbb{L}(\mathcal{G}))$
-\item Compute the vertices of $\mathbb{L}(\mathcal{G})$ from the H-representation determined in step 2 giving a representation of $\text{Vol}(\mathbb{L}(\mathcal{G}))$ in terms of its vertices called a V-representation
-\item Filter the non-integer rational vertices from the collection computed in step 3 to produce a corresponding V-representation of $\text{Vol}(\mathbb{M}(\mathcal{G}))$ \cite{Wainwright2007}
-\item Compute $\text{Vol}(\mathbb{M}(\mathcal{G}))$ from the V-represention of $\text{Vol}(\mathbb{M}(\mathcal{G}))$
+\item Compute (a basis for) the cokernel of $\mathcal{G}$ where $coker(\mathcal{G}) = ker(\mathcal{G}^T) \subseteq \Delta_3^{\oplus 4}$. The cokernel gives the obstructions to the system $\mathbf{G}\mathbf{X}=\mathbf{V}$ having a solution. In order to eliminate these obstructions constraints must be imposed on $\Delta_3^{\oplus 4}$ and these constraints are given precisely via annihilating the cokernel.
+\item Use the constraints on $\Delta_3^{\oplus 4}$ from step 1 necessary for the system $\mathbf{G}\mathbf{X}=\mathbf{V}$ to have a solution to eliminate variables from the system of inequalities $\mathbf{V} \geq 0$ giving a half-space representation or H-representation of the polytope $\mathbb{L}(\mathcal{G})$. This can be used to compute $\text{Vol}(\mathbb{L}(\mathcal{G}))$.
+\item Compute the vertices of $\mathbb{L}(\mathcal{G})$ from the H-representation determined in step 2 giving a vertex representation or V-representation of $\mathbb{L}(\mathcal{G})$.
+\item Filter the non-integer rational vertices from the collection computed in step 3 to produce a corresponding V-representation of $\text{Vol}(\mathbb{M}(\mathcal{G}))$ \cite{Wainwright2007}.
+\item Compute $\text{Vol}(\mathbb{M}(\mathcal{G}))$ from the V-represention of $\text{Vol}(\mathbb{M}(\mathcal{G}))$.
 \end{enumerate}
 For standard computations on polytopes, we make use of the standard algorithms incorporated by the polymake project \cite{Gawrilow2000}. In some cases, the volume computation is too costly to perform exactly. In those cases we use the approximation given in \cite{Cousins}. In the next section we walk through some key components of the algorithm for the running example $\mathcal{G} = \{\{l_1,l_2 \},\{l_1,l_4 \},\{l_3,l_2\},\{l_3,l_4\} \}$ and $P=\{0,1\}$.
 
-\subsection{Constraint deduction method to derive H-representation of $\mathbb{L}(\mathcal{G})$}
 The equalities derived by computing the cokernel of the matrix $\mathcal{G}$ given in \ref{tab:logmat222} and adjoining rows that enforce the normalization of the marginal distributions are represented as a matrix in \ref{eq:eqmat}.
 \begin{equation}\label{eq:eqmat}
 \begin{aligned}
@@ -305,7 +305,7 @@ The final column represents the right-hand side of each equality. It turns out a
 \end{bmatrix}
 \end{aligned}
 \end{equation}
-These equalities can now be substituted into the positivity inequalities necessary to define any space of probability distributions. This yields a set of inequalities \ref{eq:polrepindineqs} that specify an H-representation of the polytope $\mathbb{L}(\mathcal{G})$. This is the modular polytope, which is a subspace of $\Delta_3^{\times 4}$ associated to distributions consistent with the linear transformation $\mathbf{G}$
+These equalities can now be substituted into the positivity inequalities necessary to define any space of probability distributions. This yields a set of inequalities \ref{eq:polrepindineqs} that specify an H-representation of the polytope $\mathbb{L}(\mathcal{G})$. This is the modular polytope, which is a subspace of $\Delta_3^{\oplus 4}$ associated to distributions consistent with the linear transformation $\mathbf{G}$
 \begin{equation}\label{eq:polrepindineqs}
 \begin{aligned}
 \begin{bmatrix}
@@ -359,4 +359,4 @@ A row $(a_0,a_1,...,a_d)$ corresponds to the inequality $a_0 + a_1 x_1 + ... + a
 \end{bmatrix}
 \end{aligned}
 \end{equation}
-This completes steps 1 and 2 of the algorithm outlined in the previous section. The remaining steps 3 through 5 are trivial. They are simply represented in the Appendices containing the code that implements them.
+This completes steps 1-3 of the algorithm outlined above. The remaining steps are trivial. For reference, they appear in the code in the Appendices that implements the algorithm for computing $\frac{\text{Vol}(\mathbb{M}(\mathcal{G}))}{\text{Vol}(\mathbb{L}(\mathcal{G}))}$ for arbitrary $\mathcal{G}$.
