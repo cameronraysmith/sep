@@ -48,8 +48,8 @@ $(TOPPDFFILE): $(TOPTEX) $(BIBFILES) $(TEMPLATE)
 	else echo "Install latexmk"; fi
 
 clean:
-	rm -f *.brf *.pre *.log *.aux *.dvi *.bbl *.snm *.toc *.synctex.gz \
-	      *.blg *.fls *.nav *.out *.fdb_latexmk
+	rm -f *.aux *.bbl *.blg *.brf *.dvi *.fdb_latexmk *.fls *.lof *.log \
+	      *.lot *.nav *.out *.pre *.snm *.synctex.gz *.toc
 
 cleanall: clean
 	rm -f $(TOPPDFFILE)
