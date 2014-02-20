@@ -105,7 +105,7 @@ Extending this example on an arbitrary subset $U \subseteq L$ to the whole set o
 \subsection{Hierarchical models}
 Given the collection of mappings $\mathcal{E}(O) = P^O$ for all $O \in \mathcal{G}$ we can attempt to explicitly construct a particular joint probability distribution $s \in \mathcal{D}_{\mathbb{R}}\mathcal{E}(L)$ on $\mathcal{E}(L)$. As noted above, in some cases such as that of \ref{fig:inconsistentthreecycle}A and C, such attempts may fail. This requires, first, a choice of mapping $\mathbb{R}^{\mathcal{E}(L)} \rightarrow \mathcal{D}_{\mathbb{R}}\mathcal{E}(L)$, which in the case of so-called \emph{exponential families} is
 \begin{eqnarray*}
-exp \colon \mathbb{R}^{\mathcal{E}(L)} &\rightarrow& \mathcal{D}_{\mathbb{R}}\mathcal{E}(L),\\
+\text{exp} \colon \mathbb{R}^{\mathcal{E}(L)} &\rightarrow& \mathcal{D}_{\mathbb{R}}\mathcal{E}(L),\\
 g &\mapsto& \frac{e^g}{\sum_{d \in \mathcal{E}(L)} e^{g(d)}}.
 \end{eqnarray*}
 In this case the exponential family is the image $exp(\mathcal{I}) \subset \mathcal{D}_{\mathbb{R}}\mathcal{E}(L)$ where $\mathcal{I} \subseteq \mathbb{R}^{\mathcal{E}(L)}$.
@@ -120,7 +120,7 @@ $$
 $$
 The \emph{hierarchical model} \cite{Lauritzen1996} associated to $\mathcal{G}$ is then the exponential family
 $$
-\mathcal{E}xp_{\mathcal{G}} = exp(\mathcal{I}_{\mathcal{G}}).
+\mathcal{E}xp_{\mathcal{G}} = \text{exp}(\mathcal{I}_{\mathcal{G}}).
 $$
 Markov random fields in the context of probabilistic graphical models or just graphical models are special cases of hierarchical models. In the main text, we use this notion in the numerical simulations to generate \ref{fig:inconsistentthreecycle}. Our reduced hypergraphs which correspond to GRNAs modeled as coverings of the collection of genes correspond more closely to what is referred to in machine learning as \emph{factor graphs} \cite{Barber2012,Bishop2007,Murphy2012,Koller2009}. The description in this section is taken from \cite{Lauritzen1996}, which uses hypergraphs explicitly.
 
