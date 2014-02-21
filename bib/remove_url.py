@@ -4,8 +4,14 @@ import re
 import fileinput
 
 def inplace_change(filename, old_string):
-    for line in fileinput.input(filename, inplace=True):
-        print re.sub(old_string,"",line),
+    ifile = open(filename,'r')
+    text = ifile.read()
+    ifile.close()
+    newtext = re.sub(old_string,"",text)
+    ofile = open(filename,'w')
+    ofile.write(newtext)
+    # for line in fileinput.input(filename, inplace=True):
+    #     print re.sub(old_string,"",line),
 
 if __name__ == "__main__":
     #import doctest
