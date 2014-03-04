@@ -28,7 +28,7 @@ on_create()
     # # sep - Development environment ###############################################
 
     mkdir -p /opt/sep
-    sudo -u vagrant -i bash -c "cd /opt/sep && PROJECT_HOME=/opt/sep ./scripts/create-dev-env.sh -ysnqp"
+    sudo -u vagrant -i bash -c "cd /opt/sep && PROJECT_HOME=/opt/sep ./scripts/create-dev-env.sh -ysnq"
 
     # # Load .bashrc ################################################################
     ([[ -f ~vagrant/.bash_profile ]] && grep ".bashrc" ~vagrant/.bash_profile) || {
