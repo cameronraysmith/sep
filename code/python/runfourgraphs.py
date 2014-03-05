@@ -7,25 +7,25 @@ import pandas as pd
 import subprocess
 import sys
 from minineqrep import minineqrep
-from plotfourgraphs import plotvoldim
+from plotfourgraphs import plotvoldimdf
 
 
 def definenames():
     graphlist = ["twok2",
-                 "claw"]
-                 # "P4",
-                 # "C4",
-                 # "paw",
-                 # "diamond",
-                 #"K4"]
+                 "claw",
+                 "P4",
+                 "C4",
+                 "paw",
+                 "diamond",
+                 "K4"]
 
     hgraphlist = ["flagpole",
                   "overtwo",
                   "basket",
                   "tripod",
                   "overtwoconnect",
-                  "overthree",
-                  "overfour"]
+                  "overthree"]#,
+                  #"overfour"]
 
     ffnames = ["fourgraphsvol.pdf",
                "fourgraphsdim.pdf",
@@ -61,7 +61,7 @@ def runvolcomp(args):
 
     df=pd.DataFrame(dfrowlist)
     df.to_csv('graphdata.csv')
-
+    plotvoldimdf('graphdata.csv')
     return df
 
 if __name__ == "__main__":

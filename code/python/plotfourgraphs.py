@@ -69,7 +69,7 @@ def plotvoldimdf(dfname,ffnames=["fourgraphsvol.pdf",
             line = line.replace("BitstreamVeraSans-Roman","HelveticaNeue")
             print line,
 
-   vnc = subprocess.call("evince " + " ".join(ffnames),shell=True)
+    #vnc = subprocess.call("evince " + " ".join(ffnames),shell=True)
 
 def plotvoldim(l,ffname="fourgraphsvolrat.pdf"):
     #dfname = "fourgraphs.dat"

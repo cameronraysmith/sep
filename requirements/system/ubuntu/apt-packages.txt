@@ -13,7 +13,6 @@ python-numpy
 python-matplotlib
 build-essential
 python-dev
-gfortran
 libfreetype6-dev
 libpng12-dev
 libjpeg-dev
@@ -37,6 +36,8 @@ libgeos-ruby1.8
 postgresql
 postgresql-contrib
 pgadmin3
+inkscape
+evince
 ant
 ant-optional
 default-jdk
