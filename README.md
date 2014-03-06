@@ -1,7 +1,15 @@
-Use of the virtual machine requires [VirtualBox][1] (including the extension pack) and [Vagrant][2]. These prerequisites can be installed in Ubuntu 12.04 by running the script `bootstraplocal.sh`. The virtual machine can then be provisioned and booted by running `vagrant up` in the root directory of this repository.
+A copy of this repository can be downloaded following installation of [git][git] by running:
+```
+/ $ git pull git@github.com:cameronraysmith/sep.git
+```
+Use of the virtual machine requires [VirtualBox][vbox] (including the extension pack) and [Vagrant][vagrant]. These prerequisites can be installed in Ubuntu 12.04 by running the script `bootstraplocal.sh`. The virtual machine can then be provisioned and booted by running `vagrant up` in the root directory of this repository.
+```
+/sep [master] $ ./bootstraplocal.sh && vagrant up
+```
 
-[1]: https://www.virtualbox.org/wiki/Downloads
-[2]: http://www.vagrantup.com/downloads.html
+[git]: http://git-scm.com/downloads
+[vbox]: https://www.virtualbox.org/wiki/Downloads
+[vagrant]: http://www.vagrantup.com/downloads.html
 
 <!-- 1. See PLOS Computational Biology [LaTeX submission guidelines][1]
 1. A [short math guide][2] from AMS.
