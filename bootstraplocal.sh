@@ -19,6 +19,8 @@ output "This script will download and install
     vagrant:    1.4.3 for ubuntu x64
 "
 
+sudo apt-get -y install nfs-kernel-server
+
 #---------------------
 # download packages:
 #   virtualbox: 4.3.8-92456 for ubuntu 12.04x64 (precise)
