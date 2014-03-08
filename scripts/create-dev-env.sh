@@ -373,7 +373,7 @@ git config --global push.default current
 
 # if [[ -n $polymake ]]; then
 wget -P ~ http://polymake.org/lib/exe/fetch.php/download/polymake-2.12-rc3.tar.bz2
-tar xf ~/polymake-2.12-rc3.tar.bz2
+tar xf ~/polymake-2.12-rc3.tar.bz2 -C ~
 mkdir -p ~/polymake
 cd ~/polymake-2.12
 ./configure --prefix=~/polymake
