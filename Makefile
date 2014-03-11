@@ -31,8 +31,8 @@ default: $(TOPPDFFILE)
 # Additional targets
 
 copybib:
-	cp /home/cameron/Downloads/bibtex/theoreticalbiology.bib bib/papers.bib
-	cp /home/cameron/Downloads/bibtex/books.bib bib/
+	cp ~/Downloads/bibtex/theoreticalbiology.bib bib/papers.bib
+	cp ~/Downloads/bibtex/books.bib bib/
 	python bib/remove_url.py bib/papers.bib
 	python bib/remove_url.py bib/books.bib
 
