@@ -1,75 +1,32 @@
-% reset
 close all;
 clear;
 
-% number of samples
-N=300;
+T = 1000;
+S = 100;
+avgKLD1 = [];
+maxKLD1 = [];
 
-% number of variables
-K=3;
-
-% container for samples
-T=zeros(N,K);
-
-% edges
-e = [2 3;
-     1 3;
-     1 2];
-
-% pairwise states
-s = [0 0;
-     0 1;
-     1 0;
-     1 1];
-
-% marginals correspond to probabilities
-% of pairwise states s
-% [00 01
-%  10 11]
-
-% 2--3 marginal
-m(:,:,1) = [0.4;
-            0.1; 
-            0.1;
-            0.4];
-
-% 1--3 marginal 
-m(:,:,2) = [0.1;
-            0.4; 
-            0.4;
-            0.1];
-
-% 1--2 marginal         
-m(:,:,3) = [0.4;
-            0.1; 
-            0.1;
-            0.4];
-    
-for i = 1:N
-    % sample inactive variable index
-    k = randsample(3,1);
-    
-    % sample pair state
-    ps = find(mnrnd(1,m(:,:,k)));
-    
-    % sample triple state
-    T(i,k) = -1;
-    T(i,e(k,1)) = s(ps,1);
-    T(i,e(k,2)) = s(ps,2);    
+textprogressbar(sprintf('working...\n'));
+for R=1:S:T+1
+    textprogressbar(R/T*100)
+    for k=1:50
+        [avgKLD1v(k),maxKLD1v(k)]=hierarchicalthreecycle(R,T,0,0);
+    end
+    avgKLD1 = [avgKLD1;
+               mean(avgKLD1v), std(avgKLD1v)]; 
+    maxKLD1 = [maxKLD1;
+               mean(maxKLD1v), std(maxKLD1v)];
+           
 end
+textprogressbar(sprintf('\ndone.'));
 
-% compute and plot pairwise histograms from triple states
-for k = 1:size(T,2)
-    TT = T(T(:,k)==-1,:);
-    [q,i,j]=unique(TT,'rows');
-    [f,x]=hist(j);
-    fprintf('\ntriple state counts for node %d inactive, edge %d--%d\n',k,e(k,1),e(k,2));
-    disp([q f(f~=0)']);
-    figure('Color','w');
-    bar(x,f/sum(f));
-    set(gca,'FontSize',18);
-    set(gca,'XTick',1:4);
-    title(sprintf('node %d inactive, edge %d--%d',k,e(k,1),e(k,2)));
-    xlabel('pairwise state');
-    ylabel('probability');
-end
+figure('Color','w');
+set(gca,'FontSize',18);
+errorbar(1:S:T+1',avgKLD1(:,1),avgKLD1(:,2),'k.','LineWidth',2)
+
+% figure('Color','w');
+% set(gca,'FontSize',18);
+hold on;
+errorbar([1:S:T+1]'+10,maxKLD1(:,1),maxKLD1(:,2),'rx','LineWidth',2)
+hold off;
+%set(gca,'YLim',[0,2]);
