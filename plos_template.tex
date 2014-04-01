@@ -9,42 +9,45 @@
 % Table of contents
 % http://tex.stackexchange.com/a/7357/6784
 %\pagebreak
-\pagenumbering{gobble}
-\tableofcontents
-\listoffigures
-\listoftables
-\pagebreak
+
+% \pagenumbering{gobble}
+% \tableofcontents
+% \listoffigures
+% \listoftables
+% \pagebreak
 \pagenumbering{arabic}
 
 % Title must be 150 characters or less
-\begin{flushleft}
+\begin{center}
 {\Large
-\textbf{Modularization of global genotype-phenotype mappings accesses a relative superset of biological functions}
+\textbf{Modularity in stochastic genotype-phenotype maps enables selection for network architecture}
 }
 % Insert Author names, affiliations and corresponding author email.
-\\
-Cameron Smith$^{1, \ast}$,
+\\[.5cm]
+Cameron Smith$^{1}$,
 Ximo Pechuan$^{1}$,
 Daniel Biro$^{1}$,
 Aviv Bergman$^{1,2,3,4, \ast}$
-\\
-\bf{1} Department of Systems and Computational Biology,
-\bf{2} Dominick P. Purpura Department of Neuroscience,
-\bf{3} Department of Pathology, Albert Einstein College of Medicine, Bronx, NY, USA
-\bf{4} Santa Fe Institute, 1399 Hyde Park Road, Santa Fe, NM 87501, USA
-\\
-$\ast$ E-mail: cameron.smith@med.einstein.yu.edu, aviv@einstein.yu.edu
-\end{flushleft}
+\\[.5cm]
+$^1$Department of Systems and Computational Biology,\\
+$^2$Dominick P. Purpura Department of Neuroscience,\\
+$^3$Department of Pathology, Albert Einstein College of Medicine,\\
+1301 Morris Park Ave, Bronx, NY 10461, USA\\
+$^4$Santa Fe Institute, 1399 Hyde Park Road, Santa Fe, NM 87501, USA
+\\[.5cm]
+$\ast$To whom correspondence should be addressed; E-mail: aviv@einstein.yu.edu.
+\end{center}
 
 % Please keep the abstract between 250 and 300 words
-\section{Abstract}
+%\section{Abstract}
+{\begin{quote} \bf
 \input{tex/abstract}
-
+\end{quote}}
 % Please keep the Author Summary between 150 and 200 words
 % Use first person. PLoS ONE authors please skip this step.
 % Author Summary not valid for PLoS ONE submissions.
-\section{Author Summary}
-\input{tex/authorsummary}
+%\section{Author Summary}
+%\input{tex/authorsummary}
 
 \section{Introduction}
 \input{tex/introduction}
@@ -63,8 +66,8 @@ $\ast$ E-mail: cameron.smith@med.einstein.yu.edu, aviv@einstein.yu.edu
 % You may title this section "Methods" or "Models".
 % "Models" is not a valid title for PLoS ONE authors. However, PLoS ONE
 % authors may use "Analysis"
-\section{Methods}
-\input{tex/methods}
+%\section{Methods}
+%\input{tex/methods}
 
 % Do NOT remove this, even if you are not including acknowledgments
 \section{Acknowledgments}
@@ -90,8 +93,9 @@ $\ast$ E-mail: cameron.smith@med.einstein.yu.edu, aviv@einstein.yu.edu
 %\FloatBarrier
 
 \pagebreak
+\beginsupplement
 \setcounter{secnumdepth}{4}
-\section{Supplementary Information}
+\section{Supplementary Material}
 \input{tex/modeldescription}
 %\input{tex/marginalmapconstraints}
 %\input{tex/hadamardmethod}

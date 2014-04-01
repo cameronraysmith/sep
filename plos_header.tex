@@ -43,8 +43,8 @@
 % Captions will be left justified
 \usepackage[labelfont=bf,labelsep=period,justification=raggedright]{caption}
 
-% Use the PLoS provided bibtex style
-\bibliographystyle{plos2009}
+% Use the Science provided bibtex style
+\bibliographystyle{Science}
 
 % Remove brackets from numbering in List of References
 \makeatletter
@@ -100,4 +100,12 @@ urlcolor=[rgb]{.09 .29 .54}}
 \renewcommand*{\equationautorefname}{Eq.}
 \renewcommand*{\tableautorefname}{Table}
 
+\renewcommand{\refname}{References and Notes}
+
+\newcommand{\beginsupplement}{%
+        \setcounter{table}{0}
+        \renewcommand{\thetable}{S\arabic{table}}%
+        \setcounter{figure}{0}
+        \renewcommand{\thefigure}{S\arabic{figure}}%
+     }
 %% END MACROS SECTION
