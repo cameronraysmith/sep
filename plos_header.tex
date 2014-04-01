@@ -101,4 +101,11 @@ urlcolor=[rgb]{.09 .29 .54}}
 \renewcommand*{\tableautorefname}{Table}
 
 \renewcommand{\refname}{References and Notes}
+
+\newcommand{\beginsupplement}{%
+        \setcounter{table}{0}
+        \renewcommand{\thetable}{S\arabic{table}}%
+        \setcounter{figure}{0}
+        \renewcommand{\thefigure}{S\arabic{figure}}%
+     }
 %% END MACROS SECTION
