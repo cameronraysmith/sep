@@ -377,9 +377,97 @@ A row $(a_0,a_1,...,a_d)$ corresponds to the inequality $a_0 + a_1 x_1 + ... + a
 \end{equation}
 This completes steps 1-3 of the algorithm outlined above. The remaining steps are trivial. For reference, they appear in the code in the Appendices that implements the algorithm for computing $\frac{\text{Vol}(\mathbb{M}(\mathcal{G}))}{\text{Vol}(\mathbb{L}(\mathcal{G}))}$ for arbitrary $\mathcal{G}$.
 
+\subsection{A generative process for inconsistent pairwise distributions}
+It is possible to generate what appear to be inconsistent pairwise distributions by embedding the system in \ref{fig:inconsistentthreecycle} into a consistent system represented by \ref{fig:controlnetwork}. In this system we consider the collection of pairwise probability distributions $p(l_1,l_2)$, $p(l_2,l_3)$, $p(l_1,l_3)$, and the joint probability distribution $p(m_1,m_2,m_3,m_4)$ where the states of genes $l_i \in \{ 0, 1\}$ and genes $m_i \in \{0,1,2\} \equiv \mathcal{M}$. The random variables representing the states of genes $l_1,l_2,l_3$ correspond to $m_1,m_2,m_3$ respectively and $m_4$ is a control random variable colored in dark gray in \ref{fig:controlnetwork}. We specify the control exhibited by $m_4$ over $m_1,m_2,m_3$ via the constraints
+\begin{align*}
+p(m_1=2|m_4=0)=1,\\
+p(m_2=2|m_4=1)=1,\\
+p(m_3=2|m_4=2)=1.
+\end{align*}
+We set $p(l_1,l_2)$, $p(l_2,l_3)$, $p(l_1,l_3)$ equal to those along the respective edges in \ref{fig:inconsistentthreecycle}A and then enforce analogous constraints on $p(m_1,m_2,m_3,m_4)$
+\begin{align*}
+p(m_1,m_2|m_4=2)=p(l_1,l_2),\\
+p(m_2,m_3|m_4=0)=p(l_2,l_3),\\
+p(m_1,m_3|m_4=1)=p(l_1,l_3).
+\end{align*}
+Finally, we place a uniform distribution on the states of $m_4$, $\forall m \in \mathcal{M} \left[ p(m_4=m) = 1/|\mathcal{M}| \right]$. This leads to the joint distribution
+\begin{align*}
+p(m_1,m_2,m_3,m_4=\{0022\})&=1/30,\\
+p(m_1,m_2,m_3,m_4=\{0122\})&=2/15,\\
+p(m_1,m_2,m_3,m_4=\{1022\})&=2/15,\\
+p(m_1,m_2,m_3,m_4=\{1122\})&=1/30,\\
+p(m_1,m_2,m_3,m_4=\{0201\})&=2/15,\\
+p(m_1,m_2,m_3,m_4=\{0211\})&=1/30,\\
+p(m_1,m_2,m_3,m_4=\{1201\})&=1/30,\\
+p(m_1,m_2,m_3,m_4=\{1211\})&=2/15,\\
+p(m_1,m_2,m_3,m_4=\{2000\})&=2/15,\\
+p(m_1,m_2,m_3,m_4=\{2010\})&=1/30,\\
+p(m_1,m_2,m_3,m_4=\{2100\})&=1/30,\\
+p(m_1,m_2,m_3,m_4=\{2110\})&=2/15.
+\end{align*}
+Now if we compute the conditional distributions
+\begin{align*}
+p(m_1,m_2|m_4=2) = \begin{bmatrix}
+0.1 & 0.4 & 0\\
+0.4 & 0.1 & 0\\
+0 & 0 & 0
+\end{bmatrix},\\
+p(m_2,m_3|m_4=0) = \begin{bmatrix}
+0.4 & 0.1 & 0\\
+0.1 & 0.4 & 0\\
+0 & 0 & 0
+\end{bmatrix},\\
+p(m_1,m_3|m_4=1) = \begin{bmatrix}
+0.4 & 0.1 & 0\\
+0.1 & 0.4 & 0\\
+0 & 0 & 0
+\end{bmatrix},
+\end{align*}
+we see that were we to only observe the variables $m_1,m_2,m_3$ we would arrive at the pairwise distributions
+\begin{align*}
+p(l_1,l_2) = \begin{bmatrix}
+0.1 & 0.4\\
+0.4 & 0.1
+\end{bmatrix},\\
+p(l_2,l_3) = \begin{bmatrix}
+0.4 & 0.1\\
+0.1 & 0.4
+\end{bmatrix},\\
+p(l_1,l_3) = \begin{bmatrix}
+0.4 & 0.1\\
+0.1 & 0.4
+\end{bmatrix},
+\end{align*}
+which cannot derive as marginals from any $p(l_1,l_2,l_3)$.
+
+% 1--2 conditioned on x_3=3, x_4=3
+%     0.4000    0.1000         0
+%     0.1000    0.4000         0
+%          0         0         0
+
+% 2--3 conditioned on x_1=3, x_4=1
+%     0.4000    0.1000         0
+%     0.1000    0.4000         0
+%          0         0         0
+
+% 1--3 conditioned on x_2=3, x_4=2
+%     0.1000    0.4000         0
+%     0.4000    0.1000         0
+%          0         0         0
+
+
+\FloatBarrier
+
 \begin{figure}[!ht]
 \centering
 \noindent\includegraphics[width=1.0\columnwidth]{fig/non2uniformcyclichypergraphhasse.pdf}
 \caption{{\bf Hierarchical relationships among all possible classes of hypergraphs that are not graphs (i.e. not 2-uniform) but have cycles.} (A) There is a Hasse diagram for the lattice of GRNAs analogous to that of \ref{fig:conediagram}A but defined on four rather than only three genes. Within this lattice some of the graphs have cycles and some do not. (B) The highest levels of the Hasse diagram associated to the lattice of GRNAs on four genes containing hypergraphs having cycles. (C) and (D) contain lower levels of GRNAs containing cycles. Each of the four panels in (D) are on the same level. In total, each level represents an isomorphism class of hypergraphs. Therefore, there are five isomorphism classes of non-2-uniform hypergraphs representing GRNAs on four genes that contain cycles leading to the relationship between spaces of probability distsributions on associated genotype-phentoype maps analogous to that of \ref{fig:conediagram}C.}
 \label{fig:non2uniformcyclichypergraphhasse}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\noindent\includegraphics[width=0.3\columnwidth]{fig/controlnetwork.pdf}
+\caption{{\bf Embedding into a particular network context.} The network inside the blue circle is equivalent to that of \ref{fig:inconsistentthreecycle}A, embedded into a particular network context that provides inputs (dark gray node) and outputs (light gray nodes) to the focal subnetwork. As a result of their connectivity, the outputs depend here upon pairwise correlations within the three genes comprising the focal subnetwork.}
+\label{fig:controlnetwork}
 \end{figure}
