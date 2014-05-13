@@ -246,7 +246,7 @@ p_{16} &= q_4 + q_8 + q_{12} + q_{16}
 Adding the additional rows to $\mathbf{G}$ and $\mathbf{V}$ to ensure that $\sum_i q_i = 1$ gives the system $\mathbf{G}_{(n + 1) \times m} \mathbf{X}_{m \times 1} = \mathbf{V}_{(n + 1) \times 1}$.
 
 \subsection{Geometric comparison of spaces of modular and non-modular distributions over genotype-phenotype mappings}
-We ultimately aim to determine the fraction of the space of all genotype-phenotype mappings with respect to a given covering of the genotype space $\mathcal{G}$ satisfying the sheaf condition and thereby posessing a global distribution. We first describe the linear transformations between global and local distributions, referred to as marginalization maps, over genotype-phenotype mappings in terms of the simple example for the case $L = \{ l_1,l_2,l_3,l_4 \}$, $\mathcal{G} = \{\{l_1,l_2 \},\{l_1,l_4 \},\{l_3,l_2\},\{l_3,l_4\} \}$, $P=\{0,1\}$ where the elements of $P^L$ index the columns and elements of $\coprod_{O \in \mathcal{G}} \mathcal{E} (O)$ index the rows of the matrix given in \ref{tab:logmat222}. This example generalizes immediately to arbitrary $L$, $\mathcal{G}$, and $P$. The primary geometric object of interest for constructing the spaces of local and global distributions over genotype-phenotype mappings is the \emph{probability simplex}:
+We ultimately aim to determine the fraction of the space of all genotype-phenotype mappings with respect to a given covering of the genotype space $\mathcal{G}$ satisfying the sheaf condition and thereby posessing a global distribution. We first describe the linear transformations between global and local distributions, referred to as marginalization maps, over genotype-phenotype mappings in terms of the simple example for the case $L = \{ l_1,l_2,l_3,l_4 \}$, $\mathcal{G} = \{\{l_1,l_2 \},\{l_1,l_4 \},\{l_3,l_2\},\{l_3,l_4\} \}$, $P=\{0,1\}$ where the elements of $P^L$ index the columns and elements of $\coprod_{O \in \mathcal{G}} \mathcal{E} (O)$ index the rows of the matrix given in \ref{tab:logmat222}. This example generalizes immediately to arbitrary $L$, $\mathcal{G}$, and $P$. The primary geometric object of interest for constructing the spaces of local and global distributions over genotype-phenotype mappings is the \emph{m-dimensional probability simplex}:
 $$
 \Delta_{m-1} = \left\{ (p_1, \ldots , p_m) \in \mathbb{R}^m \colon \sum_{i=1}^m p_i = 1 \text{ and } p_j \geq 0 \text{ for all } j \right\}.
 $$
@@ -289,12 +289,12 @@ In order to assess the likelihood, with respect to some GRNA $\mathcal{G}$, of t
 this is the quantity plotted for various GRNAs $\mathcal{G}$ in \ref{fig:ncycvolrat}.
 
 \subsection{Constraint deduction method to derive H-representation of $\mathbb{L}(\mathcal{G})$}
-In order to compute the quantity in \ref{eq:volrat} we use an algorithm which we merely outline here (code implementing this algorithm is made available in the Supporting Material and online via a virtual machine that can be reconstructed using the instructions available at \\ \href{https://github.com/cameronraysmith/sep}{https://github.com/cameronraysmith/sep}):
+In order to compute the quantity in \ref{eq:volrat} we use an algorithm that we outline here (code implementing this algorithm is made available in the Supporting Material and online via a virtual machine that can be reconstructed using the instructions available at~\href{https://github.com/cameronraysmith/sep}{https://github.com/cameronraysmith/sep}):
 \begin{enumerate}
 \item Compute (a basis for) the cokernel of $\mathcal{G}$ where $coker(\mathcal{G}) = ker(\mathcal{G}^T) \subseteq \Delta_3^{\oplus 4}$. The cokernel gives the obstructions to the system $\mathbf{G}\mathbf{X}=\mathbf{V}$ having a solution. In order to eliminate these obstructions constraints must be imposed on $\Delta_3^{\oplus 4}$ and these constraints are given precisely via annihilating the cokernel.
 \item Use the constraints on $\Delta_3^{\oplus 4}$ from step 1 necessary for the system $\mathbf{G}\mathbf{X}=\mathbf{V}$ to have a solution to eliminate variables from the system of inequalities $\mathbf{V} \geq 0$ giving a half-space representation or H-representation of the polytope $\mathbb{L}(\mathcal{G})$. This can be used to compute $\text{Vol}(\mathbb{L}(\mathcal{G}))$.
 \item Compute the vertices of $\mathbb{L}(\mathcal{G})$ from the H-representation determined in step 2 giving a vertex representation or V-representation of $\mathbb{L}(\mathcal{G})$.
-\item Filter the non-integer rational vertices from the collection computed in step 3 to produce a corresponding V-representation of $\mathbb{M}(\mathcal{G})$ \cite{Wainwright2007} proposition 8.3.
+\item Filter the non-integer rational vertices from the collection computed in step 3 to produce a corresponding V-representation of $\mathbb{M}(\mathcal{G})$ (see Proposition 8.3 and its corresponding proof in \cite{Wainwright2007}).
 \item Compute $\text{Vol}(\mathbb{M}(\mathcal{G}))$ from the V-represention of $\mathbb{M}(\mathcal{G})$.
 \end{enumerate}
 For standard computations on polytopes, we make use of the standard algorithms incorporated by the polymake project \cite{Gawrilow2000}. In some cases, the volume computation is too costly to perform exactly. In those cases we use the approximation given in \cite{Cousins}. In the next section we walk through some key components of the algorithm for the running example $\mathcal{G} = \{\{l_1,l_2 \},\{l_1,l_4 \},\{l_3,l_2\},\{l_3,l_4\} \}$ and $P=\{0,1\}$.
@@ -302,7 +302,7 @@ For standard computations on polytopes, we make use of the standard algorithms i
 The equalities derived by computing the cokernel of the matrix $\mathcal{G}$ given in \ref{tab:logmat222} and adjoining rows that enforce the normalization of the marginal distributions are represented as a matrix in \ref{eq:eqmat}.
 \begin{equation}\label{eq:eqmat}
 \begin{aligned}
-\begin{bmatrix}
+coker(\mathcal{G})=\begin{bmatrix}
   -1 & -1 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
   0 & 0 & -1 & -1 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
   -1 & 0 & -1 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
@@ -320,7 +320,7 @@ The equalities derived by computing the cokernel of the matrix $\mathcal{G}$ giv
 The final column represents the right-hand side of each equality. It turns out all but one of the normalization conditions is linearly dependent with respect to the other equalities and so we can reduce this set of $7+4=11$ constraints to the $8$ represented again in matrix form in \ref{eq:kceqsrefa}.
 \begin{equation}\label{eq:kceqsrefa}
 \begin{aligned}
-\begin{bmatrix}
+rref(coker(\mathcal{G}))=\begin{bmatrix}
   1 & 0 & 0 & -1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 1\\
   0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & -1 & -1 & 0 & 0 & 0 & 0 & 0\\
   0 & 0 & 1 & 1 & 0 & 0 & -1 & -1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
@@ -335,7 +335,7 @@ The final column represents the right-hand side of each equality. It turns out a
 These equalities can now be substituted into the positivity inequalities necessary to define any space of probability distributions. This yields a set of inequalities \ref{eq:polrepindineqs} that specify an H-representation of the polytope $\mathbb{L}(\mathcal{G})$. This is the modular polytope, which is a subspace of $\Delta_3^{\oplus 4}$ associated to distributions consistent with the linear transformation $\mathbf{G}$
 \begin{equation}\label{eq:polrepindineqs}
 \begin{aligned}
-\begin{bmatrix}
+\text{H-rep}(\mathbb{L}(\mathcal{G}))=\begin{bmatrix}
   1 & 1 & -1 & -1 & -1 & -1 & 0 & 0 & 0\\
   0 & -1 & 0 & 0 & 1 & 1 & 0 & 0 & 0\\
   0 & -1 & 1 & 1 & 0 & 0 & 0 & 0 & 0\\
@@ -355,10 +355,10 @@ These equalities can now be substituted into the positivity inequalities necessa
 \end{bmatrix}
 \end{aligned}
 \end{equation}
-A row $(a_0,a_1,...,a_d)$ corresponds to the inequality $a_0 + a_1 x_1 + ... + a_d x_d >= 0$. The embedded identity matrix has, in this particular case eight, rows that specify the positivity of the variables corresponding to each of the, in this particular case eight, dimensions. Transforming this inequality or H-representation to a vertex or V-representation of the modular polytope produces \ref{eq:vrepfromhrep}.
+A row $(a_0,a_1,...,a_d)$ corresponds to the inequality $a_0 + a_1 x_1 + ... + a_d x_d \geq 0$. The embedded identity matrix in rows 9-16 of \ref{eq:polrepindineqs} has, in this particular case eight, rows that specify the positivity of the variables corresponding to each of the, in this particular case eight, dimensions. Transforming this inequality or H-representation to a vertex or V-representation of the modular polytope produces \ref{eq:vrepfromhrep}.
 \begin{equation}\label{eq:vrepfromhrep}
 \begin{aligned}
-\begin{bmatrix}
+\text{V-rep}(\mathbb{L}(\mathcal{G}))=\begin{bmatrix}
   1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1\\
   1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0\\
   1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0\\
@@ -478,7 +478,7 @@ which cannot derive as marginals from any $p(l_1,l_2,l_3)$.
 
 \begin{figure}[!ht]
 \centering
-\noindent\includegraphics[width=0.3\columnwidth]{fig/controlnetwork.pdf}
-\caption{{\bf Embedding into a particular network context.} The network inside the blue circle is equivalent to that of \ref{fig:inconsistentthreecycle}A, embedded into a particular network context that provides inputs (dark gray node) and outputs (light gray nodes) to the focal subnetwork. As a result of their connectivity, the outputs depend here upon pairwise correlations within the three genes comprising the focal subnetwork.}
+\noindent\includegraphics[width=0.6\columnwidth]{fig/controlnetwork.pdf}
+\caption{{\bf Embedding into a particular network context.} (A) The network inside the blue circle is equivalent to that of \ref{fig:inconsistentthreecycle}A, embedded into a particular network context that provides inputs (dark gray node) and outputs (light gray nodes) to the focal subnetwork. As a result of their connectivity, the outputs depend here upon pairwise correlations within the three genes comprising the focal subnetwork. (B) The network context relative to any subnetwork is comprised of the collection of inputs and outputs to that subnetwork along with the manner in which these are connected to genes within the focal subnetwork.}
 \label{fig:controlnetwork}
 \end{figure}
