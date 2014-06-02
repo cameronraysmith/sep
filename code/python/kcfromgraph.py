@@ -116,6 +116,14 @@ def kcfromgraph(edgelist=[(0,1),(1,2),(2,3),(3,0)],
     poldim = polrepindineqs.shape[1] - 1
 
     if printlevel:
+        print "States"
+        print columns_states
+        print""
+
+        print "Edge IDs"
+        print cliqueids
+        print""
+
         print "KC / sufficient statistics matrix"
         print ssmat
         print ""
