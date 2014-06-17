@@ -7,6 +7,8 @@ modelselect.py
 import itrecipes
 import numpy as np
 import itertools
+import re
+import subprocess
 
 def subsetsize(ss):
     if not map(len,ss):
@@ -34,7 +36,7 @@ def genhypergraphs(vertices):
 
 def ssfromgraph(edgelist=[(0,1),(1,2),(2,3),(3,0)],
                 graphname="graph", pvallist=None,
-                printlevel=1):
+                printlevel=0):
     """
     input: edgelist = the list of edges of a graph
            pvallength = the number of discrete values each node can take
@@ -95,4 +97,64 @@ def ssfromgraph(edgelist=[(0,1),(1,2),(2,3),(3,0)],
         print ssmat
         print ""
 
-    return ssmat
+    return ssmat, columns_states
+
+def multiple_replace(dict, text):
+    # Create a regular expression  from the dictionary keys
+    regex = re.compile("(%s)" % "|".join(map(re.escape, dict.keys())))
+
+    # For each match, look-up corresponding value in dictionary
+    return regex.sub(lambda mo: dict[mo.string[mo.start():mo.end()]], text)
+
+#http://code.activestate.com/recipes/577124-approximately-equal/
+def float_approx_equal(x, y, tol=1e-18, rel=1e-7):
+    if tol is rel is None:
+        raise TypeError('cannot specify both absolute and relative errors are None')
+    tests = []
+    if tol is not None: tests.append(tol)
+    if rel is not None: tests.append(rel*abs(x))
+    assert tests
+    return abs(x - y) <= max(tests)
+
+def toric_markov(edgelist=[(0,1),(1,2),(2,3),(3,0)]):
+    ssmat, states = ssfromgraph(edgelist)
+
+    pvarlist = ['p'+''.join(map(str,i)) for i in states]
+    pvarstring = re.sub(r'\'',r'',str(pvarlist))
+
+    nparraytoM2matrixdict = {
+        '[' : '{',
+        ']' : '}',
+        '\n': '',
+        ' ' : ','
+    }
+
+    ssmatstring = multiple_replace(nparraytoM2matrixdict,str(ssmat))
+
+    M2script = str("loadPackage \"FourTiTwo\";\n"
+                    "R = QQ%s;\n"
+                    "A = matrix%s\n"
+                    "toricMarkov(A)\n"
+                    "It = toricMarkov(A,R)\n" %
+                    (pvarstring, ssmatstring))
+    p=subprocess.Popen("M2", stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.STDOUT)
+    m2output = p.communicate(input=M2script)[0]
+    numvars = str(len(states[0]))
+    polyregex = str(r'((\s?([-\+]\s)?(p[0-1]{%s}\*)+(p[0-1]{%s}))+)' % (numvars, numvars))
+    polyregexfind = re.findall(polyregex,m2output)
+    quadrics = [p[0] for p in polyregexfind]
+
+    return quadrics, pvarlist
+
+def check_model(edgelist=[(0,1),(1,2),(2,3),(3,0)],probabilities=[0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]):
+    quadrics, pvarlist = toric_markov()
+
+    modelcheckargs = "=0.25,".join(pvarlist)+"=0.25"
+    quadriceqs = ",0) & float_approx_equal(".join(quadrics)
+    modelcheckfunstr = str("def modelcheck(%s):\n"
+                           "\treturn float_approx_equal(%s"
+                           ",0)" %
+                           (modelcheckargs,quadriceqs))
+    exec(modelcheckfunstr)
+    return modelcheck(*probabilities)
+
