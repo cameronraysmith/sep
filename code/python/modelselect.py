@@ -36,7 +36,7 @@ def genhypergraphs(vertices):
 
 def ssfromgraph(edgelist=[(0,1),(1,2),(2,3),(3,0)],
                 graphname="graph", pvallist=None,
-                printlevel=0):
+                printlevel=1):
     """
     input: edgelist = the list of edges of a graph
            pvallength = the number of discrete values each node can take
@@ -147,7 +147,7 @@ def toric_markov(edgelist=[(0,1),(1,2),(2,3),(3,0)]):
     return quadrics, pvarlist
 
 def check_model(edgelist=[(0,1),(1,2),(2,3),(3,0)],probabilities=[0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]):
-    quadrics, pvarlist = toric_markov()
+    quadrics, pvarlist = toric_markov(edgelist)
 
     modelcheckargs = "=0.25,".join(pvarlist)+"=0.25"
     quadriceqs = ",0) & float_approx_equal(".join(quadrics)
