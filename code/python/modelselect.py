@@ -146,14 +146,22 @@ def toric_markov(edgelist=[(0,1),(1,2),(2,3),(3,0)]):
 
     return quadrics, pvarlist
 
-def check_model(edgelist=[(0,1),(1,2),(2,3),(3,0)],probabilities=[0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]):
+def check_model(edgelist=[(0,1),(1,2),(2,3),(3,0)],probabilities=[0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625],showvals=False):
     quadrics, pvarlist = toric_markov(edgelist)
+    uniformprob = str(1.0/len(pvarlist))
+    modelcheckargs = str('='+uniformprob+',').join(pvarlist)+'='+uniformprob
 
-    modelcheckargs = "=0.25,".join(pvarlist)+"=0.25"
-    quadriceqs = ",0) & float_approx_equal(".join(quadrics)
-    modelcheckfunstr = str("def modelcheck(%s):\n"
+    if showvals:
+        quadriceqs = ",".join(quadrics)
+        modelcheckfunstr = str("def modelcheck(%s):\n"
+                           "\treturn [%s"
+                           "]" %
+                           (modelcheckargs,quadriceqs))
+    else:
+        quadriceqs = ",0,1e-2) & float_approx_equal(".join(quadrics)
+        modelcheckfunstr = str("def modelcheck(%s):\n"
                            "\treturn float_approx_equal(%s"
-                           ",0)" %
+                           ",0,1e-2)" %
                            (modelcheckargs,quadriceqs))
     exec(modelcheckfunstr)
     return modelcheck(*probabilities)
