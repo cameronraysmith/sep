@@ -185,3 +185,5 @@ def check_models(probabilities=[0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 
     # return potentialmodellist, quadricvaluelist
     return quadricvaluelist
 
+def check_random_probs(numnodes,numdists):
+    dists = np.random.dirichlet(tuple([1]*2**numnodes),numdists)
