@@ -113,7 +113,7 @@ def genhypergraphs(vertices):
     return hgf
 
 def testfullset(hg,numverts):
-    fullset = set(range(1,numverts+1,1))
+    fullset = set(range(numverts))
     givenset = set()
     for i in hg:
         for j in i:
@@ -122,6 +122,9 @@ def testfullset(hg,numverts):
 
 def filternonfull(hgraphlist,numverts):
     return [hh for hh in hgraphlist if testfullset(hh,numverts)]
+
+def filternonfulllist(hgraphlist,numverts):
+    return [map(list,hh) for hh in hgraphlist if testfullset(hh,numverts)]
 
 def filteracyclic(hgraphlist, numverts):
     return [hh for hh in hgraphlist if testcycle(hh,numverts)]

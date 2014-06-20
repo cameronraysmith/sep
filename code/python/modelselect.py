@@ -10,6 +10,8 @@ import itertools
 import re
 import subprocess
 
+import hypergraphlattice as hgl
+
 def subsetsize(ss):
     if not map(len,ss):
         return 0
@@ -117,7 +119,7 @@ def float_approx_equal(x, y, tol=1e-18, rel=1e-7):
     return abs(x - y) <= max(tests)
 
 def toric_markov(edgelist=[(0,1),(1,2),(2,3),(3,0)]):
-    ssmat, states = ssfromgraph(edgelist)
+    ssmat, states = ssfromgraph(edgelist,printlevel=0)
 
     pvarlist = ['p'+''.join(map(str,i)) for i in states]
     pvarstring = re.sub(r'\'',r'',str(pvarlist))
@@ -135,13 +137,16 @@ def toric_markov(edgelist=[(0,1),(1,2),(2,3),(3,0)]):
                     "R = QQ%s;\n"
                     "A = matrix%s\n"
                     "toricMarkov(A)\n"
-                    "It = toricMarkov(A,R)\n" %
+                    "It = toricMarkov(A,R);\n"
+                    "toString(It)\n" %
                     (pvarstring, ssmatstring))
     p=subprocess.Popen("M2", stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.STDOUT)
     m2output = p.communicate(input=M2script)[0]
+    m2outputpython = re.sub('\^','**',re.sub('\s*','',m2output))
     numvars = str(len(states[0]))
-    polyregex = str(r'((\s?([-\+]\s)?(p[0-1]{%s}\*)+(p[0-1]{%s}))+)' % (numvars, numvars))
-    polyregexfind = re.findall(polyregex,m2output)
+    # polyregex = str(r'((\s?([-\+]\s)?(p[0-1]{%s}\*)+(p[0-1]{%s}))+)' % (numvars, numvars))
+    polyregex = str(r'(([-\+]?(p[0-1]{%s}(\*\*\d)?\*)+(p[0-1]{%s}(\*\*\d)?))+)' % (numvars, numvars))
+    polyregexfind = re.findall(polyregex,m2outputpython)
     quadrics = [p[0] for p in polyregexfind]
 
     return quadrics, pvarlist
@@ -165,4 +170,18 @@ def check_model(edgelist=[(0,1),(1,2),(2,3),(3,0)],probabilities=[0.0625, 0.0625
                            (modelcheckargs,quadriceqs))
     exec(modelcheckfunstr)
     return modelcheck(*probabilities)
+
+def check_models(probabilities=[0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625],numverts=4):
+    vertlist = range(numverts)
+    lattice = hgl.genhypergraphlattice(vertlist);
+    hypergraphlist = hgl.filternonfulllist(lattice.Uelements,numverts)
+    # potentialmodellist = []
+    quadricvaluelist = []
+    for graph in hypergraphlist:
+        # if check_model(graph,probabilities):
+            # potentialmodellist.append(graph)
+        print graph
+        quadricvaluelist.append((graph,check_model(graph,probabilities,True)))
+    # return potentialmodellist, quadricvaluelist
+    return quadricvaluelist
 
