@@ -12,30 +12,6 @@ import subprocess
 
 import hypergraphlattice as hgl
 
-def subsetsize(ss):
-    if not map(len,ss):
-        return 0
-    else:
-        return max(map(len,ss))
-
-def removesubsets(ss):
-    fs = frozenset([m for i,m in enumerate(ss)
-                    if not any(m < n for n in ss)])
-    return fs
-
-def genhypergraphs(vertices):
-    #vertices=[1,2,3]
-    #baseset = [frozenset([i]) for i in range(vertices)]
-    baseset = vertices
-    ps = itrecipes.powerset(baseset)
-    ps.next() # burn the empty list
-    psl = map(frozenset,ps)
-    hg = itrecipes.powerset(psl)
-    hgs = map(frozenset,hg)
-    hgf = map(removesubsets,hgs)
-    hgf = list(set(hgf))
-    return hgf
-
 def ssfromgraph(edgelist=[(0,1),(1,2),(2,3),(3,0)],
                 graphname="graph", pvallist=None,
                 printlevel=1):
