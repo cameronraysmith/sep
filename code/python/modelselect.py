@@ -161,5 +161,20 @@ def check_models(probabilities=[0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 
     # return potentialmodellist, quadricvaluelist
     return quadricvaluelist
 
-def check_random_probs(numnodes,numdists):
-    dists = np.random.dirichlet(tuple([1]*2**numnodes),numdists)
+def find_consistent_graphs(quadricvaluelist):
+    consistentgraphs = []
+    for graphcheck in quadricvaluelist:
+        if all(map(lambda x: float_approx_equal(x,0,tol=1e-3),graphcheck[1])):
+            consistentgraphs.append(graphcheck[0])
+    return consistentgraphs
+
+def check_random_probs(numverts,numdists):
+    dists = np.random.dirichlet(tuple([1]*2**numverts),numdists)
+    results = []
+    for dist in dists:
+        print dist
+        qvl = check_models(dist,numverts)
+        cgs = find_consistent_graphs(qvl)
+        results.append((dist,cgs))
+    return results
+
