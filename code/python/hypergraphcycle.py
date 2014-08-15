@@ -5,6 +5,9 @@ implementation of the Graham reduction method
 for hypergraph cycle detection
 http://web.cecs.pdx.edu/~maier/TheoryBook/MAIER/C13.pdf#page=18
 section 13.3.1
+
+uses hypergraph library from:
+https://github.com/ezod/hypergraph
 """
 
 from copy import deepcopy
