@@ -36,6 +36,26 @@ copybib:
 	python bib/remove_url.py bib/papers.bib
 	python bib/remove_url.py bib/books.bib
 
+copydownloadsbib:
+	cp ~/Downloads/bibtex/theoreticalbiology.bib ~/Downloads/bib/papers.bib
+	cp ~/Downloads/bibtex/books.bib ~/Downloads/bib/
+	python ~/Downloads/bib/remove_url.py ~/Downloads/bib/papers.bib
+	python ~/Downloads/bib/remove_url.py ~/Downloads/bib/books.bib
+
+linkbib:
+	ln -s ~/Downloads/bib bib
+
+dropbox:
+	mkdir -p ~/Dropbox/sharelatex/sep/tex
+	mkdir -p ~/Dropbox/sharelatex/sep/fig
+	mkdir -p ~/Dropbox/sharelatex/sep/bib
+	cp plos_template.tex ~/Dropbox/sharelatex/sep
+	cp *header.tex ~/Dropbox/sharelatex/sep
+	cp *.bst ~/Dropbox/sharelatex/sep
+	cp tex/* ~/Dropbox/sharelatex/sep/tex
+	cp fig/*.pdf ~/Dropbox/sharelatex/sep/fig
+	cp bib/*.bib ~/Dropbox/sharelatex/sep/bib
+
 $(BIBFILES):
 	copybib
 
