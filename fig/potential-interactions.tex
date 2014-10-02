@@ -1,0 +1,91 @@
+% A simple graph with straight and bend arrows and loops
+% Stefan Kottwitz
+\documentclass{article}
+\usepackage{tikz}
+
+%%%<
+\usepackage{verbatim}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{5pt}%
+%%%>
+\begin{comment}
+:Title: Simple graph
+:Tags: Arrows;Diagrams;Graphs;Mathematics
+:Author: Stefan Kottwitz
+:Slug: graph
+
+A simple example of a graph with straight and bend arrows and loops.
+It has been posted as answer to the question
+http://tex.stackexchange.com/q/45734/213 of Ichibann.
+
+* Define styles for edges, arrows, and nodes
+* Place the main nodes
+* Draw edges with nodes for description
+* Use options `loop` and `bend` for loops and bent edges
+* Specify `left` and `right` for bend direction and node placement
+\end{comment}
+\usetikzlibrary{arrows}
+\begin{document}
+
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
+  thick,main node/.style={circle,fill=white,draw=nephritis,font=\sffamily}]
+
+  \definecolor{nephritis}{RGB}{39, 174, 96} % green
+  \definecolor{wisteria}{RGB}{142, 68, 173} % purple
+  \definecolor{pumpkin}{RGB}{211, 84, 0} % orange
+  \definecolor{belizehole}{RGB}{41, 128, 185} % blue
+
+  \node[main node] (top) {$\emptyset$};
+  \node[main node] (B) [below left of=top] {B};
+  \node[main node] (A) [left of=B] {A};
+  \node[main node] (C) [below right of=top] {C};
+  \node[main node] (D) [right of=C] {D};
+  \node[main node] (AB) [below left of=A] {AB};
+  \node[main node] (AC) [right of=AB] {AC};
+  \node[main node] (AD) [right of=AC] {AD};
+  \node[main node] (BC) [right of=AD] {BC};
+  \node[main node] (BD) [right of=BC] {BD};
+  \node[main node] (CD) [right of=BD] {CD};
+  \node[main node] (ABC) [below of=A,yshift=-1.5cm] {ABC};
+  \node[main node] (ABD) [below of=B,yshift=-1.5cm] {ABD};
+  \node[main node] (ACD) [below of=C,yshift=-1.5cm] {ACD};
+  \node[main node] (BCD) [below of=D,yshift=-1.5cm] {BCD};
+  \node[main node] (ABCD) [below of=top,yshift=-6cm] {ABCD};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (top) edge node [left] {} (A)
+        edge node [left] {} (B)
+        edge node [left] {} (C)
+        edge node [left] {} (D)
+    (A) edge node [left] {} (AB)
+        edge node [left] {} (AC)
+        edge node [left] {} (AD)
+    (B) edge node [left] {} (AB)
+        edge node [left] {} (BC)
+        edge node [left] {} (BD)
+    (C) edge node [left] {} (BC)
+        edge node [left] {} (CD)
+        edge node [left] {} (AC)
+    (D) edge node [left] {} (AD)
+        edge node [left] {} (BD)
+        edge node [left] {} (CD)
+    (AB) edge node [left] {} (ABC)
+         edge node [left] {} (ABD)
+    (AC) edge node [left] {} (ABC)
+         edge node [left] {} (ACD)
+    (AD) edge node [left] {} (ABD)
+         edge node [left] {} (ACD)
+    (BC) edge node [left] {} (ABC)
+         edge node [left] {} (BCD)
+    (BD) edge node [left] {} (ABD)
+         edge node [left] {} (BCD)
+    (CD) edge node [left] {} (ACD)
+         edge node [left] {} (BCD)
+    (ABC) edge node [left] {} (ABCD)
+    (ABD) edge node [left] {} (ABCD)
+    (ACD) edge node [left] {} (ABCD)
+    (BCD) edge node [left] {} (ABCD)
+    ;
+\end{tikzpicture}
+\end{document}
