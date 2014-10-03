@@ -1,4 +1,9 @@
 %!TEX root = ../plos_template.tex
+
+\def\viable{\mathcal{U}}
+\def\expression{\mathcal{E}}
+\def\dist{\mathcal{D}}
+
 \subsection{Intuitive description}\label{sec:intuition}
 A genotype fundamentally determines a collection of interactions among genes. In this sense it is reasonable to consider a genotype to be a collection of subsets of genes, where the subsets encode the manner in which different genes interact with one another. These interactions result in phenotypes, which are observable properties that result from these interactions. At the most fundamental level, the phenotype is taken to be a measure of gene expression and in order to distinguish the possible phenotypes it is necessary to uniquely encode each expression state that corresponds to a given collection of interactions. For example, if we have three genes where all three genes interact with one another and each gene takes on one of two expression states, then our state space is determined by the $2^3$ binary sequences of length $3$. If instead of directly observing expression states, we observed a higher-level phenotype such as metabolite concentration, cell motility or shape, or in higher organisms even something as abstract as fur color, we could abstractly associate whatever number of labels are necessary to make all of the observable distinctions resulting in a model with an equivalent formalism.
 
@@ -11,42 +16,108 @@ Consideration of probability distributions on genotype-phenotype mappings where 
 The latter fact turns out to have an impact on the relationship between gene regulatory network architectures and their ability to achieve certain correlations among gene expression states and thus to perform certain functions. In order to quantify the relationships among the spaces of probability distributions over genotype-phenotype maps associated to each network architecture, we need to be able to determine the constraints associated to each network architecture and compare the geometries that result from imposing these constraints. In \ref{sec:dgpm} - \ref{sec:hierarchicalmodels} we describe the formalization of the stochastic genotype-phenotype map and the formal sheaf condition. In \ref{sec:example} - \ref{sec:generativeprocessapparentinconsistency} we provide an example computation used to derive the results presented in the main text. Readers primarily interested in the latter can skip to \ref{sec:example} and return to the earlier sections as needed.
 
 \subsection{Deterministic genotype-phenotype maps}\label{sec:dgpm}
-Consider the case in which we have a set of \emph{genes} $L$ indexed by $i=1, \ldots, m$. A subset of genes will be denoted as $U \subseteq L$. We also have a set of phenotypes $P$. In principle, any gene could give rise to any phenotype. A genotype-phenotype map is thus represented as a function mapping a subset of genes into phenotypes\footnote{In the operationalist framework from which this modeling description derives \cite{Abramsky2011}, our genes and subsets thereof $U \subseteq L$ are analogous to measurements and subsets thereof $T \subseteq X$ and our phenotypes $P$ are like measurement outcomes or values $V$. An event in which outcomes $s(t)$ are observed for each $t \in T$ serve to define mappings called \emph{sections} over $T$ as $s \colon T \rightarrow V$.}
-$$
-e \colon U \rightarrow  P.
-$$
 
-We denote the set of all subsets of a set $X$ as $\mathcal{P}(X)$. $\mathcal{P}(L)$ can then be viewed as a category~\cite{Lane1998,MacLane1992,Awodey2006} in which the objects are subsets of genes and morphisms represent inclusion of a smaller subset into a larger superset (i.e. $U \subseteq U' \Rightarrow U \rightarrow U'$). The category $\mathcal{P}(L)^{opp}$ then has the same objects, but the morphisms represent restriction from a larger to a smaller subset of genes (i.e. $U' \supseteq U \Rightarrow U' \rightarrow U$). In order to consider the set of all genotype-phenotype maps, for a given set of genes $L$, together, we can construct a functor
-$$
-\mathcal{E} \colon \mathcal{P}(L)^{opp} \rightarrow Set
-$$
-by exhibiting precisely how it acts on objects and morphisms in its domain category. We explicitly represent the way in which the functor $\mathcal{E}$ acts on objects $U$ and morphisms $U \subseteq U'$ respectively as
-\begin{equation}\label{eq:gpfunctor}
-\begin{split}
-\mathcal{E} \colon \mathcal{P}(L)^{opp} &\rightarrow Set,\\
-U &\mapsto P^U,\\
-U \subseteq U' &\mapsto res^{U'}_{U}.
-\end{split}
-\end{equation}
-So the functor $\mathcal{E}$ takes a subset of genes and returns the set of genotype-phenotype mappings from the given subset of genes to the set of phenotypes. The restriction map operates on sets deriving from the application of $\mathcal{E}$ to a subset of genes as follows
-\begin{eqnarray*}
-res^{U'}_{U} \colon \mathcal{E}(U') &\rightarrow& \mathcal{E}(U)\\
-P^{U'} &\rightarrow& P^U\\
-e' \colon U' \rightarrow P &\mapsto& e'|_U \colon U \rightarrow P
-\end{eqnarray*}
-$\mathcal{E}$ is thus, by definition, a presheaf functor, which is an object in the functor category $Sets^{\mathcal{P}(L)^{opp}}$.
+\begin{figure}[!ht]
+\centering
+\noindent\includegraphics[width=0.7\columnwidth]{fig/genesallelesgrns.pdf}
+\caption{{\bf Sequences, alleles, and GRNs.} In the sequences panel, we consider the letters to be abstract labels for arbitrary genetic sequences that may or may not be found to have a particular function once genetic interactions are taken into account. The existence of alleles are considered by grouping some sequences together under identifications such as~$A=X,\,B=X',\,C=Y,\,D=Y'$. In haploid organisms and assuming all genes are essential, genomes would then take one allele from each subset of sequences. However, in general, we may consider arbitrary subsets of genes to be able to be included in a genome.}
+\label{fig:genesallelesgrns}
+\end{figure}
+% \begin{center}
+% \includegraphics[width=0.9\columnwidth]{fig/genesallelesgrns.pdf}
+% \end{center}
+% \begin{figure}[!ht]
+% \centering
+% \noindent\includegraphics[width=0.4\columnwidth]{fig/potential-interactions.pdf}
+% \includegraphics[width=0.4\columnwidth]{fig/two-gene-two-allele-interactions.pdf}
+% \includegraphics[width=0.4\columnwidth]{fig/incompatibility-interactions.pdf}
+% \includegraphics[width=0.4\columnwidth]{fig/dependency-interactions.pdf}
+% \caption{{\bf Gene interaction lattices.}}
+% \label{fig:geneinteractionlattices}
+% \end{figure}
+
+% Consider the case in which we have a set of \emph{genes} $L$ like that in \ref{fig:genesallelesgrns}. Certain subsets of genes, $U \subseteq L$, represent which genes interact. We also have a set of phenotypes $P$. In principle, any gene could give rise to any phenotype. A genotype-phenotype map is thus represented as a function mapping a subset of genes into phenotypes\footnote{In the operationalist framework from which this modeling description derives \cite{Abramsky2011}, our genes and subsets thereof $U \subseteq L$ are analogous to measurements and subsets thereof $T \subseteq X$ and our phenotypes $P$ are like measurement outcomes or values $V$. An event in which outcomes $s(t)$ are observed for each $t \in T$ serve to define mappings called \emph{sections} over $T$ as $s \colon T \rightarrow V$.}
+% $$
+% e \colon U \rightarrow  P.
+% $$
+
+% We denote the set of all subsets of a set $X$ as $\mathcal{P}(X)$. $\mathcal{P}(L)$ can then be viewed as a category~\cite{Lane1998,MacLane1992,Awodey2006} in which the objects are subsets of genes and morphisms represent inclusion of a smaller subset into a larger superset (i.e. $U \subseteq U' \Rightarrow U \rightarrow U'$). The category $\mathcal{P}(L)^{opp}$ then has the same objects, but the morphisms represent restriction from a larger to a smaller subset of genes (i.e. $U' \supseteq U \Rightarrow U' \rightarrow U$). In order to consider the set of all genotype-phenotype maps, for a given set of genes $L$, together, we can construct a functor
+% $$
+% \mathcal{E} \colon \mathcal{P}(L)^{opp} \rightarrow Set
+% $$
+% by exhibiting precisely how it acts on objects and morphisms in its domain category. We explicitly represent the way in which the functor $\mathcal{E}$ acts on objects $U$ and morphisms $U \subseteq U'$ respectively as
+% \begin{equation}\label{eq:gpfunctor}
+% \begin{split}
+% \mathcal{E} \colon \mathcal{P}(L)^{opp} &\rightarrow Set,\\
+% U &\mapsto P^U,\\
+% U \subseteq U' &\mapsto res^{U'}_{U}.
+% \end{split}
+% \end{equation}
+% So the functor $\mathcal{E}$ takes a subset of genes and returns the set of genotype-phenotype mappings from the given subset of genes to the set of phenotypes. The restriction map operates on sets deriving from the application of $\mathcal{E}$ to a subset of genes as follows
+% \begin{eqnarray*}
+% res^{U'}_{U} \colon \mathcal{E}(U') &\rightarrow& \mathcal{E}(U)\\
+% P^{U'} &\rightarrow& P^U\\
+% e' \colon U' \rightarrow P &\mapsto& e'|_U \colon U \rightarrow P
+% \end{eqnarray*}
+% $\mathcal{E}$ is thus, by definition, a presheaf functor, which is an object in the functor category $Sets^{\mathcal{P}(L)^{opp}}$.
+
+Let $L$ denote a set of genes which comprise a genome like that of \ref{fig:genesallelesgrns}. Subsets of genes, $U \subseteq L$, will be used to represent which genes interact. We make $L$ into a topological space encoding these interactions by specifying the open sets $\mathcal{U}$ as a subset of $\mathcal{P}(L)$.  In the case of the simple discrete examples we will consider, we will have $\mathcal{U} = \mathcal{P}(L)$, but we want to leave open the possibility of more complicated models which might take into account the way genetic material is actually situated in physical space or the manner in which genes influence each other.
+
+Next, we will represent gene expression by constructing a sheaf over this space.  To accomplish this, we will provide a function $\expression$ which assigns to each element $S$ of $\mathcal{U}$ a collection of sets of possible expression states of the genes in $S$ \ref{tab:functors}.  Because we eventually want to compute probabilities of various sets of gene expression states, we will want these collections to be closed under taking countable unions and intersections as well as under complementation.  Hence, we will require that the image of $\expression$ consists of $\sigma$-algebras.  Moreover, if $S_1, S_2 \in \mathcal{U}$ and $S_1 \subset S_2$, then, if we restrict a possible expression of the genes in $S_2$ to $S_1$, we obtain a possible expresion of genes in $S_1$.  Hence, we will demand that $\expression$ be a functor.  Furthermore, since the physical processes that underly gene activation are local, we will require that it satisfy the sheaf condition.
+
+Summarizing what we have just described more formally, we have a topological space $(L,\mathcal{U})$; associated to it is the category $(\mathcal{U}, \subseteq)$ whose objects are open sets of $L$ and whose morphisms are inclusions of open sets.  Our expression map $\expression$ is a contravriant functor from this category to the category whose objects are $\sigma$-algebras and whose morphisms are inclusions of $\sigma$-algebras.
+
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{>{$}l<{$}|>{$}l<{$}|>{$}l<{$}}
+\viable & \expression & \dist \\
+\hline
+\emptyset & \{\bot\} & \emptyset \\
+\{A\} & \{\bot, a=0, a=1, (a=0) \land (a=1)\} & \{(p_0, p_1) \mid p_0 + p_1 = 1\} \\
+\{B\} & \{\bot, b=0, b=1, (b=0) \land (b=1)\} & \{(p_0, p_1) \mid p_0 + p_1 = 1\} \\
+\{A,B\}
+&\begin{footnotesize} \begin{tabular}{>{$}l<{$}}
+\{\bot, (a=0) \land (b=0), (a=0) \land (b=1),
+(a=1) \land (b=0), (a=1) \land (b=1), \\
+((a=0) \land (b=0)) \lor ((a=0) \land (b=1)),
+((a=0) \land (b=0)) \lor ((a=1) \land (b=0)), \\
+((a=0) \land (b=0)) \lor ((a=1) \land (b=1)),
+((a=0) \land (b=1)) \lor ((a=1) \land (b=0)), \\
+((a=0) \land (b=1)) \lor ((a=1) \land (b=1)),
+((a=1) \land (b=0)) \lor ((a=1) \land (b=1)), \\
+((a=0) \land (b=0)) \lor ((a=0) \land (b=1)) \lor ((a=1) \land (b=0)), \\
+((a=0) \land (b=0)) \lor ((a=0) \land (b=1)) \lor ((a=1) \land (b=1)), \\
+((a=0) \land (b=0)) \lor ((a=1) \land (b=0)) \lor ((a=1) \land (b=1)), \\
+((a=0) \land (b=1)) \lor ((a=1) \land (b=0)) \lor ((a=1) \land (b=1)), \\
+((a=0) \land (b=0)) \lor ((a=0) \land (b=1)) \lor ((a=1) \land (b=0)) \lor ((a=1) \land (b=1))\}
+\end{tabular} \end{footnotesize} & \begin{tabular}{>{$}l<{$}}
+\{(p_{00}, p_{01}, p_{10}, p_{11}) \mid \\
+\quad p_{00} + p_{01} + p_{10} + p_{11} = 1\} \\ \end{tabular} \\
+\end{tabular}
+\caption{Example of the model description. As the simplest illustration, consider a case where we have two genes, $A$ and $B$ each of which have two expression states, low and high, which we denote as $0$ and $1$.}
+\label{tab:functors}
+\end{table}
+
+\begin{center}
+\includegraphics[width=0.4\columnwidth]{fig/abstractroadmap.pdf}
+\end{center}
 
 \subsection{Stochastic genotype-phenotype maps}\label{sec:sgpm}
 There may be several sources for stochasticity in genotype-phenotype mapping including small numbers of the causal molecules and products of gene expression as well as environmental fluctuations upon which genotype-phenotype mappings are conditioned \cite{Swain2002,Paulsson2004,Thattai2004,Acar2008a,Lestas2010,Munsky2012,Chalancon2012,Neuert2013,Sanchez2013}. Regardless of the fundamental nature of stochasticity to gene expression, empirically, we observe statistical as opposed to deterministic data. Here we generalize the deterministic framework outlined above to the stochastic case.
 
-An \emph{algebraic structure} is determined by a set and one or more finitary operations (e.g. binary multiplication) defined on the elements of that set \cite{PachterLior2005,Artin2010}. A \emph{monoid} is a type of algebraic structure determined by a set and a binary operation such that the latter satisfies closure, associativity and identity with respect to the given set. A \emph{semiring} is an algebraic structure determined by a set with two binary operations. One of the binary operations, addition, forms a commutative monoid and has identity element 0. The second binary operation, multiplication, is a monoid with identity element 1. These binary operations interact such that multiplication distributes over addition and multiplication by the identity element of the addition monoid annihilates all elements in the semiring. For example, the real numbers under addition and multiplication constitute a semiring whose data is described as $\left( \mathbb{R},+,0,\times,1 \right)$.
+To accomplish this, we shall introduce proability distributions in a functorial manner.  Recall that, if $B$ is a $\sigma$-algebra, then a probability measure over $B$ is a mapping $P \colon B \to [0,1]$ such that $P(\top) = 1$ and $P(\bigcup_{k=1}^\infty (X_k) = \sum_{k=0}^\infty P(X_k)$ for any collection $X_k$ of pairwise disjoint elements of $B$.  Let $\dist(B)$ denote the set of all probability distributions over $B$.
 
-Consider a function, $\phi$ from a set, $L$, to a semiring $R$ written $\phi \colon L \rightarrow R$. The \emph{support} of $\phi$, $\text{supp}(\phi)$, is then the set $\{ l \in L | \phi(l) \neq 0 \}$. A distribution, $d$, with respect to the semiring $R$ on $L$ is given as a function having finite support and satisfying a constraint
+Furthermore, given an inclusion of $\sigma$-algebras $\iota : B_1 \hookrightarrow B_2$, and a probability distribution $P \colon B_2 \to [0,1]$, the composition $P \circ \iota$ is a probability distribution on $B_1$.  Let us denote this operation, which corresponds to marginalization of probabilities, as $\dist(\iota) : \dist(B_2) \to \dist(B_1)$.  With this definition, $\dist$ is a functor from the category of $\sigma$ algebras and inclusions intoduced in the last section to the category whose objects are probability distributions and whose morphisms correspond to marginalization.
+
+% An \emph{algebraic structure} is determined by a set and one or more finitary operations (e.g. binary multiplication) defined on the elements of that set \cite{PachterLior2005,Artin2010}. A \emph{monoid} is a type of algebraic structure determined by a set and a binary operation such that the latter satisfies closure, associativity and identity with respect to the given set. A \emph{semiring} is an algebraic structure determined by a set with two binary operations. One of the binary operations, addition, forms a commutative monoid and has identity element 0. The second binary operation, multiplication, is a monoid with identity element 1. These binary operations interact such that multiplication distributes over addition and multiplication by the identity element of the addition monoid annihilates all elements in the semiring. For example, the real numbers under addition and multiplication constitute a semiring whose data is described as $\left( \mathbb{R},+,0,\times,1 \right)$.
+
+Consider a function, $\phi$ from a set, $L$, to $\mathbb{R}$ written $\phi \colon L \rightarrow \mathbb{R}$. The \emph{support} of $\phi$, $\text{supp}(\phi)$, is then the set $\{ l \in L | \phi(l) \neq 0 \}$. A distribution, $d$, on $L$ is given as a function having finite support and satisfying the constraint
 \begin{eqnarray*}
-d \colon L \rightarrow R,\\
+d \colon L \rightarrow \mathbb{R},\\
 \sum_{l \in L} d(l) = 1
 \end{eqnarray*}
-We can consider the set of all distributions with respect to a given semiring $R$ satisfying the above constraints and defined on the set $L$ as being given by a functor applied to $L$ as $\mathcal{D}_R (L)$. We can again explicitly represent the way in which the functor $\mathcal{D}_R$ acts on objects and morphisms $L$ and $f \colon L \rightarrow M$ (where $L$ and $M$ are sets viewed as sets of genes and in some special cases we may have $M=L$) as
+We can consider the set of all distributions satisfying the above constraints and defined on the set $L$ as being given by a functor applied to $L$ as $\mathcal{D}_{\mathbb{R}} (L)$. We can again explicitly represent the way in which the functor $\mathcal{D}_{\mathbb{R}}$ acts on objects and morphisms $L$ and $f \colon L \rightarrow M$ (where $L$ and $M$ are sets viewed as sets of genes and in some special cases we may have $M=L$) as
 \begin{equation}\label{eq:distfunctor}
 \begin{split}
 \mathcal{D}_R \colon Set &\rightarrow Set,\\
