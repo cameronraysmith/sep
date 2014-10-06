@@ -36,37 +36,40 @@ The latter fact turns out to have an impact on the relationship between gene reg
 % \label{fig:geneinteractionlattices}
 % \end{figure}
 
-% Consider the case in which we have a set of \emph{genes} $L$ like that in \ref{fig:genesallelesgrns}. Certain subsets of genes, $U \subseteq L$, represent which genes interact. We also have a set of phenotypes $P$. In principle, any gene could give rise to any phenotype. A genotype-phenotype map is thus represented as a function mapping a subset of genes into phenotypes\footnote{In the operationalist framework from which this modeling description derives \cite{Abramsky2011}, our genes and subsets thereof $U \subseteq L$ are analogous to measurements and subsets thereof $T \subseteq X$ and our phenotypes $P$ are like measurement outcomes or values $V$. An event in which outcomes $s(t)$ are observed for each $t \in T$ serve to define mappings called \emph{sections} over $T$ as $s \colon T \rightarrow V$.}
-% $$
-% e \colon U \rightarrow  P.
-% $$
+Consider the case in which we have a set of \emph{genes} $L$ like that in \ref{fig:genesallelesgrns}. Certain subsets of genes, $U \subseteq L$, represent which genes interact. We also have a set of expression states $P$, which may more generally be thought of as a lowest-level phenotype. In principle, any gene could give rise to any phenotype. A genotype-phenotype map is thus represented as a function mapping a subset of genes into phenotypes\footnote{In the operationalist framework from which this modeling description derives \cite{Abramsky2011}, our genes and subsets thereof $U \subseteq L$ are analogous to measurements and subsets thereof $T \subseteq X$ and our phenotypes $P$ are like measurement outcomes or values $V$. An event in which outcomes $s(t)$ are observed for each $t \in T$ serve to define mappings called \emph{sections} over $T$ as $s \colon T \rightarrow V$.}
+$$
+e \colon U \rightarrow  P.
+$$
 
-% We denote the set of all subsets of a set $X$ as $\mathcal{P}(X)$. $\mathcal{P}(L)$ can then be viewed as a category~\cite{Lane1998,MacLane1992,Awodey2006} in which the objects are subsets of genes and morphisms represent inclusion of a smaller subset into a larger superset (i.e. $U \subseteq U' \Rightarrow U \rightarrow U'$). The category $\mathcal{P}(L)^{opp}$ then has the same objects, but the morphisms represent restriction from a larger to a smaller subset of genes (i.e. $U' \supseteq U \Rightarrow U' \rightarrow U$). In order to consider the set of all genotype-phenotype maps, for a given set of genes $L$, together, we can construct a functor
-% $$
-% \mathcal{E} \colon \mathcal{P}(L)^{opp} \rightarrow Set
-% $$
-% by exhibiting precisely how it acts on objects and morphisms in its domain category. We explicitly represent the way in which the functor $\mathcal{E}$ acts on objects $U$ and morphisms $U \subseteq U'$ respectively as
-% \begin{equation}\label{eq:gpfunctor}
-% \begin{split}
-% \mathcal{E} \colon \mathcal{P}(L)^{opp} &\rightarrow Set,\\
-% U &\mapsto P^U,\\
-% U \subseteq U' &\mapsto res^{U'}_{U}.
-% \end{split}
-% \end{equation}
-% So the functor $\mathcal{E}$ takes a subset of genes and returns the set of genotype-phenotype mappings from the given subset of genes to the set of phenotypes. The restriction map operates on sets deriving from the application of $\mathcal{E}$ to a subset of genes as follows
-% \begin{eqnarray*}
-% res^{U'}_{U} \colon \mathcal{E}(U') &\rightarrow& \mathcal{E}(U)\\
-% P^{U'} &\rightarrow& P^U\\
-% e' \colon U' \rightarrow P &\mapsto& e'|_U \colon U \rightarrow P
-% \end{eqnarray*}
+We denote the set of all subsets of a set $X$ as $\mathcal{P}(X)$. We make $L$ into a topological space encoding these interactions by specifying the open sets $\mathcal{U}$ as a subset of $\mathcal{P}(L)$.\footnote{In the case of the simple discrete examples we will consider, we will have $\mathcal{U} = \mathcal{P}(L)$, but we want to leave open the possibility of more complicated models which might take into account the way genetic material is actually situated in physical space or the manner in which genes influence each other.} We will represent gene expression by constructing a sheaf over this space.  To accomplish this, we will provide a function $\expression$ which assigns to each element $U$ of $\mathcal{U}$ a measurable space over the mappings from genes in $U$ to expression states \ref{tab:functors}.    This is because we eventually want to compute probabilities of various sets of gene expression states. We therefore want these collections to be closed under taking countable unions and intersections as well as under complementation.  Moreover, if $U, U' \in \mathcal{U}$ and $U \subset U'$, then, if we restrict a possible expression state of the genes in $U'$ to $U$, we obtain a possible expresion state of genes in $U$.  Hence, we will demand that $\expression$ be a functor.  Furthermore, since the physical processes that underly gene activation are local, we will require that it satisfy the sheaf condition.
+
+Summarizing what we have just described more formally, we have a topological space $(L,\mathcal{U})$. Associated to it is $\mathcal{U}$, a partially ordered set that can be viewed as a category~\cite{Lane1998,MacLane1992,Awodey2006} in which the objects are open subsets of genes and morphisms represent inclusion of a smaller subset into a larger superset (i.e. $U \subseteq U' \Rightarrow U \rightarrow U'$).
+% The category $\mathcal{U}^{opp}$ then has the same objects, but the morphisms represent restriction from a larger to a smaller subset of genes (i.e. $U' \supseteq U \Rightarrow U' \rightarrow U$).
+Our expression map $\expression$ allowing us to consider genotype-phenotype maps on collections of subsets of genes together is a contravariant functor from the category $\mathcal{U}$ to a subcategory of the category of measurable spaces
+$$
+\mathcal{E} \colon \mathcal{U} \rightarrow Meas.
+$$
+The codomain of $\mathcal{E}$ has measurable spaces $(P^U,\mathcal{B}(P^U))$ given by the combination of, $P^U$, the set of genotype-phenotype maps defined on $U$ and, $\mathcal{B}(P^U) \subseteq 2^{P^U}$ the $\sigma$-algebra on $P^U$ for objects and inclusions of those measurable spaces for morphisms. Specifically, $\mathcal{E}$ acts on objects $U$ and morphisms $U \subseteq U'$ respectively as
+\begin{equation}\label{eq:gpfunctor}
+\begin{split}
+\mathcal{E} \colon \mathcal{U} &\rightarrow Meas,\\
+U &\mapsto (P^U, \mathcal{B}(P^U)),\\
+U \subseteq U' &\mapsto res^{U'}_{U}.
+\end{split}
+\end{equation}
+So the functor $\mathcal{E}$ takes a subset of genes and returns the measurable space over the set of genotype-phenotype mappings from the given subset of genes to the set of expression states. The restriction map operates on measurable spaces deriving from the application of $\mathcal{E}$ to a subset of genes as follows
+\begin{eqnarray*}
+res^{U'}_{U} \colon \mathcal{E}(U') &\rightarrow& \mathcal{E}(U)\\
+(P^{U'},\mathcal{B}(P^{U'})) &\rightarrow& (P^U,\mathcal{B}(P^U))\\
+(e' \colon U' \rightarrow P, S) &\mapsto& (e'|_U \colon U \rightarrow P, \bigcup_{e \in S}(e' \mapsto e'|_U)^{-1}(e))
+\end{eqnarray*}
 % $\mathcal{E}$ is thus, by definition, a presheaf functor, which is an object in the functor category $Sets^{\mathcal{P}(L)^{opp}}$.
 
-Let $L$ denote a set of genes which comprise a genome like that of \ref{fig:genesallelesgrns}. Subsets of genes, $U \subseteq L$, will be used to represent which genes interact. We make $L$ into a topological space encoding these interactions by specifying the open sets $\mathcal{U}$ as a subset of $\mathcal{P}(L)$.  In the case of the simple discrete examples we will consider, we will have $\mathcal{U} = \mathcal{P}(L)$, but we want to leave open the possibility of more complicated models which might take into account the way genetic material is actually situated in physical space or the manner in which genes influence each other.
+% Let $L$ denote a set of genes which comprise a genome like that of \ref{fig:genesallelesgrns}. Subsets of genes, $U \subseteq L$, will be used to represent which genes interact. The set of all subsets of a set $X$ is denoted $\mathcal{P}(X)$. We make $L$ into a topological space encoding these interactions by specifying the open sets $\mathcal{U}$ as a subset of $\mathcal{P}(L)$.  In the case of the simple discrete examples we will consider, we will have $\mathcal{U} = \mathcal{P}(L)$, but we want to leave open the possibility of more complicated models which might take into account the way genetic material is actually situated in physical space or the manner in which genes influence each other.
 
-Next, we will represent gene expression by constructing a sheaf over this space.  To accomplish this, we will provide a function $\expression$ which assigns to each element $S$ of $\mathcal{U}$ a collection of sets of possible expression states of the genes in $S$ \ref{tab:functors}.  Because we eventually want to compute probabilities of various sets of gene expression states, we will want these collections to be closed under taking countable unions and intersections as well as under complementation.  Hence, we will require that the image of $\expression$ consists of $\sigma$-algebras.  Moreover, if $S_1, S_2 \in \mathcal{U}$ and $S_1 \subset S_2$, then, if we restrict a possible expression of the genes in $S_2$ to $S_1$, we obtain a possible expresion of genes in $S_1$.  Hence, we will demand that $\expression$ be a functor.  Furthermore, since the physical processes that underly gene activation are local, we will require that it satisfy the sheaf condition.
+% We will represent gene expression by constructing a sheaf over this space.  To accomplish this, we will provide a function $\expression$ which assigns to each element $U$ of $\mathcal{U}$ a probability space over the mappings from genes in $U$ to expression states \ref{tab:functors}.  This is because we eventually want to compute probabilities of various sets of gene expression states. We therefore want these collections to be closed under taking countable unions and intersections as well as under complementation.  Moreover, if $U, U' \in \mathcal{U}$ and $U \subset U'$, then, if we restrict a possible expression state of the genes in $U'$ to $U$, we obtain a possible expresion state of genes in $U$.  Hence, we will demand that $\expression$ be a functor.  Furthermore, since the physical processes that underly gene activation are local, we will require that it satisfy the sheaf condition.
 
-Summarizing what we have just described more formally, we have a topological space $(L,\mathcal{U})$; associated to it is the category $(\mathcal{U}, \subseteq)$ whose objects are open sets of $L$ and whose morphisms are inclusions of open sets.  Our expression map $\expression$ is a contravriant functor from this category to the category whose objects are $\sigma$-algebras and whose morphisms are inclusions of $\sigma$-algebras.
-
+% Summarizing what we have just described more formally, we have a topological space $(L,\mathcal{U})$; associated to it is the category $(\mathcal{U}, \subseteq)$ whose objects are open sets of $L$ and whose morphisms are inclusions of open sets.  Our expression map $\expression$ is a contravriant functor from this category to the category of probability spaces.
 
 \begin{table}[!ht]
 \centering
@@ -111,6 +114,8 @@ To accomplish this, we shall introduce proability distributions in a functorial 
 Furthermore, given an inclusion of $\sigma$-algebras $\iota : B_1 \hookrightarrow B_2$, and a probability distribution $P \colon B_2 \to [0,1]$, the composition $P \circ \iota$ is a probability distribution on $B_1$.  Let us denote this operation, which corresponds to marginalization of probabilities, as $\dist(\iota) : \dist(B_2) \to \dist(B_1)$.  With this definition, $\dist$ is a functor from the category of $\sigma$ algebras and inclusions intoduced in the last section to the category whose objects are probability distributions and whose morphisms correspond to marginalization.
 
 % An \emph{algebraic structure} is determined by a set and one or more finitary operations (e.g. binary multiplication) defined on the elements of that set \cite{PachterLior2005,Artin2010}. A \emph{monoid} is a type of algebraic structure determined by a set and a binary operation such that the latter satisfies closure, associativity and identity with respect to the given set. A \emph{semiring} is an algebraic structure determined by a set with two binary operations. One of the binary operations, addition, forms a commutative monoid and has identity element 0. The second binary operation, multiplication, is a monoid with identity element 1. These binary operations interact such that multiplication distributes over addition and multiplication by the identity element of the addition monoid annihilates all elements in the semiring. For example, the real numbers under addition and multiplication constitute a semiring whose data is described as $\left( \mathbb{R},+,0,\times,1 \right)$.
+
+The composite $\dist \circ \expression$ is a contravariant functor from $(\mathcal{U}, \subseteq)$ to $\sigma$-algebras.  However, as we shall see, this functor, unlike $\expression$, \emph{does not} satisfy the sheaf conditions and hence we only have a \emph{pre}-sheaf of probability distributions over $L$.
 
 Consider a function, $\phi$ from a set, $L$, to $\mathbb{R}$ written $\phi \colon L \rightarrow \mathbb{R}$. The \emph{support} of $\phi$, $\text{supp}(\phi)$, is then the set $\{ l \in L | \phi(l) \neq 0 \}$. A distribution, $d$, on $L$ is given as a function having finite support and satisfying the constraint
 \begin{eqnarray*}
