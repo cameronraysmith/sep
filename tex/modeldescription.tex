@@ -45,10 +45,12 @@ We denote the set of all subsets of a set $X$ as $\mathcal{P}(X)$. We make $L$ i
 
 Summarizing what we have just described more formally, we have a topological space $(L,\mathcal{U})$. Associated to it is $\mathcal{U}$, a partially ordered set that can be viewed as a category~\cite{Lane1998,MacLane1992,Awodey2006} in which the objects are open subsets of genes and morphisms represent inclusion of a smaller subset into a larger superset (i.e. $U \subseteq U' \Rightarrow U \rightarrow U'$).
 % The category $\mathcal{U}^{opp}$ then has the same objects, but the morphisms represent restriction from a larger to a smaller subset of genes (i.e. $U' \supseteq U \Rightarrow U' \rightarrow U$).
-Our expression map $\expression$ allowing us to consider genotype-phenotype maps on collections of subsets of genes together is a contravariant functor from the category $\mathcal{U}$ to a subcategory of the category of measurable spaces
+Our expression map $\expression$ allowing us to consider genotype-phenotype maps on collections of subsets of genes together is a contravariant functor from the category $\mathcal{U}$ to the category of measurable spaces, $Meas$
 $$
 \mathcal{E} \colon \mathcal{U} \rightarrow Meas.
 $$
+Recall that a measurable space corresponding to an object of $Meas$ $(S,\mathcal{B}(S))$ are pairs consisting of a set together with a $\sigma$-algebra over that set. We will work exclusively with a subcategory of $Meas$ where the morphisms are corresponding pairs of projections on the sets and inclusions on the $\sigma$-algebras $(f:S \rightarrow S', f^{-1} : \mathcal{B}(S') \rightarrow \mathcal{B}(S))$.
+
 The codomain of $\mathcal{E}$ has measurable spaces $(P^U,\mathcal{B}(P^U))$ given by the combination of, $P^U$, the set of genotype-phenotype maps defined on $U$ and, $\mathcal{B}(P^U) \subseteq 2^{P^U}$ the $\sigma$-algebra on $P^U$ for objects and inclusions of those measurable spaces for morphisms. Specifically, $\mathcal{E}$ acts on objects $U$ and morphisms $U \subseteq U'$ respectively as
 \begin{equation}\label{eq:gpfunctor}
 \begin{split}
@@ -102,22 +104,18 @@ res^{U'}_{U} \colon \mathcal{E}(U') &\rightarrow& \mathcal{E}(U)\\
 \label{tab:functors}
 \end{table}
 
-\begin{center}
-\includegraphics[width=0.4\columnwidth]{fig/abstractroadmap.pdf}
-\end{center}
-
 \subsection{Stochastic genotype-phenotype maps}\label{sec:sgpm}
 There may be several sources for stochasticity in genotype-phenotype mapping including small numbers of the causal molecules and products of gene expression as well as environmental fluctuations upon which genotype-phenotype mappings are conditioned \cite{Swain2002,Paulsson2004,Thattai2004,Acar2008a,Lestas2010,Munsky2012,Chalancon2012,Neuert2013,Sanchez2013}. Regardless of the fundamental nature of stochasticity to gene expression, empirically, we observe statistical as opposed to deterministic data. Here we generalize the deterministic framework outlined above to the stochastic case.
 
-To accomplish this, we shall introduce proability distributions in a functorial manner.  Recall that, if $B$ is a $\sigma$-algebra, then a probability measure over $B$ is a mapping $P \colon B \to [0,1]$ such that $P(\top) = 1$ and $P(\bigcup_{k=1}^\infty (X_k) = \sum_{k=0}^\infty P(X_k)$ for any collection $X_k$ of pairwise disjoint elements of $B$.  Let $\dist(B)$ denote the set of all probability distributions over $B$.
+To accomplish this, we shall introduce probability distributions in a functorial manner.  Recall that, if $(S,\mathcal{B}(S))$ is a measurable space, then a probability measure over $(S,\mathcal{B}(S))$ is a mapping $p \colon \mathcal{B}(S) \to [0,1]$ such that $p(S) = 1$ and $p(\bigcup_{k=1}^\infty (X_k) = \sum_{k=0}^\infty p(X_k)$ for any collection $X_k$ of pairwise disjoint elements of $\mathcal{B}(S)$.  Let $\dist((S,\mathcal{B}(S)))$ denote the set of all probability distributions over $(S,\mathcal{B}(S))$.
 
-Furthermore, given an inclusion of $\sigma$-algebras $\iota : B_1 \hookrightarrow B_2$, and a probability distribution $P \colon B_2 \to [0,1]$, the composition $P \circ \iota$ is a probability distribution on $B_1$.  Let us denote this operation, which corresponds to marginalization of probabilities, as $\dist(\iota) : \dist(B_2) \to \dist(B_1)$.  With this definition, $\dist$ is a functor from the category of $\sigma$ algebras and inclusions intoduced in the last section to the category whose objects are probability distributions and whose morphisms correspond to marginalization.
+Furthermore, given a map between measurable spaces $(f:S \rightarrow S', f^{-1} : \mathcal{B}(S') \rightarrow \mathcal{B}(S))$ where $f$ is a projection, there is an inclusion of measurable spaces $f^{-1} : \mathcal{B}(S') \rightarrow \mathcal{B}(S))$. Given a probability distribution $p \colon \mathcal{B}(S) \to [0,1]$, the composition $p \circ f^{-1}$ is a probability distribution on $\mathcal{B}(S')$.  Let us denote this operation, which corresponds to marginalization of probabilities, as $\dist(f^{-1}) : \dist((S',\mathcal{B}(S'))) \to \dist((S,\mathcal{B}(S)))$.  With this definition, $\dist$ is a functor from the category of measurable spaces introduced in the previous section to the category $Prob$ whose objects are probability distributions and whose morphisms correspond to marginalization.
 
 % An \emph{algebraic structure} is determined by a set and one or more finitary operations (e.g. binary multiplication) defined on the elements of that set \cite{PachterLior2005,Artin2010}. A \emph{monoid} is a type of algebraic structure determined by a set and a binary operation such that the latter satisfies closure, associativity and identity with respect to the given set. A \emph{semiring} is an algebraic structure determined by a set with two binary operations. One of the binary operations, addition, forms a commutative monoid and has identity element 0. The second binary operation, multiplication, is a monoid with identity element 1. These binary operations interact such that multiplication distributes over addition and multiplication by the identity element of the addition monoid annihilates all elements in the semiring. For example, the real numbers under addition and multiplication constitute a semiring whose data is described as $\left( \mathbb{R},+,0,\times,1 \right)$.
 
-The composite $\dist \circ \expression$ is a contravariant functor from $(\mathcal{U}, \subseteq)$ to $\sigma$-algebras.  However, as we shall see, this functor, unlike $\expression$, \emph{does not} satisfy the sheaf conditions and hence we only have a \emph{pre}-sheaf of probability distributions over $L$.
+The composite $\dist \circ \expression$ is a contravariant functor from $(\mathcal{U}, \subseteq)$ to probability distributions.  However, as we shall see, this functor, unlike $\expression$, \emph{does not} satisfy the sheaf conditions and hence we only have a \emph{pre}-sheaf of probability distributions over $L$.
 
-Consider a function, $\phi$ from a set, $L$, to $\mathbb{R}$ written $\phi \colon L \rightarrow \mathbb{R}$. The \emph{support} of $\phi$, $\text{supp}(\phi)$, is then the set $\{ l \in L | \phi(l) \neq 0 \}$. A distribution, $d$, on $L$ is given as a function having finite support and satisfying the constraint
+For the case in which we consider the set of genes combined with the collection of all subsets of those genes we have the measurable space given by $(L,\mathcal{P}(L))$, where the probability distributions are discrete and defined over finite sets. Consider a function, $\phi$ from a set, $L$, to $\mathbb{R}$ written $\phi \colon L \rightarrow \mathbb{R}$. A distribution, $d$, on $L$ is given as a function having finite support and satisfying the constraint
 \begin{eqnarray*}
 d \colon L \rightarrow \mathbb{R},\\
 \sum_{l \in L} d(l) = 1
@@ -156,6 +154,18 @@ d|U \colon P^{U} &\rightarrow& R,\\
 s &\mapsto& \sum_{s' \in \mathcal{E}(U'),\, s'|U=s} d(s').
 \end{eqnarray*}
 $d|U$ is a representation of what is commonly referred to as the marginal distribution of $d$ that assigns to each genotype-phenotype mapping in the smaller collection (recall $U \subseteq U'$) of such $P^{U}$ the sum of the probabilities of all genotype-phenotype maps in the larger collection $P^{U'}$ that restrict to a given map in $P^{U}$.
+
+If we now include the coarse-graining process from microscopic to macroscopic phenotypes we end up with the following overall relationships
+\begin{center}
+\includegraphics[width=0.4\columnwidth]{fig/abstractroadmap.pdf}
+\end{center}
+In order for the coarse-graining from lower level phenotype$_i$ to phenotype$_{i+1}$ to be a consistent one, there must be a natural transformation between the functors $\mathcal{E}_i$ and $\mathcal{E}_{i+1}$ implying that the following diagram commutes
+$$
+\xymatrix{
+\mathcal{E}_{i+1}(U_1) \ar[r]^{\mathcal{E}_{i+1}(\subseteq)} \ar[d]_{t_{U_1}} & \mathcal{E}_{i+1}(U_2) \ar[d]^{t_{U_2}} \\
+\mathcal{E}_{i}(U_1) \ar[r]^{\mathcal{E}_{i}(\subseteq)} & \mathcal{E}_{i}(U_2) }
+$$
+for any $U_2 \subseteq U_1$.
 
 \subsection{Coverings of genotype space}\label{sec:covergenotypespace}
 A \emph{gene regulatory network module} is represented by a subset of genes $O$ and a collection of gene regulatory network modules, which in some cases may represent all of the genes in an organism, is a set of such subsets $\mathcal{G}$ (i.e. $O,O',\ldots \in \mathcal{G}$). An individual may be composed of some collection of subsets of possible genes where the set of all genes, $L$, is viewed as the genotype space. A \emph{covering} of the genotype space, $\mathcal{G}$, satisfies 1. $\cup_i O_i = \cup \mathcal{G} = L$ and 2. if $O,O' \in \mathcal{G}$ and $O \subseteq O'$ means that $O = O'$. This is equivalent to $\mathcal{G}$ being a reduced hypergraph , Sperner family or clutter \cite{Lauritzen1996}. The first condition means that $\mathcal{G}$ covers $L$. It is thereby just a statement that $\mathcal{G}$ represents a decomposition of the collection of all genes under consideration into subsets and this is why we refer to $\mathcal{G}$ as a collection of gene regulatory network modules. The second condition means simply that we will not consider nested subsets and so we will take for our $O \in \mathcal{G}$ the biggest $O \in \mathcal{G}$ that is not a subset of some other $O' \in \mathcal{G}$. The second condition also implies that if a given subset of genes $O'$ is compatible in a sense to be explained more precisely in what proceeds then any smaller subset of genes $O$ is also compatible. Coverings $\mathcal{G}$ of the genotype space contain the necessary information to make precise what we heuristically refer to at other points in this paper as modularity in order to cohere with standard terminology in systems biology literature while attempting to submit our own precise interpretation of the relatively colloquial concept.
