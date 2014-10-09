@@ -25,7 +25,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.57164603"
-     inkscape:cx="799.44576"
+     inkscape:cx="591.27498"
      inkscape:cy="398.45285"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -47,7 +47,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -123,19 +123,19 @@
          y="423.97467"
          x="272.63937"
          id="tspan3873"
-         sodipodi:role="line">Sequences</tspan></text>
+         sodipodi:role="line">sequences</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:HelveticaNeue;-inkscape-font-specification:HelveticaNeue"
-       x="719.82153"
+       x="780.138"
        y="221.97467"
        id="text3879"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3881"
-         x="719.82153"
+         x="780.138"
          y="221.97467"
-         style="font-size:46px">Allelic partition</tspan></text>
+         style="font-size:46px">partition</tspan></text>
     <g
        id="g3025"
        transform="translate(0,-195.79138)">
@@ -361,15 +361,15 @@
     <text
        xml:space="preserve"
        style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:HelveticaNeue;-inkscape-font-specification:HelveticaNeue"
-       x="1138.3348"
+       x="1189.6377"
        y="221.97467"
        id="text3924"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3926"
-         x="1138.3348"
+         x="1189.6377"
          y="221.97467"
-         style="font-size:46px">Genetic Interactions</tspan></text>
+         style="font-size:46px">gene networks</tspan></text>
     <path
        transform="matrix(-1.0045916,0.72047102,0.76359686,0.94785501,1199.1929,-813.55243)"
        d="m 356.99604,589.81952 c 0,75.43645 -17.83639,136.58978 -39.83869,136.58978 -22.0023,0 -39.83869,-61.15333 -39.83869,-136.58978 0,-75.43645 17.83639,-136.58978 39.83869,-136.58978 22.0023,0 39.83869,61.15333 39.83869,136.58978 z"
