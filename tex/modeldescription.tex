@@ -17,25 +17,6 @@ The latter fact turns out to have an impact on the relationship between gene reg
 
 \subsection{Deterministic genotype-phenotype maps}\label{sec:dgpm}
 
-\begin{figure}[!ht]
-\centering
-\noindent\includegraphics[width=0.7\columnwidth]{fig/genesallelesgrns.pdf}
-\caption{{\bf Sequences, partitions, and GRNs.} In the sequences panel, we consider the letters to be abstract labels for arbitrary genetic sequences that may or may not be found to have a particular function once genetic interactions are taken into account. Sequences may be grouped together, for example if they appear mutually exclusively in gene regulatory networks, under identifications such as~$A=X,\,B=X',\,C=Y,\,D=Y'$. Genomes could then, for example, take one gene from each subset of sequences, by analogy to the partitions representing alleles and the organisms being haploid with all genes are essential. However, in general, we may consider arbitrary subsets of genes to be able to be included in a genome.}
-\label{fig:genesallelesgrns}
-\end{figure}
-% \begin{center}
-% \includegraphics[width=0.9\columnwidth]{fig/genesallelesgrns.pdf}
-% \end{center}
-% \begin{figure}[!ht]
-% \centering
-% \noindent\includegraphics[width=0.4\columnwidth]{fig/potential-interactions.pdf}
-% \includegraphics[width=0.4\columnwidth]{fig/two-gene-two-allele-interactions.pdf}
-% \includegraphics[width=0.4\columnwidth]{fig/incompatibility-interactions.pdf}
-% \includegraphics[width=0.4\columnwidth]{fig/dependency-interactions.pdf}
-% \caption{{\bf Gene interaction lattices.}}
-% \label{fig:geneinteractionlattices}
-% \end{figure}
-
 Consider the case in which we have a set of \emph{genes} $L$ like that in \ref{fig:genesallelesgrns}. Certain subsets of genes, $U \subseteq L$, represent which genes interact. We also have a set of expression states $P$, which may more generally be thought of as a lowest-level phenotype. In principle, any gene could give rise to any phenotype. A genotype-phenotype map is thus represented as a function mapping a subset of genes into phenotypes\footnote{In the operationalist framework from which this modeling description derives \cite{Abramsky2011}, our genes and subsets thereof $U \subseteq L$ are analogous to measurements and subsets thereof $T \subseteq X$ and our phenotypes $P$ are like measurement outcomes or values $V$. An event in which outcomes $s(t)$ are observed for each $t \in T$ serve to define mappings called \emph{sections} over $T$ as $s \colon T \rightarrow V$.}
 $$
 e \colon U \rightarrow  P.
@@ -485,8 +466,96 @@ A row $(a_0,a_1,...,a_d)$ corresponds to the inequality $a_0 + a_1 x_1 + ... + a
 \end{equation}
 This completes steps 1-3 of the algorithm outlined above. The remaining steps are trivial. For reference, they appear in the code in the Appendices that implements the algorithm for computing $\frac{\text{Vol}(\mathbb{M}(\mathcal{G}))}{\text{Vol}(\mathbb{L}(\mathcal{G}))}$ for arbitrary $\mathcal{G}$.
 
-\subsection{A generative process for inconsistent pairwise distributions}\label{sec:generativeprocessapparentinconsistency}
-It is possible to generate what appear to be inconsistent pairwise distributions by embedding the system in \ref{fig:inconsistentthreecycle} into a consistent system represented by \ref{fig:controlnetwork}. In this system we consider the collection of pairwise probability distributions $p(l_1,l_2)$, $p(l_2,l_3)$, $p(l_1,l_3)$, and the joint probability distribution $p(m_1,m_2,m_3,m_4)$ where the states of genes $l_i \in \{ 0, 1\}$ and genes $m_i \in \{0,1,2\} \equiv \mathcal{M}$. The random variables representing the states of genes $l_1,l_2,l_3$ correspond to $m_1,m_2,m_3$ respectively and $m_4$ is a control random variable colored in dark gray in \ref{fig:controlnetwork}. We specify the control exhibited by $m_4$ over $m_1,m_2,m_3$ via the constraints
+\subsection{A generative process for apparently inconsistent pairwise distributions}\label{sec:generativeprocessapparentinconsistency}
+
+The inequalities defining $\mathbb{M}(\mathcal{G})$ were derived under the assumption that the two-element probabilities were obtained by mariginalizing a three-element distribution.  Hence, if some other procedure, such as conditionalization is used to obtain them instead, the inequalities need not apply, as in the example above, which may be described as follows:  Introduce the sample spaces
+\begin{align*}
+S_{1} &= \{e_0,e_1\} \\
+S_{2} &= \{f_0,f_1\} \\
+S_{3} &= \{g_0,g_1\} \\
+S_{12} &= \{b_{00},b_{01},b_{10},b_{11}\} \\
+S_{13} &= \{c_{00},c_{01},c_{10},c_{11}\} \\
+S_{23} &= \{d_{00},d_{01},d_{10},d_{11}\} \\
+S_{123} &= \{a_{002},a_{012},a_{102},a_{112},a_{020},a_{021},a_{120},a_{121},a_{200},a_{201},a_{210},a_{211}\}, \\
+\end{align*}
+the inclusion maps $\iota_1, \iota_2, \iota_3$ and the projections $\pi_1, \ldots. \pi_6$.
+$$
+\xymatrix{
+S_{1}& S_{13} \ar@{->>}[l]_{\pi_1} \ar@{->>}[r]^{\pi_2} \ar@{^{(}->}[d]_{\iota_2} & S_{3} \\
+S_{12} \ar@{->>}[u]^{\pi_3} \ar@{->>}[rd]_{\pi_5} \ar@{^{(}->}[r]^{\iota_1} & S_{123} & S_{23} \ar@{->>}[u]^{\pi_4} \ar@{->>}[ld]^{\pi_6} \ar@{_{(}->}[l]_{\iota_3} \\
+& S_2 & }
+$$
+\begin{center}
+\begin{tabular}{c | c}
+$x$ & $\iota_1 (x)$ \\ \hline
+$b_{00}$ & $a_{002}$ \\
+$b_{01}$ & $a_{012}$ \\
+$b_{10}$ & $a_{102}$ \\
+$b_{11}$ & $a_{112}$ \\
+\end{tabular} \qquad
+\begin{tabular}{c | c}
+$x$ & $\iota_2 (x)$ \\ \hline
+$c_{00}$ & $a_{020}$ \\
+$c_{01}$ & $a_{021}$ \\
+$c_{10}$ & $a_{120}$ \\
+$c_{11}$ & $a_{121}$ \\
+\end{tabular} \qquad
+\begin{tabular}{c | c}
+$x$ & $\iota_3 (x)$ \\ \hline
+$d_{00}$ & $a_{200}$ \\
+$d_{01}$ & $a_{201}$ \\
+$d_{10}$ & $a_{210}$ \\
+$d_{11}$ & $a_{211}$ \\
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{c | c}
+$x$ & $\pi_1 (x)$ \\ \hline
+$c_{00}$ & $e_0$ \\
+$c_{01}$ & $e_0$ \\
+$c_{10}$ & $e_1$ \\
+$c_{11}$ & $e_1$ \\
+\end{tabular} \quad
+\begin{tabular}{c | c}
+$x$ & $\pi_2 (x)$ \\ \hline
+$c_{00}$ & $g_0$ \\
+$c_{01}$ & $g_1$ \\
+$c_{10}$ & $g_0$ \\
+$c_{11}$ & $g_1$ \\
+\end{tabular} \quad
+\begin{tabular}{c | c}
+$x$ & $\pi_3 (x)$ \\ \hline
+$b_{00}$ & $e_0$ \\
+$b_{01}$ & $e_0$ \\
+$b_{10}$ & $e_1$ \\
+$b_{11}$ & $e_1$ \\
+\end{tabular} \quad
+\begin{tabular}{c | c}
+$x$ & $\pi_4 (x)$ \\ \hline
+$d_{00}$ & $g_0$ \\
+$d_{01}$ & $g_1$ \\
+$d_{10}$ & $g_0$ \\
+$d_{11}$ & $g_1$ \\
+\end{tabular} \quad
+\begin{tabular}{c | c}
+$x$ & $\pi_5 (x)$ \\ \hline
+$b_{00}$ & $f_0$ \\
+$b_{01}$ & $f_1$ \\
+$b_{10}$ & $f_0$ \\
+$b_{11}$ & $f_1$ \\
+\end{tabular} \quad
+\begin{tabular}{c | c}
+$x$ & $\pi_6 (x)$ \\ \hline
+$d_{00}$ & $f_0$ \\
+$d_{01}$ & $f_0$ \\
+$d_{10}$ & $f_1$ \\
+$d_{11}$ & $f_1$ \\
+\end{tabular}
+\end{center}
+\ref{fig:condmargprobspaces} shows these mappings in terms of colored subsets.
+
+It is thus possible to generate what appear to be inconsistent pairwise distributions by embedding the system in \ref{fig:inconsistentthreecycle} into a consistent system represented by \ref{fig:controlnetwork}. In this system we consider the collection of pairwise probability distributions $p(l_1,l_2)$, $p(l_2,l_3)$, $p(l_1,l_3)$, and the joint probability distribution $p(m_1,m_2,m_3,m_4)$ where the states of genes $l_i \in \{ 0, 1\}$ and genes $m_i \in \{0,1,2\} \equiv \mathcal{M}$. The random variables representing the states of genes $l_1,l_2,l_3$ correspond to $m_1,m_2,m_3$ respectively and $m_4$ is a control random variable colored in dark gray in \ref{fig:controlnetwork}. We specify the control exhibited by $m_4$ over $m_1,m_2,m_3$ via the constraints
 \begin{align*}
 p(m_1=2|m_4=0)=1,\\
 p(m_2=2|m_4=1)=1,\\
@@ -563,8 +632,28 @@ which cannot derive as marginals from any $p(l_1,l_2,l_3)$.
 %     0.4000    0.1000         0
 %          0         0         0
 
+This scenario may arise in a case with four genes, where each of the first three genes contains an operator site for each of the other two and all three genes contain an operator site for the fourth gene. If the fourth gene is constitutively expressed at a low rate so that it persists at low copy number it is uniformly, in time, likely to be bound to the operator site present on each of the first three genes. When gene four is bound to its operator site on any of the first three genes, that gene's state is $2$. If gene four is absent, the output state is determined by the presence or absence of the other two operator sites according to each of the tables depicted in \ref{fig:condgenescenario}.
 
 \FloatBarrier
+
+\begin{figure}[!ht]
+\centering
+\noindent\includegraphics[width=0.7\columnwidth]{fig/genesallelesgrns.pdf}
+\caption{{\bf Sequences, partitions, and GRNs.} In the sequences panel, we consider the letters to be abstract labels for arbitrary genetic sequences that may or may not be found to have a particular function once genetic interactions are taken into account. Sequences may be grouped together, for example if they appear mutually exclusively in gene regulatory networks, under identifications such as~$A=X,\,B=X',\,C=Y,\,D=Y'$. Genomes could then, for example, take one gene from each subset of sequences, by analogy to the partitions representing alleles and the organisms being haploid with all genes are essential. However, in general, we may consider arbitrary subsets of genes to be able to be included in a genome.}
+\label{fig:genesallelesgrns}
+\end{figure}
+% \begin{center}
+% \includegraphics[width=0.9\columnwidth]{fig/genesallelesgrns.pdf}
+% \end{center}
+% \begin{figure}[!ht]
+% \centering
+% \noindent\includegraphics[width=0.4\columnwidth]{fig/potential-interactions.pdf}
+% \includegraphics[width=0.4\columnwidth]{fig/two-gene-two-allele-interactions.pdf}
+% \includegraphics[width=0.4\columnwidth]{fig/incompatibility-interactions.pdf}
+% \includegraphics[width=0.4\columnwidth]{fig/dependency-interactions.pdf}
+% \caption{{\bf Gene interaction lattices.}}
+% \label{fig:geneinteractionlattices}
+% \end{figure}
 
 \begin{figure}[!ht]
 \centering
@@ -578,4 +667,18 @@ which cannot derive as marginals from any $p(l_1,l_2,l_3)$.
 \noindent\includegraphics[width=0.3\columnwidth]{fig/controlnetwork.pdf}
 \caption{{\bf Embedding into a particular network context.} The network inside the blue circle is equivalent to that of \ref{fig:inconsistentthreecycle}A, embedded into a particular network context that provides inputs (dark gray node) and outputs (light gray nodes) to the focal subnetwork. As a result of their connectivity, the outputs depend here upon pairwise correlations within the three genes comprising the focal subnetwork.}
 \label{fig:controlnetwork}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\noindent\includegraphics[width=0.5\columnwidth]{fig/condmargprobspaces.pdf}
+\caption{{\bf Diagrammatic representation of the sample spaces for the process generating apparent inconsistency.}}
+\label{fig:condmargprobspaces}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\noindent\includegraphics[width=0.6\columnwidth]{fig/condgenescenario.pdf}
+\caption{{\bf Synthetic gene circuit capable of exhibiting apparent inconsistency.}}
+\label{fig:condgenescenario}
 \end{figure}
