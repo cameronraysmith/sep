@@ -46,15 +46,15 @@ linkbib:
 	ln -s ~/Downloads/bib bib
 
 dropbox:
-	mkdir -p ~/Dropbox/sharelatex/sep/tex
-	mkdir -p ~/Dropbox/sharelatex/sep/fig
-	mkdir -p ~/Dropbox/sharelatex/sep/bib
-	cp plos_template.tex ~/Dropbox/sharelatex/sep
-	cp *header.tex ~/Dropbox/sharelatex/sep
-	cp *.bst ~/Dropbox/sharelatex/sep
-	cp tex/* ~/Dropbox/sharelatex/sep/tex
-	cp fig/*.pdf ~/Dropbox/sharelatex/sep/fig
-	cp bib/*.bib ~/Dropbox/sharelatex/sep/bib
+	mkdir -p ~/Dropbox/sharelatex/sep2/tex
+	mkdir -p ~/Dropbox/sharelatex/sep2/fig
+	mkdir -p ~/Dropbox/sharelatex/sep2/bib
+	cp plos_template.tex ~/Dropbox/sharelatex/sep2
+	cp *header.tex ~/Dropbox/sharelatex/sep2
+	cp *.bst ~/Dropbox/sharelatex/sep2
+	cp tex/* ~/Dropbox/sharelatex/sep2/tex
+	cp fig/*.pdf ~/Dropbox/sharelatex/sep2/fig
+	cp bib/*.bib ~/Dropbox/sharelatex/sep2/bib
 
 $(BIBFILES):
 	copybib
