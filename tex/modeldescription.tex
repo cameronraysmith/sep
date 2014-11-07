@@ -4,7 +4,7 @@
 \def\expression{\mathcal{E}}
 \def\dist{\mathcal{D}}
 
-\subsection{Intuitive description}\label{sec:intuition}
+\section{Intuitive description}\label{sec:intuition}
 A genotype fundamentally determines a collection of interactions among genes. In this sense it is reasonable to consider a genotype to be a collection of subsets of genes, where the subsets encode the manner in which different genes interact with one another. These interactions result in phenotypes, which are observable properties that result from these interactions. At the most fundamental level, the phenotype is taken to be a measure of gene expression and in order to distinguish the possible phenotypes it is necessary to uniquely encode each expression state that corresponds to a given collection of interactions. For example, if we have three genes where all three genes interact with one another and each gene takes on one of two expression states, then our state space is determined by the $2^3$ binary sequences of length $3$. If instead of directly observing expression states, we observed a higher-level phenotype such as metabolite concentration, cell motility or shape, or in higher organisms even something as abstract as fur color, we could abstractly associate whatever number of labels are necessary to make all of the observable distinctions resulting in a model with an equivalent formalism.
 
 A deterministic genotype-phenotype mapping is fundamentally a map from one set to another. As described above, we consider the input to be a collection of subsets of some set of genes that determine a genotype and the output to be a collection of abstract labels that are associated to a phenotype. The primary example of the phenotype labels used here assigns them to expression states of genes, but, to reiterate, the phenotype values can more generally be associated to other observable properties of organisms. The collection of all possible genotype-phenotype mappings corresponds to another set.
@@ -13,9 +13,9 @@ Different interactions among genes correspond to different ways of taking collec
 
 Consideration of probability distributions on genotype-phenotype mappings where the genotype is a given collection of subsets of genes introduces an issue that must be dealt with in one manner or another both biologically and mathematically. From the biological perspective, genes involved in overlapping subsets must be able to function in one state or another in the context of multiple interactions. From the mathematical perspective, if the probability distributions over the mappings from subsets of genes to phenotype values is to be derived from a global mapping from all the genes included in the union of the subsets defining the genotype, then certain additional constraints that are not implicit in the simple normalization of probability distributions must be satisfied. The importance here of the so-called sheaf condition is that any collection of data that might represent contingency tables or marginal distributions must satisfy certain conditions in order to be able to be derived via the standard marginalization procedure from some joint distribution. Without satisfying these conditions, one may just have an incoherent collection of observations that could not have derived from any joint probability distribution.
 
-The latter fact turns out to have an impact on the relationship between gene regulatory network architectures and their ability to achieve certain correlations among gene expression states and thus to perform certain functions. In order to quantify the relationships among the spaces of probability distributions over genotype-phenotype maps associated to each network architecture, we need to be able to determine the constraints associated to each network architecture and compare the geometries that result from imposing these constraints. In \ref{sec:dgpm} - \ref{sec:hierarchicalmodels} we describe the formalization of the stochastic genotype-phenotype map and the formal sheaf condition. In \ref{sec:example} - \ref{sec:generativeprocessapparentinconsistency} we provide an example computation used to derive the results presented in the main text. Readers primarily interested in the latter can skip to \ref{sec:example} and return to the earlier sections as needed.
+The latter fact turns out to have an impact on the relationship between gene regulatory network architectures and their ability to achieve certain correlations among gene expression states and thus to perform certain functions. In order to quantify the relationships among the spaces of probability distributions over genotype-phenotype maps associated to each network architecture, we need to be able to determine the constraints associated to each network architecture and compare the geometries that result from imposing these constraints. In \ref{sec:dgpm} - \ref{sec:hierarchicalmodels} we describe the formalization of the stochastic genotype-phenotype map and the formal sheaf condition that imposes consistency conditions on collections of related contingency tables. In \ref{sec:example} - \ref{sec:generativeprocessapparentinconsistency} we provide an example computation used to derive the results presented in the main text (\ref{fig:ncycvolrat} in particular). Readers primarily interested in the latter can skip to \ref{sec:example} and return to the earlier sections as needed.
 
-\subsection{Deterministic genotype-phenotype maps}\label{sec:dgpm}
+\section{Deterministic genotype-phenotype maps}\label{sec:dgpm}
 
 Consider the case in which we have a set of \emph{genes} $L$ like that in \ref{fig:genesallelesgrns}. Certain subsets of genes, $U \subseteq L$, represent which genes interact. We also have a set of expression states $P$, which may more generally be thought of as a lowest-level phenotype. In principle, any gene could give rise to any phenotype. A genotype-phenotype map is thus represented as a function mapping a subset of genes into phenotypes\footnote{In the operationalist framework from which this modeling description derives \cite{Abramsky2011}, our genes and subsets thereof $U \subseteq L$ are analogous to measurements and subsets thereof $T \subseteq X$ and our phenotypes $P$ are like measurement outcomes or values $V$. An event in which outcomes $s(t)$ are observed for each $t \in T$ serve to define mappings called \emph{sections} over $T$ as $s \colon T \rightarrow V$.}
 $$
@@ -47,11 +47,11 @@ res^{U'}_{U} \colon \mathcal{E}(U') &\rightarrow& \mathcal{E}(U)\\
 (e' \colon U' \rightarrow P, S) &\mapsto& (e'|_U \colon U \rightarrow P, \bigcup_{e \in S}(e' \mapsto e'|_U)^{-1}(e))
 \end{eqnarray*}
 
-For example, if we consider the case in which we have two genes $L=\{l_1,l_2\}$ and there are two potential phenotypes, $P=\{0,1\}$, then $\mathcal{E}$ operates on the lattice of subsets generated by $L$ to give measurable spaces over the possible genotype-phenotype maps as depicted here
+For example, if we consider the case in which we have two genes $L=\{l_1,l_2\}$ and there are two potential phenotypes, $P=\{0,1\}$, then $\mathcal{E}$ operates on the lattice of subsets generated by $L$ to give measurable spaces over the possible genotype-phenotype maps as exemplified in \ref{fig:efunctor}.
 
-\begin{center}
-\includegraphics[width=0.8\columnwidth]{fig/efunctor.pdf}
-\end{center}
+% \begin{center}
+% \includegraphics[width=0.8\columnwidth]{fig/efunctor.pdf}
+% \end{center}
 % $\mathcal{E}$ is thus, by definition, a presheaf functor, which is an object in the functor category $Sets^{\mathcal{P}(L)^{opp}}$.
 
 % Let $L$ denote a set of genes which comprise a genome like that of \ref{fig:genesallelesgrns}. Subsets of genes, $U \subseteq L$, will be used to represent which genes interact. The set of all subsets of a set $X$ is denoted $\mathcal{P}(X)$. We make $L$ into a topological space encoding these interactions by specifying the open sets $\mathcal{U}$ as a subset of $\mathcal{P}(L)$.  In the case of the simple discrete examples we will consider, we will have $\mathcal{U} = \mathcal{P}(L)$, but we want to leave open the possibility of more complicated models which might take into account the way genetic material is actually situated in physical space or the manner in which genes influence each other.
@@ -91,7 +91,7 @@ For example, if we consider the case in which we have two genes $L=\{l_1,l_2\}$ 
 % \label{tab:functors}
 % \end{table}
 
-\subsection{Stochastic genotype-phenotype maps}\label{sec:sgpm}
+\section{Stochastic genotype-phenotype maps}\label{sec:sgpm}
 There may be several sources for stochasticity in genotype-phenotype mapping including small numbers of the causal molecules and products of gene expression as well as environmental fluctuations upon which genotype-phenotype mappings are conditioned \cite{Swain2002,Paulsson2004,Thattai2004,Acar2008a,Lestas2010,Munsky2012,Chalancon2012,Neuert2013,Sanchez2013}. Regardless of the fundamental nature of stochasticity to gene expression, empirically, we observe statistical as opposed to deterministic data. Here we generalize the deterministic framework outlined above to the stochastic case.
 
 To accomplish this, we shall introduce probability distributions in a functorial manner.  Recall that, if $(S,\mathcal{B}(S))$ is a measurable space, then a probability measure over $(S,\mathcal{B}(S))$ is a mapping $p \colon \mathcal{B}(S) \to [0,1]$ such that $p(S) = 1$ and $p(\bigcup_{k=1}^\infty (X_k) = \sum_{k=0}^\infty p(X_k)$ for any collection $X_k$ of pairwise disjoint elements of $\mathcal{B}(S)$.  Let $\dist((S,\mathcal{B}(S)))$ denote the set of all probability distributions over $(S,\mathcal{B}(S))$.
@@ -152,17 +152,13 @@ $$
 \mathcal{E}_{i+1}(U_1) \ar[r]^{\mathcal{E}_{i+1}(\subseteq)} \ar[d]_{t_{U_1}} & \mathcal{E}_{i+1}(U_2) \ar[d]^{t_{U_2}} \\
 \mathcal{E}_{i}(U_1) \ar[r]^{\mathcal{E}_{i}(\subseteq)} & \mathcal{E}_{i}(U_2) }
 $$
-for any $U_2 \subseteq U_1$. For example, if our lower level phenotypes for a set of genes $U_1 = \{ l_1,l_2,l_3,l_4 \}$ are given by a set of binary sequences, then the projection of these phenotypes down to the set $U_2$ followed by mapping to the higher level phenotypes $a=\{01\}$ and $b=\{11\}$ is equivalent to first mapping to the higher-level phenotypes $A$ and $B$, indicated below, and then projecting down to $U_2$ shown here by the equivalent paths from the bottom-left to the top-right.
-\begin{center}
-\includegraphics[width=0.3\columnwidth]{fig/phenotypehierarchy.pdf}
-\end{center}
+for any $U_2 \subseteq U_1$. For example, if our lower level phenotypes for a set of genes $U_1 = \{ l_1,l_2,l_3,l_4 \}$ are given by a set of binary sequences, then the projection of these phenotypes down to the set $U_2$ followed by mapping to the higher level phenotypes $a=\{01\}$ and $b=\{11\}$ is equivalent to first mapping to the higher-level phenotypes $A$ and $B$, indicated below, and then projecting down to $U_2$ shown by the equivalent paths from the bottom-left to the top-right in \ref{fig:phenotypehierarchy}.
 Of course, there is an equivalent diagram for the subset $\{ l_1,l_2,l_3 \}$.
 
-
-\subsection{Coverings of genotype space}\label{sec:covergenotypespace}
+\section{Coverings of genotype space}\label{sec:covergenotypespace}
 A \emph{gene regulatory network module} is represented by a subset of genes $O$ and a collection of gene regulatory network modules, which in some cases may represent all of the genes in an organism, is a set of such subsets $\mathcal{G}$ (i.e. $O,O',\ldots \in \mathcal{G}$). An individual may be composed of some collection of subsets of possible genes where the set of all genes, $L$, is viewed as the genotype space. A \emph{covering} of the genotype space, $\mathcal{G}$, satisfies 1. $\cup_i O_i = \cup \mathcal{G} = L$ and 2. if $O,O' \in \mathcal{G}$ and $O \subseteq O'$ means that $O = O'$. This is equivalent to $\mathcal{G}$ being a reduced hypergraph , Sperner family or clutter \cite{Lauritzen1996}. The first condition means that $\mathcal{G}$ covers $L$. It is thereby just a statement that $\mathcal{G}$ represents a decomposition of the collection of all genes under consideration into subsets and this is why we refer to $\mathcal{G}$ as a collection of gene regulatory network modules. The second condition means simply that we will not consider nested subsets and so we will take for our $O \in \mathcal{G}$ the biggest $O \in \mathcal{G}$ that is not a subset of some other $O' \in \mathcal{G}$. The second condition also implies that if a given subset of genes $O'$ is compatible in a sense to be explained more precisely in what proceeds then any smaller subset of genes $O$ is also compatible. Coverings $\mathcal{G}$ of the genotype space contain the necessary information to make precise what we heuristically refer to at other points in this paper as modularity in order to cohere with standard terminology in systems biology literature while attempting to submit our own precise interpretation of the relatively colloquial concept.
 
-\subsection{Compatibility of distributions on genotype-phenotype maps}\label{sec:compatibilityofgpms}
+\section{Compatibility of distributions on genotype-phenotype maps}\label{sec:compatibilityofgpms}
 Given a covering of the genotype space $\mathcal{G}$, a compatible family for $\mathcal{G}$ with respect to the distribution presheaf $\mathcal{D}_R\mathcal{E}$ is given by a family of distributions $\{d_O \colon P^O \rightarrow R | O \in \mathcal{G}\}$ such that for all $O \in \mathcal{G}$ there exists $d_O \in \mathcal{D}_R\mathcal{E}(O)$ such that for all $O' \in \mathcal{G}$
 \begin{eqnarray}\label{eq:sheafcond}
 %\forall O \in \mathcal{G} \left[ \exists d_O \in \mathcal{D}_R\mathcal{E}(O) \right],\\
@@ -176,7 +172,7 @@ For example, if we have two gene regulatory network modules given by their genot
 \end{eqnarray}
 This condition means that the probability for gene $l_1$ to be associated to the phenotype given by $e_{\{l_1\}}$ is equivalent in case we marginalize over all the other genes contained in the gene regulatory network modules of which $l_1$ is a component. For coherence with respect to the relationship between the modeling framework described here and that used in probabilistic graphical models in machine learning, the conditions \ref{eq:sheafprob} are referred to as the marginalization constraints \cite{Wainwright2007}.
 
-\subsection{Global sections of distributions over genotype-phenotype maps}\label{sec:globalsectiongpms}
+\section{Global sections of distributions over genotype-phenotype maps}\label{sec:globalsectiongpms}
 To say that the sheaf condition holds for a compatible family $\{d_O\}_{O \in \mathcal{G}}$ for the presheaf $\mathcal{D}_R\mathcal{E}$ implies the existence of a \emph{global section} $d \in \mathcal{D}_R\mathcal{E}(L)$ that is defined on the full set of genes. An example of a distribution that could be a global section given that it satisfies the sheaf condition is shown in \ref{tab:hidvarmod}. This global section defines a distribution on the set of genotype-phenotype maps given by $\mathcal{E}(L) = P^L$, specifying phenotypes associated to all genes at once instead of on subsets of $L$ associated to either $U \subseteq L$ or, what is essentially equivalent, $O \in \mathcal{G}$. Crucially, the distribution $d$ must also restrict for the subset of genes associated to any gene regulatory network module, which in some cases may represent all of the genes in an organism, $O$ in a covering of the genotype space $\mathcal{G}$ meaning that
 \begin{eqnarray}
 \forall O \in \mathcal{G} \left[ d|O = d_O \right].
@@ -191,7 +187,7 @@ In this case there is a unique global section $e \in \mathcal{E}(U)$ such that $
 
 Extending this example on an arbitrary subset $U \subseteq L$ to the whole set of genes $L$ we have a unique global section $e \in \mathcal{E}(L) = P^L$. $e$ can be used to deterministically assign phenotypes to the set of genes $L$ under consideration.
 
-\subsection{Hierarchical models}\label{sec:hierarchicalmodels}
+\section{Hierarchical models}\label{sec:hierarchicalmodels}
 Given the collection of mappings $\mathcal{E}(O) = P^O$ for all $O \in \mathcal{G}$ we can attempt to explicitly construct a particular joint probability distribution $s \in \mathcal{D}_{\mathbb{R}}\mathcal{E}(L)$ on $\mathcal{E}(L)$. As noted above, in some cases such as that of \ref{fig:inconsistentthreecycle}A and C, such attempts may fail. This requires, first, a choice of mapping $\mathbb{R}^{\mathcal{E}(L)} \rightarrow \mathcal{D}_{\mathbb{R}}\mathcal{E}(L)$, which in the case of so-called \emph{exponential families} is
 \begin{eqnarray*}
 \text{exp} \colon \mathbb{R}^{\mathcal{E}(L)} &\rightarrow& \mathcal{D}_{\mathbb{R}}\mathcal{E}(L),\\
@@ -211,10 +207,10 @@ The \emph{hierarchical model} \cite{Lauritzen1996} associated to $\mathcal{G}$ i
 $$
 \mathcal{E}xp_{\mathcal{G}} = \text{exp}(\mathcal{I}_{\mathcal{G}}).
 $$
-Markov random fields in the context of probabilistic graphical models or just graphical models are special cases of hierarchical models \cite{Lauritzen1996,Murphy2012}. In the main text, we use this notion in the numerical simulations to generate \ref{fig:inconsistentthreecycle}. Our reduced hypergraphs which correspond to GRNAs modeled as coverings of the collection of genes correspond more closely to what is referred to in machine learning as \emph{factor graphs} \cite{Barber2012,Bishop2007,Murphy2012,Koller2009}. The description in this section is taken from \cite{Lauritzen1996}, which uses hypergraphs explicitly.
+Markov random fields in the context of probabilistic graphical models or just graphical models are special cases of hierarchical models \cite{Lauritzen1996,Murphy2012,Barber2012,Bishop2007,Koller2009}. The description in this section is taken from \cite{Lauritzen1996}, which uses hypergraphs explicitly. In the main text, we use this notion in the numerical simulations in \ref{fig:inconsistentthreecycle}. Our reduced hypergraphs which correspond to GRNAs modeled as coverings of the collection of genes do not imply that they are instances of hierarchical models, but they can be taken to be a specification of the underlying hypergraph, also referred to as a \emph{factor graph}, of a hierarchical model.
 
-\subsection{Example}\label{sec:example}
-We can construct an example to make the model description more concrete. For this example, we take the full set of potential genes to be $L = \{ l_1,l_2,l_3,l_4 \}$. Consider the case in which each of the gene regulatory network modules under consideration has two genes and we specify the covering of the genotype space given by $\mathcal{G} = \{\{l_1,l_2 \},\{l_1,l_4 \},\{l_3,l_2\},\{l_3,l_4\} \}$. The full set of genes together with a covering of the genotype space is a special case of a hypergraph $\mathcal{H} = (L,\mathcal{G})$ where the set of genes $L$ serve as the nodes or vertices and the covering $\mathcal{G}$ contains the edges or hyperedges, each of which is simply some subset of $L$. We also have two phenotype values $P = \{0, 1\}$. Each genotype-phenotype map in \ref{tab:gpm} assigns phenotype values to each $O \in \mathcal{G}$. For example, $e_1 \colon   l_1 l_2 \rightarrow 00$. \ref{tab:probabilities} likewise assigns probabilities to each of these genotype-phenotype mappings.
+\section{Example}\label{sec:example}
+For the purposes of this example, we take the full set of genes to be $L = \{ l_1,l_2,l_3,l_4 \}$. Consider the case in which each of the gene regulatory network modules under consideration has two genes and we specify the covering of the genotype space given by $\mathcal{G} = \{\{l_1,l_2 \},\{l_1,l_4 \},\{l_3,l_2\},\{l_3,l_4\} \}$. The full set of genes together with a covering of the genotype space is a special case of a hypergraph $\mathcal{H} = (L,\mathcal{G})$ where the set of genes $L$ serve as the nodes or vertices and the covering $\mathcal{G}$ contains the edges or hyperedges, each of which is simply some subset of $L$. We also have two phenotype values $P = \{0, 1\}$. Each genotype-phenotype map in \ref{tab:gpm} assigns phenotype values to each $O \in \mathcal{G}$. For example, $e_1 \colon   l_1 l_2 \rightarrow 00$. \ref{tab:probabilities} likewise assigns probabilities to each of these genotype-phenotype mappings.
 
 We can collect all of these genotype-phenotype mappings into one set using \ref{eq:gpfunctor} as $\mathcal{E}(\mathcal{G}) = P^{\mathcal{G}} = \{e_i | i=1 \ldots 16 \}$. The operation $\mathcal{D}_R$ given in \ref{eq:distfunctor} converts the set of all possible genotype-phenotype maps into the set of probability distributions over that set of possible genotype-phenotype maps. Successively applying these operations yields a distribution function $\mathcal{D}_R\mathcal{E}(\mathcal{G})=d \colon P^\mathcal{G} \rightarrow R$. If we now apply this distribution function $d$ to the set of genotype-phenotype mappings we get the probabilities associated to each genotype-phenotype map $d(\{e_i | i=1 \ldots 16 \}) = \{p_i|i=1 \ldots 16\}$ given in \ref{tab:probabilities}. This can also be written more abstractly as $\left[\mathcal{D}_R\mathcal{E}(\mathcal{G})\right](\{e_i | i=1 \ldots 16 \}) = \left[\mathcal{D}_R\mathcal{E}(\mathcal{G})\right](P^\mathcal{G}) = \left[\mathcal{D}_R\mathcal{E}(\mathcal{G})\right](\mathcal{E}(\mathcal{G})) = \{p_i|i=1 \ldots 16\}$. Notice that we applied the operations $\mathcal{E}$ and $\mathcal{D}_R$ to a specific set, which was all of $\mathcal{G}$. We could have applied these operations to any $O \in \mathcal{G}$. In one case, for example if we take $O = \{l_1, l_2\}$, we would have gotten $\mathcal{E}(O) = \{e_i|i=1 \ldots 4\}$ and $\mathcal{D}_R\mathcal{E}(O) = d \colon P^O \rightarrow R$. In this case $\left[\mathcal{D}_R\mathcal{E}(O)\right](\mathcal{E}(O)) = \{p_i|i=1 \ldots 4\}$. We may even consider directly the meaning of $\left[\mathcal{D}_R\mathcal{E}(\{l_1\})\right](\mathcal{E}(\{l_1\}))$ and similarly for the other $l \in L$ for those subsets containing only one element of $L$.
 
@@ -260,14 +256,14 @@ We recover the empirically determined distribution as a sum over the determinist
 
 Thus, when there is a global section, given by $d \in \mathcal{D}_R\mathcal{E}(L)$, for an empirically determined distribution on genotype-phenotype mappings, for example that in \ref{tab:probabilities}, then it may be the case that a mechanism that stochastically selects among deterministic genotype-phenotype maps can satisfy or generate an empirically determined distribution.
 
-\subsection{Existence of a global section for an empirically determined distribution of genotype-phenotype mappings}\label{sec:globalsectionempirical}
+\section{Existence of a global section for an empirically determined distribution of genotype-phenotype mappings}\label{sec:globalsectionempirical}
 Given an empirically determined distribution on the genotype-phenotype mapping process, it may be helpful to be able to classify whether or not there exists a global section satisfying the sheaf condition in order to determine the modularity requirements of the empirical distribution. If an empirically determined distribution does have a global section, then it is possible to achieve the same global biological function specified in the empirical distribution using a single gene regulatory network module that contains all of the genes in the given universal set of genes $L$ as is obtained using the particular cover of the genotype space $\mathcal{G}$ that is associated to the empirically determined distribution. If the empirically determined distribution does not have a global section satisfying the sheaf condition, then there is some contingency regarding interactions between genes necessitating decomposition into smaller submodules than is represented by the whole of the universal set of genes $L$.
 
 For a cover of the genotype space, $\mathcal{G}$, we can construct an incidence matrix, $\mathbf{G}$, representing the relationship between genotype-phenotype mappings having as domain particular gene regulatory network module contexts given by the $O \in \mathcal{G}$ and those global genotype-phenotype mappings defined on $L$. This is equivalent to the more formal statement that there is some binary relation,
 \begin{equation}
 R \subseteq \mathcal{E}(L) \times \coprod_{O \in \mathcal{G}} \mathcal{E}(O),
 \end{equation}
-whose \href{http://en.wikipedia.org/wiki/Logical_matrix#Matrix_representation_of_a_relation}{logical matrix representation}, $\mathbf{G}$, we would like to construct. In the first case, $\mathcal{E}(L) = P^L$ we have $\{t_1, \ldots t_m\} = \{t_j | t_j \in P^L\}$. In the second case, $\coprod_{O \in \mathcal{G}} \mathcal{E}(O)$, we have $\{e_1, \ldots e_n\} = \coprod_{O \in \mathcal{G}} \mathcal{E}(O)$. So we have two sets of maps, one defined on $P^L$ and the other defined on $\mathcal{E}(O) = P^O$ for each $O \in \mathcal{G}$. This yields a method of specifying the intended relationship that defines $\mathbf{G}_{n \times m}$ in terms of $t_j \in P^L$ and $e_i \in \mathcal{E}(O)$ :
+whose logical matrix representation, $\mathbf{G}$, we would like to construct. In the first case, $\mathcal{E}(L) = P^L$ we have $\{t_1, \ldots t_m\} = \{t_j | t_j \in P^L\}$. In the second case, $\coprod_{O \in \mathcal{G}} \mathcal{E}(O)$, we have $\{e_1, \ldots e_n\} = \coprod_{O \in \mathcal{G}} \mathcal{E}(O)$. So we have two sets of maps, one defined on $P^L$ and the other defined on $\mathcal{E}(O) = P^O$ for each $O \in \mathcal{G}$. This yields a method of specifying the intended relationship that defines $\mathbf{G}_{n \times m}$ in terms of $t_j \in P^L$ and $e_i \in \mathcal{E}(O)$ :
 \begin{eqnarray}
 \mathbf{G}[i,j] =
 \begin{cases}
@@ -295,7 +291,7 @@ The constraint that $\mathbf{X}$ sum to one in order to satisfy the definition o
 \end{equation}
 Solutions, if any, to \ref{eq:auglinsys} serve to exhibit a global section for the empirically determined distribution specified in $\mathbf{V}$.
 
-% \subsection{Example global section determination}
+% \section{Example global section determination}
 % There are three parameters that determine the relative size of important sets for understanding the model at hand. $g$ represents the number of genetic loci, $a$ represents the number of different alleles that can occur at each locus, and $p$ represents the number of different phenotype values that each locus can take on. From these parameters, which we use together to classify models satisfying the structural constraints described thus far, we can derive additional quantities characterizing the model. For a system with parameters $(g,a,p)$ there are $a^g$ different gene regulatory network modules to consider and each may be associated with $p^g$ phenotypes. There are thus $(ap)^g$ different genotype-phenotype maps to consider with respect to the gene regulatory network modules meaning that this is the size of the set $\coprod_{O \in \mathcal{G}} \mathcal{E}(O)$. The set of all possible genes $L$ has size $ga$ and since there are $p$ different phenotypes that each gene can be mapped to, there are $p^{ga}$ different globally defined genotype-phenotype maps meaning that this is the size of the set $\mathcal{E}(L) = P^L$. Now we can state the size of the sets $\{t_1, \ldots t_m\} = \{t_j | t_j \in P^L\}$ and $\{e_1, \ldots e_n\} = \coprod_{O \in \mathcal{G}} \mathcal{E}(O)$ because we have explicit formulas for $n = (ap)^g$ and $m = p^{ga}$ in terms of the defining characteristics of a $(g,a,p)$ class of models. From the values of $n$ and $m$ we know the dimensions of the logical matrix representation of the relation $R$ as $\mathbf{G}_{(ap)^g \times p^{ga}}$.
 
 % For the case $(g=2,a=2,p=2)$, \ref{tab:pars222} shows the relationship between the abstract notation used throughout the model description and the concrete parameters introduced in this example. Using the notation of \ref{tab:pars222}, we can also explicitly construct $\mathbf{G}_{(ap)^g \times p^{ga}}$ as in \ref{tab:logmat222}.
@@ -323,7 +319,7 @@ p_{16} &= q_4 + q_8 + q_{12} + q_{16}
 \end{equation}
 Adding the additional rows to $\mathbf{G}$ and $\mathbf{V}$ to ensure that $\sum_i q_i = 1$ gives the system $\mathbf{G}_{(n + 1) \times m} \mathbf{X}_{m \times 1} = \mathbf{V}_{(n + 1) \times 1}$.
 
-\subsection{Geometric comparison of spaces of modular and non-modular distributions over genotype-phenotype mappings}\label{sec:computegeometrygpm}
+\section{Geometric comparison of spaces of modular and non-modular distributions over genotype-phenotype mappings}\label{sec:computegeometrygpm}
 We ultimately aim to determine the fraction of the space of all genotype-phenotype mappings with respect to a given covering of the genotype space $\mathcal{G}$ satisfying the sheaf condition and thereby posessing a global distribution. We first describe the linear transformations between global and local distributions, referred to as marginalization maps, over genotype-phenotype mappings in terms of the simple example for the case $L = \{ l_1,l_2,l_3,l_4 \}$, $\mathcal{G} = \{\{l_1,l_2 \},\{l_1,l_4 \},\{l_3,l_2\},\{l_3,l_4\} \}$, $P=\{0,1\}$ where the elements of $P^L$ index the columns and elements of $\coprod_{O \in \mathcal{G}} \mathcal{E} (O)$ index the rows of the matrix given in \ref{tab:logmat222}. This example generalizes immediately to arbitrary $L$, $\mathcal{G}$, and $P$. The primary geometric object of interest for constructing the spaces of local and global distributions over genotype-phenotype mappings is the \emph{probability simplex}:
 $$
 \Delta_{m-1} = \left\{ (p_1, \ldots , p_m) \in \mathbb{R}^m \colon \sum_{i=1}^m p_i = 1 \text{ and } p_j \geq 0 \text{ for all } j \right\}.
@@ -366,8 +362,8 @@ In order to assess the likelihood, with respect to some GRNA $\mathcal{G}$, of t
 \end{equation}
 this is the quantity plotted for various GRNAs $\mathcal{G}$ in \ref{fig:ncycvolrat}.
 
-\subsection{Constraint deduction method to derive H-representation of $\mathbb{L}(\mathcal{G})$}\label{sec:constraintdeductionmethod}
-In order to compute the quantity in \ref{eq:volrat} we use an algorithm which we merely outline here (code implementing this algorithm is made available in the Supporting Material and online via a virtual machine that can be reconstructed using the instructions available at \\ \href{https://github.com/cameronraysmith/sep}{https://github.com/cameronraysmith/sep}):
+\section{Constraint deduction method to derive H-representation of $\mathbb{L}(\mathcal{G})$}\label{sec:constraintdeductionmethod}
+In order to compute the quantity in \ref{eq:volrat} we use an algorithm which we merely outline here (code implementing this algorithm is made available via a virtual machine that can be reconstructed using the instructions available on \href{https://github.com/cameronraysmith/sep}{github}):
 \begin{enumerate}
 \item Compute (a basis for) the cokernel of $\mathcal{G}$ where $coker(\mathcal{G}) = ker(\mathcal{G}^T) \subseteq \Delta_3^{\oplus 4}$. The cokernel gives the obstructions to the system $\mathbf{G}\mathbf{X}=\mathbf{V}$ having a solution. In order to eliminate these obstructions constraints must be imposed on $\Delta_3^{\oplus 4}$ and these constraints are given precisely via annihilating the cokernel.
 \item Use the constraints on $\Delta_3^{\oplus 4}$ from step 1 necessary for the system $\mathbf{G}\mathbf{X}=\mathbf{V}$ to have a solution to eliminate variables from the system of inequalities $\mathbf{V} \geq 0$ giving a half-space representation or H-representation of the polytope $\mathbb{L}(\mathcal{G})$. This can be used to compute $\text{Vol}(\mathbb{L}(\mathcal{G}))$.
@@ -466,7 +462,7 @@ A row $(a_0,a_1,...,a_d)$ corresponds to the inequality $a_0 + a_1 x_1 + ... + a
 \end{equation}
 This completes steps 1-3 of the algorithm outlined above. The remaining steps are trivial. For reference, they appear in the code in the Appendices that implements the algorithm for computing $\frac{\text{Vol}(\mathbb{M}(\mathcal{G}))}{\text{Vol}(\mathbb{L}(\mathcal{G}))}$ for arbitrary $\mathcal{G}$.
 
-\subsection{A generative process for apparently inconsistent pairwise distributions}\label{sec:generativeprocessapparentinconsistency}
+\section{A generative process for apparently inconsistent pairwise distributions}\label{sec:generativeprocessapparentinconsistency}
 
 The inequalities defining $\mathbb{M}(\mathcal{G})$ were derived under the assumption that the two-element probabilities were obtained by mariginalizing a three-element distribution.  Hence, if some other procedure, such as conditionalization is used to obtain them instead, the inequalities need not apply, as in the example above, which may be described as follows:  Introduce the sample spaces
 \begin{align*}
@@ -632,9 +628,28 @@ which cannot derive as marginals from any $p(l_1,l_2,l_3)$.
 %     0.4000    0.1000         0
 %          0         0         0
 
-This scenario may arise in a case with four genes, where each of the first three genes contains an operator site for each of the other two and all three genes contain an operator site for the fourth gene. If the fourth gene is constitutively expressed at a low rate so that it persists at low copy number it is uniformly, in time, likely to be bound to the operator site present on each of the first three genes. When gene four is bound to its operator site on any of the first three genes, that gene's state is $2$. If gene four is absent, the output state is determined by the presence or absence of the other two operator sites according to each of the tables depicted in \ref{fig:condgenescenario}.
+This scenario may be implemented via a synthetic gene circuit with four genes, where each of the first three genes contains an operator site for each of the other two and all three genes contain an operator site for the fourth gene \ref{fig:condgenescenario}. If the fourth gene is constitutively expressed at a low rate so that it persists at low copy number it is uniformly, in time, likely to be bound to the operator site present on each of the first three genes. When gene four is bound to its operator site on any of the first three genes, that gene's state is $2$. If gene four is absent, the output state is determined by the presence or absence of the other two operator sites according to each of the tables depicted in \ref{fig:condgenescenario}.
 
 \FloatBarrier
+\pagebreak
+
+\begin{figure}[!ht]
+\centering
+\noindent\includegraphics[width=0.8\columnwidth]{fig/efunctor.pdf}
+\caption{{\bf Example of the functor mapping subsets of genes to measurable spaces.} }
+\label{fig:efunctor}
+\end{figure}
+
+\pagebreak
+
+\begin{figure}[!ht]
+\centering
+\noindent\includegraphics[width=0.4\columnwidth]{fig/phenotypehierarchy.pdf}
+\caption{{\bf Example coarse-graining of phenotypes.}}
+\label{fig:phenotypehierarchy}
+\end{figure}
+
+\pagebreak
 
 \begin{figure}[!ht]
 \centering
@@ -654,6 +669,7 @@ This scenario may arise in a case with four genes, where each of the first three
 % \caption{{\bf Gene interaction lattices.}}
 % \label{fig:geneinteractionlattices}
 % \end{figure}
+\pagebreak
 
 \begin{figure}[!ht]
 \centering
@@ -662,12 +678,16 @@ This scenario may arise in a case with four genes, where each of the first three
 \label{fig:non2uniformcyclichypergraphhasse}
 \end{figure}
 
+\pagebreak
+
 \begin{figure}[!ht]
 \centering
 \noindent\includegraphics[width=0.3\columnwidth]{fig/controlnetwork.pdf}
 \caption{{\bf Embedding into a particular network context.} The network inside the blue circle is equivalent to that of \ref{fig:inconsistentthreecycle}A, embedded into a particular network context that provides inputs (dark gray node) and outputs (light gray nodes) to the focal subnetwork. As a result of their connectivity, the outputs depend here upon pairwise correlations within the three genes comprising the focal subnetwork.}
 \label{fig:controlnetwork}
 \end{figure}
+
+\pagebreak
 
 \begin{figure}[!ht]
 \centering
@@ -676,9 +696,11 @@ This scenario may arise in a case with four genes, where each of the first three
 \label{fig:condmargprobspaces}
 \end{figure}
 
+\pagebreak
+
 \begin{figure}[!ht]
 \centering
-\noindent\includegraphics[width=0.9\columnwidth]{fig/condgenescenario.pdf}
+\noindent\includegraphics[width=1.0\columnwidth]{fig/condgenescenario.pdf}
 \caption{{\bf Synthetic gene circuit capable of exhibiting apparent inconsistency.}}
 \label{fig:condgenescenario}
 \end{figure}
