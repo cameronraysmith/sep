@@ -56,6 +56,11 @@ dropbox:
 	cp fig/*.pdf ~/Dropbox/sharelatex/sep2/fig
 	cp bib/*.bib ~/Dropbox/sharelatex/sep2/bib
 
+arxiv:
+	latexpand plos_template.tex > combined.tex
+	sed -i 's/\\makeatletter{}//g' combined.tex
+	tar --transform='flags=r;s|combined|paper|' --transform='flags=r;s|plos_template|paper|' -cvzf arxiv`date +"%m%d%Y"`.tar.gz combined.tex plos_template.bbl fig/*.pdf
+
 $(BIBFILES):
 	copybib
 
