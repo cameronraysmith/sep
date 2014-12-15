@@ -91,8 +91,47 @@ Since $\mathcal{E}$ and $\dist \circ \mathcal{E}$ only define presheaves, the sh
 
 The sheaf conditions form an underdetermined system of linear equations for the putative distribution so their solution will assume the form of a linear subspace.  For a solution to be a bona fide probability distribution, all the probabilities must be positive numbers, which is only possible if the putative marginals satisfy suitable inequalities.
 
-Suppose that $L = \{1,2,3\}$, $P = \{0,1\}$, $\mathcal{G} = \{\{1,2\},\{1,3\},\{2,3\}\}$.
-
+Suppose that $L = \{1,2,3\}$, $P = \{0,1\}$, $\mathcal{G} = \{\{1,2\},\{2,3\},\{3,1\}\}$. An example of normalized contingency tables that correspond to this model are presented in \ref{fig:inconsistentthreecycle}A. Taken as ostensible marginals of a joint probability distribution, this collection of normalized contingency tables satisfies the local consistency conditions in \ref{eq:threecycinequalities}
+\begin{equation}
+\begin{aligned}\label{eq:threecycinequalities}
+p^{12}_{00} &= 1 + p^{12}_{11} - p^{23}_{10} - p^{23}_{11} - p^{31}_{01} - p^{31}_{11} \geq 0, \\
+p^{12}_{01} &= -p^{12}_{11} + p^{23}_{10} + p^{23}_{11} \geq 0,\\
+p^{12}_{10} &= -p^{12}_{11} + p^{31}_{01} + p^{31}_{11} \geq 0,\\
+p^{23}_{00} &= 1-p^{23}_{10} - p^{31}_{10} - p^{31}_{11} \geq 0,\\
+p^{23}_{01} &= -p^{23}_{11} + p^{31}_{10} + p^{31}_{11} \geq 0,\\
+p^{31}_{00} &= 1-p^{31}_{01} - p^{31}_{10} - p^{31}_{11} \geq 0,
+\end{aligned}
+\end{equation}
+that result from substituting the numbers from \ref{fig:inconsistentthreecycle}A into \ref{eq:threecycinequalities}
+\begin{equation}
+\begin{aligned}\label{eq:threecycnumbers}
+p^{12}_{00} &= 1 + 0.1 - 0.1 - 0.4 - 0.1 - 0.4 = 0.1 \geq 0, \\
+p^{12}_{01} &= -0.1 + 0.1 + 0.4 = 0.4 \geq 0,\\
+p^{12}_{10} &= -0.1 + 0.1 + 0.4 = 0.4 \geq 0,\\
+p^{23}_{00} &= 1 - 0.1 - 0.1 - 0.4 = 0.4 \geq 0,\\
+p^{23}_{01} &= -0.4 + 0.1 + 0.4 = 0.1 \geq 0,\\
+p^{31}_{00} &= 1 - 0.1 - 0.1 - 0.4 = 0.4 \geq 0.
+\end{aligned}
+\end{equation}
+The global consistency conditions, however, impose four additional constraints which can be derived by simple elimination of variables
+\begin{equation}
+\begin{aligned}\label{eq:threecycbooleinequalities}
+p^{12}_{11} - p^{23}_{11} + p^{31}_{10} \geq 0, \\
+1 + p^{12}_{11} - p^{23}_{10} - p^{31}_{01} - p^{31}_{10} - p^{31}_{11} \geq 0, \\
+-p^{12}_{11} + p^{23}_{10} + p^{31}_{11} \geq 0, \\
+-p^{12}_{11} + p^{23}_{11} + p^{31}_{01} \geq 0.
+\end{aligned}
+\end{equation}
+For the example given in \ref{fig:inconsistentthreecycle}A, the first of the inequalities in \ref{eq:threecycbooleinequalities} is demonstrated to be unsatisfied in \ref{eq:threecycboolenumbers}
+\begin{equation}
+\begin{aligned}\label{eq:threecycboolenumbers}
+0.1 - 0.4 + 0.1 \not\geq 0, \\
+1 + 0.1 - 0.1 - 0.1 - 0.1 - 0.4 \geq 0, \\
+-0.1 + 0.1 + 0.4 \geq 0, \\
+-0.1 + 0.4 + 0.1 \geq 0.
+\end{aligned}
+\end{equation}
+We present a method of determining the analogs of the inequalities of \ref{eq:threecycinequalities} and \ref{eq:threecycbooleinequalities} for arbitrary hypergraphs in the supplementary material.
 
 % \section{Coarse-graining gene expression}
 % In any attempt to model gene regulatory networks, a focal subnetwork is conceptually carved out of a larger network context. The output of the subnetwork, or some function of it, may serve as input to the network context and vice versa \ref{fig:stochdynscheme}. Each component of the network context may have access to different pieces of partial information from the focal subnetwork depending upon the manner in which each is connected. The imposition of functional requirements by the network context upon the subnetwork is equivalent both to imposing a fitness landscape on the outputs of the subnetwork and to requiring that certain patterns of output from the subnetwork be observable. The manner in which the subnetwork is connected to the network context determines the structure of observations whereas the manner in which connections are made among genes within the subnetwork determine the structure of the process that underlies the repertoire of functions the network is capable of displaying independent of its context. We describe a simple representation of observing gene expression in a manner capable of mimicking the embedding of a given subnetwork within any possible network context.
