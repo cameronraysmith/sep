@@ -89,24 +89,27 @@ Mathematically, the two conditions given above state that $\mathcal{G}$ is a \em
 Given a covering $\mathcal{G}$ of genotype space, we can consider the higher order phenotypes associated to the elements $\mathcal{G}$.  For a suitable choice of cover and a suitable level of phenotypes, it may happen that the phenotypes associated to different elements of $\mathcal{G}$ are distinct.  For instance, in the example of \ref{fig:phenotypehierarchy}, if we take $\mathcal{G} = \{O_1, O_2\}$ where $O_1 = \{l_1, l_2, l_3\}$ and $O_2 = \{l_3, l_4\}$, we have $\phi_{i+1}(O_1) = \{u,v\}$ and $\phi_{i+1}(O_2) = \{x,y\}$.  In such a case, if we were to perform one experiment which measured the phenotypes $\{u,v\}$ and another experiment which measured $\{x,y\}$, then the result could be understood as examining the covering $\{O_1, O_2\}$.
 
 \section{Compatibility of distributions on genotype-phenotype maps}\label{sec:compatibilityofgpms}
-Given a covering of the genotype space $\mathcal{G}$, a compatible family for $\mathcal{G}$ with respect to the distribution presheaf $\mathcal{D} \circ \mathcal{E}$ is given by a family of distributions $\{d_O \in \dist (\mathcal{E}(O)) | O \in \mathcal{G}\}$ such that for all $O \in \mathcal{G}$ there exists $d_O \in \mathcal{D}_R\mathcal{E}(O)$ such that for all $O' \in \mathcal{G}$
+Given a covering of the genotype space $\mathcal{G}$, a compatible family for $\mathcal{G}$ with respect to the distribution presheaf $\mathcal{D} \circ \mathcal{E}$ is given by a family of distributions $\{d_O \in \dist (\mathcal{E}(O)) | O \in \mathcal{G}\}$ such that for all $O, O' \in \mathcal{G}$
 \begin{eqnarray}\label{eq:sheafcond}
 %\forall O \in \mathcal{G} \left[ \exists d_O \in \mathcal{D}_R\mathcal{E}(O) \right],\\
 d_O|O \cap O' = d_{O'}|O \cap O'.
 \end{eqnarray}
-The condition \ref{eq:sheafcond} is referred to as the \emph{sheaf condition}. This condition means that any two distributions $d_O$ and $d_{O'}$ in the \emph{compatible family} of distributions marginalize to the same disribution over the intersection of $O$ with $O'$.
+This first set of conditions is later referred to as local consistency. For coherence with respect to the relationship between the modeling framework described here and that used in probabilistic graphical models in machine learning, the local consistency conditions \ref{eq:sheafcond} are referred to as the marginalization constraints \cite{Wainwright2007}.  These conditions mean that any two distributions $d_O$ and $d_{O'}$ in the \emph{compatible family} of distributions marginalize to the same disribution over the intersection of $O$ with $O'$.
 
-For example, if we have two gene regulatory network modules given by their genotypes $O = \{l_1, l_2\}$ and $O' = \{l_1, l_3\}$ then the sheaf condition specifies that for $e_{\{l_1\}} \in \mathcal{E}(\{l_1\})$, which assigns a particular phenotype to the genotype $\{l_1\}$ rather than to an entire gene regulatory network module like $O$ or $O'$, that
+If, moreover, this first condition implies the existence of $d \in \mathcal{D}_R \mathcal{E}(L)$ such that $d|O = d_O$ for all $O \in \mathcal{G}$ then the system is said to satisfy the global consistency condition.  This latter condition is also referred to as the \emph{sheaf condition}.  Since $\mathcal{E}$ and $\dist \circ \mathcal{E}$ only define presheaves, the sheaf condition is not automatically satisfied.  We will now derive equations and inequalities that need to be satisfied in order to guarantee the sheaf condition.  Due to the comnplexity of the calculations, we will demonstrate the simple case of three genes in the main text and present the general formulation in the Supplementary Information.
+
+Suppose that $L = \{l_1,l_2,l_3\}$, $P = \{0,1\}$, $\mathcal{G} = \{\{l_1,l_2\},\{l_2,l_3\},\{l_3,l_1\}\}$. An example of normalized contingency tables that correspond to this model are presented in \ref{fig:inconsistentthreecycle}A.
+One local consistency condition specifies that for $e_{\{l_1\}} \in \mathcal{E}(\{l_1\})$, which assigns a particular phenotype to the genotype $\{l_1\}$ rather than to an entire gene regulatory network module like $O$ or $O'$, that
 \begin{eqnarray}\label{eq:sheafprob}
 \sum_{e \in \mathcal{E}(O),\, e|l_1=e_{\{l_1\}}} d_O(e) \,\, = \sum_{e' \in \mathcal{E}(O'),\, e'|l_1=e_{\{l_1\}}} d_{O'}(e')
 \end{eqnarray}
-This condition means that the probability for gene $l_1$ to be associated to the phenotype given by $e_{\{l_1\}}$ is equivalent in case we marginalize over all the other genes contained in the gene regulatory network modules of which $l_1$ is a component. For coherence with respect to the relationship between the modeling framework described here and that used in probabilistic graphical models in machine learning, the conditions \ref{eq:sheafprob} are referred to as the marginalization constraints \cite{Wainwright2007}.
-
-Since $\mathcal{E}$ and $\dist \circ \mathcal{E}$ only define presheaves, the sheaf condition is not automatically satisfied.  We will now derive conditions in the form of inequalities that need to be satisfied in order to guarantee the sheaf condition.  Due to the comnplexity of the calculations, we will only consider the simple case of three genes in the main text and have relegated the general formulation to the supplement.
-
-The sheaf conditions form an underdetermined system of linear equations for the putative distribution so their solution will assume the form of a linear subspace.  For a solution to be a bona fide probability distribution, all the probabilities must be positive numbers, which is only possible if the putative marginals satisfy suitable inequalities.
-
-Suppose that $L = \{1,2,3\}$, $P = \{0,1\}$, $\mathcal{G} = \{\{1,2\},\{2,3\},\{3,1\}\}$. An example of normalized contingency tables that correspond to this model are presented in \ref{fig:inconsistentthreecycle}A. Taken as ostensible marginals of a joint probability distribution, this collection of normalized contingency tables satisfies the local consistency conditions in \ref{eq:threecycinequalities}
+This condition means that the probability for gene $l_1$ to be associated to the phenotype given by $e_{\{l_1\}}$ is equivalent in case we marginalize over all the other genes contained in the gene regulatory network modules of which $l_1$ is a component.  Introducing the notation $p^{ab}_{ij} = d_{\{l_a, l_b\}}(e_{ij})$ where $e_{ij}$ is the map which sends $l_a$ to $i$ and sends $l_b$ to $j$, \ref{eq:sheafprob} reduces to two equations corresponding to the case when $e_{l_1}$ is the map which sends $l_1$ to $0$ and the case when $e_{l_1}$ sends $l_1$ to $1$:
+\begin{align*}
+ p^{12}_{00} + p^{12}_{01} &= p^{1}_0 = p^{13}_{00} + p^{13}_{01} \\
+ p^{12}_{10} + p^{12}_{11} &= p^{1}_1 = p^{13}_{10} + p^{13}_{11}
+ \end{align*}
+We can do likewise with $l_2$ and $l_3$ in place of $l_1$ to obtain the complete set of local consistency conditions for our example:
+%Taken as ostensible marginals of a joint probability distribution, the aforementioned collection of normalized contingency tables for $O=\{l_1,l_2\},\,O'=\{l_2,l_3\},\,O''=\{l_3,l_1\}$ satisfy the local consistency conditions in \ref{eq:threecycinequalities}
 \begin{equation}
 \begin{aligned}\label{eq:threecycinequalities}
 p^{12}_{00} &= 1 + p^{12}_{11} - p^{23}_{10} - p^{23}_{11} - p^{31}_{01} - p^{31}_{11} \geq 0, \\
@@ -117,7 +120,19 @@ p^{23}_{01} &= -p^{23}_{11} + p^{31}_{10} + p^{31}_{11} \geq 0,\\
 p^{31}_{00} &= 1-p^{31}_{01} - p^{31}_{10} - p^{31}_{11} \geq 0,
 \end{aligned}
 \end{equation}
-that result from substituting the numbers from \ref{fig:inconsistentthreecycle}A into \ref{eq:threecycinequalities}. The global consistency conditions, however, impose four additional constraints which can be derived by simple elimination of variables
+Substituting the numbers from \ref{fig:inconsistentthreecycle}A into \ref{eq:threecycinequalities}, we conclude that the local conditions are satisfied.
+
+The global consistency conditions form an underdetermined system of linear equations for the putative global distribution $d_{L}$ so their solution will assume the form of a linear subspace.  In our example where this linear subspace corresponds to the image of $\Delta_7$ in $\Delta_3^{\oplus 3}$ under the marginalization map, we can choose $p^{123}_{000}$ arbitrarily to solve the remaining equations to obtain the following solution:
+\begin{align*}
+p^{123}_{001} &= p^{12}_{00} - p^{123}_{000} \\
+p^{123}_{010} &= p^{13}_{00} - p^{123}_{000} \\
+p^{123}_{100} &= p^{23}_{00} - p^{123}_{000} \\
+p^{123}_{110} &= p^{23}_{10} - p^{13}_{00} + p^{123}_{000} \\
+p^{123}_{011} &= p^{13}_{01} - p^{12}_{00} + p^{123}_{000} \\
+p^{123}_{101} &= p^{12}_{10} - p^{23}_{00} + p^{123}_{000} \\
+p^{123}_{111} &= 1 - p^{12}_{00} - p^{13}_{00} - p^{23}_{00} - p^{123}_{000}
+\end{align*}
+For this solution to be a bona fide probability distribution, all the probabilities $p^{123}_{ijk}$ must be positive numbers, which is only possible if the putative marginals satisfy suitable inequalities. These inequalities can be derived by simple elimination of variables resulting in
 \begin{equation}
 \begin{aligned}\label{eq:threecycbooleinequalities}
 p^{12}_{11} - p^{23}_{11} + p^{31}_{10} \geq 0, \\
@@ -135,7 +150,7 @@ For the example given in \ref{fig:inconsistentthreecycle}A, the first of the ine
 -0.1 + 0.4 + 0.1 \geq 0.
 \end{aligned}
 \end{equation}
-We present a method of determining the analogs of the inequalities of \ref{eq:threecycinequalities} and \ref{eq:threecycbooleinequalities} for arbitrary hypergraphs in the supplementary material.
+We present a method of determining the analogs of the inequalities of \ref{eq:threecycinequalities} and \ref{eq:threecycbooleinequalities} for arbitrary hypergraphs in the Supplementary Material.
 
 % \section{Coarse-graining gene expression}
 % In any attempt to model gene regulatory networks, a focal subnetwork is conceptually carved out of a larger network context. The output of the subnetwork, or some function of it, may serve as input to the network context and vice versa \ref{fig:stochdynscheme}. Each component of the network context may have access to different pieces of partial information from the focal subnetwork depending upon the manner in which each is connected. The imposition of functional requirements by the network context upon the subnetwork is equivalent both to imposing a fitness landscape on the outputs of the subnetwork and to requiring that certain patterns of output from the subnetwork be observable. The manner in which the subnetwork is connected to the network context determines the structure of observations whereas the manner in which connections are made among genes within the subnetwork determine the structure of the process that underlies the repertoire of functions the network is capable of displaying independent of its context. We describe a simple representation of observing gene expression in a manner capable of mimicking the embedding of a given subnetwork within any possible network context.

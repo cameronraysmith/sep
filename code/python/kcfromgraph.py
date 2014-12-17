@@ -2,7 +2,7 @@ import itertools
 import numpy as np
 #import networkx as nx
 import sympy as sp
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import ipdb
 
 #import drawmaxcliques
