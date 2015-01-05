@@ -53,7 +53,11 @@ In other words, the map $f$ preserves ratios of probabilities of events.  In the
 \end{equation}
 Specifically, when $f$ is a total surjection, this map corresponds to marginalization, when $f$ is a partial isomorphism, it corresponds to conditionalization, and when $f$ is a general partial surjection, it corresponds to a combination of conditionalization and marginalization.
 
-By definition, an extended probability distribution $p \in \dist(S)$ is an element of $\mathbb{R}^S$; let us denote the inclusion map as $\rm{emb}(S) : \dist(S) \to \mathbb{R}^S$.   Because a convex combination of two probability distributions on a measurable space is again a probability distribution, the image of $\mathrm{emb}(S)$ consists of a convex set and the origin point (corresponding to the degenerate zero distribution).  Furthermore, if $n$ is the number of elements of the set $S$, this convex set works out to be a simplex with $n$ vertices, which we shall denote as $\Delta_{n-1}$.  Since any vector $v \in \mathbb{R}^S$ may be written as $m = c_{+} p_{+} - c_{-} p_{-}$ where $c_{+}, c_{-} \in [0,\infty)$ and $p_{+}$ and $p_{-}$ are probability distributions.  Hence, the image of $\mathrm{emb}(S)$ spans the vector space $\mathbb{R}^S$.  For purposes of later reference, note that, if $f \colon S \to S'$ is a partial surjection, then $\mathcal{D}$ extends to a fractional linear map from $\mathbb{R}^S)$ to $\mathbb{R}^{S'}$ and that, in the special case where $f$ is a total surjection, it is in fact a linear map.
+By definition, an extended probability distribution $p \in \dist(S)$ is an element of $\mathbb{R}^S$; let us denote the inclusion map as
+\begin{equation}\label{eq:emb}
+\rm{emb}(S) : \dist(S) \to \mathbb{R}^S.
+\end{equation}
+Because a convex combination of two probability distributions on a measurable space is again a probability distribution, the image of $\mathrm{emb}(S)$ consists of a convex set and the origin point (corresponding to the degenerate zero distribution).  Furthermore, if $n$ is the number of elements of the set $S$, this convex set works out to be a simplex with $n$ vertices, which we shall denote as $\Delta_{n-1}$.  Since any vector $v \in \mathbb{R}^S$ may be written as $m = c_{+} p_{+} - c_{-} p_{-}$ where $c_{+}, c_{-} \in [0,\infty)$ and $p_{+}$ and $p_{-}$ are probability distributions.  Hence, the image of $\mathrm{emb}(S)$ spans the vector space $\mathbb{R}^S$.  For purposes of later reference, note that, if $f \colon S \to S'$ is a partial surjection, then $\mathcal{D}$ extends to a fractional linear map from $\mathbb{R}^S)$ to $\mathbb{R}^{S'}$ and that, in the special case where $f$ is a total surjection, it is in fact a linear map.
 
 \section{Higher Order Phenotypes}
 
@@ -92,32 +96,56 @@ Given a covering of the space of genes $\mathcal{G}$, a compatible family for $\
 %\forall O \in \mathcal{G} \left[ \exists d_O \in \mathcal{D}_R\mathcal{E}(O) \right],\\
 d_O|O \cap O' = d_{O'}|O \cap O'.
 \end{eqnarray}
-This first set of conditions is later referred to as local consistency. For coherence with respect to the relationship between the modeling framework described here and that used in probabilistic graphical models in machine learning, the local consistency conditions \ref{eq:sheafcond} are referred to as the marginalization constraints \cite{Wainwright2007}.  These conditions mean that any two distributions $d_O$ and $d_{O'}$ in the \emph{compatible family} of distributions marginalize to the same disribution over the intersection of $O$ with $O'$.
+This first set of conditions is later referred to as local consistency. These conditions mean that any two distributions $d_O$ and $d_{O'}$ in the \emph{compatible family} of distributions marginalize to the same disribution over the intersection of $O$ with $O'$.
 
-If, moreover, this first condition implies the existence of $d \in \mathcal{D}_R \mathcal{E}(L)$ such that $d|O = d_O$ for all $O \in \mathcal{G}$ then the system is said to satisfy the global consistency condition.  This latter condition is also referred to as the \emph{sheaf condition}.  Since $\mathcal{E}$ and $\dist \circ \mathcal{E}$ only define presheaves, the sheaf condition is not automatically satisfied.  We will now examine the situation more closely to determine under what circumstances global consistency holds.
+If, moreover, this first condition implies the existence of $d \in \mathcal{D}( \mathcal{E}(L))$ such that $d|O = d_O$ for all $O \in \mathcal{G}$ then the system is said to satisfy the global consistency condition.  This latter condition is also referred to as the \emph{sheaf condition}.  Since $\mathcal{E}$ and $\dist \circ \mathcal{E}$ only define presheaves, the sheaf condition is not automatically satisfied.  We will now examine the situation more closely to determine under what circumstances global consistency holds.
 
-We begin by exhibiting the inclusions relevant to our covering in the form of a commutative diagram:
-\begin{equation*}
-\xymatrix{& L & \\
- O_1 \ar@{^{(}->}[ur] &
-  O_2 \ar@{^{(}->}[u] &
-  O_3 \ar@{_{(}->}[ul] &
-  \cdots \\
- O_1 \cup O_2 \ar@{^{(}->}[u] \ar@{^{(}->}[ur] &
-  O_1 \cup O_3 \ar@{_{(}->}[ul] \ar@{^{(}->}[ur] &
-  O_2 \cup O_3 \ar@{_{(}->}[ul] \ar@{^{(}->}[u] &
-  \cdots}
-\end{equation*}
-Applying the functor $\mathcal{E}$ converts the inclusions of sets into total surjections of measurable spaces.  Subsequently applying the functor $\dist$ produces marginalizations of probability distributions on those spaces and applying $\rm{emb}$ maps those spaces into vector spaces.  Finally, by taking disjoint unions, the result can be condensed into the following diagram:
+% We begin by exhibiting the inclusions relevant to our covering in the form of a commutative diagram:
+% \begin{equation*}
+% \xymatrix{& L & \\
+%  O_1 \ar@{^{(}->}[ur] &
+%   O_2 \ar@{^{(}->}[u] &
+%   O_3 \ar@{_{(}->}[ul] &
+%   \cdots \\
+%  O_1 \cup O_2 \ar@{^{(}->}[u] \ar@{^{(}->}[ur] &
+%   O_1 \cup O_3 \ar@{_{(}->}[ul] \ar@{^{(}->}[ur] &
+%   O_2 \cup O_3 \ar@{_{(}->}[ul] \ar@{^{(}->}[u] &
+%   \cdots}
+% \end{equation*}
+% Applying the functor $\mathcal{E}$ converts the inclusions of sets into total surjections of measurable spaces.  Subsequently applying the functor $\dist$ produces marginalizations of probability distributions on those spaces and applying $\rm{emb}$ maps those spaces into vector spaces.  Finally, by taking disjoint unions, the result can be condensed into the following diagram:
+
+For a cover of the genotype space, $\mathcal{G}$, we can construct an incidence matrix, $\mathbf{G}$, representing the relationship between \gnpm{} having as domain particular gene regulatory network module contexts given by the $O \in \mathcal{G}$ and those global \gnpm{} defined on $L$. This is equivalent to the more formal statement that there is some binary relation,
+\begin{equation}
+R \subseteq \mathcal{E}(L) \times \coprod_{O \in \mathcal{G}} \mathcal{E}(O),
+\end{equation}
+whose logical matrix representation, $\mathbf{G}$, we would like to construct. In the first factor, $\mathcal{E}(L) = P^L$ we have $\{t_1, \ldots t_m\} = \{t_j | t_j \in P^L\}$. For the second factor, $\mathcal{D}( \mathcal{E}(\mathcal{G})) = \coprod_{O \in \mathcal{G}} \mathcal{E}(O)$, we have $\{e_1, \ldots e_n\} = \coprod_{O \in \mathcal{G}} \mathcal{E}(O)$. So we have two sets of maps, one defined on $P^L$ and the other defined on $\mathcal{E}(O) = P^O$ for each $O \in \mathcal{G}$. This yields a method of specifying the intended relationship that defines $\mathbf{G}_{n \times m}$ in terms of $t_j \in P^L$ and $e_i \in \mathcal{E}(O)$ :
+\begin{eqnarray}
+\mathbf{G}[i,j] =
+\begin{cases}
+1, & t_j|O = e_i,\\
+0, & \text{otherwise}.
+\end{cases}
+\end{eqnarray}
+This matrix can be viewed as an operator acting via matrix multiplication on distributions
+\begin{eqnarray*}
+\mathbf{G} \colon \mathcal{D}(\mathcal{E}(L)) &\rightarrow& \mathcal{D}( \mathcal{E}(\mathcal{G})),\\
+d &\mapsto& (d|O)_{O \in \mathcal{G}},
+\end{eqnarray*}
+and thereby taking a global distribution defined on \gnpm{} whose domain is the full set of genes $L$ to the \emph{marginalized} distributions that are defined relative to gene regulatory network modules contained in a covering of the genotype space $\mathcal{G}$. This is to say that $\mathbf{G} \cdot d = (d|O)_{O \in \mathcal{G}} = \{d_O\}_{O \in \mathcal{G}}$. $\mathbf{G}$ provides a way of determining the kinds of environmentally determined distributions on \gnpm{} (i.e. $\{d_O\}_{O \in \mathcal{G}}$, \ref{tab:probabilities}) that can be derived from distributions (i.e. $\mathcal{D} ( \mathcal{E}(L) )$) defined on the global \gnpm{} (i.e. $\mathcal{E}(L)$ as opposed to $\mathcal{E}(O)$).
+
+Combining the marginalization matrix $\mathbf{G}$ with the maps previously defined in \ref{eq:emb} the following diagram demonstrates the relationships between the spaces of probability distributions and the linear spaces in which they are embedded
+
 \begin{equation*}
 \xymatrix{
- \dist (\mathcal{E}(L)) \ar[r] \ar[d] &
-   \ar[d] \coprod\limits_{i \in I} \dist (\mathcal{E}(O_i)) \ar[r] &
-  \ar[d] \coprod\limits_{i,j \in I \atop i < j} \dist (\mathcal{E}(O_i \cup O_j)) \\
- \mathbf{BV} (\mathcal{E}(L)) \ar[r]&
-  \bigoplus\limits_{i \in I} \mathbf{BV} (\mathcal{E}(O_i)) \ar[r] &
-  \bigoplus\limits_{i,j \in I \atop i < j} \mathbf{BV} (\mathcal{E}(O_i \cup O_j))}
+ \mathbb{R}^{\mathcal{E}(L)} \ar[r]^{\mathbf{G}} &
+   \mathbb{R}^{\mathcal{E}(\mathcal{G})} \\
+ \dist (\mathcal{E}(L)) \ar[r]^{\mathbf{G}} \ar@{^{(}->}[u]^{emb(\mathcal{E}(L))}& \ar@{^{(}->}[u]_{emb(\mathcal{E}(\mathcal{G}))}
+  \dist (\mathcal{E}(\mathcal{G}))
+  }
 \end{equation*}
+There are two polytopes determined by this diagram that we ultimately refer to as the locally, $\mathbb{L}(\mathcal{G})$, and globally, $\mathbb{M}(\mathcal{G})$, consistent polytopes. The globally consistent polytope is a subspace of the locally consistent one. In terms of the diagram $\mathbb{M}(\mathcal{G})$ is given by $\mathbf{G}(emb(\mathcal{E}(L))(\mathcal{D}(\mathcal{E}(L))))$ and $\mathbb{L}(\mathcal{G})$ is given by $emb(\mathcal{E}(\mathcal{G})(\mathcal{D}(\mathcal{E}(\mathcal{G}))) \cap \mathbf{G}(\mathbb{R}^{\mathcal{E}(L)})$.
+
+%In general equalities defining $\mathbb{L}(\mathcal{G})$ are given by annihilating the cokernel of the linear map $\mathbf{G}$. The inequalities necessary to determine $\mathbb{M}(\mathcal{G})$ are given by performing Fourier-Motzkin elimination on these equalities combined with the inequalities that restrict one to the probability simplex.
 
 We will now derive equations and inequalities that need to be satisfied in order to guarantee the sheaf condition.  Due to the complexity of the calculations, we will demonstrate the simple case of three genes in the main text and present the general formulation in the \refsupp{}.
 

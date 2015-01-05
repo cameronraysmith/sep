@@ -72,24 +72,24 @@ Thus, when there is a global section, given by $d \in \mathcal{D}_R\mathcal{E}(L
 \section{Existence of a global section for an empirically determined distribution of \gnpm{}}\label{sec:globalsectionempirical}
 Given an empirically determined distribution on the \gnpm{} process, it may be helpful to be able to classify whether or not there exists a global section satisfying the sheaf condition in order to determine the modularity requirements of the empirical distribution. If an empirically determined distribution does have a global section, then it is possible to achieve the same global biological function specified in the empirical distribution using a single gene regulatory network module that contains all of the genes in the given universal set of genes $L$ as is obtained using the particular cover of the genotype space $\mathcal{G}$ that is associated to the empirically determined distribution. If the empirically determined distribution does not have a global section satisfying the sheaf condition, then there is some contingency regarding interactions between genes necessitating decomposition into smaller submodules than is represented by the whole of the universal set of genes $L$.
 
-For a cover of the genotype space, $\mathcal{G}$, we can construct an incidence matrix, $\mathbf{G}$, representing the relationship between \gnpm{} having as domain particular gene regulatory network module contexts given by the $O \in \mathcal{G}$ and those global \gnpm{} defined on $L$. This is equivalent to the more formal statement that there is some binary relation,
-\begin{equation}
-R \subseteq \mathcal{E}(L) \times \coprod_{O \in \mathcal{G}} \mathcal{E}(O),
-\end{equation}
-whose logical matrix representation, $\mathbf{G}$, we would like to construct. In the first case, $\mathcal{E}(L) = P^L$ we have $\{t_1, \ldots t_m\} = \{t_j | t_j \in P^L\}$. In the second case, $\coprod_{O \in \mathcal{G}} \mathcal{E}(O)$, we have $\{e_1, \ldots e_n\} = \coprod_{O \in \mathcal{G}} \mathcal{E}(O)$. So we have two sets of maps, one defined on $P^L$ and the other defined on $\mathcal{E}(O) = P^O$ for each $O \in \mathcal{G}$. This yields a method of specifying the intended relationship that defines $\mathbf{G}_{n \times m}$ in terms of $t_j \in P^L$ and $e_i \in \mathcal{E}(O)$ :
-\begin{eqnarray}
-\mathbf{G}[i,j] =
-\begin{cases}
-1, & t_j|O = e_i,\\
-0, & \text{otherwise}.
-\end{cases}
-\end{eqnarray}
-This matrix can be viewed as an operator acting via matrix multiplication on distributions
-\begin{eqnarray*}
-\mathbf{G} \colon \mathcal{D}_R\mathcal{E}(L) &\rightarrow& \mathcal{D}_R\mathcal{E}(\mathcal{G}),\\
-d &\mapsto& (d|O)_{O \in \mathcal{G}},
-\end{eqnarray*}
-and thereby taking a global distribution defined on \gnpm{} whose domain is the full set of genes $L$ to the \emph{marginalized} distributions that are defined relative to gene regulatory network modules contained in a covering of the genotype space $\mathcal{G}$. This is to say that $\mathbf{G} \cdot d = (d|O)_{O \in \mathcal{G}} = \{d_O\}_{O \in \mathcal{G}}$. $\mathbf{G}$ provides a way of determining the kinds of environmentally determined distributions on \gnpm{} (i.e. $\{d_O\}_{O \in \mathcal{G}}$, \ref{tab:probabilities}) that can be derived from distributions (i.e. $\mathcal{D}_R \mathcal{E}(L)$) defined on the global \gnpm{} (i.e. $\mathcal{E}(L)$ as opposed to $\mathcal{E}(O)$).
+% For a cover of the genotype space, $\mathcal{G}$, we can construct an incidence matrix, $\mathbf{G}$, representing the relationship between \gnpm{} having as domain particular gene regulatory network module contexts given by the $O \in \mathcal{G}$ and those global \gnpm{} defined on $L$. This is equivalent to the more formal statement that there is some binary relation,
+% \begin{equation}
+% R \subseteq \mathcal{E}(L) \times \coprod_{O \in \mathcal{G}} \mathcal{E}(O),
+% \end{equation}
+% whose logical matrix representation, $\mathbf{G}$, we would like to construct. In the first case, $\mathcal{E}(L) = P^L$ we have $\{t_1, \ldots t_m\} = \{t_j | t_j \in P^L\}$. In the second case, $\mathcal{D}( \mathcal{E}(\mathcal{G})) = \coprod_{O \in \mathcal{G}} \mathcal{E}(O)$, we have $\{e_1, \ldots e_n\} = \coprod_{O \in \mathcal{G}} \mathcal{E}(O)$. So we have two sets of maps, one defined on $P^L$ and the other defined on $\mathcal{E}(O) = P^O$ for each $O \in \mathcal{G}$. This yields a method of specifying the intended relationship that defines $\mathbf{G}_{n \times m}$ in terms of $t_j \in P^L$ and $e_i \in \mathcal{E}(O)$ :
+% \begin{eqnarray}
+% \mathbf{G}[i,j] =
+% \begin{cases}
+% 1, & t_j|O = e_i,\\
+% 0, & \text{otherwise}.
+% \end{cases}
+% \end{eqnarray}
+% This matrix can be viewed as an operator acting via matrix multiplication on distributions
+% \begin{eqnarray*}
+% \mathbf{G} \colon \mathcal{D}(\mathcal{E}(L)) &\rightarrow& \mathcal{D}( \mathcal{E}(\mathcal{G})),\\
+% d &\mapsto& (d|O)_{O \in \mathcal{G}},
+% \end{eqnarray*}
+% and thereby taking a global distribution defined on \gnpm{} whose domain is the full set of genes $L$ to the \emph{marginalized} distributions that are defined relative to gene regulatory network modules contained in a covering of the genotype space $\mathcal{G}$. This is to say that $\mathbf{G} \cdot d = (d|O)_{O \in \mathcal{G}} = \{d_O\}_{O \in \mathcal{G}}$. $\mathbf{G}$ provides a way of determining the kinds of environmentally determined distributions on \gnpm{} (i.e. $\{d_O\}_{O \in \mathcal{G}}$, \ref{tab:probabilities}) that can be derived from distributions (i.e. $\mathcal{D} ( \mathcal{E}(L) )$) defined on the global \gnpm{} (i.e. $\mathcal{E}(L)$ as opposed to $\mathcal{E}(O)$).
 
 If we have an experimentally determined distribution on genotype phenotype maps in different genetic contexts (e.g. in \ref{tab:probabilities}) that we refer to as $\{d_O\}_{O \in \mathcal{G}}$, then we have an assignment of a probability value in $R$ to each genotype phenotype map $e_i \in \mathcal{E}(O)$ in \ref{tab:gpm}. We can collect these probabilities into a vector $\mathbf{V}_{n \times 1}$ where we note that $n$ is the same as that used to specify the number of \gnpm{} in the coproduct over gene regulatory network modules in a given covering of the genotype space $\{e_1, \ldots e_n\} = \coprod_{O \in \mathcal{G}} \mathcal{E}(O)$. We can specify as unknown a distribution on the set of globally defined genotype phenotype maps and collect the associated probabilities in a vector $\mathbf{X}_{m \times 1}$ where there is a probability weight associated to each $t_j \in \mathcal{E}(L)$. Now we can attempt to determine the probability distribution on globally defined \gnpm{} $\mathcal{E}(L)$ by solving the linear system of equations
 \begin{equation}
