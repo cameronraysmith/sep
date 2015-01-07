@@ -136,6 +136,20 @@ def kcfromgraph(edgelist=[(0,1),(1,2),(2,3),(3,0)],
         print kceqsrefa
         print ""
 
+        print "Eliminated variables\n"
+        print "Edges"
+        print [cliqueids[i] for i in ind]
+        print "States"
+        print [cliquevals[i] for i in ind]
+        print ""
+
+        print "Remaining variables\n"
+        print "Edges"
+        print [cliqueids[i] for i in range(len(cliqueids)) if i not in ind ]
+        print "States"
+        print [cliquevals[i] for i in range(len(cliquevals)) if i not in ind ]
+        print ""
+
         print "Polymake reduced inequalities (homogeneous rhs in first column)"
         print "Each line describes one linear inequality."
         print "The encoding is as follows: "
