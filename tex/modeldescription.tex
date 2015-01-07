@@ -178,22 +178,33 @@ This condition means that the probability for gene $l_1$ to be associated to the
  p^{13}_{01} + p^{13}_{11} &= p^{3}_1 = p^{23}_{01} + p^{23}_{11}.
  \end{align*}
 These are equivalent to what would result from using the cokernel of $\mathbf{G}$ in \ref{eq:localpolytope}.
-Using the local consistency conditions for our example we can derive a set of inequalities that determine $\mathbb{L}(\mathcal{G})$:
+Using the local consistency conditions for our example we can derive a set of inequalities that determine $\mathbb{L}(\mathcal{G})$
 %Taken as ostensible marginals of a joint probability distribution, the aforementioned collection of normalized contingency tables for $O=\{l_1,l_2\},\,O'=\{l_2,l_3\},\,O''=\{l_3,l_1\}$ satisfy the local consistency conditions in \ref{eq:threecycinequalities}
+% \begin{equation}
+% \begin{aligned}\label{eq:threecycinequalities}
+% p^{12}_{00} &= 1 + p^{12}_{11} - p^{23}_{10} - p^{23}_{11} - p^{31}_{01} - p^{31}_{11} \geq 0, \\
+% p^{12}_{01} &= -p^{12}_{11} + p^{23}_{10} + p^{23}_{11} \geq 0,\\
+% p^{12}_{10} &= -p^{12}_{11} + p^{31}_{01} + p^{31}_{11} \geq 0,\\
+% p^{23}_{00} &= 1-p^{23}_{10} - p^{31}_{10} - p^{31}_{11} \geq 0,\\
+% p^{23}_{01} &= -p^{23}_{11} + p^{31}_{10} + p^{31}_{11} \geq 0,\\
+% p^{31}_{00} &= 1-p^{31}_{01} - p^{31}_{10} - p^{31}_{11} \geq 0,
+% \end{aligned}
+% \end{equation}
 \begin{equation}
 \begin{aligned}\label{eq:threecycinequalities}
-p^{12}_{00} &= 1 + p^{12}_{11} - p^{23}_{10} - p^{23}_{11} - p^{31}_{01} - p^{31}_{11} \geq 0, \\
+p^{12}_{00} &= 1 + p^{12}_{11} - p^{23}_{10} - p^{23}_{11} - p^{13}_{10} - p^{13}_{11} \geq 0, \\
 p^{12}_{01} &= -p^{12}_{11} + p^{23}_{10} + p^{23}_{11} \geq 0,\\
-p^{12}_{10} &= -p^{12}_{11} + p^{31}_{01} + p^{31}_{11} \geq 0,\\
-p^{23}_{00} &= 1-p^{23}_{10} - p^{31}_{10} - p^{31}_{11} \geq 0,\\
-p^{23}_{01} &= -p^{23}_{11} + p^{31}_{10} + p^{31}_{11} \geq 0,\\
-p^{31}_{00} &= 1-p^{31}_{01} - p^{31}_{10} - p^{31}_{11} \geq 0,
+p^{12}_{10} &= -p^{12}_{11} + p^{13}_{10} + p^{13}_{11} \geq 0,\\
+p^{23}_{00} &= 1-p^{23}_{10} - p^{13}_{01} - p^{13}_{11} \geq 0,\\
+p^{23}_{01} &= -p^{23}_{11} + p^{13}_{01} + p^{13}_{11} \geq 0,\\
+p^{31}_{00} &= 1-p^{13}_{10} - p^{13}_{01} - p^{13}_{11} \geq 0,
 \end{aligned}
 \end{equation}
-Substituting the numbers from \ref{fig:inconsistentthreecycle}A into \ref{eq:threecycinequalities}, we conclude that the local conditions are satisfied.
+combined with the trivial inequalities that force all probabilities to be nonnegative. Substituting the numbers from \ref{fig:inconsistentthreecycle}A into \ref{eq:threecycinequalities}, demonstrates that the local conditions are satisfied.
 
 The global consistency conditions form an underdetermined system of linear equations for the putative global distribution $d_{L}$ so their solution will assume the form of a linear subspace as demonstrated in \ref{eq:globalpolytope}.  In our example where this linear subspace corresponds to the image of $\Delta_7$ in $\Delta_3^{\oplus 3}$ under the marginalization map, following \ref{eq:globalpolytope} we can choose $v=p^0_{\vec{i}}$, $y=p^L_{\vec{i}}$, and $T$ by fixing $p^{123}_{000}=0$ we get the following by eliminating $x$ from the equations determined by the conditions $v=Gx$, $x \in T$, $x-y \in ker \mathbf{G}$:
-\begin{align*}
+\begin{equation}
+\begin{aligned}\label{eq:globalpositivityeqs}
 p^{123}_{001} &= p^{12}_{00} - p^{123}_{000} \\
 p^{123}_{010} &= p^{13}_{00} - p^{123}_{000} \\
 p^{123}_{100} &= p^{23}_{00} - p^{123}_{000} \\
@@ -201,17 +212,33 @@ p^{123}_{110} &= p^{23}_{10} - p^{13}_{00} + p^{123}_{000} \\
 p^{123}_{011} &= p^{13}_{01} - p^{12}_{00} + p^{123}_{000} \\
 p^{123}_{101} &= p^{12}_{10} - p^{23}_{00} + p^{123}_{000} \\
 p^{123}_{111} &= 1 - p^{12}_{00} - p^{13}_{00} - p^{23}_{00} - p^{123}_{000}
-\end{align*}
-The remaining condition $y \in \mathcal{D}(\mathcal{E}(L))$ from \ref{eq:globalpolytope} states that all the probabilities $p^{123}_{ijk}$ must be positive numbers, which is only possible if the putative marginals satisfy suitable inequalities. These inequalities can be derived by simple elimination of variables resulting in
-\begin{equation}
-\begin{aligned}\label{eq:threecycbooleinequalities}
-p^{12}_{11} - p^{23}_{11} + p^{31}_{10} \geq 0, \\
-1 + p^{12}_{11} - p^{23}_{10} - p^{31}_{01} - p^{31}_{10} - p^{31}_{11} \geq 0, \\
--p^{12}_{11} + p^{23}_{10} + p^{31}_{11} \geq 0, \\
--p^{12}_{11} + p^{23}_{11} + p^{31}_{01} \geq 0.
 \end{aligned}
 \end{equation}
-For the example given in \ref{fig:inconsistentthreecycle}A, the first of the inequalities in \ref{eq:threecycbooleinequalities} is demonstrated to be unsatisfied in \ref{eq:threecycboolenumbers}
+The remaining condition $y \in emb_{\mathcal{E}(L)}(\mathcal{D}(\mathcal{E}(L)))$ from \ref{eq:globalpolytope} states that all the probabilities $p^{123}_{ijk}$ must be positive numbers, which is only possible if the putative marginals satisfy suitable inequalities given by
+\begin{equation}
+\begin{aligned}\label{eq:globalpositivityineqs}
+p^{123}_{000} &\geq min(p^{12}_{00},\, p^{13}_{00},p^{23}_{00},\, 1 - p^{12}_{00} - p^{13}_{00} - p^{23}_{00}),\\
+ p^{123}_{000} &\geq max(0,\, p^{13}_{00}-p^{23}_{10},\, p^{12}_{00}-p^{13}_{01},\, p^{23}_{00}-p^{12}_{10}).
+\end{aligned}
+\end{equation}
+A minimal set of inequalities is then expressed by substituting the equalities from \ref{eq:threecycinequalities} into the inequalities determined by \ref{eq:globalpositivityineqs} and eliminating redundancies resulting in
+% \begin{equation}
+% \begin{aligned}\label{eq:threecycbooleinequalities}
+% p^{12}_{11} - p^{23}_{11} + p^{31}_{10} \geq 0, \\
+% 1 + p^{12}_{11} - p^{23}_{10} - p^{31}_{01} - p^{31}_{10} - p^{31}_{11} \geq 0, \\
+% -p^{12}_{11} + p^{23}_{10} + p^{31}_{11} \geq 0, \\
+% -p^{12}_{11} + p^{23}_{11} + p^{31}_{01} \geq 0.
+% \end{aligned}
+% \end{equation}
+\begin{equation}
+\begin{aligned}\label{eq:threecycbooleinequalities}
+p^{12}_{11} - p^{23}_{11} + p^{13}_{01} \geq 0, \\
+1 + p^{12}_{11} - p^{23}_{10} - p^{13}_{10} - p^{13}_{01} - p^{13}_{11} \geq 0, \\
+-p^{12}_{11} + p^{23}_{10} + p^{13}_{11} \geq 0, \\
+-p^{12}_{11} + p^{23}_{11} + p^{13}_{10} \geq 0.
+\end{aligned}
+\end{equation}
+The inequalities from \ref{eq:threecycinequalities} and \ref{eq:threecycbooleinequalities} combined with the nonnegativity inequalities together determine the global polytope $\mathbb{M}(\mathcal{G})$. For the example given in \ref{fig:inconsistentthreecycle}A, the first of the inequalities in \ref{eq:threecycbooleinequalities} is demonstrated to be unsatisfied in \ref{eq:threecycboolenumbers}
 \begin{equation}
 \begin{aligned}\label{eq:threecycboolenumbers}
 0.1 - 0.4 + 0.1 \not\geq 0, \\
@@ -220,6 +247,7 @@ For the example given in \ref{fig:inconsistentthreecycle}A, the first of the ine
 -0.1 + 0.4 + 0.1 \geq 0.
 \end{aligned}
 \end{equation}
+This indicates that data consistent with \ref{fig:inconsistentthreecycle}A could not derive from the network depicted there. If constraints consistent with those of \ref{fig:inconsistentthreecycle}A are placed on the given network, either the network must add another gene in order to satisfy them directly or the network context imposing those constraints must coarse-grain the network in a suitable way. In what follows, we argue that the former is much more plausible than the latter. This ultimately suggests conditions in which cycle breakage via gene duplication may be selected for to relieve inconsistent constraints that can arise when cycles are present.
 % We present a method of determining the analogs of the inequalities of \ref{eq:threecycinequalities} and \ref{eq:threecycbooleinequalities} for arbitrary hypergraphs in the \refsupp{}.
 
 % \section{Coarse-graining gene expression}
