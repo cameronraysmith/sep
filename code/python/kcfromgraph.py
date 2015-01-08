@@ -95,11 +95,11 @@ def kcfromgraph(edgelist=[(0,1),(1,2),(2,3),(3,0)],
     #     next(f)
     #     ssmat = np.array([ map(int,line.split()) for line in f ])
 
-    eqmat = np.asarray(sp.Matrix(ssmat.T).nullspace(simplified=True),dtype=np.int)
+    eqmat = np.asarray(sp.Matrix(ssmat.T).nullspace(simplify=True),dtype=np.int)
     eqmat = np.append(eqmat, np.zeros_like(eqmat[:,0])[...,None],1)
     eqmat = np.vstack((eqmat, normconds))
 
-    kceqsref, ind = sp.Matrix(eqmat).rref(simplified=True)
+    kceqsref, ind = sp.Matrix(eqmat).rref(simplify=True)
     kceqsrefs = np.squeeze(np.asarray(kceqsref))
     kceqsrefa = kceqsrefs[~np.all(kceqsrefs == 0, axis=1)]
 
