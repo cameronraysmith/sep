@@ -157,9 +157,9 @@ It is convenient for the purpose of computation to express these in terms of the
 \mathbb{L}(\mathcal{G}) &=& \{ v \in emb_{\mathcal{E}(\mathcal{G})}(\mathcal{D}(\mathcal{E}(\mathcal{G}))) \; | \; (\forall u \in coker \mathbf{G}) \; u \cdot v = 0\},\label{eq:localpolytope}\\
 \mathbb{M}(\mathcal{G}) &=& \{ v \; | v = \mathbf{G} x,\; (\exists x \in T) \; (\exists y \in emb_{\mathcal{E}(L)}(\mathcal{D}(\mathcal{E}(L))))\; x-y \in ker \mathbf{G})  \},\label{eq:globalpolytope}
 \end{eqnarray}
-where $T$ is a subspace of $\mathbb{R}^{\mathcal{E}(L)}$ such that $T \oplus ker \mathbf{G} = \mathbb{R}^{\mathcal{E}(L)}$. In order to obtain inequalities that define $\mathbb{M}(\mathcal{G})$, Fourier-Motzkin elimination can be used to eliminate $x$ and $y$.
+where $T$ is a subspace of $\mathbb{R}^{\mathcal{E}(L)}$ such that $T \oplus ker \mathbf{G} = \mathbb{R}^{\mathcal{E}(L)}$. In order to obtain inequalities that define $\mathbb{M}(\mathcal{G})$, Fourier-Motzkin elimination can be used to eliminate $x$ and $y$. Alternatively one can use the fact, \cite{Wainwright2007} proposition 8.3, that $\mathbb{M}(\mathcal{G})$ is given by removing the non-integer vertices from a vertex represntation of $\mathbb{L}(\mathcal{G})$ and the ability to interconvert between vertex and inequality representations to compute the same inequalities as described in the \refsupp{}.
 
-\subsection{Example of inconsistent contingency tables}\label{sec:inconsistency}
+\subsection{Example of unsatisfiable constraints}\label{sec:inconsistency}
 We will now exemplify equations and inequalities that need to be satisfied in order to guarantee the sheaf condition for the simple case of three genes that form the simplest nontrivial cycle where inconsistency may arise. Suppose that $L = \{l_1,l_2,l_3\}$, $P = \{0,1\}$, $\mathcal{G} = \{\{l_1,l_2\},\{l_2,l_3\},\{l_3,l_1\}\}$. We define probabilities associated to the gene network-phenotype maps for any set $S$ as $p^S_{\vec{j}}= d_{S}(e^S_{\vec{j}})$. This results in $emb_{\mathcal{E}(L)}(\mathcal{D}(\mathcal{E}(L))) = \Delta_7 \subset \mathbb{R}^8 $ and $emb_{\mathcal{E}(\mathcal{G})}(\mathcal{D}(\mathcal{E}(\mathcal{G}))) = \Delta^{\oplus 3}_3 \subset \mathbb{R}^{12}$,
 which give the inequalities defining $\mathbb{L}(\mathcal{G})$ and $\mathbb{M}(\mathcal{G})$ when substituted into \ref{eq:localpolytope} and \ref{eq:globalpolytope} with the appropriate $\mathbf{G}$ given by \ref{eq:margmat}.
 
@@ -229,7 +229,7 @@ The inequalities from \ref{eq:threecycinequalities} and \ref{eq:threecycbooleine
 \end{aligned}
 \end{equation}
 This indicates that data consistent with \ref{fig:inconsistentthreecycle}A could not derive from the network depicted there.
-\subsection{Example of apparently inconsistent contingency tables}\label{sec:apparentinconsistency}
+\subsection{Example of apparent satisfaction of unsatisfiable constraints}\label{sec:apparentinconsistency}
 The inequalities defining $\mathbb{M}(\mathcal{G})$ were derived under the assumption that the two-element probabilities were obtained by mariginalizing a three-element distribution.  If some other procedure, such as conditionalization, is used to obtain them instead, these inequalities need not apply. For example, suppose now that $L = \{l_1,l_2,l_3 \}$, $P = \{0,1,2\}$, $\mathcal{G} = \{\{l_1,l_2\},\{l_2,l_3\},\{l_3,l_1\}\}$ where we have simply added an element to $P$ relative to the example described above. In the previous example the marginal maps were given by $\dist (\expr (O \subset L))$ with one for each $O \in \mathcal{G}$. If we combine these marginal maps with conditioning on one out of the three genes being in state two and each of the other two being in states zero or one, then we have instead $\pi_1 = \dist (\expr (\{l_1,l_2\} \subset L))|\{ e^{123}_{ij2} \mid i,j \in \{ 0,1 \} \},\; \pi_2 = \dist (\expr (\{l_2,l_3\} \subset L))|\{ e^{123}_{2ij} \mid i,j \in \{ 0,1 \} \},\; \pi_3 = \dist (\expr (\{l_3,l_1\} \subset L))|\{ e^{123}_{i2j} \mid i,j \in \{ 0,1 \} \}$. In this case, if we have the following assignment of probabilities for a distribution $d$
 \begin{equation}\label{eq:condprobs}
 \begin{aligned}

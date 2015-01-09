@@ -1,26 +1,26 @@
 %!TEX root = ../plos_template.tex
 
-\section{Hierarchical models}\label{sec:hierarchicalmodels}
-Given the collection of mappings $\mathcal{E}(O) = P^O$ for all $O \in \mathcal{G}$ we can attempt to explicitly construct a particular joint probability distribution $s \in \mathcal{D}_{\mathbb{R}}\mathcal{E}(L)$ on $\mathcal{E}(L)$. As noted above, in some cases such as that of \ref{fig:inconsistentthreecycle}A and C, such attempts may fail. This requires, first, a choice of mapping $\mathbb{R}^{\mathcal{E}(L)} \rightarrow \mathcal{D}_{\mathbb{R}}\mathcal{E}(L)$, which in the case of so-called \emph{exponential families} is
-\begin{eqnarray*}
-\text{exp} \colon \mathbb{R}^{\mathcal{E}(L)} &\rightarrow& \mathcal{D}_{\mathbb{R}}\mathcal{E}(L),\\
-g &\mapsto& \frac{e^g}{\sum_{d \in \mathcal{E}(L)} e^{g(d)}}.
-\end{eqnarray*}
-In this case the exponential family is the image $exp(\mathcal{I}) \subset \mathcal{D}_{\mathbb{R}}\mathcal{E}(L)$ where $\mathcal{I} \subseteq \mathbb{R}^{\mathcal{E}(L)}$.
+% \section{Hierarchical models}\label{sec:hierarchicalmodels}
+% Given the collection of mappings $\mathcal{E}(O) = P^O$ for all $O \in \mathcal{G}$ we can attempt to explicitly construct a particular joint probability distribution $s \in \mathcal{D}_{\mathbb{R}}\mathcal{E}(L)$ on $\mathcal{E}(L)$. As noted above, in some cases such as that of \ref{fig:inconsistentthreecycle}A and C, such attempts may fail. This requires, first, a choice of mapping $\mathbb{R}^{\mathcal{E}(L)} \rightarrow \mathcal{D}_{\mathbb{R}}\mathcal{E}(L)$, which in the case of so-called \emph{exponential families} is
+% \begin{eqnarray*}
+% \text{exp} \colon \mathbb{R}^{\mathcal{E}(L)} &\rightarrow& \mathcal{D}_{\mathbb{R}}\mathcal{E}(L),\\
+% g &\mapsto& \frac{e^g}{\sum_{d \in \mathcal{E}(L)} e^{g(d)}}.
+% \end{eqnarray*}
+% In this case the exponential family is the image $exp(\mathcal{I}) \subset \mathcal{D}_{\mathbb{R}}\mathcal{E}(L)$ where $\mathcal{I} \subseteq \mathbb{R}^{\mathcal{E}(L)}$.
 
-Given $\mathcal{G}$ we can associate an interaction subspace
-$$
-\mathcal{I}_{O} = \{ g \in \mathbb{R}^{\mathcal{E}(L)}\,\, |\,\, g(d_O,d_{L \setminus O}) = g(d_O,d'_{L \setminus O}) \text{ for all } d_O \in \mathcal{E}(O) \text{ and } d_{L \setminus O},d'_{L \setminus O} \in \mathcal{E}(L \setminus O)\}
-$$
-to each $O \in \mathcal{G}$. We can then construct the space of interactions associated to $\mathcal{G}$ itself as the sum over each interaction subspace
-$$
-\mathcal{I}_{\mathcal{G}} = \sum_{O \in \mathcal{G}} \mathcal{I}_{O}.
-$$
-The \emph{hierarchical model} \cite{Lauritzen1996} associated to $\mathcal{G}$ is then the exponential family
-$$
-\mathcal{E}xp_{\mathcal{G}} = \text{exp}(\mathcal{I}_{\mathcal{G}}).
-$$
-Markov random fields in the context of probabilistic graphical models or just graphical models are special cases of hierarchical models \cite{Lauritzen1996,Murphy2012,Barber2012,Bishop2007,Koller2009}. The description in this section is taken from \cite{Lauritzen1996}, which uses hypergraphs explicitly. In the main text, we use this notion in the numerical simulations in \ref{fig:inconsistentthreecycle}. Our reduced hypergraphs which correspond to GRNAs modeled as coverings of the collection of genes do not imply that they are instances of hierarchical models, but they can be taken to be a specification of the underlying hypergraph, also referred to as a \emph{factor graph}, of a hierarchical model.
+% Given $\mathcal{G}$ we can associate an interaction subspace
+% $$
+% \mathcal{I}_{O} = \{ g \in \mathbb{R}^{\mathcal{E}(L)}\,\, |\,\, g(d_O,d_{L \setminus O}) = g(d_O,d'_{L \setminus O}) \text{ for all } d_O \in \mathcal{E}(O) \text{ and } d_{L \setminus O},d'_{L \setminus O} \in \mathcal{E}(L \setminus O)\}
+% $$
+% to each $O \in \mathcal{G}$. We can then construct the space of interactions associated to $\mathcal{G}$ itself as the sum over each interaction subspace
+% $$
+% \mathcal{I}_{\mathcal{G}} = \sum_{O \in \mathcal{G}} \mathcal{I}_{O}.
+% $$
+% The \emph{hierarchical model} \cite{Lauritzen1996} associated to $\mathcal{G}$ is then the exponential family
+% $$
+% \mathcal{E}xp_{\mathcal{G}} = \text{exp}(\mathcal{I}_{\mathcal{G}}).
+% $$
+% Markov random fields in the context of probabilistic graphical models or just graphical models are special cases of hierarchical models \cite{Lauritzen1996,Murphy2012,Barber2012,Bishop2007,Koller2009}. The description in this section is taken from \cite{Lauritzen1996}, which uses hypergraphs explicitly. In the main text, we use this notion in the numerical simulations in \ref{fig:inconsistentthreecycle}. Our reduced hypergraphs which correspond to GRNAs modeled as coverings of the collection of genes do not imply that they are instances of hierarchical models, but they can be taken to be a specification of the underlying hypergraph, also referred to as a \emph{factor graph}, of a hierarchical model.
 
 \section{Example}\label{sec:example}
 For the purposes of this example, we take the full set of genes to be $L = \{ l_1,l_2,l_3,l_4 \}$. Consider the case in which each of the gene regulatory network modules under consideration has two genes and we specify the covering of the genotype space given by $\mathcal{G} = \{\{l_1,l_2 \},\{l_1,l_4 \},\{l_3,l_2\},\{l_3,l_4\} \}$. The full set of genes together with a covering of the genotype space is a special case of a hypergraph $\mathcal{H} = (L,\mathcal{G})$ where the set of genes $L$ serve as the nodes or vertices and the covering $\mathcal{G}$ contains the edges or hyperedges, each of which is simply some subset of $L$. We also have two phenotype values $P = \{0, 1\}$. Each genotype-phenotype map in \ref{tab:gpm} assigns phenotype values to each $O \in \mathcal{G}$. For example, $e_1 \colon   l_1 l_2 \rightarrow 00$. \ref{tab:probabilities} likewise assigns probabilities to each of these \gnpm{}.
@@ -275,173 +275,173 @@ A row $(a_0,a_1,...,a_d)$ corresponds to the inequality $a_0 + a_1 x_1 + ... + a
 \end{equation}
 This completes steps 1-3 of the algorithm outlined above. The remaining steps are trivial. For reference, they appear in the code in the Appendices that implements the algorithm for computing $\frac{\text{Vol}(\mathbb{M}(\mathcal{G}))}{\text{Vol}(\mathbb{L}(\mathcal{G}))}$ for arbitrary $\mathcal{G}$.
 
-\section{A generative process for apparently inconsistent pairwise distributions}\label{sec:generativeprocessapparentinconsistency}
+% \section{A generative process for apparently inconsistent pairwise distributions}\label{sec:generativeprocessapparentinconsistency}
 
-The inequalities defining $\mathbb{M}(\mathcal{G})$ were derived under the assumption that the two-element probabilities were obtained by mariginalizing a three-element distribution.  Hence, if some other procedure, such as conditionalization is used to obtain them instead, the inequalities need not apply, as in the example above, which may be described as follows:  Introduce the sample spaces
-\begin{align*}
-S_{1} &= \{e_0,e_1\} \\
-S_{2} &= \{f_0,f_1\} \\
-S_{3} &= \{g_0,g_1\} \\
-S_{12} &= \{b_{00},b_{01},b_{10},b_{11}\} \\
-S_{13} &= \{c_{00},c_{01},c_{10},c_{11}\} \\
-S_{23} &= \{d_{00},d_{01},d_{10},d_{11}\} \\
-S_{123} &= \{a_{002},a_{012},a_{102},a_{112},a_{020},a_{021},a_{120},a_{121},a_{200},a_{201},a_{210},a_{211}\}, \\
-\end{align*}
-the inclusion maps $\iota_1, \iota_2, \iota_3$ and the projections $\pi_1, \ldots. \pi_6$.
-$$
-\xymatrix{
-S_{1}& S_{13} \ar@{->>}[l]_{\pi_1} \ar@{->>}[r]^{\pi_2} \ar@{^{(}->}[d]_{\iota_2} & S_{3} \\
-S_{12} \ar@{->>}[u]^{\pi_3} \ar@{->>}[rd]_{\pi_5} \ar@{^{(}->}[r]^{\iota_1} & S_{123} & S_{23} \ar@{->>}[u]^{\pi_4} \ar@{->>}[ld]^{\pi_6} \ar@{_{(}->}[l]_{\iota_3} \\
-& S_2 & }
-$$
-\begin{center}
-\begin{tabular}{c | c}
-$x$ & $\iota_1 (x)$ \\ \hline
-$b_{00}$ & $a_{002}$ \\
-$b_{01}$ & $a_{012}$ \\
-$b_{10}$ & $a_{102}$ \\
-$b_{11}$ & $a_{112}$ \\
-\end{tabular} \qquad
-\begin{tabular}{c | c}
-$x$ & $\iota_2 (x)$ \\ \hline
-$c_{00}$ & $a_{020}$ \\
-$c_{01}$ & $a_{021}$ \\
-$c_{10}$ & $a_{120}$ \\
-$c_{11}$ & $a_{121}$ \\
-\end{tabular} \qquad
-\begin{tabular}{c | c}
-$x$ & $\iota_3 (x)$ \\ \hline
-$d_{00}$ & $a_{200}$ \\
-$d_{01}$ & $a_{201}$ \\
-$d_{10}$ & $a_{210}$ \\
-$d_{11}$ & $a_{211}$ \\
-\end{tabular}
-\end{center}
+% The inequalities defining $\mathbb{M}(\mathcal{G})$ were derived under the assumption that the two-element probabilities were obtained by mariginalizing a three-element distribution.  Hence, if some other procedure, such as conditionalization is used to obtain them instead, the inequalities need not apply, as in the example above, which may be described as follows:  Introduce the sample spaces
+% \begin{align*}
+% S_{1} &= \{e_0,e_1\} \\
+% S_{2} &= \{f_0,f_1\} \\
+% S_{3} &= \{g_0,g_1\} \\
+% S_{12} &= \{b_{00},b_{01},b_{10},b_{11}\} \\
+% S_{13} &= \{c_{00},c_{01},c_{10},c_{11}\} \\
+% S_{23} &= \{d_{00},d_{01},d_{10},d_{11}\} \\
+% S_{123} &= \{a_{002},a_{012},a_{102},a_{112},a_{020},a_{021},a_{120},a_{121},a_{200},a_{201},a_{210},a_{211}\}, \\
+% \end{align*}
+% the inclusion maps $\iota_1, \iota_2, \iota_3$ and the projections $\pi_1, \ldots. \pi_6$.
+% $$
+% \xymatrix{
+% S_{1}& S_{13} \ar@{->>}[l]_{\pi_1} \ar@{->>}[r]^{\pi_2} \ar@{^{(}->}[d]_{\iota_2} & S_{3} \\
+% S_{12} \ar@{->>}[u]^{\pi_3} \ar@{->>}[rd]_{\pi_5} \ar@{^{(}->}[r]^{\iota_1} & S_{123} & S_{23} \ar@{->>}[u]^{\pi_4} \ar@{->>}[ld]^{\pi_6} \ar@{_{(}->}[l]_{\iota_3} \\
+% & S_2 & }
+% $$
+% \begin{center}
+% \begin{tabular}{c | c}
+% $x$ & $\iota_1 (x)$ \\ \hline
+% $b_{00}$ & $a_{002}$ \\
+% $b_{01}$ & $a_{012}$ \\
+% $b_{10}$ & $a_{102}$ \\
+% $b_{11}$ & $a_{112}$ \\
+% \end{tabular} \qquad
+% \begin{tabular}{c | c}
+% $x$ & $\iota_2 (x)$ \\ \hline
+% $c_{00}$ & $a_{020}$ \\
+% $c_{01}$ & $a_{021}$ \\
+% $c_{10}$ & $a_{120}$ \\
+% $c_{11}$ & $a_{121}$ \\
+% \end{tabular} \qquad
+% \begin{tabular}{c | c}
+% $x$ & $\iota_3 (x)$ \\ \hline
+% $d_{00}$ & $a_{200}$ \\
+% $d_{01}$ & $a_{201}$ \\
+% $d_{10}$ & $a_{210}$ \\
+% $d_{11}$ & $a_{211}$ \\
+% \end{tabular}
+% \end{center}
 
-\begin{center}
-\begin{tabular}{c | c}
-$x$ & $\pi_1 (x)$ \\ \hline
-$c_{00}$ & $e_0$ \\
-$c_{01}$ & $e_0$ \\
-$c_{10}$ & $e_1$ \\
-$c_{11}$ & $e_1$ \\
-\end{tabular} \quad
-\begin{tabular}{c | c}
-$x$ & $\pi_2 (x)$ \\ \hline
-$c_{00}$ & $g_0$ \\
-$c_{01}$ & $g_1$ \\
-$c_{10}$ & $g_0$ \\
-$c_{11}$ & $g_1$ \\
-\end{tabular} \quad
-\begin{tabular}{c | c}
-$x$ & $\pi_3 (x)$ \\ \hline
-$b_{00}$ & $e_0$ \\
-$b_{01}$ & $e_0$ \\
-$b_{10}$ & $e_1$ \\
-$b_{11}$ & $e_1$ \\
-\end{tabular} \quad
-\begin{tabular}{c | c}
-$x$ & $\pi_4 (x)$ \\ \hline
-$d_{00}$ & $g_0$ \\
-$d_{01}$ & $g_1$ \\
-$d_{10}$ & $g_0$ \\
-$d_{11}$ & $g_1$ \\
-\end{tabular} \quad
-\begin{tabular}{c | c}
-$x$ & $\pi_5 (x)$ \\ \hline
-$b_{00}$ & $f_0$ \\
-$b_{01}$ & $f_1$ \\
-$b_{10}$ & $f_0$ \\
-$b_{11}$ & $f_1$ \\
-\end{tabular} \quad
-\begin{tabular}{c | c}
-$x$ & $\pi_6 (x)$ \\ \hline
-$d_{00}$ & $f_0$ \\
-$d_{01}$ & $f_0$ \\
-$d_{10}$ & $f_1$ \\
-$d_{11}$ & $f_1$ \\
-\end{tabular}
-\end{center}
-\ref{fig:condmargprobspaces} shows these mappings in terms of colored subsets.
+% \begin{center}
+% \begin{tabular}{c | c}
+% $x$ & $\pi_1 (x)$ \\ \hline
+% $c_{00}$ & $e_0$ \\
+% $c_{01}$ & $e_0$ \\
+% $c_{10}$ & $e_1$ \\
+% $c_{11}$ & $e_1$ \\
+% \end{tabular} \quad
+% \begin{tabular}{c | c}
+% $x$ & $\pi_2 (x)$ \\ \hline
+% $c_{00}$ & $g_0$ \\
+% $c_{01}$ & $g_1$ \\
+% $c_{10}$ & $g_0$ \\
+% $c_{11}$ & $g_1$ \\
+% \end{tabular} \quad
+% \begin{tabular}{c | c}
+% $x$ & $\pi_3 (x)$ \\ \hline
+% $b_{00}$ & $e_0$ \\
+% $b_{01}$ & $e_0$ \\
+% $b_{10}$ & $e_1$ \\
+% $b_{11}$ & $e_1$ \\
+% \end{tabular} \quad
+% \begin{tabular}{c | c}
+% $x$ & $\pi_4 (x)$ \\ \hline
+% $d_{00}$ & $g_0$ \\
+% $d_{01}$ & $g_1$ \\
+% $d_{10}$ & $g_0$ \\
+% $d_{11}$ & $g_1$ \\
+% \end{tabular} \quad
+% \begin{tabular}{c | c}
+% $x$ & $\pi_5 (x)$ \\ \hline
+% $b_{00}$ & $f_0$ \\
+% $b_{01}$ & $f_1$ \\
+% $b_{10}$ & $f_0$ \\
+% $b_{11}$ & $f_1$ \\
+% \end{tabular} \quad
+% \begin{tabular}{c | c}
+% $x$ & $\pi_6 (x)$ \\ \hline
+% $d_{00}$ & $f_0$ \\
+% $d_{01}$ & $f_0$ \\
+% $d_{10}$ & $f_1$ \\
+% $d_{11}$ & $f_1$ \\
+% \end{tabular}
+% \end{center}
+% \ref{fig:condmargprobspaces} shows these mappings in terms of colored subsets.
 
-It is thus possible to generate what appear to be inconsistent pairwise distributions by embedding the system in \ref{fig:inconsistentthreecycle} into a consistent system represented by \ref{fig:controlnetwork}. In this system we consider the collection of pairwise probability distributions $p(l_1,l_2)$, $p(l_2,l_3)$, $p(l_1,l_3)$, and the joint probability distribution $p(m_1,m_2,m_3,m_4)$ where the states of genes $l_i \in \{ 0, 1\}$ and genes $m_i \in \{0,1,2\} \equiv \mathcal{M}$. The random variables representing the states of genes $l_1,l_2,l_3$ correspond to $m_1,m_2,m_3$ respectively and $m_4$ is a control random variable colored in dark gray in \ref{fig:controlnetwork}. We specify the control exhibited by $m_4$ over $m_1,m_2,m_3$ via the constraints
-\begin{align*}
-p(m_1=2|m_4=0)=1,\\
-p(m_2=2|m_4=1)=1,\\
-p(m_3=2|m_4=2)=1.
-\end{align*}
-We set $p(l_1,l_2)$, $p(l_2,l_3)$, $p(l_1,l_3)$ equal to those along the respective edges in \ref{fig:inconsistentthreecycle}A and then enforce analogous constraints on $p(m_1,m_2,m_3,m_4)$
-\begin{align*}
-p(m_1,m_2|m_4=2)=p(l_1,l_2),\\
-p(m_2,m_3|m_4=0)=p(l_2,l_3),\\
-p(m_1,m_3|m_4=1)=p(l_1,l_3).
-\end{align*}
-Finally, we place a uniform distribution on the states of $m_4$, $\forall m \in \mathcal{M} \left[ p(m_4=m) = 1/|\mathcal{M}| \right]$. This leads to the joint distribution
-\begin{align*}
-p(m_1,m_2,m_3,m_4=\{0022\})&=1/30,\\
-p(m_1,m_2,m_3,m_4=\{0122\})&=2/15,\\
-p(m_1,m_2,m_3,m_4=\{1022\})&=2/15,\\
-p(m_1,m_2,m_3,m_4=\{1122\})&=1/30,\\
-p(m_1,m_2,m_3,m_4=\{0201\})&=2/15,\\
-p(m_1,m_2,m_3,m_4=\{0211\})&=1/30,\\
-p(m_1,m_2,m_3,m_4=\{1201\})&=1/30,\\
-p(m_1,m_2,m_3,m_4=\{1211\})&=2/15,\\
-p(m_1,m_2,m_3,m_4=\{2000\})&=2/15,\\
-p(m_1,m_2,m_3,m_4=\{2010\})&=1/30,\\
-p(m_1,m_2,m_3,m_4=\{2100\})&=1/30,\\
-p(m_1,m_2,m_3,m_4=\{2110\})&=2/15,
-\end{align*}
-where probabilities for all unlisted states are precisely zero. Now if we compute the conditional distributions
-\begin{align*}
-p(m_1,m_2|m_4=2) = \begin{bmatrix}
-0.1 & 0.4 & 0\\
-0.4 & 0.1 & 0\\
-0 & 0 & 0
-\end{bmatrix},\\
-p(m_2,m_3|m_4=0) = \begin{bmatrix}
-0.4 & 0.1 & 0\\
-0.1 & 0.4 & 0\\
-0 & 0 & 0
-\end{bmatrix},\\
-p(m_1,m_3|m_4=1) = \begin{bmatrix}
-0.4 & 0.1 & 0\\
-0.1 & 0.4 & 0\\
-0 & 0 & 0
-\end{bmatrix},
-\end{align*}
-we see that were we to only observe the variables $m_1,m_2,m_3$ we would arrive at pairwise distributions consistent with
-\begin{align*}
-p(l_1,l_2) = \begin{bmatrix}
-0.1 & 0.4\\
-0.4 & 0.1
-\end{bmatrix},\\
-p(l_2,l_3) = \begin{bmatrix}
-0.4 & 0.1\\
-0.1 & 0.4
-\end{bmatrix},\\
-p(l_1,l_3) = \begin{bmatrix}
-0.4 & 0.1\\
-0.1 & 0.4
-\end{bmatrix},
-\end{align*}
-which cannot derive as marginals from any $p(l_1,l_2,l_3)$.
+% It is thus possible to generate what appear to be inconsistent pairwise distributions by embedding the system in \ref{fig:inconsistentthreecycle} into a consistent system represented by \ref{fig:controlnetwork}. In this system we consider the collection of pairwise probability distributions $p(l_1,l_2)$, $p(l_2,l_3)$, $p(l_1,l_3)$, and the joint probability distribution $p(m_1,m_2,m_3,m_4)$ where the states of genes $l_i \in \{ 0, 1\}$ and genes $m_i \in \{0,1,2\} \equiv \mathcal{M}$. The random variables representing the states of genes $l_1,l_2,l_3$ correspond to $m_1,m_2,m_3$ respectively and $m_4$ is a control random variable colored in dark gray in \ref{fig:controlnetwork}. We specify the control exhibited by $m_4$ over $m_1,m_2,m_3$ via the constraints
+% \begin{align*}
+% p(m_1=2|m_4=0)=1,\\
+% p(m_2=2|m_4=1)=1,\\
+% p(m_3=2|m_4=2)=1.
+% \end{align*}
+% We set $p(l_1,l_2)$, $p(l_2,l_3)$, $p(l_1,l_3)$ equal to those along the respective edges in \ref{fig:inconsistentthreecycle}A and then enforce analogous constraints on $p(m_1,m_2,m_3,m_4)$
+% \begin{align*}
+% p(m_1,m_2|m_4=2)=p(l_1,l_2),\\
+% p(m_2,m_3|m_4=0)=p(l_2,l_3),\\
+% p(m_1,m_3|m_4=1)=p(l_1,l_3).
+% \end{align*}
+% Finally, we place a uniform distribution on the states of $m_4$, $\forall m \in \mathcal{M} \left[ p(m_4=m) = 1/|\mathcal{M}| \right]$. This leads to the joint distribution
+% \begin{align*}
+% p(m_1,m_2,m_3,m_4=\{0022\})&=1/30,\\
+% p(m_1,m_2,m_3,m_4=\{0122\})&=2/15,\\
+% p(m_1,m_2,m_3,m_4=\{1022\})&=2/15,\\
+% p(m_1,m_2,m_3,m_4=\{1122\})&=1/30,\\
+% p(m_1,m_2,m_3,m_4=\{0201\})&=2/15,\\
+% p(m_1,m_2,m_3,m_4=\{0211\})&=1/30,\\
+% p(m_1,m_2,m_3,m_4=\{1201\})&=1/30,\\
+% p(m_1,m_2,m_3,m_4=\{1211\})&=2/15,\\
+% p(m_1,m_2,m_3,m_4=\{2000\})&=2/15,\\
+% p(m_1,m_2,m_3,m_4=\{2010\})&=1/30,\\
+% p(m_1,m_2,m_3,m_4=\{2100\})&=1/30,\\
+% p(m_1,m_2,m_3,m_4=\{2110\})&=2/15,
+% \end{align*}
+% where probabilities for all unlisted states are precisely zero. Now if we compute the conditional distributions
+% \begin{align*}
+% p(m_1,m_2|m_4=2) = \begin{bmatrix}
+% 0.1 & 0.4 & 0\\
+% 0.4 & 0.1 & 0\\
+% 0 & 0 & 0
+% \end{bmatrix},\\
+% p(m_2,m_3|m_4=0) = \begin{bmatrix}
+% 0.4 & 0.1 & 0\\
+% 0.1 & 0.4 & 0\\
+% 0 & 0 & 0
+% \end{bmatrix},\\
+% p(m_1,m_3|m_4=1) = \begin{bmatrix}
+% 0.4 & 0.1 & 0\\
+% 0.1 & 0.4 & 0\\
+% 0 & 0 & 0
+% \end{bmatrix},
+% \end{align*}
+% we see that were we to only observe the variables $m_1,m_2,m_3$ we would arrive at pairwise distributions consistent with
+% \begin{align*}
+% p(l_1,l_2) = \begin{bmatrix}
+% 0.1 & 0.4\\
+% 0.4 & 0.1
+% \end{bmatrix},\\
+% p(l_2,l_3) = \begin{bmatrix}
+% 0.4 & 0.1\\
+% 0.1 & 0.4
+% \end{bmatrix},\\
+% p(l_1,l_3) = \begin{bmatrix}
+% 0.4 & 0.1\\
+% 0.1 & 0.4
+% \end{bmatrix},
+% \end{align*}
+% which cannot derive as marginals from any $p(l_1,l_2,l_3)$.
 
-% 1--2 conditioned on x_3=3, x_4=3
-%     0.4000    0.1000         0
-%     0.1000    0.4000         0
-%          0         0         0
+% % 1--2 conditioned on x_3=3, x_4=3
+% %     0.4000    0.1000         0
+% %     0.1000    0.4000         0
+% %          0         0         0
 
-% 2--3 conditioned on x_1=3, x_4=1
-%     0.4000    0.1000         0
-%     0.1000    0.4000         0
-%          0         0         0
+% % 2--3 conditioned on x_1=3, x_4=1
+% %     0.4000    0.1000         0
+% %     0.1000    0.4000         0
+% %          0         0         0
 
-% 1--3 conditioned on x_2=3, x_4=2
-%     0.1000    0.4000         0
-%     0.4000    0.1000         0
-%          0         0         0
+% % 1--3 conditioned on x_2=3, x_4=2
+% %     0.1000    0.4000         0
+% %     0.4000    0.1000         0
+% %          0         0         0
 
-This scenario may be implemented via a synthetic gene circuit with four genes, where each of the first three genes contains an operator site for each of the other two and all three genes contain an operator site for the fourth gene \ref{fig:condgenescenario}. If the fourth gene is constitutively expressed at a low rate so that it persists at low copy number it is uniformly, in time, likely to be bound to the operator site present on each of the first three genes. When gene four is bound to its operator site on any of the first three genes, that gene's state is $2$. If gene four is absent, the output state is determined by the presence or absence of the other two operator sites according to each of the tables depicted in \ref{fig:condgenescenario}.
+% This scenario may be implemented via a synthetic gene circuit with four genes, where each of the first three genes contains an operator site for each of the other two and all three genes contain an operator site for the fourth gene \ref{fig:condgenescenario}. If the fourth gene is constitutively expressed at a low rate so that it persists at low copy number it is uniformly, in time, likely to be bound to the operator site present on each of the first three genes. When gene four is bound to its operator site on any of the first three genes, that gene's state is $2$. If gene four is absent, the output state is determined by the presence or absence of the other two operator sites according to each of the tables depicted in \ref{fig:condgenescenario}.
 
 \FloatBarrier
 \pagebreak
@@ -500,11 +500,11 @@ This scenario may be implemented via a synthetic gene circuit with four genes, w
 \label{fig:controlnetwork}
 \end{figure}
 
-\pagebreak
+% \pagebreak
 
-\begin{figure}[!ht]
-\centering
-\noindent\includegraphics[width=0.5\columnwidth]{fig/condmargprobspaces.pdf}
-\caption{{\bf Diagrammatic representation of the sample spaces for the process generating apparent inconsistency.}}
-\label{fig:condmargprobspaces}
-\end{figure}
+% \begin{figure}[!ht]
+% \centering
+% \noindent\includegraphics[width=0.5\columnwidth]{fig/condmargprobspaces.pdf}
+% \caption{{\bf Diagrammatic representation of the sample spaces for the process generating apparent inconsistency.}}
+% \label{fig:condmargprobspaces}
+% \end{figure}
