@@ -8,16 +8,18 @@
 
 TOPTEX = plos_template.tex
 
+TOPPDFFILE = $(TOPTEX:.tex=.pdf)
+
+TOPBBLFILE = $(TOPTEX:.tex=.bbl)
+
 BIBFILES = bib/books.bib \
 	   bib/papers.bib
 
 TEMPLATE = plost2009.bst
 
-FIGFILES =
+FIGFILES = $(shell grep -v '^%' tex/*.tex | grep -ohP 'fig/.*(?=\})')
 
-TEXFILES =
-
-TOPPDFFILE = $(TOPTEX:.tex=.pdf)
+TEXFILES = $(shell ls tex/*.tex)
 
 #---------------------------------------------
 # Default target
@@ -53,13 +55,14 @@ dropbox:
 	cp *header.tex ~/Dropbox/sharelatex/sep2
 	cp *.bst ~/Dropbox/sharelatex/sep2
 	cp tex/* ~/Dropbox/sharelatex/sep2/tex
-	cp fig/*.pdf ~/Dropbox/sharelatex/sep2/fig
+	cp $(FIGFILES) ~/Dropbox/sharelatex/sep2/fig
 	cp bib/*.bib ~/Dropbox/sharelatex/sep2/bib
 
 arxiv:
 	latexpand plos_template.tex > combined.tex
 	sed -i 's/\\makeatletter{}//g' combined.tex
-	tar --transform='flags=r;s|combined|paper|' --transform='flags=r;s|plos_template|paper|' -cvzf arxiv`date +"%m%d%Y"`.tar.gz combined.tex plos_template.bbl fig/*.pdf
+	cp $(TOPBBLFILE) combined.bbl
+	tar --transform='flags=r;s|combined|paper|' -cvzf arxiv`date +"%m%d%Y"`.tar.gz combined.tex combined.bbl $(FIGFILES)
 
 $(BIBFILES):
 	copybib
