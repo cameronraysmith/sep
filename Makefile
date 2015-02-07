@@ -69,6 +69,7 @@ arxiv:
 thesis:
 	latexpand $(TOPTEX) > $(PROJECTNAME).tex
 	sed -i 's/\\makeatletter{}//g' $(PROJECTNAME).tex
+	cp $(FIGFILES) ~/projects/thesis/classicthesis/fig
 
 $(BIBFILES):
 	copybib
