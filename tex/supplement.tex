@@ -77,18 +77,6 @@ $$
 $$
 for any $O_2 \subseteq O_1$.
 
-\section{Gene regulatory network modules}\label{secsupp:covergenotypespace}
-A gene regulatory network module is represented by a subset of genes, $O \subseteq L$. A gene regulatory network architecture (GRNA) may then be represented by a subset of such modules, $\mathcal{G} \subseteq \mathcal{P}(L)$ that satisfies the following two conditions
-\begin{enumerate}
-\item $\cup_i O_i = \cup \mathcal{G} = L$,
-\item If $O,O' \in \mathcal{G}$ and $O \subseteq O'$ then $O = O'$.
-\end{enumerate}
-The first condition is just a statement that $\mathcal{G}$ represents a decomposition of the collection of all genes under consideration into subsets and this is why we refer to $\mathcal{G}$ as a collection of gene regulatory network modules. The second condition means simply that we will not consider nested subsets and so we will take for our $O \in \mathcal{G}$ the biggest $O \in \mathcal{G}$ that is not a subset of some other $O' \in \mathcal{G}$. The second condition also implies that if a given subset of genes $O'$ is compatible in a sense to be explained more precisely in what proceeds then any smaller subset of genes $O$ is also compatible.
-
-Mathematically, the two conditions given above state that $\mathcal{G}$ is a \emph{covering} of the set $L$.  This is equivalent to $(L, \mathcal{G})$ being a reduced hypergraph, Sperner family, or clutter over $L$ \cite{Lauritzen1996}.  Coverings $\mathcal{G}$ of the space of genes contain the necessary information to make precise what we heuristically refer to at other points in this paper as modularity in order to cohere with standard terminology in systems biology literature while attempting to submit our own precise interpretation of the relatively colloquial concept.
-
-Given a covering $\mathcal{G}$ of the space of genes, we can consider the higher order phenotypes associated to the elements of $\mathcal{G}$.  For a suitable choice of cover and a suitable level of phenotypes, it may happen that the phenotypes associated to different elements of $\mathcal{G}$ are distinct.  For instance, in the example of \ref{fig:phenotypehierarchy}, if we take $\mathcal{G} = \{O_1, O_2\}$ where $O_1 = \{l_1, l_2, l_3\}$ and $O_2 = \{l_3, l_4\}$, we have $\phi_{i+1}(O_1) = \{u,v\}$ and $\phi_{i+1}(O_2) = \{x,y\}$.  In such a case, if we were to perform one experiment which measured the phenotypes $\{u,v\}$ and another experiment which measured $\{x,y\}$, then the result could be understood as examining the covering $\{O_1, O_2\}$ at phenotype level $i+1$.
-
 \section{Compatibility of distributions on \gnpm{}}\label{secsupp:compatibilityofgpms}
 Given a covering of the space of genes $\mathcal{G}$, a compatible family for $\mathcal{G}$ with respect to $\mathcal{D} \circ \mathcal{E}$ is given by a family of distributions $\{d_O \in \dist (\mathcal{E}(O)) | O \in \mathcal{G}\}$ such that for all $O, O' \in \mathcal{G}$
 \begin{eqnarray}\label{eq:sheafcond}
