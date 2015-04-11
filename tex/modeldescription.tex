@@ -5,9 +5,10 @@ Most studies of biological networks study one type of biological variable in iso
 
 This \AI{} graph is precisely equivalent to an undirected hypergraph if one considers each of the \AI{} nodes as a hyperedge containing all of the nodes to which it connects. This is shown in the third row of \ref{fig:netsubnetcontext} for each of the simple examples of the SBGN form of biological networks. Considering all possible hypergraphs of this kind is equivalent to examining all possible environmental dependency structures the subnetwork could be subjected to. Because the \AI{} is fundamental to understanding how subnetworks depend upon their contexts, it is the structure of the \AI{} graph that we refer to as \emph{network architecture} throughout this paper. We note from this perspective, that cycles in the SBGN representation of the biological network do not result in corresponding cycles in the \AI{} graph and vice versa. For instance, in example four of \ref{fig:netsubnetcontext}, there are no cycles in the SBGN representation of the biological network whereas a single cycle exists in the hypergraph representation of the \AI{} graph. Furthermore, in example six, there is a cycle in the SBGN representation, whereas there is no cycle in the hypergraph representation of the \AI{}.
 
+More precisely, the collection of variables comprising the subnetwork under consideration is referred to as $L$. The different subsets, $O$, of biological variables, $L$, making up the hypergraph representation of the \AI{} are each referred to as modules. A biological network architecture (BNA), $\mathcal{G}$, may then be represented by a subset of all possible such modules (see \refsupp{} \ref{sec:covergenotypespace}).
+
 When there is a relatively larger degree of independence in the network context as compared to the subnetwork, it is possible for inconsistency to arise. One canonical example of such inconsistency arises in the study of ferromagnetism via the Ising model on a triangular lattice where so-called \emph{frustration} arises in the couplings among the magnetic dipole moments of three nearest-neighbor atomic spins \cite{Wannier1950,Toulouse1977,Vannimenus1977}. In this example, the underlying lattice or graph represents interactions among the spins of atomic nuclei according to their spatial proximity. As we have described, in our model, the network architectures to which we refer represent the manner in which the network context places constraints upon a subnetwork. Inconsistency is likewise capable of arising if there is a cycle in the hypergraph representing this network architecture.
 % \ref{fig:netsubnetcontext}. A different graph representing physical interactions among the elements of the subnetwork may contain cycles without there being any cycle in the graph representing the manner in which this subnetwork is connected to the context within which it is embedded.
-
 
 \section{Coarse-graining dynamic network states as a generalization of genotype-phenotype maps}\label{sec:genenetworkphenmap}
 
@@ -39,29 +40,42 @@ A more realistic basis upon which to build phenotypes than this outline of the h
 %These levels can also be viewed as complementary to promoter states, and, realistically, the number of these is likely to be larger than two \cite{Rieckh2013a}.
 Then a possible state of our biological network is represented by a function $e : L \to P$ and coarse-graining a stationary distribution will lead to a probability distribution on the set of all maps, denoted $P^L$, from subnetworks represented by subsets of $L$ to the respective states of the variables that comprise them.
 
+% \section{Coarse-graining phenotypes}\label{sec:coarsegrainingphenotypes}
+
+% As described in \ref{sec:genenetworkphenmap} it is also possible to consider phenotypes that derive from coarse-graining lower-level phenotypes. Once this is done, one arrives at probability distributions over network modules like that introduced in \ref{sec:probabilitydistributionsonnetworks}. As a result of this, our conclusions that are formulated in terms of a single level of coarse-graining \gnpm{} also apply to coarse-graining over multiple levels at once despite the fact that the parameters of the relevant probabilistic model are likely to be different.
+
+% For a subset of genes $O \subseteq L$, let $\phi_i (O)$ be the set of phenotype values at level $i$, which can be determined from the expression levels of genes in $O$.  Note that $\phi_i (O)$ may be empty if the set $O$ does not contain enough genes to determine the values of any phenotype at level $i$. If $i \le j$, let $\Omega_{ij}(O) : \phi_i(O) \to \phi_j(O)$ be the coarse-graining map which describes how higher level phenotypes are determined from lower level phenotypes. This map is formulated precisely in \refsupp{} \ref{secsupp:coarsegrainingphenotypes}.
+
+% For example, if our lower level phenotypes for a set of genes $O_1 = \{ l_1,l_2,l_3,l_4 \}$ are given by a set of binary sequences, then the projection of these phenotypes down to the set $O_2 = \{l_3,l_4\}$ followed by mapping to the higher level phenotypes $x=\{01,10\}$ and $y=\{11\}$ is equivalent to first mapping to the higher-level phenotypes $X$ and $Y$ and then projecting down to $O_2$ shown by the equivalent paths from the top-left to the bottom-right in \ref{fig:phenotypehierarchy}A.
+% Of course, there is an equivalent diagram for the subset $\{ l_1,l_2,l_3 \}$.
+
 \section{Probability distributions over network modules}\label{sec:probabilitydistributionsonnetworks}
-Here we describe examples of probability distributions over network modules. A general presentation is provided in \refsupp{} \ref{secsupp:probabilitydistributionsonnetworks}.
+Here we describe examples of probability distributions over network modules. A more general presentation is provided in \refsupp{} \ref{secsupp:probabilitydistributionsonnetworks}.
 
-In addition to the expression state of the whole genome, we usually will be interested in the expression states of portions of the genome that interact either directly or indirectly.  We will represent these portions as subsets of $L$ and their expression states as functions from these subsets to $P$. If $O \subset L$, let $\expr{}(O)$ denote the set of all possible functions from $O$ to $P$.
-
-% The power set of $L$, which we shall denote as $\mathcal{P}(L)$, can be regarded  as a category~\cite{Lane1998,MacLane1992,Awodey2006,Abramsky2011} in which the objects are subsets of $L$ and morphisms represent inclusion of a smaller subset into a larger superset (i.e. $O \subseteq O' \Rightarrow O \rightarrow O'$).
-If we consider the case in which we have two genes $L=\{l_1,l_2\}$ and there are two potential phenotypes, $P=\{0,1\}$, then $\expr$ operates on each of the possible subsets of $L$ (i.e. $\{\}$, $\{l_1\}$, $\{l_2\}$, $\{l_1,l_2\}$) to give spaces of functions containing the possible \gnpm{} as exemplified in \ref{fig:efunctor}. For example, $\mathcal{E}(\{l_1,l_2\}) = \{ e^{12}_{00},e^{12}_{01},e^{12}_{10},e^{12}_{11} \}$ where $e^{12}_{01}(l_1) = 0$ and $e^{12}_{01}(l_2) = 1$. As another example, $\mathcal{E}(\{l_1\}) = \{ e^{1}_{0},e^{1}_{1} \}$ where $e^{1}_{0}(l_1)=0$ and $e^{1}_{1}(l_1)=1$.
-
-Given a finite set $S$, define $\dist(S)$ to be the set of all probability distributions on $S$. Continuing the example above,
-$$\mathcal{D}(\mathcal{E}(\{l_1,l_2\})) = \{p^{12}_{00},p^{12}_{01},p^{12}_{10},p^{12}_{11} \mid p^{12}_{00} \geq 0, p^{12}_{01} \geq 0,p^{12}_{10} \geq 0,p^{12}_{11} \geq 0, p^{12}_{00} + p^{12}_{01} + p^{12}_{10} + p^{12}_{11} = 1 \},$$
-$$\mathcal{D}(\mathcal{E}(\{l_1\})) = \{p^{1}_{0}, p^{1}_{1} \mid p^{1}_{0} \geq 0, p^{1}_{1} \geq 0, p^{1}_{0}+p^{1}_{1} = 1 \}.$$
-
-If $S$ and $S'$ are finite sets, which in our case will usually be sets of \gnpm{} given by $\mathcal{E}(O)$, then $d \in \dist(S)$ and $d' \in \dist(S')$ are probability distributions. If $f \colon S \to S'$
-is an onto map, then $\dist{}(f)$ is defined as marginalization. For example, in case $S=\{ e^{12}_{00}, e^{12}_{01}, e^{12}_{10}, e^{12}_{11} \}$, $S'=\{ e^{1}_{0}, e^{1}_{1} \}$, and $f$ is given by
-\begin{equation}
-\begin{aligned}
-e^{12}_{00} \mapsto e^{1}_{0}\\
-e^{12}_{01} \mapsto e^{1}_{0}\\
-e^{12}_{10} \mapsto e^{1}_{1}\\
-e^{12}_{11} \mapsto e^{1}_{1}
-\end{aligned},
+As explained in \ref{sec:networkcontext}, for a given biological subnetwork, the hypergraph representing the dependencies in the network context consists of subsets, $O$, of the variables, $L$, in the subnetwork.
+% The states of these are given by functions from these subsets to $P$. If $O \subset L$, let $\expr{}(O)$ denote the set of all possible functions from $O$ to $P$.
+% If we consider the case in which we have two variables $L=\{l_1,l_2\}$ and there are two states, $P=\{0,1\}$, then $\expr$ operates on each of the possible subsets of $L$ (i.e. $\{\}$, $\{l_1\}$, $\{l_2\}$, $\{l_1,l_2\}$) to give spaces of functions containing the possible \gnpm{} as exemplified in \ref{fig:efunctor}. For example, $\mathcal{E}(\{l_1,l_2\}) = \{ e^{12}_{00},e^{12}_{01},e^{12}_{10},e^{12}_{11} \}$ where $e^{12}_{01}(l_1) = 0$ and $e^{12}_{01}(l_2) = 1$. As another example, $\mathcal{E}(\{l_1\}) = \{ e^{1}_{0},e^{1}_{1} \}$ where $e^{1}_{0}(l_1)=0$ and $e^{1}_{1}(l_1)=1$.
+If we consider the case in which we have two variables $L=\{l_1,l_2\}$ and there are two values, $P=\{0,1\}$. Given two variables and two values, there are four possible assignments of values to variables each of which constitutes a state of the system. We will write the probability of each of these states as $p^{v_1v_2}_{s_1s_2}$ indicating that variable $v_1$ is assigned value $s_1$ and variable $v_2$ is assigned value $s_2$. A probability distribution over the states of the system for $L$ is then given by
+% Given a finite set $S$, define $\dist(S)$ to be the set of all probability distributions on $S$. Continuing the example above,
+\begin{equation}\label{eq:examplejointdist}
+\{p^{12}_{00},p^{12}_{01},p^{12}_{10},p^{12}_{11} \mid p^{12}_{00} \geq 0, p^{12}_{01} \geq 0,p^{12}_{10} \geq 0,p^{12}_{11} \geq 0, p^{12}_{00} + p^{12}_{01} + p^{12}_{10} + p^{12}_{11} = 1 \}.
 \end{equation}
-then $\dist{}(f)$ can be represented as a marginalization matrix
+This imposes the standard conditions that probabilities are positive and sum to one. If we have the subset of $L$ given by $O = \{l_1\}$ then a probability distribution over its states is given by
+\begin{equation}\label{eq:examplemargdist}
+\{p^{1}_{0}, p^{1}_{1} \mid p^{1}_{0} \geq 0, p^{1}_{1} \geq 0, p^{1}_{0}+p^{1}_{1} = 1 \}.
+\end{equation}
+% If $S$ and $S'$ are finite sets, which in our case will usually be sets of \gnpm{} given by $\mathcal{E}(O)$, then $d \in \dist(S)$ and $d' \in \dist(S')$ are probability distributions. If $f \colon S \to S'$
+% is an onto map, then $\dist{}(f)$ is defined as marginalization. For example, in case $S=\{ e^{12}_{00}, e^{12}_{01}, e^{12}_{10}, e^{12}_{11} \}$, $S'=\{ e^{1}_{0}, e^{1}_{1} \}$, and $f$ is given by
+% \begin{equation}
+% \begin{aligned}
+% e^{12}_{00} \mapsto e^{1}_{0}\\
+% e^{12}_{01} \mapsto e^{1}_{0}\\
+% e^{12}_{10} \mapsto e^{1}_{1}\\
+% e^{12}_{11} \mapsto e^{1}_{1}
+% \end{aligned},
+% \end{equation}
+% then $\dist{}(f)$ can be represented as a marginalization matrix
+In order to be consistent the distribution expressed in \ref{eq:examplejointdist} should be related to that of \ref{eq:examplemargdist} via a marginalization matrix
 \begin{equation}
 \begin{pmatrix}
 p^{1}_{0}\\
@@ -78,26 +92,6 @@ p^{12}_{11}
 \end{pmatrix}.
 \end{equation}
 
-\section{Coarse-graining phenotypes}\label{sec:coarsegrainingphenotypes}
-
-As described in \ref{sec:genenetworkphenmap} it is also possible to consider phenotypes that derive from coarse-graining lower-level phenotypes. Once this is done, one arrives at probability distributions over network modules like that introduced in \ref{sec:probabilitydistributionsonnetworks}. As a result of this, our conclusions that are formulated in terms of a single level of coarse-graining \gnpm{} also apply to coarse-graining over multiple levels at once despite the fact that the parameters of the relevant probabilistic model are likely to be different.
-
-For a subset of genes $O \subseteq L$, let $\phi_i (O)$ be the set of phenotype values at level $i$, which can be determined from the expression levels of genes in $O$.  Note that $\phi_i (O)$ may be empty if the set $O$ does not contain enough genes to determine the values of any phenotype at level $i$. If $i \le j$, let $\Omega_{ij}(O) : \phi_i(O) \to \phi_j(O)$ be the coarse-graining map which describes how higher level phenotypes are determined from lower level phenotypes. This map is formulated precisely in \refsupp{} \ref{secsupp:coarsegrainingphenotypes}.
-
-For example, if our lower level phenotypes for a set of genes $O_1 = \{ l_1,l_2,l_3,l_4 \}$ are given by a set of binary sequences, then the projection of these phenotypes down to the set $O_2 = \{l_3,l_4\}$ followed by mapping to the higher level phenotypes $x=\{01,10\}$ and $y=\{11\}$ is equivalent to first mapping to the higher-level phenotypes $X$ and $Y$ and then projecting down to $O_2$ shown by the equivalent paths from the top-left to the bottom-right in \ref{fig:phenotypehierarchy}A.
-Of course, there is an equivalent diagram for the subset $\{ l_1,l_2,l_3 \}$.
-
-\section{Gene regulatory network architecture}\label{sec:covergenotypespace}
-A gene regulatory network module is represented by a subset of genes, $O \subseteq L$. A gene regulatory network architecture (GRNA), $\mathcal{G}$, may then be represented by a subset of all possible such modules. This is to say that $\mathcal{G}$ is a subset of the set of all subsets of $L$, $\mathcal{G} \subseteq \mathcal{P}(L)$, that satisfies the following two conditions
-\begin{enumerate}
-\item $\cup_i O_i = \cup \mathcal{G} = L$,
-\item If $O,O' \in \mathcal{G}$ and $O \subseteq O'$ then $O = O'$.
-\end{enumerate}
-The first condition is just a statement that $\mathcal{G}$ represents a decomposition of the collection of all genes under consideration into subsets and this is why we refer to $\mathcal{G}$ as a collection of gene regulatory network modules. The second condition means simply that we will not consider nested subsets and so we will take for our $O \in \mathcal{G}$ the biggest $O \in \mathcal{G}$ that is not a subset of some other $O' \in \mathcal{G}$. The second condition also implies that if a given subset of genes $O'$ is compatible in a sense to be explained more precisely in what proceeds then any smaller subset of genes $O$ is also compatible.
-
-Mathematically, the two conditions given above state that $\mathcal{G}$ is a \emph{covering} of the set $L$.  This is equivalent to $(L, \mathcal{G})$ being a reduced hypergraph, Sperner family, or clutter over $L$ \cite{Lauritzen1996}.  Coverings $\mathcal{G}$ of the space of genes contain the necessary information to make precise what we heuristically refer to at other points in this paper as modularity in order to cohere with standard terminology in systems biology literature while attempting to submit our own precise interpretation of the relatively colloquial concept.
-
-Given a covering $\mathcal{G}$ of the space of genes, we can consider the higher order phenotypes associated to the elements of $\mathcal{G}$.  For a suitable choice of cover and a suitable level of phenotypes, it may happen that the phenotypes associated to different elements of $\mathcal{G}$ are distinct.  For instance, in the example of \ref{fig:phenotypehierarchy}, if we take $\mathcal{G} = \{O_1, O_2\}$ where $O_1 = \{l_1, l_2, l_3\}$ and $O_2 = \{l_3, l_4\}$, we have $\phi_{i+1}(O_1) = \{u,v\}$ and $\phi_{i+1}(O_2) = \{x,y\}$.  In such a case, if we were to perform one experiment which measured the phenotypes $\{u,v\}$ and another experiment which measured $\{x,y\}$, then the result could be understood as examining the covering $\{O_1, O_2\}$ at phenotype level $i+1$.
 
 \section{Compatibility of distributions on \gnpm{}}\label{sec:compatibilityofgpms}
 Given a covering of the space of genes $\mathcal{G}$, a compatible family for $\mathcal{G}$ with respect to $\mathcal{D} \circ \mathcal{E}$ is given by a family of distributions $\dist{}(\expr{}(\mathcal{G})) = \{d_O \in \dist (\mathcal{E}(O)) | O \in \mathcal{G}\}$ such that for all $O, O' \in \mathcal{G}$
