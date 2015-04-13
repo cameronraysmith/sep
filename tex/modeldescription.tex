@@ -5,7 +5,7 @@ Most studies of biological networks study one type of biological variable in iso
 
 This \AI{} graph is precisely equivalent to an undirected hypergraph if one considers each of the \AI{} nodes as a hyperedge containing all of the nodes to which it connects. This is shown in the third row of \ref{fig:netsubnetcontext} for each of the simple examples of the SBGN form of biological networks. Considering all possible hypergraphs of this kind is equivalent to examining all possible environmental dependency structures the subnetwork could be subjected to. Because the \AI{} is fundamental to understanding how subnetworks depend upon their contexts, it is the structure of the \AI{} graph that we refer to as \emph{network architecture} throughout this paper. We note from this perspective, that cycles in the SBGN representation of the biological network do not result in corresponding cycles in the \AI{} graph and vice versa. For instance, in example four of \ref{fig:netsubnetcontext}, there are no cycles in the SBGN representation of the biological network whereas a single cycle exists in the hypergraph representation of the \AI{} graph. Furthermore, in example six, there is a cycle in the SBGN representation, whereas there is no cycle in the hypergraph representation of the \AI{}.
 
-More precisely, the collection of variables comprising the subnetwork under consideration is referred to as $L$. The different subsets, $O$, of biological variables, $L$, making up the hypergraph representation of the \AI{} are each referred to as modules. A biological network architecture (BNA), $\mathcal{G}$, may then be represented by a subset of all possible such modules (see \refsupp{} \ref{sec:covergenotypespace}).
+More precisely, the collection of variables comprising the subnetwork under consideration is referred to as $L$. The different subsets, $O$, of biological variables, $L$, making up the hypergraph representation of the \AI{} are each referred to as modules. A biological network architecture (BNA), $\mathcal{G}$, may then be represented by a subset of all possible such modules subject to two conditions (see \refsupp{} \ref{sec:covergenotypespace}). The first represents the fact each variable of the focal subnetwork must be included in at least one module. The second represents the fact that any pair of constraints that are imposed upon overlapping sets of variables must agree on those overlapping variables.  In expressing the latter condition, all of the information present in a collection of lower-order constraints can be expressed as an effective higher-order constraint if any such higher-order constraint exists at all. So, if there is a constraint that is imposed simultaneously upon two distinct variables and another independent constraint imposed upon only the first of the two variables, this situation can be expressed in terms of a single constraint on both of the two variables.
 
 When there is a relatively larger degree of independence in the network context as compared to the subnetwork, it is possible for inconsistency to arise. One canonical example of such inconsistency arises in the study of ferromagnetism via the Ising model on a triangular lattice where so-called \emph{frustration} arises in the couplings among the magnetic dipole moments of three nearest-neighbor atomic spins \cite{Wannier1950,Toulouse1977,Vannimenus1977}. In this example, the underlying lattice or graph represents interactions among the spins of atomic nuclei according to their spatial proximity. As we have described, in our model, the network architectures to which we refer represent the manner in which the network context places constraints upon a subnetwork. Inconsistency is likewise capable of arising if there is a cycle in the hypergraph representing this network architecture.
 % \ref{fig:netsubnetcontext}. A different graph representing physical interactions among the elements of the subnetwork may contain cycles without there being any cycle in the graph representing the manner in which this subnetwork is connected to the context within which it is embedded.
@@ -92,79 +92,227 @@ p^{12}_{11}
 \end{pmatrix}.
 \end{equation}
 
-
 \section{Compatibility of distributions on \gnpm{}}\label{sec:compatibilityofgpms}
-Given a covering of the space of genes $\mathcal{G}$, a compatible family for $\mathcal{G}$ with respect to $\mathcal{D} \circ \mathcal{E}$ is given by a family of distributions $\dist{}(\expr{}(\mathcal{G})) = \{d_O \in \dist (\mathcal{E}(O)) | O \in \mathcal{G}\}$ such that for all $O, O' \in \mathcal{G}$
-\begin{eqnarray}\label{eq:sheafcond}
-%\forall O \in \mathcal{G} \left[ \exists d_O \in \mathcal{D}_R\mathcal{E}(O) \right],\\
-d_O|O \cap O' = d_{O'}|O \cap O'.
-\end{eqnarray}
-This first set of conditions is later referred to as local consistency. The space of all such locally consistent distributions for a given covering, $\mathcal{G}$, is referred to as $\mathbb{L}(\mathcal{G})$ where
+When one has a non-trivial hypergraph, there will typically be more
+than one way of obtaining a probability distribution on a set by
+marginalizing a distribution on a larger set.  For instance, if we have
+a network with three binary variables and two edges, $\{l_1,l_2\}$ and
+$\{l_1,l_3\}$, then we can obtain a probability distribution on the
+set $\{l_1\}$ either by marginalizing probabilities defined over
+$\{l_1,l_2\}$ as was done above or by marginalizing probabilities
+defined over $\{l_1,l_3\}$ to obtain
 \begin{equation}
-\mathbb{L}(\mathcal{G}) = \{ d_O  \in \dist{}(\expr{}(\mathcal{G})) \mid (\forall O,O' \in \mathcal{G})\,\, d_O|O \cap O' = d_O'|O \cap O' \}.
+ \begin{pmatrix}
+  p^{1}_{0}\\
+  p^{1}_{1}
+ \end{pmatrix} =
+ \begin{pmatrix}
+  1 & 1 & 0 & 0\\
+  0 & 0 & 1 & 1
+ \end{pmatrix}
+ \begin{pmatrix}
+  p^{13}_{00}\\
+  p^{13}_{01}\\
+  p^{13}_{10}\\
+  p^{13}_{11}
+ \end{pmatrix}.
 \end{equation}
-These conditions mean that any two distributions $d_O$ and $d_{O'}$ in the \emph{compatible family} of distributions marginalize to the same disribution over the intersection of $O$ with $O'$. If these constraints are not satisfied, then there is no way to make a consistent assignment of probabilities to the expression states of even a single gene. In this case one of the constraints will be eliminated or gene duplication may allow for the independent satisfaction of both constraints.
-
-If, moreover, this first condition implies the existence of $d \in \mathcal{D}( \mathcal{E}(L))$ such that $d|O = d_O$ for all $O \in \mathcal{G}$ then the system is said to satisfy the global consistency condition. The space of all such globally consistent distributions for a given covering, $\mathcal{G}$, is referred to as $\mathbb{M}(\mathcal{G})$ where
-\begin{equation}
-\mathbb{M}(\mathcal{G}) = \{ d_O \in \dist{}(\expr{}(\mathcal{G})) \mid (\exists d ) \,\, d|O = d_O \}.
-\end{equation}
-In general, the system of equations $d|O = d_O$ for all $O \in \mathcal{G}$ is underdetermined and so local consistency does not imply global consistency. The local and global consistency conditions are related to the mathematical concepts from which they derive in \refsupp{} \ref{secsupp:compatibilityofgpms}. We will now examine the situation more closely to determine under what circumstances global consistency holds.
-
-For a cover of the genotype space, $\mathcal{G}$, we can construct a matrix, $\mathbf{G}$, representing the relationship,
-% $R = \coprod_{O \in \mathcal{G}} \mathcal{E}(O \subset L) \subseteq \mathcal{E}(L) \times \expr (\mathcal{G})$,
-between \gnpm{} having as domain particular gene regulatory network modules given by the $O \in \mathcal{G}$ and those global \gnpm{} defined on $L$.
-% We would like to construct the matrix representation of $\mathbf{G}$. In the first factor, $\mathcal{E}(L) = P^L = \{e^{L}_{\vec{j}} | \vec{j} \in P^{|L|}\}$.
-%%$\{t_1, \ldots t_m\} = \{t_j | t_j \in P^L\}$.
-% For the second factor, $ \mathcal{E}(\mathcal{G}) = \coprod_{O \in \mathcal{G}} \mathcal{E}(O) = \{e^O_{\vec{i}} | O \in \mathcal{G}, \vec{i} \in P^{|O|} \}$.
-% %$\{e_1, \ldots e_n\} = \coprod_{O \in \mathcal{G}} \mathcal{E}(O)$.
-%  So we have two sets of maps, one defined on $P^L$ and the other defined on $\mathcal{E}(O) = P^O$ for each $O \in \mathcal{G}$. This yields a method of specifying the intended relationship that defines
-$\mathbf{G}$ can be specified for all $e^O_{\vec{i}} \in \mathcal{E}(\mathcal{G})$ and $e^{L}_{\vec{j}} \in \mathcal{E}(L)$:
-\begin{eqnarray}\label{eq:margmat}
-\mathbf{G}(e^O_{\vec{i}},e^L_{\vec{j}}) =
-\begin{cases}
-1, & e^L_{\vec{j}}|O = e^O_{\vec{i}},\\
-0, & \text{otherwise}.
-\end{cases}
+For an arbitrary choice of the quantities $p^{12}_{00}, \ldots,
+p^{12}_{11}, p^{13}_{00}, \ldots, p^{13}_{11}$, there is no reason
+that these two procedures should yield the same answers for $p^1_0$
+and $p^1_1$.  If one requires that they do yield the same answer, then
+one must impose consistency conditions.   In our example, these
+conditions are as follows:
+\begin{eqnarray}
+ p^{12}_{00} + p^{12}_{01} &=&
+  p^{13}_{00} + p^{13}_{01}\\
+ p^{12}_{10} + p^{12}_{11} &=&
+  p^{13}_{10} + p^{13}_{11}
 \end{eqnarray}
-For example, given the covering $\mathcal{G} = \{ \{l_1\}, \{l_2\} \}$ of a set of two genes $L = \{ l_1, l_2 \}$ the associated matrix $\mathbf{G}$ is shown in \ref{fig:efunctor}B.
 
-% Combining the marginalization matrix $\mathbf{G}$ with the maps previously defined in \ref{eq:emb} the following diagram demonstrates the relationships between the spaces of probability distributions and the linear spaces in which they are embedded
+More generally, given a hypergraph $\mathcal{G}$, we will be
+interested in two types of consistency conditions.  We will say that a
+collection of probabilities associated to a hypergraph is
+\emph{locally consistent} if, whenever two hyperedges share a subset in
+common, the probabilities for that subset obtained by marginalizing
+the probabilities associated to one of the hyperedges will agree with
+those obtained by marginalizing the probabilities associated to the
+other hypedge.  In our example above, there were only two hypedges
+present, so the conditions we exhibited constitute the entirety of the
+local consistency conditions for that hypergraph.  We will denote the
+set of all locally consistent probability distribution associated to a
+hypregraph $\mathcal{G}$ as $\mathbb{L}(\mathcal{G})$.
 
-% \begin{equation*}
-% \xymatrix{
-%  \mathbb{R}^{\mathcal{E}(L)} \ar[r]^{\mathbf{G}} &
-%    \mathbb{R}^{\mathcal{E}(\mathcal{G})} \\
-%  \dist (\mathcal{E}(L)) \ar[r]^{\mathbf{G}} \ar@{^{(}->}[u]^{emb_{\mathcal{E}(L)}}& \ar@{^{(}->}[u]_{emb_{\mathcal{E}(\mathcal{G})}}
-%   \dist (\mathcal{E}(\mathcal{G}))
-%   }
-% \end{equation*}
-The locally, $\mathbb{L}(\mathcal{G})$, and globally, $\mathbb{M}(\mathcal{G})$, consistent polytopes correspond to the spaces of probability distributions satisfying the local and global consistency conditions described above. The globally consistent polytope is a subspace of the locally consistent one. This is because an ostensible inverse to $\mathbf{G}$ is underdetermined and can only be estimated in general (most commonly using the maximum entropy principle).
-% In terms of the diagram $\mathbb{M}(\mathcal{G})$ is given by $\mathbf{G}(emb_{\mathcal{E}(L)}(\mathcal{D}(\mathcal{E}(L))))$ and $\mathbb{L}(\mathcal{G})$ is given by $emb_{\mathcal{E}(\mathcal{G})}(\mathcal{D}(\mathcal{E}(\mathcal{G}))) \cap \mathbf{G}(\mathbb{R}^{\mathcal{E}(L)})$, where
+We will say that a collection of probabilities associated to a
+hypergraph is \emph{globally consistent} if there exists a joint
+probability distribution on the totality of variables associated to
+the hypergraph such that the probabilities associated to any hyperedge
+are marginals of that joint distribution.  In terms of our example,
+that would mean that there exist probabilities $p^{123}_{000},
+p^{123}_{001}, \ldots, p^{123}_{111}$ such that the following
+conditions hold:
+\begin{equation}
+ \begin{pmatrix}
+  p^{12}_{00}\\
+  p^{12}_{01}\\
+  p^{12}_{10}\\
+  p^{12}_{11}\\
+  p^{13}_{00}\\
+  p^{13}_{01}\\
+  p^{13}_{10}\\
+  p^{13}_{11}
+ \end{pmatrix} =
+ \begin{pmatrix}
+  1 & 1 & 0 & 0 & 0 & 0 & 0 & 0\\
+  0 & 0 & 1 & 1 & 0 & 0 & 0 & 0\\
+  0 & 0 & 0 & 0 & 1 & 1 & 0 & 0\\
+  0 & 0 & 0 & 0 & 0 & 0 & 1 & 1\\
+  1 & 0 & 1 & 0 & 0 & 0 & 0 & 0\\
+  0 & 1 & 0 & 1 & 0 & 0 & 0 & 0\\
+  0 & 0 & 0 & 0 & 1 & 0 & 1 & 0\\
+  0 & 0 & 0 & 0 & 0 & 1 & 0 & 1
+ \end{pmatrix}
+ \begin{pmatrix}
+  p^{123}_{000}\\
+  p^{123}_{001}\\
+  p^{123}_{010}\\
+  p^{123}_{011}\\
+  p^{123}_{100}\\
+  p^{123}_{101}\\
+  p^{123}_{110}\\
+  p^{123}_{111}\\
+ \end{pmatrix}.
+\end{equation}
+We will denote the set of all globally consistent probability
+distribution associated to a hypregraph $\mathcal{G}$ as
+$\mathbb{M}(\mathcal{G})$.
+
+Because marginalizing from a set of random variables to a smaller set
+of variables can be accomplished by first marginalizing to an
+intermediate set and then marginalizing form the intermediate set down
+to the smaller set, it follows that global consistency implies local
+consistency.  We will now see what conditions are needed in
+addition to local consistency to ensure global consistency.
+
+As in our example, we can express marginalization from the set $L$ of
+all variables down to a hypergraph $\mathcal{G}$ in the form $v = Gx$
+where $x$ is a vector whose components are probabilities associated to
+$L$, $v$ is a vector whose components are probabilities associated to
+$\mathcal {G}$, and $G$ is a suitable matrix.  The consistency
+conditions can be expressed in terms of the fundamental spaces (kernel
+and cokernel) associated to this matrix.  In order for a vector $v$ to
+be expressible as $Gx$ for some $x$, we must satisfy the condition
+that $v\cdot u = 0$ for all $u \in \mathrm{coker} (G)$.  In our
+example, the cokernel of the matrix is spanned by the following two
+row vectors:
+\begin{eqnarray}
+ &\begin{pmatrix}
+  1 & 1 & 0 & 0 & -1 & -1 & 0 & 0
+ \end{pmatrix}\\
+ &\begin{pmatrix}
+ 0 & 0 & 1 & 1 & 0 & 0 & -1 & -1
+ \end{pmatrix}
+\end{eqnarray}
+This leads to the conditions
+\begin{eqnarray}
+ p^{12}_{00} + p^{12}_{01} - p^{13}_{00} - p^{13}_{01} &=& 0 \\
+ p^{12}_{10} + p^{12}_{11} - p^{13}_{10} - p^{13}_{11} &=& 0 .
+\end{eqnarray}
+Note that these are precisely the local consistency conditions which we
+exhibited earlier.  It can be shown that the condition that $u \cdot v
+= 0$ for all $u \in \mathrm{coker} (G)$ will always be exactly the
+local consistency conditions.
+
+To obtain the global consistency conditions, we note that, if $v =
+Gx$, then we also have $v = Gy$ for any vector $y$ such that $x-y$
+lies in the kernel of $G$.  Choose a subspace $T$ of column vectors
+which is transverse to $\mathrm{ker}(G)$ such that the union of $T$
+and $\mathrm{ker}(G)$ span the column space.  Then the equation $v =
+Gx$ has a unique solution if we restrict $x$ to lie in $T$.  In order
+for a column vector to represent a legitimate probability
+distribution, its components must all be non-negative.  Hence, we
+conclude that $v$ being globally consistent is equivalent to the
+following system of equations and inequalities having a solution:
 % \begin{eqnarray}
-% emb_{\mathcal{E}(\mathcal{G})}(\mathcal{D}(\mathcal{E}(\mathcal{G}))) &=& \left\{ p^{O}_{\vec{i}} \; \bigg| \; (\forall\, O \in \mathcal{G}) \; (\forall\, \vec{i} \in P^{|O|}) \;\; p^O_{\vec{i}} \geq 0, \; (\forall\, O \in \mathcal{G}) \sum_{\vec{i} \in P^{|O|}} p^{O}_{\vec{i}} = 1 \right\},\\
-% emb_{\mathcal{E}(L)}(\mathcal{D}(\mathcal{E}(L))) &=& \left\{ p^L_{\vec{i}} \; \bigg| \; (\forall\, \vec{i} \in P^{|L|}) \; p^L_{\vec{i}} \geq 0, \; \sum_{\vec{i} \in P^{|L|}} p^L_{\vec{i}} = 1 \right\}.
+%  v &=& Gx \\
+%  x &\in& T \\
+%  x - y &\in& \mathrm{ker}(G) \\
+%  y &\ge& 0
 % \end{eqnarray}
-To determine explicit conditions on the probabilities we express $\mathbb{L}(\mathcal{G})$ and $\mathbb{M}(\mathcal{G})$ in terms of the fundamental subspaces associated to the linear map $\mathbf{G}$. In order for a vector $v$ to lie in $\mathbf{G}(\mathbb{R}^{\mathcal{E}(L)})$, we must have $v=\mathbf{G}x$ for some $x \in \mathbb{R}^{\mathcal{E}(L)}$.  The cokernel of $\mathbf{G}$ gives the obstructions to this system $v=\mathbf{G}x$ having a solution. In order to eliminate these obstructions, constraints must be imposed on $\mathbb{R}^{\mathcal{E}(\mathcal{G})}$ and these constraints are given precisely via annihilating the cokernel, i.e. $\mathbf{G}(\mathbb{R}^{\mathcal{E}(L)}) = \{ v \; | \; (\forall u \in coker \mathbf{G}) \; u \cdot v = 0\}$.  We then take the appropriate intersection to determine $\mathbb{L}(\mathcal{G})$ by requiring $v \in \mathcal{D}(\mathcal{E}(\mathcal{G}))$
-\begin{eqnarray}\label{eq:localpolytope}
-\mathbb{L}(\mathcal{G}) &=& \{ v \in \dist{}(\expr{}(\mathcal{G})) \; | \; (\forall u \in coker \mathbf{G}) \; u \cdot v = 0\}.
-\end{eqnarray}
-Since $\mathbf{G}$ is not invertible the equation $v = \mathbf{G}x$ can only be solved up to an element of $ker \mathbf{G}$. $v = \mathbf{G}x$ can thus be solved on a subspace $T$ of $\mathbb{R}^{\mathcal{E}(L)}$ such that $T \oplus ker \mathbf{G} = \mathbb{R}^{\mathcal{E}(L)}$ to yield
-\begin{eqnarray}\label{eq:globalpolytope}
-\mathbb{M}(\mathcal{G}) &=& \{ v \; | v = \mathbf{G} x,\; (\exists x \in T) \; (\exists y \in \dist{}(\expr{}(L)))\; x-y \in ker \mathbf{G}  \}.
-\end{eqnarray}
-In order to obtain inequalities that define $\mathbb{M}(\mathcal{G})$, Fourier-Motzkin elimination can be used to eliminate $x$ and $y$. Alternatively one can use the fact, \cite{Wainwright2007} proposition 8.3, that $\mathbb{M}(\mathcal{G})$ is given by removing the non-integer vertices from a vertex represntation of $\mathbb{L}(\mathcal{G})$ and the ability to interconvert between vertex and inequality representations to compute the same inequalities as described in \refsupp{} \ref{secsupp:fourcycleexample}.
+\begin{equation}
+\begin{aligned}\label{eq:globalconsistencyconditions}
+ v &= Gx \\
+ x &\in T \\
+ x - y &\in \mathrm{ker}(G) \\
+ y &\ge 0
+\end{aligned}
+\end{equation}
 
-\subsection{Example of unsatisfiable constraints}\label{sec:inconsistency}
-We will now exemplify equations and inequalities that need to be satisfied in order to guarantee the sheaf condition for the simple case of three genes that form the simplest nontrivial cycle where inconsistency may arise. Suppose that $L = \{l_1,l_2,l_3\}$, $P = \{0,1\}$, $\mathcal{G} = \{\{l_1,l_2\},\{l_2,l_3\},\{l_3,l_1\}\}$. We define probabilities associated to the gene network-phenotype maps for any set $S$ as $p^S_{\vec{j}}= d_{S}(e^S_{\vec{j}})$. This results in $\mathcal{D}(\mathcal{E}(L)) = \Delta_7 \subset \mathbb{R}^8 $ and $\mathcal{D}(\mathcal{E}(\mathcal{G})) = \Delta^{\oplus 3}_3 \subset \mathbb{R}^{12}$,
-which give the inequalities defining $\mathbb{L}(\mathcal{G})$ and $\mathbb{M}(\mathcal{G})$ when substituted into \ref{eq:localpolytope} and \ref{eq:globalpolytope} with the appropriate $\mathbf{G}$ given by \ref{eq:margmat}.
+By using a method, such as Fourier-Motzkin elimination, to remove redundant inequalities, one can eliminate the quantities $x$ and $y$ from this
+system to obtain inequallities involving only the components of $v$.
+These are the global consistency conditions.
 
-An example of normalized contingency tables that correspond to this model are presented in \ref{fig:inconsistentthreecycle}A.
-One local consistency condition in terms of \ref{eq:sheafcond} specifies that for $e_{\{l_1\}} \in \mathcal{E}(\{l_1\})$, which assigns a particular phenotype to the genotype $\{l_1\}$ rather than to an entire gene regulatory network module like $O$ or $O'$, that
-\begin{eqnarray}\label{eq:sheafprob}
-\dist (\expr( \{ l_1 \} \subset O ) )(d_O)(e_{\{l_1\}}) = \sum_{\substack{ e \in \mathcal{E}(O), \\  e|l_1=e_{\{l_1\}}} } d_O(e) \,\, = \sum_{\substack{ e' \in \mathcal{E}(O'), \\ e'|l_1=e_{\{l_1\}}} } d_{O'}(e') = \dist (\expr( \{ l_1 \} \subset O' ) )(d_{O'})(e_{\{l_1\}})
+In our example, $\mathrm{ker}(G)$ is spanned by the folllowing two
+column vectors:
+\begin{equation}
+ \begin{pmatrix}
+ 1 \\ -1 \\ -1 \\ 1 \\ 0 \\ 0 \\ 0 \\ 0
+ \end{pmatrix}
+ \begin{pmatrix}
+ 0 \\ 0 \\ 0 \\ 0 \\ 1 \\ -1 \\ -1 \\ 1
+ \end{pmatrix}
+\end{equation}
+As our transverse space $T$, we will choose the space spanned by the
+following basis:
+\begin{equation}
+ \begin{pmatrix}
+  1 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0
+ \end{pmatrix}
+ \begin{pmatrix}
+  0 \\ 1 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0
+ \end{pmatrix}
+ \begin{pmatrix}
+  0 \\ 0 \\ 1 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0
+ \end{pmatrix}
+ \begin{pmatrix}
+  0 \\ 0 \\ 0 \\ 0 \\ 1 \\ 0 \\ 0 \\ 0
+ \end{pmatrix}
+ \begin{pmatrix}
+  0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 1 \\ 0 \\ 0
+ \end{pmatrix}
+ \begin{pmatrix}
+  0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 1 \\ 0
+ \end{pmatrix}
+\end{equation}
+With this choice, the condition $x \in T$ reduces to the equations
+$x_4 = x_8 = 0$.  The conditions $x - y \in \mathrm{ker}(G)$ then
+become
+\begin{eqnarray}
+ y_1 - x_1 = x_2 - y_2 = x_3 - y_3 &=& y_4 \\
+ y_5 - x_5 = x_6 - y_6 = x_7 - y_7 &=& y_8
 \end{eqnarray}
-This condition means that the probability for gene $l_1$ to be associated to the phenotype given by $e_{\{l_1\}}$ is equivalent in case we marginalize over all the other genes contained in the gene regulatory network modules of which $l_1$ is a component.  \ref{eq:sheafprob} reduces to two equations corresponding to the case when $e_{l_1}$ is the map which sends $l_1$ to $0$ and the case when $e_{l_1}$ sends $l_1$ to $1$. If we do likewise with $l_2$ and $l_3$ in place of $l_1$ we obtain the set of local consistency conditions:
+If we solve these for the $x$'s, substitute the result into the
+equation $v = Gx$ and eliminate the y's between the resulting
+equations and the inequalities $y \ge 0$, we find the conditions $v
+\ge 0$.  This, of course, is just the condition that the probabilities
+be positive.  Thus, for the case of this simple hypergraph, local
+consistency suffices to ensure global consistency.  In \ref{sec:inconsistency},
+we will see that this is not always the case and that the
+inequalities obtained by elimination impose more conditions on the
+probabilities than just positivity.
+
+\section{Example of unsatisfiable constraints}\label{sec:inconsistency}
+We will now exemplify equations and inequalities that need to be satisfied in order to guarantee the consistency conditions for the simple case of three genes that form the simplest nontrivial cycle where inconsistency may arise. Suppose that $L = \{l_1,l_2,l_3\}$, $P = \{0,1\}$, $\mathcal{G} = \{\{l_1,l_2\},\{l_2,l_3\},\{l_3,l_1\}\}$.
+% We define probabilities associated to the gene network-phenotype maps for any set $S$ as $p^S_{\vec{j}}= d_{S}(e^S_{\vec{j}})$. This results in $\mathcal{D}(\mathcal{E}(L)) = \Delta_7 \subset \mathbb{R}^8 $ and $\mathcal{D}(\mathcal{E}(\mathcal{G})) = \Delta^{\oplus 3}_3 \subset \mathbb{R}^{12}$,
+% which give the inequalities defining $\mathbb{L}(\mathcal{G})$ and $\mathbb{M}(\mathcal{G})$ when substituted into \ref{eq:localpolytope} and \ref{eq:globalpolytope} with the appropriate $\mathbf{G}$ given by \ref{eq:margmat}.
+
+% An example of normalized contingency tables that correspond to this model are presented in \ref{fig:inconsistentthreecycle}A.
+% One local consistency condition in terms of \ref{eq:sheafcond} specifies that for $e_{\{l_1\}} \in \mathcal{E}(\{l_1\})$, which assigns a particular phenotype to the genotype $\{l_1\}$ rather than to an entire gene regulatory network module like $O$ or $O'$, that
+% \begin{eqnarray}\label{eq:sheafprob}
+% \dist (\expr( \{ l_1 \} \subset O ) )(d_O)(e_{\{l_1\}}) = \sum_{\substack{ e \in \mathcal{E}(O), \\  e|l_1=e_{\{l_1\}}} } d_O(e) \,\, = \sum_{\substack{ e' \in \mathcal{E}(O'), \\ e'|l_1=e_{\{l_1\}}} } d_{O'}(e') = \dist (\expr( \{ l_1 \} \subset O' ) )(d_{O'})(e_{\{l_1\}})
+% \end{eqnarray}
+% This condition means that the probability for gene $l_1$ to be associated to the phenotype given by $e_{\{l_1\}}$ is equivalent in case we marginalize over all the other genes contained in the gene regulatory network modules of which $l_1$ is a component.  \ref{eq:sheafprob} reduces to two equations corresponding to the case when $e_{l_1}$ is the map which sends $l_1$ to $0$ and the case when $e_{l_1}$ sends $l_1$ to $1$. If we do likewise with $l_2$ and $l_3$ in place of $l_1$ we obtain the set of local consistency conditions:
+This condition means that the probability for the variable $l_1$ to be associated to a given state is equivalent in case we marginalize over all the other variables contained in the biological network modules of which $l_1$ is a component.  Mathematically, this reduces to two equations corresponding to the case when the state of $l_1$ is $0$ or $1$. If we do likewise with $l_2$ and $l_3$ in place of $l_1$ we obtain the set of local consistency conditions:
 \begin{equation}
 \begin{aligned}\label{eq:localconsistencythreegenes}
  p^{12}_{00} + p^{12}_{01} &= p^{1}_0 = p^{13}_{00} + p^{13}_{01}, &
@@ -175,7 +323,8 @@ This condition means that the probability for gene $l_1$ to be associated to the
  p^{13}_{01} + p^{13}_{11} &= p^{3}_1 = p^{23}_{01} + p^{23}_{11}.
  \end{aligned}
  \end{equation}
-These are equivalent to what would result from using the cokernel of $\mathbf{G}$ in \ref{eq:localpolytope}.
+These result from applying the method outlined in \ref{sec:compatibilityofgpms} to enumerate all local consistency conditions.
+% to what would result from using the cokernel of $\mathbf{G}$ in \ref{eq:localpolytope}.
 Using the local consistency conditions for our example we can derive a set of inequalities that determine $\mathbb{L}(\mathcal{G})$
 \begin{equation}
 \begin{aligned}\label{eq:threecycinequalities}
@@ -189,7 +338,8 @@ p^{31}_{00} &= 1-p^{13}_{10} - p^{13}_{01} - p^{13}_{11} \geq 0,
 \end{equation}
 combined with the trivial inequalities that force all probabilities to be nonnegative. Substituting the numbers from \ref{fig:inconsistentthreecycle}A into \ref{eq:threecycinequalities}, demonstrates that the local conditions are satisfied.
 
-The global consistency conditions form an underdetermined system of linear equations for the putative global distribution $d_{L}$ so their solution will assume the form of a linear subspace as demonstrated in \ref{eq:globalpolytope}.  In our example where this linear subspace corresponds to the image of $\Delta_7$ in $\Delta_3^{\oplus 3}$ under the marginalization map, following \ref{eq:globalpolytope} we can choose $v=p^0_{\vec{i}}$, $y=p^L_{\vec{i}}$, and $T$ by fixing $p^{123}_{000}=0$ we get the following by eliminating $x$ from the equations determined by the conditions $v=Gx$, $x \in T$, $x-y \in ker \mathbf{G}$:
+% The global consistency conditions form an underdetermined system of linear equations for the putative global distribution $d_{L}$ so their solution will assume the form of a linear subspace as demonstrated in \ref{eq:globalpolytope}.  In our example where this linear subspace corresponds to the image of $\Delta_7$ in $\Delta_3^{\oplus 3}$ under the marginalization map, following \ref{eq:globalpolytope} we can choose $v=p^0_{\vec{i}}$, $y=p^L_{\vec{i}}$, and $T$ by fixing $p^{123}_{000}=0$ we get the following by eliminating $x$ from the equations determined by the conditions $v=Gx$, $x \in T$, $x-y \in ker \mathbf{G}$:
+The global consistency conditions form an underdetermined system of linear equations for the putative global distribution so their solution will assume the form of a linear subspace.  The following equations arise as a result of eliminating $x$ from the equations determined by the conditions $v=Gx$, $x \in T$, $x-y \in ker \mathbf{G}$:
 \begin{equation}
 \begin{aligned}\label{eq:globalpositivityeqs}
 p^{123}_{001} &= p^{12}_{00} - p^{123}_{000} \\
@@ -201,7 +351,8 @@ p^{123}_{101} &= p^{12}_{10} - p^{23}_{00} + p^{123}_{000} \\
 p^{123}_{111} &= 1 - p^{12}_{00} - p^{13}_{00} - p^{23}_{00} - p^{123}_{000}
 \end{aligned}
 \end{equation}
-The remaining condition $y \in \mathcal{D}(\mathcal{E}(L))$ from \ref{eq:globalpolytope} states that all the probabilities $p^{123}_{ijk}$ must be positive numbers, which is only possible if the putative marginals satisfy suitable inequalities given by
+% The remaining condition $y \in \mathcal{D}(\mathcal{E}(L))$ from \ref{eq:globalconsistencyconditions} states that all the probabilities $p^{123}_{ijk}$ must be positive numbers, which is only possible if the putative marginals satisfy suitable inequalities given by
+The remaining condition $y \geq 0$ from \ref{eq:globalconsistencyconditions} states that all the probabilities $p^{123}_{ijk}$ must be positive numbers, which is only possible if the putative marginals satisfy suitable inequalities given by
 \begin{equation}
 \begin{aligned}\label{eq:globalpositivityineqs}
 p^{123}_{000} &\geq min(p^{12}_{00},\, p^{13}_{00},p^{23}_{00},\, 1 - p^{12}_{00} - p^{13}_{00} - p^{23}_{00}),\\
