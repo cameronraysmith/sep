@@ -2037,9 +2037,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="16.041496"
-     inkscape:cx="352.41881"
-     inkscape:cy="145.43196"
+     inkscape:zoom="2.3646491"
+     inkscape:cx="192.54688"
+     inkscape:cy="126.23438"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -2056,7 +2056,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -3343,36 +3343,26 @@
        xml:space="preserve"
        style="font-size:35.31462097px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:HelveticaNeue;-inkscape-font-specification:HelveticaNeue"
        x="376.67645"
-       y="664.08728"
+       y="676.08728"
        id="text5548-4-1-9"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         id="tspan5550-5-5-50"
          x="376.67645"
-         y="664.08728"
-         style="font-size:8px;text-align:center;text-anchor:middle">phenotype</tspan><tspan
-         sodipodi:role="line"
-         x="376.67645"
-         y="674.08728"
+         y="676.08728"
          style="font-size:8px;text-align:center;text-anchor:middle"
-         id="tspan11105">values</tspan></text>
+         id="tspan11105">network states</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:35.31462097px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:HelveticaNeue;-inkscape-font-specification:HelveticaNeue"
        x="246.98643"
-       y="664.08728"
+       y="676.08728"
        id="text5548-4-7"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         id="tspan5550-5-2"
          x="246.98643"
-         y="664.08728"
-         style="font-size:8px;text-align:center;text-anchor:middle">graphical model of</tspan><tspan
-         sodipodi:role="line"
-         x="246.98643"
-         y="674.08728"
+         y="676.08728"
          style="font-size:8px;text-align:center;text-anchor:middle"
-         id="tspan11103">gene regulatory network</tspan></text>
+         id="tspan5845">network</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:HelveticaNeue;-inkscape-font-specification:HelveticaNeue"
@@ -15835,7 +15825,7 @@
            x="195.11732"
            y="-40.429966" /></flowRegion><flowPara
          id="flowPara8999"
-         style="font-size:6px;text-align:center;text-anchor:middle">probabilities of expression states</flowPara></flowRoot>    <path
+         style="font-size:6px;text-align:center;text-anchor:middle">probabilities of network states</flowPara></flowRoot>    <path
        sodipodi:type="star"
        style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
        id="path9045"
