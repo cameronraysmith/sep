@@ -26,9 +26,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.0201917"
+     inkscape:zoom="2.6648068"
      inkscape:cx="209.63358"
-     inkscape:cy="112.01563"
+     inkscape:cy="112.01562"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -1574,7 +1574,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -4811,7 +4811,7 @@
        sodipodi:cy="44.84441"
        sodipodi:rx="1.8349283"
        sodipodi:ry="1.8349283"
-       d="m 212.49881,44.84441 a 1.8349283,1.8349283 0 1 1 -3.66986,0 1.8349283,1.8349283 0 1 1 3.66986,0 z"
+       d="m 212.49881,44.84441 c 0,1.013403 -0.82153,1.834928 -1.83493,1.834928 -1.0134,0 -1.83493,-0.821525 -1.83493,-1.834928 0,-1.013403 0.82153,-1.834928 1.83493,-1.834928 1.0134,0 1.83493,0.821525 1.83493,1.834928 z"
        transform="translate(236.24073,110.43269)" />
     <path
        sodipodi:nodetypes="cc"
@@ -5303,11 +5303,10 @@
        id="path5706"
        inkscape:connector-curvature="0" />
     <g
-       id="g5906"
-       transform="translate(0,4)">
+       id="g5084">
       <g
          id="g5840"
-         transform="translate(-233.39162,96.976835)">
+         transform="translate(-233.39162,100.97683)">
         <path
            inkscape:connector-curvature="0"
            id="path5842"
@@ -5328,11 +5327,11 @@
       <path
          sodipodi:nodetypes="cc"
          style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         d="m 357.7944,243.193 -15.05944,0.0691"
+         d="m 357.7944,247.193 -15.05944,0.0691"
          id="path5890"
          inkscape:connector-curvature="0" />
       <path
-         d="m 364.70494,246.92548 c 0.98501,0 1.92982,-0.38965 2.62633,-1.0831 0.69653,-0.69346 1.08788,-1.63413 1.08788,-2.61483 0,-0.9807 -0.39135,-1.92137 -1.08788,-2.61483 -0.69651,-0.69346 -1.64132,-1.0831 -2.62633,-1.0831 -0.98503,0 -1.92984,0.38964 -2.62637,1.0831 -0.69651,0.69346 -1.08786,1.63413 -1.08786,2.61483 0,0.9807 0.39135,1.92137 1.08786,2.61483 0.69653,0.69345 1.64134,1.0831 2.62637,1.0831 z"
+         d="m 364.70494,250.92548 c 0.98501,0 1.92982,-0.38965 2.62633,-1.0831 0.69653,-0.69346 1.08788,-1.63413 1.08788,-2.61483 0,-0.9807 -0.39135,-1.92137 -1.08788,-2.61483 -0.69651,-0.69346 -1.64132,-1.0831 -2.62633,-1.0831 -0.98503,0 -1.92984,0.38964 -2.62637,1.0831 -0.69651,0.69346 -1.08786,1.63413 -1.08786,2.61483 0,0.9807 0.39135,1.92137 1.08786,2.61483 0.69653,0.69345 1.64134,1.0831 2.62637,1.0831 z"
          style="fill:#cccccc;fill-opacity:1;fill-rule:nonzero;stroke:#985b4c;stroke-width:0.625;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:0;stroke-dasharray:none"
          id="path5892"
          inkscape:connector-curvature="0" />
@@ -5351,7 +5350,7 @@
          inkscape:rounded="0"
          inkscape:randomized="0"
          d="m 12.398315,129.55751 -7.9560919,6.04663 -1.2584895,-9.91349 -1.2584894,-9.9135 9.2145818,3.86687 9.214581,3.86686 z"
-         transform="matrix(0.18314628,-0.02793414,-0.02758411,-0.21311171,360.59373,270.10264)"
+         transform="matrix(0.18314628,-0.02793414,-0.02758411,-0.21311171,360.59373,274.10264)"
          inkscape:transform-center-x="-0.44185272"
          inkscape:transform-center-y="0.33860586" />
     </g>
@@ -5932,14 +5931,14 @@
        inkscape:connector-curvature="0" />
     <path
        sodipodi:type="arc"
-       style="opacity:0.98000004;fill:none;stroke:#181c57;stroke-width:1.63275659;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       style="opacity:0.98000004;fill:none;stroke:#000000;stroke-width:1.63275659;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
        id="path4959"
        sodipodi:cx="-34.996159"
        sodipodi:cy="202.53362"
        sodipodi:rx="20.747723"
        sodipodi:ry="7.9991217"
        d="m -14.248436,202.53362 a 20.747723,7.9991217 0 1 1 -41.495445,0 20.747723,7.9991217 0 1 1 41.495445,0 z"
-       transform="matrix(0.30956441,0,0,0.30293266,272.30245,277.8724)" />
+       transform="matrix(0.25170616,0,0,0.30586806,270.35554,277.51459)" />
     <text
        xml:space="preserve"
        style="font-size:18.92967606px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:HelveticaNeue;-inkscape-font-specification:HelveticaNeue"
