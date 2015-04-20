@@ -1,0 +1,1440 @@
+\makeatletter{}
+%DIF LATEXDIFF DIFFERENCE FILE
+%DIF DEL old-plos_template-fl.tex   Mon Apr 20 17:35:11 2015
+%DIF ADD new-plos_template-fl.tex   Mon Apr 20 17:35:11 2015
+\documentclass[10pt]{article}
+
+\usepackage{amsmath}
+\setcounter{MaxMatrixCols}{50}
+\usepackage{amssymb}
+
+\usepackage{graphicx}
+
+\usepackage{cite}
+
+\usepackage{color}
+
+
+\topmargin 0.0cm
+\oddsidemargin 0.5cm
+\evensidemargin 0.5cm
+\textwidth 16cm
+\textheight 21cm
+
+\usepackage[labelfont=bf,labelsep=period,justification=raggedright]{caption}
+
+\bibliographystyle{prsb}
+
+\makeatletter
+\renewcommand{\@biblabel}[1]{\quad#1.}
+\makeatother
+
+\date{}
+
+\pagestyle{myheadings}
+
+\usepackage{bussproofs}
+
+\usepackage[all]{xy}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,
+linkcolor=[rgb]{.67 .27 .27},
+citecolor=[rgb]{.09 .29 .54},
+urlcolor=[rgb]{.09 .29 .54}}
+
+\usepackage[table]{xcolor}
+\usepackage{rotating}
+\usepackage{listings}
+\usepackage{setspace}
+\makeatletter{}\definecolor{Code}{rgb}{0,0,0}
+\definecolor{Decorators}{rgb}{0.5,0.5,0.5}
+\definecolor{Numbers}{rgb}{0.5,0,0}
+\definecolor{MatchingBrackets}{rgb}{0.25,0.5,0.5}
+\definecolor{Keywords}{rgb}{.67, .27, .27}
+\definecolor{self}{rgb}{0,0,0}
+\definecolor{Strings}{rgb}{.09,.29,.54}
+\definecolor{Comments}{rgb}{0,0.5,0}
+\definecolor{Backquotes}{rgb}{0,0,0}
+\definecolor{Classname}{rgb}{0,0,0}
+\definecolor{FunctionName}{rgb}{0,0,0}
+\definecolor{Operators}{rgb}{0,0,0}
+\definecolor{Background}{rgb}{0.98,0.98,0.98}
+
+\lstnewenvironment{python}[1][]{
+\lstset{
+numbers=left,
+numberstyle=\footnotesize,
+numbersep=1em,
+xleftmargin=1em,
+framextopmargin=2em,
+framexbottommargin=2em,
+showspaces=false,
+showtabs=false,
+showstringspaces=false,
+frame=l,
+tabsize=4,
+basicstyle=\ttfamily\small\setstretch{1},
+backgroundcolor=\color{Background},
+language=Python,
+commentstyle=\color{Comments}\slshape,
+stringstyle=\color{Strings},
+morecomment=[s][\color{Strings}]{"""}{"""},
+morecomment=[s][\color{Strings}]{'''}{'''},
+morekeywords={import,from,class,def,for,while,if,is,in,elif,else,not,and,or,print,break,continue,return,True,False,None,access,as,,del,except,exec,finally,global,import,lambda,pass,print,raise,try,assert},
+keywordstyle={\color{Keywords}\bfseries},
+morekeywords={[2]@invariant},
+keywordstyle={[2]\color{Decorators}\slshape},
+emph={self},
+emphstyle={\color{self}\slshape},
+}}{}
+
+\usepackage{placeins}
+
+\definecolor{DeepRed}{rgb}{.82,.14,.16}
+\definecolor{DeepBlue}{rgb}{0,0.36,0.62}
+
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{0}
+
+
+%DIF 98a98-99
+ %DIF >
+ %DIF >
+%DIF -------
+\renewcommand*{\figureautorefname}{Fig.}
+\renewcommand*{\equationautorefname}{Eq.}
+\renewcommand*{\tableautorefname}{Table}
+\renewcommand*{\sectionautorefname}{Sec.}
+\renewcommand*{\subsectionautorefname}{Sec.}
+
+\renewcommand{\refname}{References and Notes}
+
+\newcommand{\beginsupplement}{        \setcounter{table}{0}
+        \renewcommand{\thetable}{S\arabic{table}}        \setcounter{figure}{0}
+%DIF 108c110-114
+%DIF <         \renewcommand{\thefigure}{S\arabic{figure}}     }
+%DIF -------
+        \renewcommand{\thefigure}{S\arabic{figure}}        \setcounter{equation}{0} %DIF >
+        \renewcommand{\theequation}{S\arabic{equation}}        \setcounter{section}{0} %DIF >
+        \renewcommand{\thesection}{S\arabic{section}}        \renewcommand*{\sectionautorefname}{Sec.} %DIF >
+        \setcounter{page}{1} %DIF >
+     } %DIF >
+%DIF -------
+
+\def\viable{\mathcal{U}}
+\def\expr{\mathcal{E}}
+\def\dist{\mathcal{D}}
+%DIF 113c119
+%DIF < \def\gnpm{gene network-phenotype maps}
+%DIF -------
+\def\gnpm{network-network state maps} %DIF >
+%DIF -------
+\def\refsupp{Supplementary Material}
+%DIF 115a121-122
+\def\AI{AI} %DIF >
+\def\SH{SH} %DIF >
+%DIF -------
+
+%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF UNDERLINE PREAMBLE %DIF PREAMBLE
+\RequirePackage[normalem]{ulem} %DIF PREAMBLE
+\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
+\providecommand{\DIFaddtex}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
+\providecommand{\DIFdeltex}[1]{{\protect\color{red}\sout{#1}}}                      %DIF PREAMBLE
+%DIF SAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddbegin}{} %DIF PREAMBLE
+\providecommand{\DIFaddend}{} %DIF PREAMBLE
+\providecommand{\DIFdelbegin}{} %DIF PREAMBLE
+\providecommand{\DIFdelend}{} %DIF PREAMBLE
+%DIF FLOATSAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
+\providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
+\providecommand{\DIFaddbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFaddendFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelendFL}{} %DIF PREAMBLE
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF HYPERREF PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{\texorpdfstring{\DIFaddtex{#1}}{#1}} %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{\texorpdfstring{\DIFdeltex{#1}}{}} %DIF PREAMBLE
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
+
+\begin{document}
+
+\let\ref\autoref
+
+
+\pagenumbering{arabic}
+
+\begin{center}
+{\large
+\textbf{Potential unsatisfiability of cyclic constraints on stochastic \DIFdelbegin \DIFdel{gene regulatory }\DIFdelend \DIFaddbegin \DIFadd{biological }\DIFaddend networks biases selection toward hierarchical architectures}
+}
+\\[.5cm]
+Cameron Smith$^{1}$,
+Ximo Pechuan$^{1}$,
+Raymond S. Puzio$^{1}$,
+Daniel Biro$^{1}$,
+Aviv Bergman$^{1,2,3,4, \ast}$
+\\[.5cm]
+$^1$Department of Systems and Computational Biology,\\
+$^2$Dominick P. Purpura Department of Neuroscience,\\
+$^3$Department of Pathology, Albert Einstein College of Medicine,\\
+1301 Morris Park Ave, Bronx, NY 10461, USA\\
+$^4$Santa Fe Institute, 1399 Hyde Park Road, Santa Fe, NM 87501, USA
+\\[.5cm]
+$\ast$To whom correspondence should be addressed; E-mail: aviv@einstein.yu.edu.
+\end{center}
+
+
+{ \bf
+\makeatletter{}
+
+
+{\noindent\large Abstract}
+
+
+Constraints placed upon the phenotypes of organisms \DIFdelbegin \DIFdel{that result from the interactions of its genes }\DIFdelend \DIFaddbegin \DIFadd{result from their interactions }\DIFaddend with the environment\DIFaddbegin \DIFadd{.  Over evolutionary timescales, these constraints }\DIFaddend feed back onto smaller \DIFdelbegin \DIFdel{gene networks over evolutionary timescales}\DIFdelend \DIFaddbegin \DIFadd{molecular subnetworks comprising the organism}\DIFaddend . The evolution of \DIFdelbegin \DIFdel{gene regulatory }\DIFdelend \DIFaddbegin \DIFadd{biological }\DIFaddend networks is studied by considering a network of a few \DIFdelbegin \DIFdel{genes }\DIFdelend \DIFaddbegin \DIFadd{nodes }\DIFaddend embedded in a \DIFdelbegin \DIFdel{context of other genes and environmental factors. The gene regulatory network architecture can therefore be defined by the }\DIFdelend \DIFaddbegin \DIFadd{larger context. Taking into account this fact that any network under study is actually embedded in a larger context, we define network architecture, not on the basis of physical interactions alone, but rather as a specification of the }\DIFaddend manner in which \DIFdelbegin \DIFdel{the gene network is connected to the network context in which it is embedded. Here we }\DIFdelend \DIFaddbegin \DIFadd{constraints are placed upon the states of its nodes. We }\DIFaddend show that such network architectures possessing cycles in their topology, in contrast to those that do not, \DIFdelbegin \DIFdel{are capable of having unsatisfiable constraintsplaced upon them}\DIFdelend \DIFaddbegin \DIFadd{may be subjected to unsatisfiable constraints}\DIFaddend . This may be a significant factor leading to \DIFdelbegin \DIFdel{negative selection on }\DIFdelend \DIFaddbegin \DIFadd{selection biased against those }\DIFaddend network architectures where such inconsistent constraints are \DIFdelbegin \DIFdel{relatively }\DIFdelend \DIFaddbegin \DIFadd{more }\DIFaddend likely to arise. We \DIFaddbegin \DIFadd{proceed to }\DIFaddend quantify the likelihood of inconsistency arising as a function of network architecture \DIFdelbegin \DIFdel{and find that}\DIFdelend \DIFaddbegin \DIFadd{finding that, in the absence of sampling bias over the space of possible constraints and for a given network size, }\DIFaddend networks with a larger number of cycles are more likely to have unsatisfiable constraints placed upon them. Our results \DIFdelbegin \DIFdel{highlight the context-dependence of the functionality of gene regulatory networks and suggest a potential }\DIFdelend \DIFaddbegin \DIFadd{identify a constraint that, at least in isolation, would contribute to a }\DIFaddend bias in the evolutionary process toward more \DIFdelbegin \DIFdel{hierarchical modular gene regulatory }\DIFdelend \DIFaddbegin \DIFadd{hierarchical-modular versus completely connected }\DIFaddend network architectures. \DIFaddbegin \DIFadd{Together, these results highlight the context-dependence of the functionality of biological networks.
+}\DIFaddend
+
+
+}
+
+\vskip .7em
+\setcounter{secnumdepth}{4}
+
+\section{Introduction}
+\makeatletter{}Probabilistic models of \DIFdelbegin \DIFdel{gene regulation }\DIFdelend \DIFaddbegin \DIFadd{biological networks }\DIFaddend serve as a bridge between theory and experiment.  On the one hand, parameters in a probabilistic model can be fit to data obtained by measuring \DIFdelbegin \DIFdel{gene expression }\DIFdelend \DIFaddbegin \DIFadd{the levels of each variable. For example in gene regulatory networks, gene expression can be measured }\DIFaddend using microarray or sequence census methods \DIFdelbegin \DIFdel{\mbox{%DIFAUXCMD
+\cite{Friedman2008a,Zhang2013}
+}%DIFAUXCMD
+}\DIFdelend \DIFaddbegin \DIFadd{\mbox{%DIFAUXCMD
+\cite{Anastassiou2007,Friedman2008a,Zhang2013}
+}%DIFAUXCMD
+}\DIFaddend .  On the other hand, one can model a \DIFdelbegin \DIFdel{genetic }\DIFdelend \DIFaddbegin \DIFadd{biological }\DIFaddend network as a deterministic or stochastic reaction network which tracks levels of \DIFdelbegin \DIFdel{molecules at the nucleic acid or protein level }\DIFdelend \DIFaddbegin \DIFadd{each molecule }\DIFaddend \cite{Alon2006,Voit2012}.  From the solution to this latter kind of model, one can then obtain theoretical predictions for the parameters of the probabilistic model in terms of reaction rates.  Comparison of the parameters fitted from data with the predicted values serves as a means for comparing theory with experiment and can serve as a starting point for improving the theory or for designing future experiments \cite{Tonsing2014}.
+
+An important feature of experimental science is that it involves partial information.  In the course of a single measurement, one typically is not able to observe a biological network in its entirety.  Rather, one observes a subnetwork at a time and only obtains a more complete picture by later combining these partial views.  This contrasts with theory, where, one makes a representation of a closed system that provides explicit values for all quantities of interest.  In order for a probabilistic model to serve its purpose, it should also accomodate partial information and thus we will explicitly consider the effects of 1) carving out a subnetwork from its context and 2) coarse-graining observables. Observables representing partial information will generally arise in situations where a system is interacting with another system. This situation arises in the context of interpreting \DIFdelbegin \DIFdel{gene expression data }\DIFdelend \DIFaddbegin \DIFadd{the potential existence of modular substructure within biological network data deriving from any given organism }\DIFaddend as well as \DIFdelbegin \DIFdel{in the interactions of an organism 's gene regulatory network with the organism's }\DIFdelend \DIFaddbegin \DIFadd{with respect to the interactions between an organism and its }\DIFaddend environment.
+
+
+Inconsistency arises when a network context places more constraints on a subnetwork than it is capable of satisfying. \DIFdelbegin \DIFdel{One of the canonical examples of inconsistency is in the study of ferromagnetism via the Ising model on a triangular lattice where so-called }\emph{\DIFdel{frustration}} %DIFAUXCMD
+\DIFdel{arises in the couplings among the magnetic dipole moments of three nearest-neighbor atomic spins \mbox{%DIFAUXCMD
+\cite{Wannier1950,Toulouse1977,Vannimenus1977}
+}%DIFAUXCMD
+. In this example, the underlying lattice or graph represents interactions among the spins of atomic nuclei according to their spatial proximity. In our model, the graphs to which we refer represent the manner in which the network context places constraints upon a subnetwork and inconsistency is likewise capable of occurring if there is a cycle in this graph. A different graph representing direct physical interactions among the elements of the subnetwork may contain cycles without there being any cycle in the graph representing the manner in which this subnetwork is connected to the context within which it is embedded. }\DIFdelend \DIFaddbegin \DIFadd{The impact of this issue on genetic interactions has been considered previously in the context of population genetics \mbox{%DIFAUXCMD
+\cite{EthanAkin389}
+}%DIFAUXCMD
+. }\DIFaddend We exhibit a method of checking for such consistency and evaluating its likelihood of arising in the context of building probabilistic models of \DIFdelbegin \DIFdel{gene regulatory }\DIFdelend \DIFaddbegin \DIFadd{biological }\DIFaddend networks. When apparent inconsistency is observed, it must arise from the network context interacting with only partial information of the states of a given subnetwork. This would indicate that information about the network context must be included in order to maintain a consistent model of the system.
+
+
+\DIFdelbegin \DIFdel{Consider the case in which the network context is an environment placing independent and identical functional requirements upon a population of similar independent subnetworks and selecting for their architectures over many generations to satisfy those requirements. Our analysis of the probability of inconsistency arising relative to }\DIFdelend In \ref{sec:networkcontext} \DIFaddbegin \DIFadd{we describe the relationship between representations of biological networks and an abstraction of these referred to as network architecture that indicates the manner in which a subset of a }\DIFaddend network \DIFdelbegin \DIFdel{architecture demonstrates that networks with a larger number of cycles are more likely to be subjected to inconsistent constraints that will be unable to be jointly satisfied. Since this probability of inconsistency is higher for networks with a larger number of cycles, this results in implicit selection against regulatory network architectures with a larger number of cycles. One would not expect such a bias to eliminate the existence of cycles in gene regulatory networks. However, it is reasonable to expect on the basis of this result a kind of hierarchical modularity: where modules that may possess cycles and are small relative to the overall size of the network exist within a globally hierarchical network structure. A similar problem has been considered previously in the context of population genetics \mbox{%DIFAUXCMD
+\cite{EthanAkin389}
+}%DIFAUXCMD
+. Of course, there are other factors which may contribute to the development of such network architectures. The evaluation of the hierarchical modularity property will require extensive future work, but its existence is consistent with many studies that have evaluated the architecture of various biological networks~\mbox{%DIFAUXCMD
+\cite{Ravasz2002,Segre2005,Wagner2007,Erwin2009,Jothi2009,Bhardwaj2010,Chalancon2012,Colm}
+}%DIFAUXCMD
+. Although some of our conclusions apply to networks at other scales of the biological hierarchy, in this study we focus our modelling efforts on gene-regulatory networks.
+}%DIFDELCMD <
+
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \DIFadd{is connected to its context. }\DIFaddend We explain the connection between stochastic process models of \DIFdelbegin \DIFdel{gene expression and }\DIFdelend \DIFaddbegin \DIFadd{biological networks and a generalization of the genotype-phenotype map applying to arbitrary biological networks referred to as }\DIFaddend \gnpm{} in \ref{sec:genenetworkphenmap}. \ref{sec:probabilitydistributionsonnetworks}--\ref{sec:compatibilityofgpms} \DIFdelbegin \DIFdel{contain }\DIFdelend \DIFaddbegin \DIFadd{\ref{sec:inconsistency} contain examples of }\DIFaddend the underlying mathematical justification for our claims \DIFaddbegin \DIFadd{(more details of which are provided in }\refsupp{}\DIFadd{)}\DIFaddend , and they can be skipped by \DIFdelbegin \DIFdel{those }\DIFdelend \DIFaddbegin \DIFadd{readers }\DIFaddend who are primarily interested in the \DIFaddbegin \DIFadd{intuitive }\DIFaddend implications of our \DIFdelbegin \DIFdel{results}\DIFdelend \DIFaddbegin \DIFadd{analysis}\DIFaddend . In \ref{sec:probabilitydistributionsonnetworks} we introduce the concept of network modules and define probability distributions over their \DIFdelbegin \DIFdel{expression states. We describe how one can pass from expression states to more coarse-grained phenotypes such as the ability to produce a given metabolite in a manner that is dependent upon interactions among multiple genes in \ref{sec:coarsegrainingphenotypes}. In \ref{sec:covergenotypespace} we define a gene regulatory network architecture (GRNA) as a collection of subsets of genes that together comprise a larger set of genes. The different ways in which this is accomplished correspond to distinct GRNAs. }\DIFdelend \ref{sec:compatibilityofgpms} describes the different states. \ref{sec:compatibilityofgpms} and \ref{sec:inconsistency} \DIFaddbegin \DIFadd{describe the different }\DIFaddend compatibility conditions that arise for different \DIFdelbegin \DIFdel{GRNAs and demonstrates }\DIFdelend \DIFaddbegin \DIFadd{biological network architectures and demonstrate }\DIFaddend how these compatibility conditions lead to a set of inequalities determining a space of probability distributions for each \DIFdelbegin \DIFdel{GRNA}\DIFdelend \DIFaddbegin \DIFadd{network architecture}\DIFaddend . \ref{sec:cycliccontextunsatisfiableconstraints} and \ref{sec:probconstrgeometry} examine these constraints for the example of the three-cycle \DIFdelbegin \DIFdel{GRNA}\DIFdelend \DIFaddbegin \DIFadd{network architecture}\DIFaddend . \ref{sec:volrat} computes the likelihood of unsatisfiable constraints for all \DIFdelbegin \DIFdel{GRNAs on four genes }\DIFdelend \DIFaddbegin \DIFadd{biological network architectures on four variables }\DIFaddend that possess cycles. Finally, \ref{sec:unsatisfiableconstrevolution} explains implications for the evolution of \DIFdelbegin \DIFdel{GRNA }\DIFdelend \DIFaddbegin \DIFadd{biological network architectures }\DIFaddend of the result that networks with a larger number of cycles are more likely to have unsatisfiable constraints placed upon them.
+
+
+
+
+
+
+
+
+
+
+
+\makeatletter{}
+\section{\DIFdelbegin \DIFdel{Gene network-phenotype maps}\DIFdelend \DIFaddbegin \DIFadd{Environments of biological networks as abstract contexts}\DIFaddend }\DIFdelbegin %DIFDELCMD < \label{sec:genenetworkphenmap}
+%DIFDELCMD < %%%
+\DIFdel{The genotype of an organism has a relatively straightforward definition in terms of }\DIFdelend \DIFaddbegin \label{sec:networkcontext}
+\DIFadd{Most studies of biological networks focus on one type of variable in isolation. For example, many studies focus on one of metabolic networks, protein-protein interaction networks, signalling networks, gene-regulatory networks, or population and community dynamics in the context of ecological networks. A true biological network involves all of these acting together to produce biological phenomena at all scales. Models that integrate information about biological networks, rather than focusing exclusively on particular types of molecules, will likely become more common in the near future \mbox{%DIFAUXCMD
+\cite{Covert2008,Karr2012,Macklin2014}
+}%DIFAUXCMD
+. The Systems Biology Graphical Notation (SBGN) supports the ability to express many of these networks within the context of a single formalism \mbox{%DIFAUXCMD
+\cite{LeNovere2009}
+}%DIFAUXCMD
+, \ref{fig:netsubnetcontext}. Even when the different types of biological variables are combined into a single network, it is impossible to study all variables simultaneously. As a result, it is always the case that a subnetwork is selected for investigation and the remainder of }\DIFaddend the \DIFdelbegin \DIFdel{sequence of nucleotides comprising its genome. Phenotypes, on }\DIFdelend \DIFaddbegin \DIFadd{network is treated as an }\emph{\DIFadd{environment}} \DIFadd{or }\emph{\DIFadd{context}}\DIFadd{. In \ref{fig:netsubnetcontext} we show the SBGN process form of six simple examples of biological networks. In each case we have selected a subset of variables that form a subnetwork as an example of how one might proceed in the investigation of a particular biological system. Once such a subnetwork is chosen, it is possible to abstract away the variables that are not part of the subnetwork. This is represented by the abstract influence network (}\AI{}\DIFadd{) for each simple example on the second row of \ref{fig:netsubnetcontext}. The transformation from SBGN to the }\AI{} \DIFadd{network is given simply by collapsing the disconnected components of the ancestors of each node in the focal subnetwork into single }\AI{} \DIFadd{nodes. This results in a bipartite graph that captures the dependencies among the environmental factors as experienced by the subnetwork and nothing more.
+}
+
+\DIFadd{This }\AI{} \DIFadd{graph is precisely equivalent to an undirected hypergraph if one considers each of the }\AI{} \DIFadd{nodes as a hyperedge containing all of the nodes to which it connects. This is shown as the }\SH{} \DIFadd{graph in the third row of \ref{fig:netsubnetcontext} for each of the simple examples of the SBGN form of biological networks. Considering all possible hypergraphs of this kind is equivalent to examining all possible environmental dependency structures the subnetwork could be subjected to. Because the }\AI{} \DIFadd{is fundamental to understanding how subnetworks depend upon their contexts, it is the structure of the }\AI{} \DIFadd{and equivalent }\SH{} \DIFadd{graphs that we refer to as }\emph{\DIFadd{network architecture}} \DIFadd{throughout the paper. We note from this perspective, that cycles in the SBGN representation of the biological network do not result in corresponding cycles in the }\AI{} \DIFadd{graph and vice versa. For instance, in example four of \ref{fig:netsubnetcontext}, there are no cycles in the SBGN representation of the biological network whereas a single cycle exists in the hypergraph representation of the }\AI{} \DIFadd{graph. Furthermore, in example six, there is a cycle in the SBGN representation, whereas there is no cycle in the hypergraph representation of }\DIFaddend the \DIFdelbegin \DIFdel{other hand, can be described at different levels of organization~\mbox{%DIFAUXCMD
+\cite{Dawkins1982,Stadler2001}
+}%DIFAUXCMD
+. The concept of phenotype was initially defined at the level of macroscopically observable physical characteristics such }\DIFdelend \DIFaddbegin \AI{}\DIFadd{.
+}
+
+\DIFadd{More precisely, the collection of variables comprising the subnetwork under consideration is referred to }\DIFaddend as \DIFdelbegin \DIFdel{shape, size, color, and various combinations thereof~\mbox{%DIFAUXCMD
+\cite{Johannsen1911}
+}%DIFAUXCMD
+. However, since the advent of molecular biology, the lowest level description of phenotype might be considered to be the dynamic phenomenon that can be described by measuring the transcription states of all genes comprising an organism's genome. These expression levels of subsets of interacting genes determine which enzymes are produced, thus determining the rate at which metabolic reactions proceed. These reaction rates constitute the next level of phenotypes.
+These in turn determine the higher level phenotypes, ultimately culminating in macroscopic phenotypes. In order to discuss this notion of phenotypic levels in a more precise way, we develop a formal description of the }%DIFDELCMD < \gnpm{} %%%
+\DIFdel{that takes into account }\DIFdelend \DIFaddbegin \DIFadd{$L$. The different subsets, $O$, of biological variables, $L$, making up the hypergraph representation of the }\AI{} \DIFadd{are each referred to as modules. A biological network architecture, $\mathcal{G}$, may then be represented by a subset of all possible such modules subject to two conditions (see }\refsupp{} \DIFadd{\ref{sec:covergenotypespace}). The first represents the fact each variable of the focal subnetwork must be included in at least one module. The second represents the fact that any pair of constraints that are imposed upon overlapping sets of variables must agree on those overlapping variables.  In expressing the latter condition, all of the information present in a collection of lower-order constraints can be expressed as an effective }\DIFaddend higher-order \DIFdelbegin \DIFdel{correlations among genes as well as evidence that gene expression is either stochastic or is more effectively modeled as such}\DIFdelend \DIFaddbegin \DIFadd{constraint if any such higher-order constraint exists at all. So, if there is a constraint that is imposed simultaneously upon two distinct variables and another independent constraint imposed upon only the first of the two variables, this situation can be expressed in terms of a single constraint on both of the two variables.
+}
+
+\DIFadd{When there is a relatively larger degree of independence in the network context as compared to the subnetwork, it is possible for inconsistency to arise. One canonical example of such inconsistency arises in the study of ferromagnetism via the Ising model on a triangular lattice where so-called }\emph{\DIFadd{frustration}} \DIFadd{arises in the couplings among the magnetic dipole moments of three nearest-neighbor atomic spins \mbox{%DIFAUXCMD
+\cite{Wannier1950,Toulouse1977,Vannimenus1977}
+}%DIFAUXCMD
+. In this example, the underlying lattice or graph represents interactions among the spins of atomic nuclei according to their spatial proximity. As we have described, in our model, the network architectures to which we refer represent the manner in which the network context places constraints upon a subnetwork. Inconsistency is likewise capable of arising if there is a cycle in the hypergraph representing this network architecture}\DIFaddend .
+
+\DIFaddbegin \section{\DIFadd{Coarse-graining dynamic network states as a generalization of genotype-phenotype maps}}\label{sec:genenetworkphenmap}
+
+\DIFaddend \ref{fig:expression_concept}A shows a simplified representation of \DIFdelbegin \DIFdel{a plasmid encoding a small gene regulatory network (GRN) whose correlation strengths }\DIFdelend \DIFaddbegin \DIFadd{two different biological networks the correlation strengths among whose variables }\DIFaddend are not known but are to be derived from observation of the \DIFdelbegin \DIFdel{transcription process. The }\DIFdelend \DIFaddbegin \DIFadd{levels of the entities corresponding to each variable. For example, in the context of a gene-regulatory network, the }\DIFaddend amount of a given transcript present in a cell \DIFdelbegin \DIFdel{given in terms of the discrete counts obtained via sequence census methods (e.g. RNA-seq) or relative abundance derived from microarray data }\DIFdelend can be binned into a smaller number of discrete classes by setting a collection of thresholds on the original data set. If only a single threshold is given, then the data can be binned into two classes depending upon whether or not the original measurement surpasses the given threshold in \ref{fig:expression_concept}B.
+The time series that results from such observations can be used to infer various statistics that characterize \DIFdelbegin \DIFdel{gene expression }\DIFdelend \DIFaddbegin \DIFadd{the dynamics of a biological network }\DIFaddend such as correlations between pairs of \DIFdelbegin \DIFdel{genes.
+The statistics associated to any higher-level phenotype that is determined by a particular gene expression pattern should be functions of such statistics.
+}\DIFdelend \DIFaddbegin \DIFadd{variables.
+}\DIFaddend
+
+If a large enough number of thresholds is available to distinguish among all possible \DIFdelbegin \DIFdel{molecule counts }\DIFdelend \DIFaddbegin \DIFadd{counts of the variables under investigation}\DIFaddend , then this observational protocol becomes complementary to mechanistic models.  There may be several sources for stochasticity in \DIFdelbegin %DIFDELCMD < \gnpm{} %%%
+\DIFdelend \DIFaddbegin \DIFadd{the dynamics }\DIFaddend including small numbers of the causal molecules and products \DIFdelbegin \DIFdel{of gene expression }\DIFdelend as well as environmental fluctuations upon which \DIFdelbegin %DIFDELCMD < \gnpm{} %%%
+\DIFdelend \DIFaddbegin \DIFadd{these dynamics }\DIFaddend are conditioned~\cite{Swain2002,Paulsson2004,Thattai2004,Acar2008a,Lestas2010,Munsky2012,Chalancon2012,Neuert2013,Sanchez2013}. Regardless of the fundamental nature of \DIFdelbegin \DIFdel{stochasticity to gene expression, empirically, we observe statistical as opposed to deterministic data}\DIFdelend \DIFaddbegin \DIFadd{biological networks with respect to their potential stochasticity, empirical observations are usually regarded in a statistical manner}\DIFaddend , and thus we focus here on stochastic models.
+\DIFdelbegin \DIFdel{For our purposes we assume that we are dealing with a stationary stochastic process. }\DIFdelend Mathematically, such a model may take the form of a Markov chain whose dynamics are governed by a master equation for probability distributions over molecule counts. For example, in the case of a three \DIFdelbegin \DIFdel{gene }\DIFdelend \DIFaddbegin \DIFadd{variable }\DIFaddend network, the master equation takes the form
+$$
+\frac{dP(n_1,n_2,n_3)}{dt} = \sum_{n'_1}\sum_{n'_2}\sum_{n'_3} M^{n_1\,n_2\,n_3}_{n'_1\,n'_2\,n'_3}(k) P(n'_1,n'_2,n'_3)
+$$
+where $P(n_1,n_2,n_3)$ gives the probability of observing $n_1$, $n_2$, and $n_3$ molecules of each of the three \DIFdelbegin \DIFdel{genes }\DIFdelend \DIFaddbegin \DIFadd{variables }\DIFaddend respectively and $M(k)$ is a Markov transition rate matrix that depends upon some rate functions $k$ that are determined by the network architecture and the dynamics of the interactions.  The solution to this equation will converge towards a stationary distribution $P_s$ in the limit of long times. \DIFdelbegin \DIFdel{We can then coarse-grain over the molecule counts }\DIFdelend \DIFaddbegin \DIFadd{Any environmental variable having a characteristic timescale longer than that of the variables in the focal subnetwork would not be sensitive to transients and would only exhibit control over or be influenced by this stationary distribution.
+}
+
+\DIFadd{Interactions between variables may be mediated by a coarse-graining over counts of each variable }\DIFaddend using a function that maps the states \DIFdelbegin \DIFdel{represented by vectors of integers }\DIFdelend \DIFaddbegin \DIFadd{representing molecule counts as vectors of natural numbers }\DIFaddend into some other variables. For example, if $n_i$ are \DIFdelbegin \DIFdel{positive integers, denoting the latter $\mathbb{Z}^+$, }\DIFdelend \DIFaddbegin \DIFadd{natural numbers
+}\DIFaddend then a function \DIFdelbegin \DIFdel{$f \colon \mathbb{Z}^+ \rightarrow \{0,1\}$ that takes any integer }\DIFdelend \DIFaddbegin \DIFadd{$f$ taking any number }\DIFaddend less than or equal to some threshold \DIFdelbegin \DIFdel{$T \in \mathbb{Z}^+$ }\DIFdelend \DIFaddbegin \DIFadd{$T$ }\DIFaddend to $0$ and any \DIFdelbegin \DIFdel{integer }\DIFdelend \DIFaddbegin \DIFadd{number }\DIFaddend greater than $T$ to $1$ is a very simple example of such a coarse-graining. For this specific form of the coarse-graining function $f$, the coarse-grained stationary probability distribution takes the form
+$$
+P_s(b_1,b_2,b_3) = \sum_{n_1 \in f^{-1}(b_1)}\sum_{n_2 \in f^{-1}(b_2)}\sum_{n_3 \in f^{-1}(b_3)} P_s(n_1,n_2,n_3),
+$$
+where $b_1,b_2,b_3 \in \{ 0,1 \}$. It is also possible to consider the case where each \DIFdelbegin \DIFdel{gene }\DIFdelend \DIFaddbegin \DIFadd{variable }\DIFaddend is coarse-grained according to a different threshold and into a different number of classes. \DIFaddbegin \DIFadd{An abstract algebraic formulation of the coarse-graining process is provided in }\refsupp{} \DIFadd{\ref{secsupp:coarsegrainingphenotypes}.
+}\DIFaddend
+
+\DIFdelbegin \DIFdel{At the lowest-level of }\DIFdelend \DIFaddbegin \DIFadd{The most familiar example of such a coarse-graining process in biology is the genotype-phenotype map. The genotype of an organism has a relatively straightforward definition in terms of the sequence of nucleotides comprising its genome. Phenotypes, on the other hand, can be described at different levels of organization~\mbox{%DIFAUXCMD
+\cite{Dawkins1982,Stadler2001}
+}%DIFAUXCMD
+. The concept of phenotype was initially defined at the level of macroscopically observable physical characteristics such as shape, size, color, and various combinations thereof~\mbox{%DIFAUXCMD
+\cite{Johannsen1911}
+}%DIFAUXCMD
+. However, since the advent of molecular biology, an example of a lower-level mapping upon which the higher-level map from molecular states to macroscopic phenotypes depends is the dynamic phenomenon that can be described by measuring the transcription states of all genes comprising an organism's genome.  These expression levels of subsets of interacting genes determine which enzymes are produced, thus determining the rate at which metabolic reactions proceed.  These reaction rates could then be viewed as constituting the next level of phenotypes.  These in turn determine even higher level phenotypes, ultimately culminating in macroscopically observable ones where the concept of phenotype was originally introduced. In summary, any mapping from the states of an underlying collection of molecules to a higher-level collective property of those molecules that may result from their interaction can be viewed as a generalization of }\DIFaddend the \DIFdelbegin %DIFDELCMD < \gnpm{}%%%
+\DIFdel{, these }\DIFdelend \DIFaddbegin \DIFadd{genotype-phenotype map, where the original conception of the latter corresponds to the special case where 1) the genes alone are sufficient to determe the higher-level collective property and 2) that higher-level collective property is observable at the whole-organism level.
+}
+
+\DIFadd{A more realistic basis upon which to build phenotypes than this outline of the historical trajectory contains is one that is not limited to genes alone, but includes all entities constituting a biological network. A phenotype must be a function of the levels of, for example, all of the molecular constituents that comprise it over time, even if more information is required to fully specify it.  The aforementioned }\DIFaddend coarse-grained \DIFdelbegin \DIFdel{expression values can be }\DIFdelend \DIFaddbegin \DIFadd{levels of biological network variables can thus be }\DIFaddend viewed as \DIFdelbegin \DIFdel{collectively determining the lowest level in the aforementioned hierarchy of phenotypes. In this way, the data derived from a number of samples of a given networkcan be described using binary sequences as in \ref{fig:expression_concept}C. Summarizing this}\DIFdelend \DIFaddbegin \DIFadd{collectively determining the lowest level in a hierarchy of abstract phenotypes. In what proceeds}\DIFaddend , we will assume that we have a finite set $L$ of \DIFdelbegin \DIFdel{genes }\DIFdelend \DIFaddbegin \DIFadd{variables }\DIFaddend and a finite set $P$ of coarse-grained \DIFdelbegin \DIFdel{expression levels . These expression levels can also be viewed as complementary to promoter states, and, realistically, the number of these is likely to be larger than two \mbox{%DIFAUXCMD
+\cite{Rieckh2013a}
+}%DIFAUXCMD
+}\DIFdelend \DIFaddbegin \DIFadd{levels of each of those variables}\DIFaddend .
+Then a possible \DIFdelbegin \DIFdel{expression }\DIFdelend state of our \DIFdelbegin \DIFdel{genome }\DIFdelend \DIFaddbegin \DIFadd{biological network }\DIFaddend is represented by a function $e : L \to P$ and coarse-graining a stationary distribution will lead to a probability distribution on the set of all maps, denoted $P^L$, from \DIFdelbegin \DIFdel{genes to expression states }\DIFdelend \DIFaddbegin \DIFadd{subnetworks represented by subsets of $L$ to the respective states of the variables that comprise them. We will refer to this more fine-grained generalization of the genotype-phenotype map, where arbitrary biological networks are substituted for genes and arbitrary networks states are substituted for phenotypes, as }\gnpm{}\DIFaddend .
+
+
+
+
+
+\section{Probability distributions over network modules}\label{sec:probabilitydistributionsonnetworks}
+Here we describe examples of probability distributions over network modules. A \DIFaddbegin \DIFadd{more }\DIFaddend general presentation is provided in \refsupp{} \ref{secsupp:probabilitydistributionsonnetworks}.
+\DIFdelbegin %DIFDELCMD <
+
+%DIFDELCMD < %%%
+\DIFdel{In addition to the expression state of the whole genome, we usually will be interested in the expression states of portions of the genome that interact either directly or indirectly.  We will represent these portions as subsetsof $L$ and their expression states as functions from these subsets to $P$. If $O \subset L$, let $\expr{}(O)$ denote the set of all possible functions from }\DIFdelend As explained in \ref{sec:networkcontext}, \DIFaddbegin \DIFadd{for a given biological subnetwork, the hypergraph representing the dependencies in the network context consists of subsets, }\DIFaddend $O$\DIFdelbegin \DIFdel{to $P$.
+}%DIFDELCMD <
+
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \DIFadd{, of the variables, $L$, in the subnetwork.
+}\DIFaddend If we consider the case in which we have two \DIFdelbegin \DIFdel{genes }\DIFdelend \DIFaddbegin \DIFadd{variables }\DIFaddend $L=\{l_1,l_2\}$ and there are two \DIFdelbegin \DIFdel{potential phenotypes}\DIFdelend \DIFaddbegin \DIFadd{values}\DIFaddend , $P=\{0,1\}$\DIFdelbegin \DIFdel{, then $\expr$ operates on each of the possible subsets of }\DIFdelend \DIFaddbegin \DIFadd{. Given two variables and two values, there are four possible assignments of values to variables each of which constitutes a state of the system. We will write the probability of each of these states as $p^{v_1v_2}_{s_1s_2}$ indicating that variable $v_1$ is assigned value $s_1$ and variable $v_2$ is assigned value $s_2$. A probability distribution over the states of the system for }\DIFaddend $L$ \DIFdelbegin \DIFdel{(i.e. $\{\}$, $\{l_1\}$, $\{l_2\}$, $\{l_1,l_2\}$) to give spaces of functions containing the possible }%DIFDELCMD < \gnpm{} %%%
+\DIFdel{as exemplified in \ref{fig:efunctor}. For example, $\mathcal{E}(\{l_1,l_2\}) = \{ e^{12}_{00},e^{12}_{01},e^{12}_{10},e^{12}_{11} \}$ where $e^{12}_{01}(l_1) = 0$ and $e^{12}_{01}(l_2) = 1$. As another example, $\mathcal{E}(\{l_1\}) = \{ e^{1}_{0},e^{1}_{1} \}$ where $e^{1}_{0}(l_1)=0$ and $e^{1}_{1}(l_1)=1$.
+}%DIFDELCMD <
+
+%DIFDELCMD < %%%
+\DIFdel{Given a finite set $S$, define $\dist(S)$ to be the set of all probability distributions on $S$. Continuing the example above,
+}\begin{displaymath}\DIFdel{\mathcal{D}(\mathcal{E}(\{l_1,l_2\})) = \{p^{12}_{00},p^{12}_{01},p^{12}_{10},p^{12}_{11} \mid p^{12}_{00} \geq 0, p^{12}_{01} \geq 0,p^{12}_{10} \geq 0,p^{12}_{11} \geq 0, p^{12}_{00} + p^{12}_{01} + p^{12}_{10} + p^{12}_{11} = 1 \},}\end{displaymath}
+%DIFAUXCMD
+\begin{displaymath}\DIFdel{\mathcal{D}(\mathcal{E}(\{l_1\})) = \{p^{1}_{0}, p^{1}_{1} \mid p^{1}_{0} \geq 0, p^{1}_{1} \geq 0, p^{1}_{0}+p^{1}_{1} = 1 \}.}\end{displaymath}
+%DIFAUXCMD
+%DIFDELCMD <
+
+%DIFDELCMD < %%%
+\DIFdel{If $S$ and $S'$ are finite sets, which in our case will usually be sets of }%DIFDELCMD < \gnpm{} %%%
+\DIFdel{given by $\mathcal{E}(O)$, then $d \in \dist(S)$ and $d' \in \dist(S')$ are probability distributions. If $f \colon S \to S'$
+is an onto map, then $\dist{}(f)$ is defined as marginalization. For example, in case $S=\{ e^{12}_{00}, e^{12}_{01}, e^{12}_{10}, e^{12}_{11} \}$, $S'=\{ e^{1}_{0}, e^{1}_{1} \}$, and $f$ is given by
+}\DIFdelend \DIFaddbegin \DIFadd{is then given by
+}\begin{equation}\DIFadd{\label{eq:examplejointdist}
+\{p^{12}_{00},p^{12}_{01},p^{12}_{10},p^{12}_{11} \mid p^{12}_{00} \geq 0, p^{12}_{01} \geq 0,p^{12}_{10} \geq 0,p^{12}_{11} \geq 0, p^{12}_{00} + p^{12}_{01} + p^{12}_{10} + p^{12}_{11} = 1 \}.
+}\end{equation}
+\DIFadd{This imposes the standard conditions that probabilities are positive and sum to one. If we have the subset of $L$ given by $O = \{l_1\}$ then a probability distribution over its states is given by
+}\DIFaddend
+% \begin{equation}
+% \begin{aligned}
+% \DIFdelbegin \DIFdel{e^{12}_{00} \mapsto e}\DIFdelend \DIFaddbegin \label{eq:examplemargdist}
+% \DIFadd{\{p}\DIFaddend ^{1}_{0}\DIFdelbegin %DIFDELCMD < \\
+% %DIFDELCMD < %%%
+% \DIFdel{e^{12}_{01} \mapsto e}\DIFdelend \DIFaddbegin \DIFadd{, p}\DIFaddend ^{1}\DIFaddbegin \DIFadd{_{1} \mid p^{1}}\DIFaddend _{0} \DIFdelbegin %DIFDELCMD < \\
+% %DIFDELCMD < %%%
+% \DIFdel{e^{12}_{10} \mapsto e}\DIFdelend \DIFaddbegin \DIFadd{\geq 0, p}\DIFaddend ^{1}_{1} \DIFdelbegin %DIFDELCMD < \\
+% %DIFDELCMD < %%%
+% \DIFdel{e^{12}_{11} \mapsto e}\DIFdelend \DIFaddbegin \DIFadd{\geq 0, p}\DIFaddend ^{1}\DIFaddbegin \DIFadd{_{0}+p^{1}}\DIFaddend _{1} \DIFdelbegin %DIFDELCMD < \end{aligned}%%%
+% \DIFdel{,
+% }\DIFdelend
+% \DIFaddbegin \DIFadd{= 1 \}.}\DIFaddend
+% \end{equation}
+\DIFdelbegin \DIFdel{then $\dist{}(f)$ can be represented as }\DIFdelend \DIFaddbegin \DIFadd{In order to be consistent the distribution expressed in \ref{eq:examplejointdist} should be related to that of \ref{eq:examplemargdist} via }\DIFaddend a marginalization matrix
+\begin{equation}
+\begin{pmatrix}
+p^{1}_{0}\\
+p^{1}_{1}
+\end{pmatrix} = \begin{pmatrix}
+1 & 1 & 0 & 0\\
+0 & 0 & 1 & 1
+\end{pmatrix}
+\begin{pmatrix}
+p^{12}_{00}\\
+p^{12}_{01}\\
+p^{12}_{10}\\
+p^{12}_{11}
+\end{pmatrix}.
+\end{equation}
+
+\section{\DIFdelbegin \DIFdel{Coarse-graining phenotypes}%DIFDELCMD < }\label{sec:coarsegrainingphenotypes}
+%DIFDELCMD <
+
+%DIFDELCMD < %%%
+\DIFdel{As described in \ref{sec:genenetworkphenmap} it is also possible to consider phenotypes that derive from coarse-graining lower-level phenotypes. Once this is done, one arrives at probability distributions over network modules like that introduced in \ref{sec:probabilitydistributionsonnetworks}. As a result of this, our conclusions that are formulated in terms of a single level of coarse-graining }\DIFdelend \DIFaddbegin \DIFadd{Compatibility of distributions on }\DIFaddend \gnpm{}\DIFdelbegin \DIFdel{also apply to coarse-graining over multiple levels at once despite the fact that the parameters of the relevant probabilistic model are likely to be different.
+}%DIFDELCMD <
+
+%DIFDELCMD < %%%
+\DIFdel{For a subset of genes $O \subseteq L$, let $\phi_i (O)$ be the set of phenotype values at level $i$, which can be determined from the expression levels of genes in $O$.  Note that $\phi_i (O)$ may be empty if the set$O$ does not contain enough genes to determine the values of any phenotype at level $i$.  If $i \le j$, let $\Omega_{ij}(O) : \phi_i(O) \to \phi_j(O)$ be the coarse-graining map which describes how higher level phenotypes are determined from lower level phenotypes. This map is formulated precisely in }\DIFdelend \DIFaddbegin }\label{sec:compatibilityofgpms}
+\DIFadd{Here we provide an example of compatibility conditions on }\gnpm{}\DIFadd{. A more general mathematical characterization of these constraints is provided in }\DIFaddend \refsupp{} \DIFdelbegin \DIFdel{\ref{secsupp:coarsegrainingphenotypes}.
+}%DIFDELCMD <
+
+%DIFDELCMD < %%%
+\DIFdel{For example, if our lower level phenotypes for a set of genes $O_1 = \{ l_1,l_2,l_3,l_4 \}$ are given by a set of binary sequences, then the projection of these phenotypes down to the set $O_2 = \{l_3,l_4\}$ followed by mapping to the higher level phenotypes $x=\{01,10\}$ }\DIFdelend \DIFaddbegin \DIFadd{\ref{secsupp:compatibilityofgpms}. When one has a non-trivial network architecture (corresponding to the }\SH{} \DIFadd{hypergraph like those in \ref{fig:netsubnetcontext}), there will typically be more
+than one way of obtaining a probability distribution on a set by
+marginalizing a distribution on a larger set.  For instance, if we have
+a network with three binary variables and two edges, $\{l_1,l_2\}$ }\DIFaddend and
+\DIFdelbegin \DIFdel{$y=\{11\}$ is equivalent to first mapping to the higher-level phenotypes $X$ and $Y$ and then projecting down to $O_2$ shown by the equivalent paths from the top-left to the bottom-right in \ref{fig:phenotypehierarchy}A.
+Of course}\DIFdelend \DIFaddbegin \DIFadd{$\{l_1,l_3\}$, then we can obtain a probability distribution on the
+set $\{l_1\}$ either by marginalizing probabilities defined over
+$\{l_1,l_2\}$ as was done above or by marginalizing probabilities
+defined over $\{l_1,l_3\}$ to obtain
+}\begin{equation}\DIFadd{
+ \begin{pmatrix}
+  p^{1}_{0}\\
+  p^{1}_{1}
+ \end{pmatrix} =
+ \begin{pmatrix}
+  1 & 1 & 0 & 0\\
+  0 & 0 & 1 & 1
+ \end{pmatrix}
+ \begin{pmatrix}
+  p^{13}_{00}\\
+  p^{13}_{01}\\
+  p^{13}_{10}\\
+  p^{13}_{11}
+ \end{pmatrix}.
+}\end{equation}
+\DIFadd{For an arbitrary choice of the quantities $p^{12}_{00}, \ldots,
+p^{12}_{11}, p^{13}_{00}, \ldots, p^{13}_{11}$}\DIFaddend , there is \DIFdelbegin \DIFdel{an equivalent diagram for the subset $\{ l_1,l_2,l_3 \}$.  }\DIFdelend \DIFaddbegin \DIFadd{no reason
+that these two procedures should yield the same answers for $p^1_0$
+and $p^1_1$.  If one requires that they do yield the same answer, then
+one must impose consistency conditions.   In our example, these
+conditions are as follows:
+}\begin{eqnarray}\DIFadd{
+ p^{12}_{00} + p^{12}_{01} }&\DIFadd{=}&
+  \DIFadd{p^{13}_{00} + p^{13}_{01}}\\
+ \DIFadd{p^{12}_{10} + p^{12}_{11} }&\DIFadd{=}&
+  \DIFadd{p^{13}_{10} + p^{13}_{11}
+}\end{eqnarray}
+\DIFaddend
+
+\DIFdelbegin \section{\DIFdel{Gene regulatory network architecture}}%DIFAUXCMD
+\addtocounter{section}{-1}%DIFAUXCMD
+%DIFDELCMD < \label{sec:covergenotypespace}
+%DIFDELCMD < %%%
+\DIFdel{A gene regulatory network module is represented by a subset of genes, $O \subseteq L$.   A gene regulatory network architecture (GRNA), $\mathcal{G}$, may then be represented by a subset of all possible such modules. This is to say that }\DIFdelend \DIFaddbegin \DIFadd{More generally, given a hypergraph }\DIFaddend $\mathcal{G}$\DIFdelbegin \DIFdel{is a subset of the set of all subsets of $L$, $\mathcal{G} \subseteq \mathcal{P}(L)$, that satisfies the following two conditions
+}%DIFDELCMD < \begin{enumerate}
+%DIFDELCMD < \item %%%
+\DIFdel{$\cup_i O_i = \cup \mathcal{G} = L$}\DIFdelend , \DIFdelbegin %DIFDELCMD < \item %%%
+\DIFdel{If $O,O' \in \mathcal{G}$ and $O \subseteq O'$ then $O = O'$.  }%DIFDELCMD < \end{enumerate}
+%DIFDELCMD < %%%
+\DIFdel{The first condition is just a statement that $\mathcal{G}$ represents a
+decomposition of the collection of all genes under consideration into subsets and this is why we refer to $\mathcal{G}$ as a collection of gene regulatory network modules. The second condition means simply that we will not consider nested subsets and so we will take for our $O \in \mathcal{G}$ the biggest $O \in \mathcal{G}$ that is
+not a subset of some other $O' \in \mathcal{G}$. The second condition also implies that if}\DIFdelend \DIFaddbegin \DIFadd{we will be
+interested in two types of consistency conditions.  We will say that }\DIFaddend a
+\DIFdelbegin \DIFdel{given subset of genes $O'$ is compatible in
+a sense to be explained more precisely in what proceeds then any smaller subset of genes $O$ is also compatible.
+}%DIFDELCMD <
+
+%DIFDELCMD < %%%
+\DIFdel{Mathematically, the two conditions given above state that $\mathcal{G}$ is a }\emph{\DIFdel{covering}} %DIFAUXCMD
+\DIFdel{of the set $L$.  This is equivalent to $(L, \mathcal{G})$ being a reduced hypergraph, Sperner family, or clutter over $L$ \mbox{%DIFAUXCMD
+\cite{Lauritzen1996}
+}%DIFAUXCMD
+.  Coverings $\mathcal{G}$ of the space of genes contain the necessary information to make precise what we heuristically refer to at other points in this paper as modularity in order to cohere with
+standard terminology in systems biology literature while attempting to submit our own precise interpretation of the relatively colloquial concept.
+}%DIFDELCMD <
+
+%DIFDELCMD < %%%
+\DIFdel{Given a covering $\mathcal{G}$ of the space of genes, we can consider the higher order phenotypes }\DIFdelend \DIFaddbegin \DIFadd{collection of probabilities associated to a hypergraph is
+}\emph{\DIFadd{locally consistent}} \DIFadd{if, whenever two hyperedges share a subset in
+common, the probabilities for that subset obtained by marginalizing
+the probabilities associated to one of the hyperedges will agree with
+those obtained by marginalizing the probabilities }\DIFaddend associated to the
+\DIFdelbegin \DIFdel{elements of $\mathcal{G}$.  For a suitable choice of cover and a suitable level of phenotypes, it may happen that the phenotypes associated to different elements of }\DIFdelend \DIFaddbegin \DIFadd{other hyperedge.  In our example above, there were only two hyperedges
+present, so the conditions we exhibited constitute the entirety of the
+local consistency conditions for that hypergraph.  We will denote the
+set of all locally consistent probability distribution associated to a
+hypergraph }\DIFaddend $\mathcal{G}$ \DIFdelbegin \DIFdel{are distinct.  For instance, in the example of \ref{fig:phenotypehierarchy}, if we take $\mathcal{G} = \{O_1, O_2\}$ where $O_1 = \{l_1, l_2, l_3\}$ and $O_2 = \{l_3, l_4\}$, we have $\phi_{i+1}(O_1) = \{u,v\}$ and $\phi_{i+1}(O_2) = \{x,y\}$.  In such a case, if we were to perform one experiment which measured the phenotypes $\{u,v\}$ and another experiment which measured $\{x,y\}$, then the result could be understood as examining the covering $\{O_1, O_2\}$ at phenotype level $i+1$.
+}%DIFDELCMD <
+
+%DIFDELCMD < %%%
+\section{\DIFdel{Compatibility of distributions on }%DIFDELCMD < \gnpm{}%%%
+}%DIFAUXCMD
+\addtocounter{section}{-1}%DIFAUXCMD
+%DIFDELCMD < \label{sec:compatibilityofgpms}
+%DIFDELCMD < %%%
+\DIFdel{Given a covering of the
+space of genes $\mathcal{G}$, a compatible family for $\mathcal{G}$ with respect to $\mathcal{D} \circ \mathcal{E}$ is given by a family of distributions $\dist{}(\expr{}(\mathcal{G})) = \{d_O \in \dist (\mathcal{E}(O)) | O \in \mathcal{G}\}$ such that for all $O, O' \in \mathcal{G}$
+}\begin{align*}\DIFdel{\label{eq:sheafcond}
+d_O|O \cap O' = d_{O'}|O \cap O'.
+}\end{align*}
+%DIFAUXCMD
+\DIFdel{This first set of conditions is later referred to as local consistency. The space of all such locally consistent distributions for a
+given covering, $\mathcal{G}$, is referred to }\DIFdelend as $\mathbb{L}(\mathcal{G})$\DIFdelbegin \DIFdel{where
+}\begin{displaymath}\DIFdel{
+\mathbb{L}(\mathcal{G}) = \{ d_O  \in \dist{}(\expr{}(\mathcal{G})) \mid (\forall O,O' \in \mathcal{G})\,\, d_O|O \cap O' = d_O'|O \cap O' \}.
+}\end{displaymath}
+%DIFAUXCMD
+\DIFdel{These conditions mean that any two distributions $d_O$ and $d_{O'}$ in the }\emph{\DIFdel{compatible family}} %DIFAUXCMD
+\DIFdel{of distributions marginalize to the same disribution over the intersection of $O$ with $O'$. If these constraints are not satisfied, then there is no way to make a consistent assignment of probabilities to
+the expression states of even a single gene.  In this case one of the constraints will be eliminated or gene duplication may allow for the independent satisfaction of both constraints.
+}\DIFdelend \DIFaddbegin \DIFadd{.
+}\DIFaddend
+
+\DIFdelbegin \DIFdel{If,
+moreover, this first condition implies the existence of $d \in \mathcal{D}( \mathcal{E}(L))$ such that $d|O = d_O$ for all $O \in \mathcal{G}$ then the system is said to satisfy the global consistency condition. The space of all such globally consistent distributions for a given covering, }\DIFdelend \DIFaddbegin \DIFadd{We will say that a collection of probabilities associated to a
+hypergraph is }\emph{\DIFadd{globally consistent}} \DIFadd{if there exists a joint
+probability distribution on the totality of variables associated to
+the hypergraph such that the probabilities associated to any hyperedge
+are marginals of that joint distribution.  In terms of our example,
+that would mean that there exist probabilities $p^{123}_{000},
+p^{123}_{001}, \ldots, p^{123}_{111}$ such that the following
+conditions hold:
+}\begin{equation}\DIFadd{
+ \begin{pmatrix}
+  p^{12}_{00}\\
+  p^{12}_{01}\\
+  p^{12}_{10}\\
+  p^{12}_{11}\\
+  p^{13}_{00}\\
+  p^{13}_{01}\\
+  p^{13}_{10}\\
+  p^{13}_{11}
+ \end{pmatrix} =
+ \begin{pmatrix}
+  1 & 1 & 0 & 0 & 0 & 0 & 0 & 0\\
+  0 & 0 & 1 & 1 & 0 & 0 & 0 & 0\\
+  0 & 0 & 0 & 0 & 1 & 1 & 0 & 0\\
+  0 & 0 & 0 & 0 & 0 & 0 & 1 & 1\\
+  1 & 0 & 1 & 0 & 0 & 0 & 0 & 0\\
+  0 & 1 & 0 & 1 & 0 & 0 & 0 & 0\\
+  0 & 0 & 0 & 0 & 1 & 0 & 1 & 0\\
+  0 & 0 & 0 & 0 & 0 & 1 & 0 & 1
+ \end{pmatrix}
+ \begin{pmatrix}
+  p^{123}_{000}\\
+  p^{123}_{001}\\
+  p^{123}_{010}\\
+  p^{123}_{011}\\
+  p^{123}_{100}\\
+  p^{123}_{101}\\
+  p^{123}_{110}\\
+  p^{123}_{111}\\
+ \end{pmatrix}.
+}\end{equation}
+\DIFadd{We will denote the set of all globally consistent probability
+distribution associated to a hypergraph }\DIFaddend $\mathcal{G}$ \DIFdelbegin \DIFdel{, is referred to }\DIFdelend as
+$\mathbb{M}(\mathcal{G})$\DIFdelbegin \DIFdel{where
+}\begin{displaymath}\DIFdel{
+\mathbb{M}(\mathcal{G}) = \{ d_O \in \dist{}(\expr{}(\mathcal{G})) \mid (\exists d ) \,\, d|O = d_O \}.
+}\end{displaymath}
+%DIFAUXCMD
+\DIFdel{In general, the system of equations $d|O = d_O$ for all $O \in \mathcal{G}$ is underdetermined and so local consistency does not imply global consistency . The local
+and global consistencyconditions are related to the mathematical concepts from which they derive in }%DIFDELCMD < \refsupp{} %%%
+\DIFdel{\ref{secsupp:compatibilityofgpms}}\DIFdelend .
+\DIFaddbegin
+
+\DIFadd{Because marginalizing from a set of random variables to a smaller set
+of variables can be accomplished by first marginalizing to an
+intermediate set and then marginalizing from the intermediate set down
+to the smaller set, it follows that global consistency implies local
+consistency.  }\DIFaddend We will now \DIFdelbegin \DIFdel{examine the situation more closely to determine under what circumstances global consistencyholds}\DIFdelend \DIFaddbegin \DIFadd{see what conditions are needed in
+addition to local consistency to ensure global consistency}\DIFaddend .
+
+\DIFdelbegin \DIFdel{For a cover of the genotype space, }\DIFdelend \DIFaddbegin \DIFadd{As in our example, we can express marginalization from the set $L$ of
+all variables down to a hypergraph }\DIFaddend $\mathcal{G}$ \DIFdelbegin \DIFdel{, we can construct a matrix, $\mathbf{G}$, representing the relationship,
+between }%DIFDELCMD < \gnpm{} %%%
+\DIFdel{having as domain particular gene regulatory network modules given by the $O \in \mathcal{G}$ and those global }%DIFDELCMD < \gnpm{} %%%
+\DIFdel{defined on }\DIFdelend \DIFaddbegin \DIFadd{in the form $v = Gx$
+where $x$ is a vector whose components are probabilities associated to
+}\DIFaddend $L$\DIFdelbegin \DIFdel{.
+$\mathbf{G}$ can be specified for all $e^O_{\vec{i}} \in \mathcal{E}(\mathcal{G})$ }\DIFdelend \DIFaddbegin \DIFadd{, $v$ is a vector whose components are probabilities associated to
+$\mathcal {G}$, }\DIFaddend and \DIFdelbegin \DIFdel{$e^{L}_{\vec{j}} \in \mathcal{E}(L)$:
+}\begin{align*}\DIFdel{\label{eq:margmat}
+\mathbf{G}(e^O_{\vec{i}},e^L_{\vec{j}}) =
+\begin{cases}
+1, & e^L_{\vec{j}}|O = e^O_{\vec{i}},\\
+0, & \text{otherwise}.
+\end{cases}
+}\end{align*}
+%DIFAUXCMD
+\DIFdel{For example, given the covering $\mathcal{G} = \{ \{l_1\}, \{l_2\} \}$ of
+a set of two genes $L = \{ l_1, l_2 \}$ the associated matrix $\mathbf{G}$ is shown in \ref{fig:efunctor}B.
+}%DIFDELCMD <
+
+%DIFDELCMD < %%%
+\DIFdel{The locally, $\mathbb{L}(\mathcal{G})$, and globally, $\mathbb{M}(\mathcal{G})$, consistent polytopes correspond to the spaces of probability distributions satisfying the local and global consistency conditions described above. The globally consistent polytope is a subspace of the locally consistent one.  This is because an ostensible inverse to $\mathbf{G}$ is underdetermined and can only be estimated in general (most commonly using the maximum entropy principle).
+To determine explicit conditions on the probabilities we express $\mathbb{L}(\mathcal{G})$ and $\mathbb{M}(\mathcal{G})$ in }\DIFdelend \DIFaddbegin \DIFadd{$G$ is a suitable matrix.  The consistency
+conditions can be expressed in }\DIFaddend terms of the fundamental \DIFdelbegin \DIFdel{subspaces associated to the linear map $\mathbf{G}$}\DIFdelend \DIFaddbegin \DIFadd{spaces (kernel
+and cokernel) associated to this matrix \mbox{%DIFAUXCMD
+\cite{Strang1993}
+}%DIFAUXCMD
+}\DIFaddend .  In order for a vector $v$ to
+\DIFdelbegin \DIFdel{lie in $\mathbf{G}(\mathbb{R}^{\mathcal{E}(L)})$}\DIFdelend \DIFaddbegin \DIFadd{be expressible as $Gx$ for some $x$}\DIFaddend , we must \DIFdelbegin \DIFdel{have $v=\mathbf{G}x$ for some $x \in \mathbb{R}^{\mathcal{E}(L)}$.  The cokernel of $\mathbf{G}$ gives the obstructions to this system $v=\mathbf{G}x$ having a solution. In order to eliminate these obstructions, constraints must be imposed on $\mathbb{R}^{\mathcal{E}(\mathcal{G})}$ and these constraints are given precisely via annihilating the cokernel, i.  e.
+$\mathbf{G}(\mathbb{R}^{\mathcal{E}(L)}) = \{ v \; | \; (\forall u \in coker \mathbf{G}) \; u \cdot v = 0\}$.  We then take the appropriate intersection to determine $\mathbb{L}(\mathcal{G})$ by requiring $v \in \mathcal{D}(\mathcal{E}(\mathcal{G}))$
+}\begin{align*}\DIFdel{\label{eq:localpolytope}
+\mathbb{L}(\mathcal{G}) }&\DIFdel{=}& \DIFdel{\{ v \in \dist{}(\expr{}(\mathcal{G})) \; | \; (\forall u \in coker \mathbf{G}) \; u \cdot v = 0\}.
+}\end{align*}
+%DIFAUXCMD
+\DIFdel{Since $\mathbf{G}$ is not invertible the equation $v = \mathbf{G}x$ can only be solved up to an element of $ker \mathbf{G}$.  $v = \mathbf{G}x$ can thus be solved on }\DIFdelend \DIFaddbegin \DIFadd{satisfy the condition
+that $v\cdot u = 0$ for all $u \in \mathrm{coker} (G)$.  In our
+example, the cokernel of the matrix is spanned by the following two
+row vectors:
+}\begin{eqnarray}\DIFadd{
+ &\begin{pmatrix}
+  1 & 1 & 0 & 0 & -1 & -1 & 0 & 0
+ \end{pmatrix}}\\
+ &\DIFadd{\begin{pmatrix}
+ 0 & 0 & 1 & 1 & 0 & 0 & -1 & -1
+ \end{pmatrix}
+}\end{eqnarray}
+\DIFadd{This leads to the conditions
+}\begin{eqnarray}\DIFadd{
+ p^{12}_{00} + p^{12}_{01} - p^{13}_{00} - p^{13}_{01} }&\DIFadd{=}& \DIFadd{0 }\\
+ \DIFadd{p^{12}_{10} + p^{12}_{11} - p^{13}_{10} - p^{13}_{11} }&\DIFadd{=}& \DIFadd{0 .
+}\end{eqnarray}
+\DIFadd{Note that these are precisely the local consistency conditions which we
+exhibited earlier.  It can be shown that the condition that $u \cdot v
+= 0$ for all $u \in \mathrm{coker} (G)$ will always be exactly the
+local consistency conditions.
+}
+
+\DIFadd{To obtain the global consistency conditions, we note that, if $v =
+Gx$, then we also have $v = Gy$ for any vector $y$ such that $x-y$
+lies in the kernel of $G$.  Choose }\DIFaddend a subspace $T$ of \DIFdelbegin \DIFdel{$\mathbb{R}^{\mathcal{E}(L)}$ such that $T \oplus ker \mathbf{G} = \mathbb{R}^{\mathcal{E}(L)}$ to yield
+}\begin{align*}\DIFdel{\label{eq:globalpolytope}
+\mathbb{M}(\mathcal{G}) }&\DIFdel{=}& \DIFdel{\{ v \; | v = \mathbf{G} x,\; (\exists x \in T) \; (\exists y \in \dist{}(\expr{}(L)))\; x-y \in ker \mathbf{G}  \}.
+}\end{align*}
+%DIFAUXCMD
+\DIFdel{In order
+to obtain inequalities that define $\mathbb{M}(\mathcal{G})$, }\DIFdelend \DIFaddbegin \DIFadd{column vectors
+which is transverse to $\mathrm{ker}(G)$ such that the union of $T$
+and $\mathrm{ker}(G)$ span the column space.  Then the equation $v =
+Gx$ has a unique solution if we restrict $x$ to lie in $T$.  In order
+for a column vector to represent a legitimate probability
+distribution, its components must all be non-negative.  Hence, we
+conclude that $v$ being globally consistent is equivalent to the
+following system of equations and inequalities having a solution:
+}
+\begin{equation}
+\begin{aligned}\label{eq:globalconsistencyconditions}
+\DIFadd{ v }&\DIFadd{= Gx }\\
+ \DIFadd{x }&\DIFadd{\in T }\\
+ \DIFadd{x - y }&\DIFadd{\in \mathrm{ker}(G) }\\
+ \DIFadd{y }&\DIFadd{\ge 0 }
+\end{aligned}
+\end{equation}
+
+\DIFadd{By using a method, such as }\DIFaddend Fourier-Motzkin elimination\DIFdelbegin \DIFdel{can be used to eliminate }\DIFdelend \DIFaddbegin \DIFadd{, to remove redundant inequalities, one can eliminate the quantities }\DIFaddend $x$ and $y$ \DIFaddbegin \DIFadd{from this
+system to obtain inequallities involving only the components of $v$.
+These are the global consistency conditions.
+}
+
+\DIFadd{In our example, $\mathrm{ker}(G)$ is spanned by the folllowing two
+column vectors:
+}\begin{equation}\DIFadd{
+ \begin{pmatrix}
+ 1 \\ -1 \\ -1 \\ 1 \\ 0 \\ 0 \\ 0 \\ 0
+ \end{pmatrix}
+ \begin{pmatrix}
+ 0 \\ 0 \\ 0 \\ 0 \\ 1 \\ -1 \\ -1 \\ 1
+ \end{pmatrix}
+}\end{equation}
+\DIFadd{As our transverse space $T$, we will choose the space spanned by the
+following basis:
+}\begin{equation}\DIFadd{
+ \begin{pmatrix}
+  1 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0
+ \end{pmatrix}
+ \begin{pmatrix}
+  0 \\ 1 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0
+ \end{pmatrix}
+ \begin{pmatrix}
+  0 \\ 0 \\ 1 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0
+ \end{pmatrix}
+ \begin{pmatrix}
+  0 \\ 0 \\ 0 \\ 0 \\ 1 \\ 0 \\ 0 \\ 0
+ \end{pmatrix}
+ \begin{pmatrix}
+  0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 1 \\ 0 \\ 0
+ \end{pmatrix}
+ \begin{pmatrix}
+  0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 1 \\ 0
+ \end{pmatrix}
+}\end{equation}
+\DIFadd{With this choice, the condition $x \in T$ reduces to the equations
+$x_4 = x_8 = 0$.  The conditions $x - y \in \mathrm{ker}(G)$ then
+become
+}\begin{eqnarray}\DIFadd{
+ y_1 - x_1 = x_2 - y_2 = x_3 - y_3 }&\DIFadd{=}& \DIFadd{y_4 }\\
+ \DIFadd{y_5 - x_5 = x_6 - y_6 = x_7 - y_7 }&\DIFadd{=}& \DIFadd{y_8
+}\end{eqnarray}
+\DIFadd{If we solve these for the $x$'s, substitute the result into the
+equation $v = Gx$ and eliminate the y's between the resulting
+equations and the inequalities $y \ge 0$, we find the conditions $v
+\ge 0$.  This, of course, is just the condition that the probabilities
+be positive.  Thus, for the case of this simple hypergraph, local
+consistency suffices to ensure global consistency.  In \ref{sec:inconsistency},
+we will see that this is not always the case and that the
+inequalities obtained by elimination impose more conditions on the
+probabilities than just positivity}\DIFaddend .
+\DIFdelbegin \DIFdel{Alternatively one can use the fact, \mbox{%DIFAUXCMD
+\cite{Wainwright2007}
+}%DIFAUXCMD
+proposition 8.3, that $\mathbb{M}(\mathcal{G})$ is given by removing the non-integer vertices from a vertex represntation of $\mathbb{L}(\mathcal{G})$ and the ability to interconvert between vertex and inequality representations to compute the same inequalities as described in }%DIFDELCMD < \refsupp{} %%%
+\DIFdel{\ref{secsupp:fourcycleexample}.
+}\DIFdelend
+
+\DIFdelbegin \subsection{\DIFdel{Example of unsatisfiable constraints}}%DIFAUXCMD
+\addtocounter{subsection}{-1}%DIFAUXCMD
+\DIFdelend \DIFaddbegin \section{\DIFadd{Example of unsatisfiable constraints}}\DIFaddend \label{sec:inconsistency}
+We will now exemplify equations and inequalities that need to be satisfied in order to guarantee the \DIFdelbegin \DIFdel{sheaf condition }\DIFdelend \DIFaddbegin \DIFadd{consistency conditions }\DIFaddend for the simple case of three \DIFdelbegin \DIFdel{genes }\DIFdelend \DIFaddbegin \DIFadd{variables }\DIFaddend that form the simplest nontrivial cycle where inconsistency may arise. Suppose that $L = \{l_1,l_2,l_3\}$, $P = \{0,1\}$, $\mathcal{G} = \{\{l_1,l_2\},\{l_2,l_3\},\{l_3,l_1\}\}$.
+\DIFdelbegin \DIFdel{We define probabilities associated to the gene network-phenotype maps for any set $S$ as $p^S_{\vec{j}}= d_{S}(e^S_{\vec{j}})$. This results in $\mathcal{D}(\mathcal{E}(L)) = \Delta_7 \subset \mathbb{R}^8 $ and $\mathcal{D}(\mathcal{E}(\mathcal{G})) = \Delta^{\oplus 3}_3 \subset \mathbb{R}^{12}$,
+which give the inequalities defining $\mathbb{L}(\mathcal{G})$ and $\mathbb{M}(\mathcal{G})$ when substituted into \ref{eq:localpolytope} and \ref{eq:globalpolytope} with the appropriate $\mathbf{G}$ given by \ref{eq:margmat}.
+}\DIFdelend
+
+\DIFdelbegin \DIFdel{An example of normalized contingency tables that correspond to this model are presented in \ref{fig:inconsistentthreecycle}A.
+One local consistency condition in terms of \ref{eq:sheafcond} specifies that for $e_{\{l_1\}} \in \mathcal{E}(\{l_1\})$, which assigns a particular phenotype to the genotype $\{l_1\}$ rather than to an entire gene regulatory network module like $O$ or $O'$, that
+}\begin{align*}\DIFdel{\label{eq:sheafprob}
+\dist (\expr( \{ l_1 \} \subset O ) )(d_O)(e_{\{l_1\}}) = \sum_{\substack{ e \in \mathcal{E}(O), \\  e|l_1=e_{\{l_1\}}} } d_O(e) \,\, = \sum_{\substack{ e' \in \mathcal{E}(O'), \\ e'|l_1=e_{\{l_1\}}} } d_{O'}(e') = \dist (\expr( \{ l_1 \} \subset O' ) )(d_{O'})(e_{\{l_1\}})
+}\end{align*}
+%DIFAUXCMD
+\DIFdelend This condition means that the probability for \DIFdelbegin \DIFdel{gene }\DIFdelend \DIFaddbegin \DIFadd{the variable }\DIFaddend $l_1$ to be associated to \DIFdelbegin \DIFdel{the phenotype given by $e_{\{l_1\}}$ }\DIFdelend \DIFaddbegin \DIFadd{a given state }\DIFaddend is equivalent in case we marginalize over all the other \DIFdelbegin \DIFdel{genes }\DIFdelend \DIFaddbegin \DIFadd{variables }\DIFaddend contained in the \DIFdelbegin \DIFdel{gene regulatory }\DIFdelend \DIFaddbegin \DIFadd{biological }\DIFaddend network modules of which $l_1$ is a component.  \DIFdelbegin \DIFdel{\ref{eq:sheafprob} }\DIFdelend \DIFaddbegin \DIFadd{Mathematically, this }\DIFaddend reduces to two equations corresponding to the case when \DIFdelbegin \DIFdel{$e_{l_1}$ is the map which sends }\DIFdelend \DIFaddbegin \DIFadd{the state of }\DIFaddend $l_1$ \DIFdelbegin \DIFdel{to }\DIFdelend \DIFaddbegin \DIFadd{is }\DIFaddend $0$ \DIFdelbegin \DIFdel{and the case when $e_{l_1}$ sends $l_1$ to }\DIFdelend \DIFaddbegin \DIFadd{or }\DIFaddend $1$. If we do likewise with $l_2$ and $l_3$ in place of $l_1$ we obtain the set of local consistency conditions:
+\begin{equation}
+\begin{aligned}\label{eq:localconsistencythreegenes}
+ p^{12}_{00} + p^{12}_{01} &= p^{1}_0 = p^{13}_{00} + p^{13}_{01}, &
+ p^{12}_{00} + p^{12}_{10} &= p^{2}_0 = p^{23}_{00} + p^{23}_{01}, &
+ p^{13}_{00} + p^{13}_{10} &= p^{3}_0 = p^{23}_{00} + p^{23}_{10},\\
+ p^{12}_{10} + p^{12}_{11} &= p^{1}_1 = p^{13}_{10} + p^{13}_{11}, &
+ p^{12}_{01} + p^{12}_{11} &= p^{2}_1 = p^{23}_{10} + p^{23}_{11}, &
+ p^{13}_{01} + p^{13}_{11} &= p^{3}_1 = p^{23}_{01} + p^{23}_{11}.
+ \end{aligned}
+ \end{equation}
+These \DIFdelbegin \DIFdel{are equivalent to what would result from using the cokernel of $\mathbf{G}$ in \ref{eq:localpolytope}}\DIFdelend \DIFaddbegin \DIFadd{result from applying the method outlined in \ref{sec:compatibilityofgpms} to enumerate all local consistency conditions}\DIFaddend .
+Using the local consistency conditions for our example we can derive a set of inequalities that determine $\mathbb{L}(\mathcal{G})$
+\begin{equation}
+\begin{aligned}\label{eq:threecycinequalities}
+p^{12}_{00} &= 1 + p^{12}_{11} - p^{23}_{10} - p^{23}_{11} - p^{13}_{10} - p^{13}_{11} \geq 0, \\
+p^{12}_{01} &= -p^{12}_{11} + p^{23}_{10} + p^{23}_{11} \geq 0,\\
+p^{12}_{10} &= -p^{12}_{11} + p^{13}_{10} + p^{13}_{11} \geq 0,\\
+p^{23}_{00} &= 1-p^{23}_{10} - p^{13}_{01} - p^{13}_{11} \geq 0,\\
+p^{23}_{01} &= -p^{23}_{11} + p^{13}_{01} + p^{13}_{11} \geq 0,\\
+p^{31}_{00} &= 1-p^{13}_{10} - p^{13}_{01} - p^{13}_{11} \geq 0,
+\end{aligned}
+\end{equation}
+combined with the trivial inequalities that force all probabilities to be nonnegative. Substituting the numbers from \ref{fig:inconsistentthreecycle}A \DIFaddbegin \DIFadd{(which are $p^{12}_{00} = 0.1,\, p^{12}_{01} = 0.4,\, p^{12}_{10} = 0.4,\,p^{12}_{11} = 0.1,\,p^{13}_{00} = 0.4,\, p^{13}_{01} = 0.1,\, p^{13}_{10} = 0.1,\,p^{13}_{11} = 0.4,\,p^{23}_{00} = 0.4,\, p^{23}_{01} = 0.1,\, p^{23}_{10} = 0.1,\,p^{23}_{11} = 0.4 $) }\DIFaddend into \ref{eq:threecycinequalities}, demonstrates that the local conditions are satisfied.
+
+The global consistency conditions form an underdetermined system of linear equations for the putative global distribution \DIFdelbegin \DIFdel{$d_{L}$ }\DIFdelend so their solution will assume the form of a linear subspace\DIFdelbegin \DIFdel{as demonstrated in \ref{eq:globalpolytope}.  In our example where this linear subspace corresponds to the image of $\Delta_7$ in $\Delta_3^{\oplus 3}$ under the marginalization map, following \ref{eq:globalpolytope} we can choose $v=p^0_{\vec{i}}$, $y=p^L_{\vec{i}}$, and $T$ by fixing $p^{123}_{000}=0$ we get the following by }\DIFdelend \DIFaddbegin \DIFadd{.  The following equations arise as a result of }\DIFaddend eliminating $x$ from the equations determined by the conditions $v=Gx$, $x \in T$, $x-y \in ker \mathbf{G}$:
+\begin{equation}
+\begin{aligned}\label{eq:globalpositivityeqs}
+p^{123}_{001} &= p^{12}_{00} - p^{123}_{000} \\
+p^{123}_{010} &= p^{13}_{00} - p^{123}_{000} \\
+p^{123}_{100} &= p^{23}_{00} - p^{123}_{000} \\
+p^{123}_{110} &= p^{23}_{10} - p^{13}_{00} + p^{123}_{000} \\
+p^{123}_{011} &= p^{13}_{01} - p^{12}_{00} + p^{123}_{000} \\
+p^{123}_{101} &= p^{12}_{10} - p^{23}_{00} + p^{123}_{000} \\
+p^{123}_{111} &= 1 - p^{12}_{00} - p^{13}_{00} - p^{23}_{00} - p^{123}_{000}
+\end{aligned}
+\end{equation}
+The remaining condition \DIFdelbegin \DIFdel{$y \in \mathcal{D}(\mathcal{E}(L))$ from \ref{eq:globalpolytope} }\DIFdelend \DIFaddbegin \DIFadd{$y \geq 0$ from \ref{eq:globalconsistencyconditions} }\DIFaddend states that all the probabilities $p^{123}_{ijk}$ must be positive numbers, which is only possible if the putative marginals satisfy suitable inequalities given by
+\begin{equation}
+\begin{aligned}\label{eq:globalpositivityineqs}
+p^{123}_{000} &\geq min(p^{12}_{00},\, p^{13}_{00},p^{23}_{00},\, 1 - p^{12}_{00} - p^{13}_{00} - p^{23}_{00}),\\
+ p^{123}_{000} &\geq max(0,\, p^{13}_{00}-p^{23}_{10},\, p^{12}_{00}-p^{13}_{01},\, p^{23}_{00}-p^{12}_{10}).
+\end{aligned}
+\end{equation}
+A minimal set of inequalities is then expressed by substituting the equalities from \ref{eq:threecycinequalities} into the inequalities determined by \ref{eq:globalpositivityineqs} and eliminating redundancies resulting in
+\begin{equation}
+\begin{aligned}\label{eq:threecycbooleinequalities}
+p^{12}_{11} - p^{23}_{11} + p^{13}_{01} \geq 0, \\
+1 + p^{12}_{11} - p^{23}_{10} - p^{13}_{10} - p^{13}_{01} - p^{13}_{11} \geq 0, \\
+-p^{12}_{11} + p^{23}_{10} + p^{13}_{11} \geq 0, \\
+-p^{12}_{11} + p^{23}_{11} + p^{13}_{10} \geq 0.
+\end{aligned}
+\end{equation}
+The inequalities from \ref{eq:threecycinequalities} and \ref{eq:threecycbooleinequalities} combined with the nonnegativity inequalities together determine the global polytope $\mathbb{M}(\mathcal{G})$. For the example given in \ref{fig:inconsistentthreecycle}A, the first of the inequalities in \ref{eq:threecycbooleinequalities} is demonstrated to be unsatisfied in \ref{eq:threecycboolenumbers}
+\begin{equation}
+\begin{aligned}\label{eq:threecycboolenumbers}
+0.1 - 0.4 + 0.1 \not\geq 0, \\
+1 + 0.1 - 0.1 - 0.1 - 0.1 - 0.4 \geq 0, \\
+-0.1 + 0.1 + 0.4 \geq 0, \\
+-0.1 + 0.4 + 0.1 \geq 0.
+\end{aligned}
+\end{equation}
+This indicates that data consistent with \ref{fig:inconsistentthreecycle}A could not derive from the network depicted there.
+
+
+
+\makeatletter{}\section{Cyclic network contexts can impose unsatisfiable constraints}\label{sec:cycliccontextunsatisfiableconstraints}
+
+
+\DIFdelbegin \DIFdel{We can use an undirected graph (e.g. \ref{fig:inconsistentthreecycle}A, bottom left) to indicate the manner in which a given collection of genes is connected to the network context (\ref{fig:stochdynscheme}, bottom row). We refer to this as the GRNA (see \ref{sec:covergenotypespace}). }\DIFdelend Each node of the \DIFdelbegin \DIFdel{graph is }\DIFdelend \DIFaddbegin \SH{} \DIFadd{graph in \ref{fig:inconsistentthreecycle}A can be }\DIFaddend associated to the probability distribution that specifies probabilities for each \DIFdelbegin \DIFdel{gene }\DIFdelend \DIFaddbegin \DIFadd{biological variable }\DIFaddend to be observed in each of the states determined by the coarse-graining process described in \ref{sec:genenetworkphenmap}. Each edge of the graph specifies a joint probability distribution for both of the nodes it contains (or connects) to simultaneously take on a given pair of values. Note that this does not imply the existence or absence of a physical interaction between the \DIFdelbegin \DIFdel{genes }\DIFdelend \DIFaddbegin \DIFadd{variables }\DIFaddend represented by these two nodes. Together, these probabilities represent constraints that the network context may impose upon the network.
+\DIFdelbegin \DIFdel{\ref{fig:inconsistentthreecycle}A provides a concrete example where we assume three genes }\DIFdelend \DIFaddbegin \DIFadd{We assume three variables }\DIFaddend are observed via all possible pairwise combinations and that via the coarse-graining process we have binned the \DIFdelbegin \DIFdel{expression }\DIFdelend state of each \DIFdelbegin \DIFdel{gene }\DIFdelend \DIFaddbegin \DIFadd{variable }\DIFaddend into one of two classes.
+Each node of the graph in \ref{fig:inconsistentthreecycle}A represents a probability distribution over the observation of each \DIFdelbegin \DIFdel{gene }\DIFdelend \DIFaddbegin \DIFadd{variable }\DIFaddend in either of the two states established in the coarse-graining process.
+Each of the probability tables adjacent to each edge in the graph assigns a probability distribution to the set of maps from the nodes connected by the edge to all possible combinations of the \DIFdelbegin \DIFdel{expression }\DIFdelend \DIFaddbegin \DIFadd{network }\DIFaddend states. As these maps take collections of \DIFdelbegin \DIFdel{genes }\DIFdelend \DIFaddbegin \DIFadd{biological network variables }\DIFaddend as input and produce collections of \DIFdelbegin \DIFdel{expression }\DIFdelend \DIFaddbegin \DIFadd{network }\DIFaddend states as outputs we refer to them as \gnpm{} and thus to the associated probability distributions as probability distributions over \gnpm{}.
+
+Suppose the normalized contingency tables in \ref{fig:inconsistentthreecycle}A are meant to represent the ostensible structure and parameters of a \DIFdelbegin \DIFdel{gene expression }\DIFdelend \DIFaddbegin \DIFadd{biological }\DIFaddend process. It is often necessary to attempt to infer the parameters of such a model from data under the assumption that the structure of a given \DIFdelbegin \DIFdel{GRN }\DIFdelend \DIFaddbegin \DIFadd{network architecture }\DIFaddend falls within the model class defined by a given graph. \ref{fig:inconsistentthreecycle}B represents a case in which a hypothetical dataset is consistent with its derivation from a joint probability distribution whereas \ref{fig:inconsistentthreecycle}C represents a case of inconsistency where the pairwise distributions are each individually consistent distributions, but, together, the three pairwise distributions are not consistent with any joint distribution over the states of all three \DIFdelbegin \DIFdel{genes}\DIFdelend \DIFaddbegin \DIFadd{network variables}\DIFaddend .
+This inconsistency is made possible by the fact that the network architecture in \ref{fig:inconsistentthreecycle}A contains a cycle \cite{Lauritzen1996,Geiger2006,Wainwright2007} and that we have given an ostensible data set leading to the inference of parameters that could not possibly derive from a joint probability distribution over all three \DIFdelbegin \DIFdel{genes}\DIFdelend \DIFaddbegin \DIFadd{network variables}\DIFaddend .
+
+If this situation arises, it indicates some systematic error in the transfer of information whether it occurs intrinsically to the system wherein a network has inconsistent constraints placed upon it by its network context or as part of the scientific data collection process. In the former case, this can be resolved by modifying the inconsistent constraints in such a manner that they become consistent with or without modifying the network architecture in doing so. In the latter case, this may result from employing a model which 1) takes insufficient account of the network context and 2) relies on coarse-grained observations. In either case, the synthetic gene circuit schematized in \ref{fig:condgenescenario} serves as one mechanism implementing the example presented in \refsupp{} \ref{secsupp:apparentinconsistency}. It consists of four genes each of which is capable of taking on three different states \cite{Rieckh2013a}. However, observing two out of the three states measured pairwise from three out of the four genes could result in data that would appear to be inconsistent. Such an observation would demonstrate without having to have knowledge of the correct network architecture, that the current model is insufficient to represent the underlying process.
+
+For the case of the architecture in \ref{fig:inconsistentthreecycle}A, and moreover for any \DIFdelbegin \DIFdel{GRNA }\DIFdelend \DIFaddbegin \DIFadd{network architecture }\DIFaddend of any size that contains one or more cycles, the possibility of finding a joint distribution over all \DIFdelbegin \DIFdel{genes }\DIFdelend \DIFaddbegin \DIFadd{network variables }\DIFaddend that satisfies all constraints capable of being imposed upon it requires the implicit assumption that the structure of the network context can be viewed simultaneously as that of \ref{fig:expression_concept}C top and that of \ref{fig:expression_concept}C bottom. The spaces of probability distributions corresponding to the constraints that can be imposed upon the two \DIFdelbegin \DIFdel{GRNAs }\DIFdelend \DIFaddbegin \DIFadd{network acrhitectures }\DIFaddend contrasted in \ref{fig:expression_concept}C are different. We can now apply the process described in \ref{sec:compatibilityofgpms} to classify the geometries and thus relationships among the spaces of probability distributions associated to constraints that can be imposed on all possible \DIFdelbegin \DIFdel{GRNAs }\DIFdelend \DIFaddbegin \DIFadd{network architectures }\DIFaddend with a given number of \DIFdelbegin \DIFdel{genes}\DIFdelend \DIFaddbegin \DIFadd{variables}\DIFaddend .
+
+\section{Geometry of probabilistic constraints on network states}\label{sec:probconstrgeometry}
+The \DIFdelbegin \DIFdel{collection of all possible GRNAs is equivalent to the latticeof all possible }\DIFdelend \DIFaddbegin \DIFadd{relationships among possible network architectures are given by the lattice, which in this case indicates ordering by subset inclusion, of }\DIFaddend reduced subsets of \DIFdelbegin \DIFdel{genes (\ref{sec:covergenotypespace} }\DIFdelend \DIFaddbegin \DIFadd{biological network variables (i.e. collections of subsets of variables where no subset in the collection is a subset of another one, \ref{sec:networkcontext} }\DIFaddend and \refsupp{} \DIFaddbegin \DIFadd{\ref{sec:covergenotypespace}}\DIFaddend ). For example, \ref{fig:conediagram}A \DIFdelbegin \DIFdel{contains }\DIFdelend \DIFaddbegin \DIFadd{shows }\DIFaddend the lattice of reduced subsets of three \DIFdelbegin \DIFdel{genes}\DIFdelend \DIFaddbegin \DIFadd{variables}\DIFaddend . We are only interested in those subsets that contain at least one \DIFdelbegin \DIFdel{copy of each gene, which }\DIFdelend \DIFaddbegin \DIFadd{instance of each variable. Restricting to the subsets of variables satisfying this condition }\DIFaddend corresponds to the region highlighted with a gray background in \ref{fig:conediagram}A. Each \DIFdelbegin \DIFdel{GRNA }\DIFdelend \DIFaddbegin \DIFadd{network architecture }\DIFaddend corresponds to a different modularization of the \gnpm{} by the network context. For example, \ref{fig:conediagram}B shows in the same vertical order the different maps induced by the three architectures highlighted in green in \ref{fig:conediagram}A.
+
+We consider those \DIFdelbegin \DIFdel{GRNAs }\DIFdelend \DIFaddbegin \DIFadd{network architectures }\DIFaddend found lower in the lattice of \ref{fig:conediagram}A to be of higher modularity because each corresponds to the increasing restriction from placing constraints on higher- to placing constraints on lower-order correlations among \DIFdelbegin \DIFdel{genes}\DIFdelend \DIFaddbegin \DIFadd{variables}\DIFaddend . \ref{fig:conediagram}B top corresponds to the least modular \DIFdelbegin \DIFdel{GRNA }\DIFdelend \DIFaddbegin \DIFadd{network architecture }\DIFaddend because constraints are placed upon correlations among all three \DIFdelbegin \DIFdel{genes}\DIFdelend \DIFaddbegin \DIFadd{variables}\DIFaddend . \ref{fig:conediagram}B middle exhibits an elevated degree of modularity because constraints are placed upon correlations among pairs of \DIFdelbegin \DIFdel{genes}\DIFdelend \DIFaddbegin \DIFadd{variables}\DIFaddend . Similarly, \ref{fig:conediagram}B bottom is even more modular because constraints are placed upon each \DIFdelbegin \DIFdel{gene }\DIFdelend \DIFaddbegin \DIFadd{variable }\DIFaddend individually.
+
+Each of the \DIFdelbegin \DIFdel{GRNAs }\DIFdelend \DIFaddbegin \DIFadd{network architectures }\DIFaddend in \ref{fig:conediagram}A can be associated to a \DIFdelbegin \DIFdel{space of }\DIFdelend \DIFaddbegin \DIFadd{pair of spaces of }\DIFaddend probability distributions over \gnpm{}. \DIFaddbegin \DIFadd{These correspond to the spaces of globally, $\mathbb{M}(\mathcal{G})$, and locally, $\mathbb{L}(\mathcal{G})$, consistent distributions described in \ref{sec:compatibilityofgpms} and \ref{secsupp:compatibilityofgpms}. }\DIFaddend \ref{fig:conediagram}C schematically depicts the relationships among the probability distributions associated to the corresponding architectures and \gnpm{} in \ref{fig:conediagram}B. \DIFaddbegin \DIFadd{For \ref{fig:conediagram}C top, $\mathbb{M}(\mathcal{G}) = \mathbb{L}(\mathcal{G})$. }\DIFaddend The inconsistency noted in the previous section between the architectures \ref{fig:conediagram}B top and middle is a result of the differing geometries in \ref{fig:conediagram}C middle. There, the smaller darker gray region\DIFaddbegin \DIFadd{, $\mathbb{M}(\mathcal{G})$, }\DIFaddend defined by the inequalities expressed in \ref{eq:threecycinequalities} and \ref{eq:threecycbooleinequalities} corresponds to the space of probability distributions defined over all possible \gnpm{} associated to the network architecture in \ref{fig:conediagram}B \DIFdelbegin \DIFdel{top}\DIFdelend \DIFaddbegin \DIFadd{middle}\DIFaddend . Similarly, the lighter gray region defined by \ref{eq:threecycinequalities} alone corresponds to \DIFdelbegin \DIFdel{the analogous structure }\DIFdelend \DIFaddbegin \DIFadd{$\mathbb{L}(\mathcal{G})$ }\DIFaddend for \ref{fig:conediagram}B middle \DIFaddbegin \DIFadd{and thus $\mathbb{M}(\mathcal{G}) < \mathbb{L}(\mathcal{G})$ in the latter case}\DIFaddend .
+
+
+\section{Naive likelihood of sampling unsatisfiable constraints}\label{sec:volrat}
+Relationships between spaces of potential constraints placed upon \DIFdelbegin \DIFdel{gene expression patterns }\DIFdelend \DIFaddbegin \DIFadd{patterns of network states }\DIFaddend like that of \ref{fig:conediagram}C middle occur for all \DIFdelbegin \DIFdel{GRNAs on }\DIFdelend \DIFaddbegin \DIFadd{network architectures defined over }\DIFaddend any number of \DIFdelbegin \DIFdel{genes }\DIFdelend \DIFaddbegin \DIFadd{variables }\DIFaddend so long as there exists at least one cycle in the corresponding network architecture\DIFaddbegin \DIFadd{, \ref{sec:cycliccontextunsatisfiableconstraints}}\DIFaddend . For the case of three \DIFdelbegin \DIFdel{genes}\DIFdelend \DIFaddbegin \DIFadd{variables}\DIFaddend , there is only one class of graphs containing a cycle, which is that of \ref{fig:conediagram}B middle. For the case of four \DIFdelbegin \DIFdel{genes }\DIFdelend \DIFaddbegin \DIFadd{variables }\DIFaddend there are nine different classes of hypergraphs containing cycles and these nine classes can be split into two groups depending upon whether or not the edges of the graphs are each restricted to represent correlations among only two \DIFdelbegin \DIFdel{genes}\DIFdelend \DIFaddbegin \DIFadd{variables}\DIFaddend . \ref{fig:non2uniformcyclichypergraphhasse} shows the components of the \DIFdelbegin \DIFdel{lattice analogous }\DIFdelend \DIFaddbegin \DIFadd{analogous lattice }\DIFaddend to that of \ref{fig:conediagram}A \DIFaddbegin \DIFadd{as well as these different classes of network architectures on four variables having cycles}\DIFaddend .
+
+Given this larger collection of \DIFdelbegin \DIFdel{GRNAs }\DIFdelend \DIFaddbegin \DIFadd{network architectures }\DIFaddend with cycles we can assess the relative sizes of the \DIFdelbegin \DIFdel{analogs to the light and dark gray spaces }\DIFdelend \DIFaddbegin \DIFadd{spaces $\mathbb{M}(\mathcal{G})$ and $\mathbb{L}(\mathcal{G})$ }\DIFaddend (\ref{fig:conediagram}C middle) of probability distributions over \gnpm{}. We assess the likelihood of choosing a point in \DIFdelbegin \DIFdel{the dark gray region }\DIFdelend \DIFaddbegin \DIFadd{$\mathbb{M}(\mathcal{G})$ }\DIFaddend at random by computing the ratio of the volume of \DIFdelbegin \DIFdel{the dark gray region }\DIFdelend \DIFaddbegin \DIFadd{$\mathbb{M}(\mathcal{G})$ }\DIFaddend (associated to the non-modular \DIFdelbegin \DIFdel{GRNA }\DIFdelend \DIFaddbegin \DIFadd{network architectures }\DIFaddend analogous to that of \ref{fig:conediagram}B top with a single edge containing all four \DIFdelbegin \DIFdel{genes}\DIFdelend \DIFaddbegin \DIFadd{variables}\DIFaddend ), whose architecture and thus volume is fixed, to that of \DIFdelbegin \DIFdel{the light gray region}\DIFdelend \DIFaddbegin \DIFadd{$\mathbb{L}(\mathcal{G})$}\DIFaddend , whose volume varies according to each of the cyclic graphs associated to a \DIFdelbegin \DIFdel{GRNA on four genes}\DIFdelend \DIFaddbegin \DIFadd{network architecture on four variables}\DIFaddend . We refer to this number as the global:local volume ratio or~$\frac{\text{Vol}(\mathbb{M}(\mathcal{G}))}{\text{Vol}(\mathbb{L}(\mathcal{G}))}$~(see \ref{sec:compatibilityofgpms} and \refsupp{} \DIFaddbegin \DIFadd{\ref{secsupp:compatibilityofgpms} and \ref{secsupp:fourcycleexample}}\DIFaddend ). The comparison defined by this ratio is meaningful since $\mathbb{L}(\mathcal{G})$, \ref{eq:localpolytope}, and $\mathbb{M}(\mathcal{G})$, \ref{eq:globalpolytope} are of the same dimension. In the case where the constraints defining $\mathbb{L}(\mathcal{G})$ are eliminated, the analog of this volume ratio would be $0$ for all $\mathcal{G}$. This volume ratio determines the \emph{a priori} likelihood of observing inconsistency for a given \DIFdelbegin \DIFdel{GRNA}\DIFdelend \DIFaddbegin \DIFadd{network architecture}\DIFaddend . The consistency check involved in computing this ratio can be used as a test demonstrating, for those cases exhibiting inconsistency, that the model being used is incorrect in the sense that it does not correspond sufficiently to the actual network context determining the constraints placed upon the network. Consider the probability of locally versus globally consistent \emph{observations} ($p(\mathbb{L}(\mathcal{G})_O)$  vs $p(\mathbb{M}(\mathcal{G})_O)$ respectively) separately from the probability of locally versus globally consistent \emph{models} ($p(\mathbb{L}(\mathcal{G})_M)$  vs $p(\mathbb{M}(\mathcal{G})_M)$ respectively) that accurately reflect the underlying process. We can then estimate the probability of having a locally consistent model despite obtaining globally consistent observations, $p(\mathbb{L}(\mathcal{G})_M | \mathbb{M}(\mathcal{G})_O)$, via a simple application of Bayes' theorem
+$$
+p(\mathbb{L}(\mathcal{G})_M | \mathbb{M}(\mathcal{G})_O) = \frac{p(\mathbb{M}(\mathcal{G})_O | \mathbb{L}(\mathcal{G})_M)p(\mathbb{L}(\mathcal{G})_M)}{p(\mathbb{M}(\mathcal{G})_O | \mathbb{L}(\mathcal{G})_M)p(\mathbb{L}(\mathcal{G})_M) + p(\mathbb{M}(\mathcal{G})_O | \mathbb{M}(\mathcal{G})_M)p(\mathbb{M}(\mathcal{G})_M)},
+$$
+where $p(\mathbb{M}(\mathcal{G})_O | \mathbb{M}(\mathcal{G})_M)=1$, the volume ratio described above corresponds to $p(\mathbb{M}(\mathcal{G})_O | \mathbb{L}(\mathcal{G})_M)$, and one could consider the impact of different prior probabilities, $p(\mathbb{L}(\mathcal{G})_M)$, of having a locally consistent model.
+
+\ref{fig:ncycvolrat}A \DIFaddbegin \DIFadd{and B }\DIFaddend shows the results of computations \DIFdelbegin \DIFdel{for seven different graphs where the edges are restricted to each contain two genes}\DIFdelend \DIFaddbegin \DIFadd{of this global:local volume ratio for fourteen different hypergraphs. \ref{fig:ncycvolrat}C and D shows the dimension of the spaces within which these volumes are computed}\DIFaddend . The spaces are equivalent and thus the volume ratio equal to one for graphs lacking cycles (e.g. the first three graphs along the $x$-axis of \ref{fig:ncycvolrat}A). For the \DIFdelbegin \DIFdel{four }\DIFdelend \DIFaddbegin \DIFadd{nine }\DIFaddend network architectures in \ref{fig:ncycvolrat}A \DIFaddbegin \DIFadd{and B }\DIFaddend containing cycles, the volume ratio is strictly less than one. This quantifies the probability that the network architecture depicted along the $x$-axis will be able to satisfy the constraints that the associated network context is capable of placing upon it.
+
+\section{Potential for unsatisfiable constraints may bias the sampling of network architectures by evolutionary processes}\label{sec:unsatisfiableconstrevolution}
+
+
+The satisfiability of constraints capable of being placed on the various architectures is logically a function of whether or not the \DIFdelbegin \DIFdel{GRNA }\DIFdelend \DIFaddbegin \DIFadd{network architecture }\DIFaddend is cyclic or acyclic. For those \DIFdelbegin \DIFdel{GRNAs }\DIFdelend \DIFaddbegin \DIFadd{network architectures }\DIFaddend containing cycles, there are certain functional requirements that can be achieved so long as only local and not global consistency is required of them. Once global consistency is imposed as in the structure corresponding to the joint correlations among all \DIFdelbegin \DIFdel{genes}\DIFdelend \DIFaddbegin \DIFadd{variables}\DIFaddend , those functions that were accessible when only local consistency was imposed are unavailable. For acyclic \DIFdelbegin \DIFdel{GRNAs}\DIFdelend \DIFaddbegin \DIFadd{network architectures}\DIFaddend , there is no difference between the satisfiability of locally or globally imposed constraints. \ref{fig:stochdynscheme} right shows a schematic of one potential scenario by which a given cyclic \DIFdelbegin \DIFdel{GRNA }\DIFdelend \DIFaddbegin \DIFadd{network architecture }\DIFaddend may be selected against. The black points in the center represent an initial condition of a stochastic process that is selected for its ability to achieve one of two different stationary distributions represented by the blue and the red points respectively. This is equivalent to placing a fitness landscape given by a function whose maximum is located at the given points and defined over the relevant space of probability distributions. The \DIFdelbegin \DIFdel{GRNA }\DIFdelend \DIFaddbegin \DIFadd{network architecture }\DIFaddend represented in the top row of \ref{fig:stochdynscheme} is able to achieve as its stationary distribution any of the constraints capable of being imposed upon it that are consistent with its architecture because it is acyclic. On the other hand, the \DIFdelbegin \DIFdel{GRNA }\DIFdelend \DIFaddbegin \DIFadd{network architecture }\DIFaddend in the bottom row is incapable of achieving certain constraints that may be imposed upon it by a network context consistent with its architecture because it is cyclic.
+
+When selective pressure is induced equivalent to the distribution located at the blue point, or at any other point within the dark gray region, either of the architectures are essentially equivalent with respect to the statistics of samples from their corresponding probability distributions and they can thus be considered as members of an evolutionarily neutral space. On the other hand, selective pressure equivalent to the probability distributions located at the red point differentiates between the networks of the top and bottom row or equivalently between the network of the bottom row when global consistency is imposed versus the same network when only local consistency conditions are imposed. The same qualitative relationship holds true for the spaces of probability distributions of all \DIFdelbegin \DIFdel{GRNAs }\DIFdelend \DIFaddbegin \DIFadd{network architectures }\DIFaddend of any size and for any number of different \DIFdelbegin \DIFdel{expression levels }\DIFdelend \DIFaddbegin \DIFadd{levels in the discrete coarse-graining of network states }\DIFaddend so long as the graph associated to the relevant correlations among \DIFdelbegin \DIFdel{genes }\DIFdelend \DIFaddbegin \DIFadd{variables }\DIFaddend contains at least one cycle.
+
+The distinction between cyclic and acyclic \DIFdelbegin \DIFdel{GRNAs }\DIFdelend \DIFaddbegin \DIFadd{network architectures }\DIFaddend with respect to the ability to have unsatisfiable constraints placed upon them is sharp. However, within the class of cyclic \DIFdelbegin \DIFdel{GRNAs}\DIFdelend \DIFaddbegin \DIFadd{network architectures}\DIFaddend , the likelihood of having unsatisfiable constraints imposed on a given \DIFdelbegin \DIFdel{GRNA }\DIFdelend \DIFaddbegin \DIFadd{network architecture }\DIFaddend increases, at least approximately, with the number of cycles in the given \DIFdelbegin \DIFdel{GRNA }\DIFdelend \DIFaddbegin \DIFadd{network architecture }\DIFaddend (\ref{fig:ncycvolrat} and \ref{sec:volrat}). This indicates that the strength of selection against \DIFdelbegin \DIFdel{GRNAs }\DIFdelend \DIFaddbegin \DIFadd{network architectures }\DIFaddend with a larger number of nested cycles is likely to be stronger than that against \DIFdelbegin \DIFdel{GRNAs }\DIFdelend \DIFaddbegin \DIFadd{network architectures }\DIFaddend with a relatively smaller number of cycles. Initiating an evolutionary process with a large network containing many nested cycles may then result in the elimination of some via \DIFdelbegin \DIFdel{gene duplication }\DIFdelend \DIFaddbegin \DIFadd{any process that can result in cycle breakage }\DIFaddend until the number of nested cycles decreases sufficiently so that the intrinsic strength of selection against cycles \DIFdelbegin \DIFdel{that we have characterized here }\DIFdelend reaches equilibrium with the rate at which new cycles form. One possibility, depending upon the overall relationship between these rates, is a \DIFaddbegin \DIFadd{hierarchical-modular one where a }\DIFaddend globally hierarchical network \DIFdelbegin \DIFdel{with }\DIFdelend \DIFaddbegin \DIFadd{has }\DIFaddend a number of cyclic modules\DIFaddbegin \DIFadd{, each of whose size is small relative to the overall size of the network, }\DIFaddend interspersed throughout.
+
+
+\section{Discussion}
+\makeatletter{}
+\DIFaddbegin \DIFadd{When biological networks are studied, we remove a subnetwork from a larger context~\mbox{%DIFAUXCMD
+\cite{Alon2007}
+}%DIFAUXCMD
+. Depending upon the scale of the study, the boundary between subnetwork and network context may vary. For example, in a relatively small-scale study the subnetwork may consist of a few genes and metabolites where the context is comprised of other genes, metabolites, and intracellular structures. For relatively large-scale models attempting to take into account all of the processes comprising a single-celled organism, the network context consists of the variables in that organism's environment. In even larger-scale studies of multicellular organisms, populations, or communities the same general principle applies by appropriately shifting the boundary between the subnetwork and network context.
+}
+
+\DIFadd{One salient feature applying at any scale is that the structure of the network context plays a crucial role in determining whether or not unsatisfiable constraints on the stochastic dynamical patterns of network states may arise at all. We note based on previously existing results that mutually incompatible constraints are only capable of arising when the network architecture contains a cycle. Moreover, our results suggest the likelihood of mutually incompatible constraints arising relative to network architecture increases with the number of cycles in that network architecture. An evolutionary process exhibiting uniform sampling over the space of network architectures and the space of possible constraints within each network architecture, would thus be expected to exhibit a bias toward the breakage of cycles. One would not expect such a bias to eliminate the existence of cycles in biological networks. However, it is reasonable to expect on the basis of this result a kind of hierarchical modularity: where modules that may possess cycles and are small relative to the overall size of the network exist within a globally hierarchical network structure. Of course, there are other factors which may contribute to the development of such network architectures.
+}
+
+\DIFadd{It will be important in future work to examine this prediction more closely in the context of developing bottom-up stochastic process models that allow for the explicit encoding and solution of models of more complex biological networks~\mbox{%DIFAUXCMD
+\cite{Walczak2009,Mugler2009}
+}%DIFAUXCMD
+. It is possible that the specific dynamics of a given network context may lead to apparent access to correlations that are otherwise inaccessible. In the case of gene-regulatory networks, this may occur via a form of cis-regulation that enables the breakage of statistical dependence in a time-dependent manner \ref{fig:condgenescenario}. But such a scenario seems much less plausible than the ability to resolve inconsistency by breaking cycles in the network architecture. In the long term, the latter corresponds to what is observed in hierarchically organized transcription factor networks \mbox{%DIFAUXCMD
+\cite{Jothi2009,Bhardwaj2010,Chalancon2012,Colm}
+}%DIFAUXCMD
+. The mechanism outlined here is consistent with previous analyses of hierarchical modular gene regulatory network architectures~\mbox{%DIFAUXCMD
+\cite{Ravasz2002,Segre2005,Wagner2007,Erwin2009,Jothi2009,Bhardwaj2010,Colm}
+}%DIFAUXCMD
+.
+}
+
+\DIFaddend To contribute to the broader goal of establishing an integrated framework that synthesizes hypothesized intrinsic and extrinsic constraints necessary to understand the functioning and evolution of biological systems, here we have traced a path from \DIFdelbegin \DIFdel{gene regulatory }\DIFdelend \DIFaddbegin \DIFadd{biological }\DIFaddend network architecture to \DIFdelbegin \DIFdel{gene expression }\DIFdelend \DIFaddbegin \DIFadd{network state }\DIFaddend constraint satisfiability, and, via the impact of \DIFdelbegin \DIFdel{gene expression }\DIFdelend \DIFaddbegin \DIFadd{network states }\DIFaddend on higher-level \DIFaddbegin \DIFadd{properties culminating in macroscopically observable }\DIFaddend phenotypes, to evolutionary processes. \DIFdelbegin \DIFdel{One }\DIFdelend \DIFaddbegin \DIFadd{In the particular context of gene-regulatory networks, one }\DIFaddend goal of measuring gene expression at transcriptomic scale is to uncover the structure of the generative process encoded in the \DIFdelbegin \DIFdel{GRN }\DIFdelend interactions involved, but, so far, even the most sophisticated methods of describing them at the mechanistic level are only solvable for extremely simple regulatory network architectures~\cite{Walczak2009,Mugler2009}. This fact has, in part, motivated computational biologists to develop a large collection of algorithms to infer aspects of this structure~\DIFdelbegin \DIFdel{\mbox{%DIFAUXCMD
+\cite{DeSmet2010}
+}%DIFAUXCMD
+}\DIFdelend \DIFaddbegin \DIFadd{\mbox{%DIFAUXCMD
+\cite{Anastassiou2007,DeSmet2010}
+}%DIFAUXCMD
+}\DIFaddend and experimental biologists to compare networks on the basis of their hierarchical and modular architecture~\cite{Ideker2012}. Our model and its framework put forward a class of fundamental constraints that may impact the expected structure of \DIFdelbegin \DIFdel{GRNs}\DIFdelend \DIFaddbegin \DIFadd{biological networks}\DIFaddend . The fact that the satisfiability of the space of possible constraints that can be imposed upon a \DIFdelbegin \DIFdel{GRNA }\DIFdelend \DIFaddbegin \DIFadd{network }\DIFaddend is dependent upon the structure of the network context provides a mechanism by which natural selection may \DIFdelbegin \DIFdel{shape GRNAs.
+}%DIFDELCMD <
+
+%DIFDELCMD < %%%
+\DIFdel{It is clear that in most cases, when GRNs are studied, we remove a subnetwork from a larger context~\mbox{%DIFAUXCMD
+\cite{Alon2007}
+}%DIFAUXCMD
+. In our case, the network context, such as that schematized in \ref{fig:stochdynscheme}, plays a crucial role in determining whether or not it is possible to impose selection on the gene expression patterns that more modular cyclic regulatory network architectures expose. Our results suggest that when requirements such as that in \ref{fig:inconsistentthreecycle}A are placed upon a network, then either the network context must be modified in order to decouple statistical dependence intrinsic to the network architecture or the network architecture itself must change in a manner biased toward the breakage of cycles via gene duplication. It will be important in future work to distinguish these possibilities in the context of developing bottom-up stochastic process models that allow for the explicit encoding and solution of models of more complex gene regulatory networks~\mbox{%DIFAUXCMD
+\cite{Walczak2009,Mugler2009}
+}%DIFAUXCMD
+. It is possible that the network context may lead to apparent access to correlations that lie outside what is achievable in the non-modular case via a form of cis-regulation that enables the breakage of statistical dependence in a time-dependent manner \ref{fig:condgenescenario}. But such a scenario seems much less plausible than the ability to resolve inconsistency by breaking cycles via gene duplication. In the long term, the latter corresponds to what is observed in hierarchically organized transcription factor networks \mbox{%DIFAUXCMD
+\cite{Jothi2009,Bhardwaj2010,Chalancon2012,Colm}
+}%DIFAUXCMD
+. The mechanism outlined here may thus represent a factor that contributes to the ubiquity of hierarchical modular gene regulatory network architectures~\mbox{%DIFAUXCMD
+\cite{Ravasz2002,Segre2005,Wagner2007,Erwin2009,Jothi2009,Bhardwaj2010,Colm}
+}%DIFAUXCMD
+}\DIFdelend \DIFaddbegin \DIFadd{exhibit a fundamental bias in its sampling of biological network architectures}\DIFaddend .
+
+
+
+
+\section*{Authors' contributions}
+\makeatletter{}CS \DIFdelbegin \DIFdel{conceived }\DIFdelend \DIFaddbegin \DIFadd{developed }\DIFaddend the project. CS, XP, \DIFdelbegin \DIFdel{and RSP}\DIFdelend \DIFaddbegin \DIFadd{RSP, and AB }\DIFaddend performed research. \DIFdelbegin \DIFdel{AB supervised the project. }\DIFdelend All authors contributed to writing the paper.
+
+
+\section*{Acknowledgments}
+\makeatletter{}Support was provided by NIH MSTP training grant T32-GM007288 to CS and DB, the Fulbright program to XP, and NIH R01-CA164468-01 and R01-DA033788 to AB. The authors thank Jay Sulzberger for sharing important discussions and mathematical insight. We thank Noson \DIFdelbegin \DIFdel{Yonofsky }\DIFdelend \DIFaddbegin \DIFadd{Yanofsky }\DIFaddend and Andrew Yates for helpful discussions.
+
+
+\bibliography{bib/books,bib/papers}
+
+\pagebreak
+\section*{Figure Legends}
+\makeatletter{}\begin{figure}[!ht]
+\centering
+\noindent\DIFdelbeginFL %DIFDELCMD < \includegraphics[width=0.9\columnwidth]{fig/figure_expression_concept.pdf}
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \includegraphics[width=0.9\columnwidth]{fig/netsubnetcontext.pdf}
+\DIFaddendFL \caption{{\bf \DIFdelbeginFL \DIFdelFL{Coarse-graining }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Abstract influence representation }\DIFaddendFL of \DIFdelbeginFL \DIFdelFL{gene expression data}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{biological networks}\DIFaddendFL .} (\DIFdelbeginFL \DIFdelFL{A}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{row~1}\DIFaddendFL )\DIFdelbeginFL \DIFdelFL{Minimal }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{~The systems biology graphical notation (SBGN) is capable of representing arbitrary biological networks including processes that involve metabolites, signaling molecules, genes, and enzymes \mbox{%DIFAUXCMD
+\cite{LeNovere2009}
+}%DIFAUXCMD
+. Only a fragment of the SBGN language, where all nodes have equivalent types, is indicated here. (row~2)~We abstract from the SBGN }\DIFaddendFL representation of a \DIFdelbeginFL \DIFdelFL{small GRN consisting }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{biological network to a graph representing the abstract influence (}\AI{}\DIFaddFL{) graph indicating coupling among a subset }\DIFaddendFL of \DIFdelbeginFL \DIFdelFL{three genes encoded }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{the entities present }\DIFaddendFL in a \DIFdelbeginFL \DIFdelFL{plasmid}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{biological network}\DIFaddendFL . (\DIFaddbeginFL \DIFaddFL{row~3)~For economy of representation we use a short hand (}\SH{}\DIFaddFL{) hypergraph to denote the }\AI{} \DIFaddFL{graph. The topology of the }\AI{} \DIFaddFL{and }\SH{} \DIFaddFL{graphs are equivalent and this is what we refer to as network architecture.}}
+\label{fig:netsubnetcontext}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\noindent\includegraphics[width=0.9\columnwidth]{fig/figure_expression_concept.pdf}
+\caption{{\bf \DIFaddFL{Coarse-graining of biological network data.}} \DIFaddFL{(A) SBGN (top) and }\SH{} \DIFaddFL{(bottom) representation of two different biological networks. (}\DIFaddendFL B) Example binary coarse-graining of \DIFdelbeginFL \DIFdelFL{gene expression }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{biological network }\DIFaddendFL data. For each sample a measurement is taken for all three \DIFdelbeginFL \DIFdelFL{genes}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{variables in the focal subnetwork}\DIFaddendFL . The \DIFdelbeginFL \DIFdelFL{expression }\DIFdelendFL levels are binned into one of two classes represented by the \DIFdelbeginFL \DIFdelFL{red }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{red---- }\DIFaddendFL and blue bars representing relatively high and low \DIFdelbeginFL \DIFdelFL{expression }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{levels }\DIFaddendFL respectively. (C) Heat map representation of coarse-grained \DIFdelbeginFL \DIFdelFL{gene expression }\DIFdelendFL data under the assumption of two different \DIFdelbeginFL \DIFdelFL{GRNAs}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{network architectures}\DIFaddendFL . The samples on top and the associated measurement structure correspond to the case where constraints are placed on all three \DIFdelbeginFL \DIFdelFL{genes }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{variables }\DIFaddendFL by a single element of the network context (\ref{fig:stochdynscheme} top row). The bottom represents the case where all three pairs \DIFdelbeginFL \DIFdelFL{of genes }\DIFdelendFL are each independently constrained by elements of the network context (\ref{fig:stochdynscheme} bottom row).}
+\label{fig:expression_concept}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\noindent\DIFdelbeginFL %DIFDELCMD < \includegraphics[width=0.9\columnwidth]{fig/phenotypehierarchy.pdf}
+%DIFDELCMD < \caption{{\bf %%%
+\DIFdelFL{Example coarse-graining of phenotypes.}%DIFDELCMD < } %%%
+\DIFdelFL{(A) Consider the example where $L = \{l_1,l_2,l_3,l_4\}$, $\mathcal{G} = \{ O_1, O_2 \}$, $O_1 = \{l_1, l_2, l_3\}$ and $O_2 = \{ l_3, l_4 \}$. The top left panel shows two higher-level phenotypes $X$ and $Y$. The bottom left corner shows the five different expression states of four genes in $L$ from which these phenotypes are coarse-grained. The right side shows the respective projections onto genes $\{l_3,l_4\}$. The projection maps $\pi_i^{L,O_2}$ and $\pi_{i+1}^{L,O_2}$ are defined in }%DIFDELCMD < \refsupp{} %%%
+\DIFdelFL{\ref{secsupp:coarsegrainingphenotypes}. (B) The different combinations of expression states of genes $\{l_3,l_4\}$ result in two different phenotypes. If both genes are expressed metabolite $y$ is produced whereas if only one of the two genes is expressed metabolite $x$ is produced. The red and green boxes represent arbitrary promoters.}%DIFDELCMD < }
+%DIFDELCMD < \label{fig:phenotypehierarchy}
+%DIFDELCMD < \end{figure}
+%DIFDELCMD <
+
+%DIFDELCMD < \begin{figure}[!ht]
+%DIFDELCMD < \centering
+%DIFDELCMD < \noindent%%%
+\DIFdelendFL \includegraphics[width=0.9\columnwidth]{fig/inconsistentthreecycle.pdf}
+\caption{{\bf Model of inconsistent \DIFdelbeginFL \DIFdelFL{gene expression }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{network state }\DIFaddendFL data.} (A) An example structured according to \DIFaddbeginFL \DIFaddFL{the bottom row of }\DIFaddendFL \ref{fig:expression_concept}C\DIFdelbeginFL \DIFdelFL{bottom}\DIFdelendFL . The graph contains three nodes each representing one of the \DIFdelbeginFL \DIFdelFL{genes }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{variables }\DIFaddendFL depicted in \ref{fig:expression_concept}A. The \DIFaddbeginFL \DIFaddFL{dashed }\DIFaddendFL gray \DIFdelbeginFL \DIFdelFL{node }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{line }\DIFaddendFL coming from each \DIFdelbeginFL \DIFdelFL{node is placed next }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{variable points }\DIFaddendFL to the \DIFdelbeginFL \DIFdelFL{node }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{single variable }\DIFaddendFL marginal distribution depicted in the associated table. The \DIFaddbeginFL \DIFaddFL{pairwise }\DIFaddendFL edge marginal distributions are placed along the edges. The highlighted table entries (top) represent the constraint probabilities on the \gnpm{} represented by the equivalently colored arrows (bottom). The \DIFdelbeginFL \DIFdelFL{phenotype }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{binary }\DIFaddendFL values \DIFaddbeginFL \DIFaddFL{representing variable states }\DIFaddendFL derive from the coarse-graining process over \DIFdelbeginFL \DIFdelFL{gene expression }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{continuous network state }\DIFaddendFL data depicted in \ref{fig:expression_concept}B. (B) \DIFdelbeginFL \DIFdelFL{Given the model in panel A, the }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{(}\DIFaddendFL top-left\DIFdelbeginFL \DIFdelFL{panel represents }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{) Representation of }\DIFaddendFL three hundred samples comprising a data set consistent with a uniform distribution over all \gnpm{} \DIFaddbeginFL \DIFaddFL{from the model in panel A}\DIFaddendFL . \DIFdelbeginFL \DIFdelFL{The }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{(}\DIFaddendFL top-middle\DIFdelbeginFL \DIFdelFL{panel represents the }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{) The }\DIFaddendFL joint probability distribution  \DIFdelbeginFL \DIFdelFL{determined via maximum-likelihood estimation with respect to the sufficient statistics (in this case, counts of pairwise observations of genes in states where blue corresponds to 0 and red corresponds to 1) }\DIFdelendFL given in the top-left panel. The green bars in the bottom three panels represent the marginalization of this joint distribution according to the structure of the graph. The yellow bars in the bottom three panels represent the ostensible marginal distributions determined via the sum-product algorithm (loopy belief propagation) \cite{Barber2012}. \DIFdelbeginFL \DIFdelFL{The }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{(}\DIFaddendFL top-right\DIFdelbeginFL \DIFdelFL{panel is a }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{) A }\DIFaddendFL schematic where the top gray ellipse represents the space of joint probability distributions on three \DIFdelbeginFL \DIFdelFL{genes each with two expression states (i.e. $\Delta_7$: the eight-dimensional probability simplex) }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{variables }\DIFaddendFL and the \DIFdelbeginFL \DIFdelFL{bottom ellipse }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{hexagon }\DIFaddendFL represents the \DIFdelbeginFL \DIFdelFL{union of three copies of the four-dimensional probability simplex }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{pairwise marginals within their natural embedding space }\DIFaddendFL (\DIFdelbeginFL \DIFdelFL{i.e. $\Delta_3^{\oplus 3}$}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{see \ref{fig:conediagram}}\DIFaddendFL )\DIFdelbeginFL \DIFdelFL{, one for each edge in the graph}\DIFdelendFL .  For this data, maximum likelihood estimation \DIFaddbeginFL \DIFaddFL{(exact) }\DIFaddendFL and loopy belief propagation \DIFaddbeginFL \DIFaddFL{(approximate) }\DIFaddendFL yield equivalent points \DIFdelbeginFL \DIFdelFL{in $\Delta_3^{\oplus 3}$}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{within the space of pairwise marginals}\DIFaddendFL . (C) Same as B, but with data consistent with \ref{fig:expression_concept}C bottom, which in the limit of a large amount of data would converge to the ostensible node and edge marginal distributions in panel A\DIFdelbeginFL \DIFdelFL{of this figure}\DIFdelendFL . For \DIFdelbeginFL \DIFdelFL{this }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{the given }\DIFaddendFL data \DIFaddbeginFL \DIFaddFL{set}\DIFaddendFL , maximum likelihood estimation and loopy belief propagation yield different points \DIFdelbeginFL \DIFdelFL{in $\Delta_3^{\oplus 3}$}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{within the natural embedding space of the pairwise marginals}\DIFaddendFL .}
+\label{fig:inconsistentthreecycle}
+\end{figure}
+
+
+
+
+
+\begin{figure}[!ht]
+\centering
+\noindent\includegraphics[width=0.9\columnwidth]{fig/conediagram.pdf}
+\caption{{\bf Relationship between \DIFdelbeginFL \DIFdelFL{gene regulatory }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{biological }\DIFaddendFL network models and spaces of probability distributions.} (A) The collection of all possible \DIFdelbeginFL \DIFdelFL{GRNAs }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{network architectures }\DIFaddendFL over three \DIFdelbeginFL \DIFdelFL{genes }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{variables }\DIFaddendFL forms a lattice represented here by its Hasse diagram. An analogous lattice of \DIFdelbeginFL \DIFdelFL{GRNAs }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{network architectures }\DIFaddendFL exists for any number of \DIFdelbeginFL \DIFdelFL{genes}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{variables}\DIFaddendFL . The Hasse diagram shows the manner in which \DIFdelbeginFL \DIFdelFL{GRNAs }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{network architectures }\DIFaddendFL are hierarchically related and are thus able to be embedded within one another. (B) Explicit examples of \gnpm{} over three \DIFdelbeginFL \DIFdelFL{GRNAs }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{network architectures }\DIFaddendFL from panel A highlighted in green are represented as arrows mapping the \DIFdelbeginFL \DIFdelFL{genes }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{variables }\DIFaddendFL represented as nodes of the graph underlying the \DIFdelbeginFL \DIFdelFL{GRNA }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{network architecture }\DIFaddendFL into the collection of phenotype values determined by the coarse-graining chosen in \ref{fig:expression_concept}B. There is a different collection of possible \gnpm{} depending upon the structure of the \DIFdelbeginFL \DIFdelFL{GRNA}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{network architecture}\DIFaddendFL . (C) Each collection of \gnpm{}\DIFaddbeginFL \DIFaddFL{, }\DIFaddendFL one representative for each \DIFdelbeginFL \DIFdelFL{GRNA }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{network architecture }\DIFaddendFL depicted in panel B\DIFaddbeginFL \DIFaddFL{, }\DIFaddendFL is associated to a space of probability distributions defined over it. Moreover, the spaces of probability distributions associated to each graph are related via marginalization maps. The top \DIFaddbeginFL \DIFaddFL{level }\DIFaddendFL represents a joint probability distribution \DIFaddbeginFL \DIFaddFL{(i.e. $\Delta_7$: the eight-dimensional probability simplex) }\DIFaddendFL which can be marginalized to the middle space \DIFaddbeginFL \DIFaddFL{(i.e. $\Delta_3^{\oplus 3}$: the union of three copies of the four-dimensional probability simplex) }\DIFaddendFL which in turn can be marginalized to the bottom space \DIFaddbeginFL \DIFaddFL{(i}\DIFaddendFL .\DIFaddbeginFL \DIFaddFL{e. $\Delta_1^{\oplus 3}$: the union of three copies of the two-dimensional probability simplex). }\DIFaddendFL The light gray polytope in the middle, $\mathbb{L}(\mathcal{G})$, represents the space of distributions consistent with the marginalization map from the middle to the bottom. The dark gray polytope, $\mathbb{M}(\mathcal{G})$, represents the space of probability distributions consistent with marginalization from the top to the middle.}
+\label{fig:conediagram}
+\end{figure}
+
+
+\begin{figure}[!ht]
+\centering
+\noindent\includegraphics[width=0.9\columnwidth]{fig/figure_graphs_dims_nolines.pdf}
+\caption{{\bf Non-modular to modular probability space volume ratio.} (A) and (B) show the ratio $\frac{\text{Vol}(\mathbb{M}(\mathcal{G}))}{\text{Vol}(\mathbb{L}(\mathcal{G}))}$ associated to 2-regular and non-2-regular \DIFdelbeginFL \DIFdelFL{GRNAs }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{network architectures }\DIFaddendFL respectively. The (hyper)graph associated to each value of the volume ratio is displayed along the x-axis of each panel. (C) and (D) show the natural dimension of the space of probability distributions associated to $\mathbb{M}(\mathcal{G})$ and $\mathbb{L}(\mathcal{G})$ for each hypergraph.}
+\label{fig:ncycvolrat}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\noindent\includegraphics[width=0.9\columnwidth]{fig/stochdynscheme.pdf}
+\caption{{\bf \DIFdelbeginFL \DIFdelFL{Schematic representation of the constraints }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Constraints }\DIFaddendFL imposed on stochastic \DIFdelbeginFL \DIFdelFL{gene expression }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{biological networks }\DIFaddendFL and evolutionary dynamics by network architecture.} Schematic representation of a potential network context (left) for each of the hypothetical stationary probability distributions associated to the fitness peak established by the blue and red points within the spaces of probability distributions represented on the right.
+\DIFdelbeginFL \DIFdelFL{Algebraically, the top one corresponds to $\dist (\expr (L))$ and the bottom to $\dist (\expr (\mathcal{G}))$. }\DIFdelendFL Either of the two \DIFdelbeginFL \DIFdelFL{GRNAs }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{network architectures }\DIFaddendFL represented on the left are capable of achieving the stationary distribution over \gnpm{} specified by the blue stationary distribution associated to a hypothetical fitness peak. On the other hand, only the \DIFdelbeginFL \DIFdelFL{GRNA }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{network architecture }\DIFaddendFL from the top (and not the bottom) is capable of achieving the red stationary distribution representing an alternative potential fitness peak.}
+\label{fig:stochdynscheme}
+\end{figure}
+
+
+\FloatBarrier
+
+
+
+\pagebreak
+\beginsupplement
+\setcounter{secnumdepth}{4}
+{\noindent\Large\bfseries Supplementary Material}
+\makeatletter{}
+\DIFaddbegin \section{\DIFadd{Outline}}\label{secsupp:outline}
+\DIFadd{In the }\refsupp{} \DIFadd{we provide a more formal mathematical description of the results we make use of in the main text. In \ref{sec:covergenotypespace} we characterize biological network architectures as a collection of subsets, each individually referred to as a module, of network variables that defines a hypergraph over those network variables. \ref{secsupp:probabilitydistributionsonnetworks} provides a functorial description of probability distributions defined over such network architectures and the mappings between those network architectures and the states of the modules of the network. \ref{secsupp:coarsegrainingphenotypes} characterizes the manner in which a hierarchy of coarse-grained network states can be viewed as a refinement of the genotype-phenotype map, where the genotype and phenotype correspond to two different levels within this hierarchy, but maps between any two levels are considered to define valid coarse-grainings. \ref{secsupp:compatibilityofgpms} provides a sheaf theoretic formulation of the local and global consistency conditions that are logically imposed upon probability distributions over collections of such maps from some lower- to some higher-level in the hierarchy of coarse-grainings. \ref{secsupp:fourcycleexample} complements \ref{sec:compatibilityofgpms} of the main text providing a detailed example computation of the ratio of volumes between the polytopes corresponding to the global and local consistency conditions for the four-cycle network architecture.
+}
+
+\section{\DIFadd{Biological network architecture}}\label{sec:covergenotypespace}
+\DIFadd{A module of a biological network is represented by a subset of variables, $O \subseteq L$. A biological network architecture, $\mathcal{G}$, may then be represented by a subset of all possible such modules. This is to say that $\mathcal{G}$ is a subset of the set of all subsets of $L$, $\mathcal{G} \subseteq \mathcal{P}(L)$, that satisfies the following two conditions
+}\begin{enumerate}
+\item \DIFadd{$\cup_i O_i = \cup \mathcal{G} = L$,
+}\item \DIFadd{If $O,O' \in \mathcal{G}$ and $O \subseteq O'$ then $O = O'$.
+}\end{enumerate}
+\DIFadd{The first condition is just a statement that $\mathcal{G}$ represents a decomposition of the collection of all variables under consideration into subsets and this is why we refer to $\mathcal{G}$ as a collection of biological network modules. The second condition means simply that we will not consider nested subsets and so we will take for our $O \in \mathcal{G}$ the biggest $O \in \mathcal{G}$ that is not a subset of some other $O' \in \mathcal{G}$. The second condition also implies that if a given subset of variables $O'$ is compatible in a sense to be explained more precisely in what proceeds then any smaller subset of variables $O$ is also compatible.
+}
+
+\DIFadd{Mathematically, the two conditions given above state that $\mathcal{G}$ is a }\emph{\DIFadd{covering}} \DIFadd{of the set $L$.  This is equivalent to $(L, \mathcal{G})$ being a reduced hypergraph, Sperner family, or clutter over $L$ \mbox{%DIFAUXCMD
+\cite{Lauritzen1996}
+}%DIFAUXCMD
+.  Coverings $\mathcal{G}$ of the space of biological network variables contain the necessary information to make precise what we heuristically refer to at other points in this paper as modularity in order to cohere with standard terminology in systems biology literature while attempting to submit our own precise interpretation of the relatively colloquial concept.
+}
+
+\DIFaddend \section{Functorial formulation of probability distributions over network modules}\label{secsupp:probabilitydistributionsonnetworks}
+
+As stated in \ref{sec:probabilitydistributionsonnetworks}, in addition to the expression state of the whole genome, we usually will be interested in the expression states of portions of the genome that interact either directly or indirectly.  We will represent these portions as subsets of $L$ and their expression states as functions from these subsets to $P$.
+
+The power set of $L$, which we shall denote as $\mathcal{P}(L)$, can be regarded  as a category~\cite{Lane1998,MacLane1992,Awodey2006,Abramsky2011} in which the objects are subsets of $L$ and morphisms represent inclusion of a smaller subset into a larger superset (i.e. $O \subseteq O' \Rightarrow O \rightarrow O'$).  Then we will represent our expression states of subsets by the functor $\expr = \mathrm{Hom}(-,P)$.  Specifically, this functor may be described as
+\begin{equation}\label{eq:gpfunctor}
+\begin{split}
+\expr \colon (\mathcal{P}(L), \subseteq) &\to \mathbf{Set} \\
+O &\mapsto P^O,\\
+O \subseteq O' &\mapsto (S \in P^{O'} \mapsto \{e|_O \mid e \in S\}). \end{split}
+\end{equation}
+For example, if we consider the case in which we have two \DIFdelbegin \DIFdel{genes }\DIFdelend \DIFaddbegin \DIFadd{variables }\DIFaddend $L=\{l_1,l_2\}$ and there are two potential \DIFdelbegin \DIFdel{phenotypes}\DIFdelend \DIFaddbegin \DIFadd{states}\DIFaddend , $P=\{0,1\}$, then $\expr$ operates on the lattice of subsets generated by $L$ to give spaces of functions containing the possible \gnpm{} as exemplified in \ref{fig:efunctor}.
+\DIFaddbegin \DIFadd{For example, $\mathcal{E}(\{l_1,l_2\}) = \{ e^{12}_{00},e^{12}_{01},e^{12}_{10},e^{12}_{11} \}$ where $e^{12}_{01}(l_1) = 0$ and $e^{12}_{01}(l_2) = 1$. As another example, $\mathcal{E}(\{l_1\}) = \{ e^{1}_{0},e^{1}_{1} \}$ where $e^{1}_{0}(l_1)=0$ and $e^{1}_{1}(l_1)=1$. $\expr ( \{ l_1 \} \! \subseteq \! \{ l_1, l_2 \} )$ is given explicitly by
+}
+\begin{equation}
+\begin{aligned}
+\DIFadd{ e^{12}_{00} \mapsto e^{1}_{0} }\\
+\DIFadd{ e^{12}_{01} \mapsto e^{1}_{0} }\\
+\DIFadd{ e^{12}_{10} \mapsto e^{1}_{1} }\\
+\DIFadd{ e^{12}_{11} \mapsto e^{1}_{1} }
+\end{aligned}.
+\end{equation}
+
+
+Next, we introduce extended probability distributions by defining a functor $\mathcal{D}$ that will compose with $\mathcal{E}$ to convert collections of \gnpm{} into probability distributions over them.  Given a finite set $S$, define $\dist(S)$ to be the set of all maps from $S$ to the interval $[0,1]$ which satisfy the following two conditions:  For all $d \in \dist(S)$, we have $d(S) \in \{0,1\}$.\footnote{Normally, we would only have $d(S) = 1$, but since we want to introduce conditionalization in a coherent way it becomes necessary to admit degenerate distributions where $d(S) = 0$ as well. This simplifies the exposition by not requiring us to worry about dividing by zero and having to introduce special cases when dealing with conditional probabilities and partial functions.  Of course, it also means that we cannot automatically assume that an element of $\dist(S)$ can be normalized without checking this fact but in our examples, this verification will turn out to be routine and trivial.}  For all  $d \in \dist(S)$ and all $A, B \subset S$, we have $d(A) + d(B) = d(A \cup B) + d(A \cap B)$.
+
+\DIFaddbegin \DIFadd{Returning to the running example,
+}$$\DIFadd{\mathcal{D}(\mathcal{E}(\{l_1,l_2\})) = \{p^{12}_{00},p^{12}_{01},p^{12}_{10},p^{12}_{11} \mid p^{12}_{00} \geq 0, p^{12}_{01} \geq 0,p^{12}_{10} \geq 0,p^{12}_{11} \geq 0, p^{12}_{00} + p^{12}_{01} + p^{12}_{10} + p^{12}_{11} = 1 \},}$$
+$$\DIFadd{\mathcal{D}(\mathcal{E}(\{l_1\})) = \{p^{1}_{0}, p^{1}_{1} \mid p^{1}_{0} \geq 0, p^{1}_{1} \geq 0, p^{1}_{0}+p^{1}_{1} = 1 \}.}$$
+
+\DIFaddend If $S$ and $S'$ are finite sets, which in our case will usually be sets of \gnpm{} given by $\mathcal{E}(O)$, $d \in \dist(S)$ and $d' \in \dist(S')$ are probability distributions over these spaces, and $f \colon S \to S'$ is a partial function, we will say that $f$ is compatible with $d$ and $d'$ when, for all $X \in \mathrm{img}(f)$, we have
+\begin{equation}
+ d'(X) =
+  \begin{cases}
+    \frac{d'(\mathrm{img}(f))}{d(\mathrm{dom}(f))}d(f^{-1}(X)) & d(\mathrm{dom}(f)) \neq 0, \\
+    0 & d(\mathrm{dom}(f)) = 0.
+  \end{cases}
+\end{equation}
+In other words, the map $f$ preserves ratios of probabilities of events.  In the case where $f$ is a partial surjection $(\mathrm{img}(f)=S')$, compatibility completely determines $d'$ in terms of $d$ and thus $\dist$ may be regarded as a functor from the subcategory of sets with partial surjections as morphisms to transformations on probability distributions:
+\begin{equation}\label{eq:distfunctor}
+ d' = \dist(f)(d) =
+  \begin{cases}
+    X \mapsto \frac{d(f^{-1}(X))}{d(\mathrm{dom}(f))} & d(\mathrm{dom}(f)) \neq 0, \\
+    X \mapsto 0 & d(\mathrm{dom}(f)) = 0.
+  \end{cases}
+\end{equation}
+Specifically, when $f$ is a total surjection, this map corresponds to marginalization. For example, in the case $f = \expr ( \{ l_1 \} \! \subseteq \! \{ l_1, l_2 \} )$
+\begin{equation}\label{eq:dfunctorex}
+\begin{split}
+\dist \big(\expr ( \{ l_1 \} \! \subseteq \! \{ l_1, l_2 \} ) \big) \colon \expr ( \{ l_1 \} \! \subseteq \! \{ l_1, l_2 \} ) &\to \expr ( \{ l_1 \} ), \\
+d &\mapsto d',
+\end{split}
+\end{equation}
+then
+\begin{equation}\label{eq:margexample}
+d\hspace{.09em}'(\{e^1_0\}) = \dist (f)(d)(\{e^1_0\}) = \frac{d(f^{-1}(\{ e^1_0\}))}{d(\{ e^{12}_{00},e^{12}_{01},e^{12}_{10},e^{12}_{11} \})} = \frac{d(\{ e^{12}_{00},e^{12}_{01}\})}{1} = d( \{ e^{12}_{00} \} ) + d( \{ e^{12}_{01} \} ) = p^{12}_{00} + p^{12}_{01}.
+\end{equation}
+When $f$ is a partial isomorphism, it corresponds to conditionalization. For example, if $f$ is defined such that we condition on \DIFdelbegin \DIFdel{gene }\DIFdelend \DIFaddbegin \DIFadd{variable }\DIFaddend one being in state zero, $l_1 = 0$,
+\begin{equation}
+f \colon \{ e^{12}_{00} , e^{12}_{01} \} \subset \expr ( \{ l_1, l_2 \} ) \to \{ f(e^{12}_{00}) , f(e^{12}_{01}) \}
+\end{equation}
+then
+\begin{equation}\label{eq:condexample}
+d\hspace{.09em}'(\{ f(e^{12}_{00}) \} ) = \dist (f)(d)( \{ f(e^{12}_{00}) \}) = \frac{d( f^{-1}( \{ f(e^{12}_{00}) \}) )}{d(\{ e^{12}_{00},e^{12}_{01} \})} = \frac{d(\{ e^{12}_{00} \})}{d( \{ e^{12}_{00} \} ) + d( \{ e^{12}_{01} \} )} = \frac{p^{12}_{00}}{p^{12}_{00} + p^{12}_{01}}.
+\end{equation}
+Finally, when $f$ is a general partial surjection, it corresponds to a combination of conditionalization and marginalization.
+
+In order to admit the basic tools of linear algebra for the purpose of calculations regarding relationships between spaces of probability distributions we explain how they embed into linear spaces. By definition, an extended probability distribution $p \in \dist(S)$ is an element of $\mathbb{R}^S$. We denote the inclusion map as
+\begin{equation}\label{eq:emb}
+\rm{emb}(S) : \dist(S) \to \mathbb{R}^S.
+\end{equation}
+Because a convex combination of two probability distributions is again a probability distribution, the image of $\mathrm{emb}(S)$ consists of a convex set and the origin point (corresponding to the degenerate zero distribution).  Furthermore, if $n$ is the number of elements of the set $S$, this convex set works out to be the probability simplex with $n$ vertices, which we denote $\Delta_{n-1}$.  In our example above, $\mathcal{D}(\mathcal{E}(\{l_1,l_2\}))$ is the tetrahedron $\Delta_3$. Since any vector $v \in \mathbb{R}^S$ may be written as $v = c_{+} p_{+} - c_{-} p_{-}$ where $c_{+}, c_{-} \in [0,\infty)$ and $p_{+}$ and $p_{-}$ are probability distributions, the image of $\mathrm{emb}(S)$ spans the vector space $\mathbb{R}^S$.  For purposes of later reference, note that, if $f \colon S \to S'$ is a partial surjection, then $\mathcal{D}$ extends to a fractional linear map, as in \ref{eq:condexample}, from $\mathbb{R}^S$ to $\mathbb{R}^{S'}$ and that, in the special case where $f$ is a total surjection, as in \ref{eq:margexample}, it is in fact a linear map.
+
+\section{Precise formulation of coarse-graining \DIFdelbegin \DIFdel{phenotypes}\DIFdelend \DIFaddbegin \DIFadd{network states}\DIFaddend }\label{secsupp:coarsegrainingphenotypes}
+
+\DIFdelbegin \DIFdel{Recall from \ref{sec:coarsegrainingphenotypes} that for each set of genes }\DIFdelend \DIFaddbegin \DIFadd{As described in \ref{sec:genenetworkphenmap} it is also possible to consider network states that derive from coarse-graining lower-level network states. Once this is done, one arrives at probability distributions over network modules like that introduced in \ref{sec:probabilitydistributionsonnetworks}. As a result of this, our conclusions that are formulated in terms of a single level of coarse-graining }\gnpm{} \DIFadd{also apply to coarse-graining over multiple levels at once despite the fact that the parameters of the relevant probabilistic model are likely to be different.
+}
+
+
+
+\DIFadd{For each subset of variables }\DIFaddend $O \in \mathcal{P}(L)$, let $\phi_i (O)$ be the set of \DIFdelbegin \DIFdel{phenotype values }\DIFdelend \DIFaddbegin \DIFadd{network states }\DIFaddend at level $i$, which can be determined from the expression levels of \DIFdelbegin \DIFdel{genes }\DIFdelend \DIFaddbegin \DIFadd{variables }\DIFaddend in $O$.  \DIFaddbegin \DIFadd{Note that $\phi_i (O)$ may be empty if the set $O$ does not contain enough variables to determine the values of any network state at level $i$. }\DIFaddend When $O_1 \subseteq O_2 \in \mathcal{P}(L)$, we have a restriction map $\pi_i^{O_2 O_1} \colon \phi_i(O_2) \to \phi_i(O_1)$.  These maps satisfy the consistency conditions that $\pi_i^{OO}$ is the identity map and that $\pi_i^{O_3 O_2} \circ \pi_i^{O_2 O_1} = \pi_i^{O_3 O_1}$, i.e. $\pi_i$ is a functor on $(\mathcal{P}(L), \subseteq)$.  As stated earlier, we set $\phi_1 (O) = P^O$ and $\pi_1^{O_2 O_1}$ to be the restriction map from $P^{O_2}$ to $P^{O_1}$.  If $i \le j$, let $\Omega_{ij}(O) : \phi_i(O) \to \phi_j(O)$ be the coarse-graining map which describes how higher level \DIFdelbegin \DIFdel{phenotypes }\DIFdelend \DIFaddbegin \DIFadd{network states }\DIFaddend are determined from lower level \DIFdelbegin \DIFdel{phenotypes}\DIFdelend \DIFaddbegin \DIFadd{network states}\DIFaddend .  These maps are all surjections and, for consistency, we will require the following conditions:
+\begin{enumerate}
+\item $\Omega_{ij}(O) \circ \Omega_{jk}(O) = \Omega_{ik}(O)$ whenever $i \le j \le k$.
+\item $\Omega_{ii}(O)$ is the identity map on $\phi_i (O)$.
+\item If $O_1 \subseteq O_2 \in \mathcal{P}(L)$ and $i > j$, then $\Omega_{ij}(O_1) \circ \pi_i^{O_2 O_1} = \pi_j^{O_2 O_1} \circ \Omega_{ij}(O_2)$
+\end{enumerate}
+In other words, $\Omega$ must be suitably functorial in both of its arguments.
+
+\DIFaddbegin \DIFadd{For example, if our lower level network states for a set of variables $O_1 = \{ l_1,l_2,l_3,l_4 \}$ are given by a set of binary sequences, then the projection of these network states down to the set $O_2 = \{l_3,l_4\}$ followed by mapping to the higher level network states $x=\{01,10\}$ and $y=\{11\}$ is equivalent to first mapping to the higher-level network states $X$ and $Y$ and then projecting down to $O_2$ shown by the equivalent paths from the top-left to the bottom-right in \ref{fig:phenotypehierarchy}A.
+Of course, there is an equivalent diagram for the subset $\{ l_1,l_2,l_3 \}$.
+}
+
+\DIFaddend Since the map $\Omega_{1i}(O)$ is a surjection from $P^O$ onto $\phi_i(O)$, we can use it to map our probabilistic structures to $\phi_i(O)$.  Set $\mathcal{E}_i = \Omega_{1i}(O)^{-1} \circ \mathcal{E}$ and $\dist_i = \Omega_{1i}(O)^{-1} \circ \dist$.  Then we end up with the overall relationships summarized in \ref{fig:abstractroadmap}. As a consequence of the consistency conditions the coarse-graining maps $\phi$ and $\Omega$, there is a natural transformation between the functors $\expr_i$ and $\expr_{i+1}$ implying that the following diagram commutes
+$$
+\xymatrix{
+\expr_{i+1}(O_1) \ar[r]^{\expr_{i+1}(\subseteq)} \ar[d]_{t_{O_1}} & \expr_{i+1}(O_2) \ar[d]^{t_{O_2}} \\
+\expr_{i}(O_1) \ar[r]^{\expr_{i}(\subseteq)} & \expr_{i}(O_2) }
+$$
+for any $O_2 \subseteq O_1$.
+
+\DIFaddbegin \DIFadd{Given a covering $\mathcal{G}$ of the space of biological network variables, we can consider the higher order network states associated to the elements of $\mathcal{G}$.  For a suitable choice of cover and a suitable level of network states, it may happen that the network states associated to different elements of $\mathcal{G}$ are distinct.  For instance, in the example of \ref{fig:phenotypehierarchy}, if we take $\mathcal{G} = \{O_1, O_2\}$ where $O_1 = \{l_1, l_2, l_3\}$ and $O_2 = \{l_3, l_4\}$, we have $\phi_{i+1}(O_1) = \{u,v\}$ and $\phi_{i+1}(O_2) = \{x,y\}$.  In such a case, if we were to perform one experiment which measured the network states $\{u,v\}$ and another experiment which measured $\{x,y\}$, then the result could be understood as examining the covering $\{O_1, O_2\}$ at network state level $i+1$.
+}
+
+
+
+\DIFaddend \section{Sheaf-theoretic formulation of compatibility of distributions on \gnpm{}}\label{secsupp:compatibilityofgpms}
+\DIFaddbegin
+
+\DIFadd{Given a covering of the space of variables $\mathcal{G}$, a compatible family for $\mathcal{G}$ with respect to $\mathcal{D} \circ \mathcal{E}$ is given by a family of distributions $\dist{}(\expr{}(\mathcal{G})) = \{d_O \in \dist (\mathcal{E}(O)) | O \in \mathcal{G}\}$ such that for all $O, O' \in \mathcal{G}$
+}\begin{eqnarray}\DIFadd{\label{eq:sheafcond}
+d_O|O \cap O' = d_{O'}|O \cap O'.
+}\end{eqnarray}
+\DIFadd{This first set of conditions is later referred to as local consistency. The space of all such locally consistent distributions for a given covering, $\mathcal{G}$, is referred to as $\mathbb{L}(\mathcal{G})$ where
+}\begin{equation}\DIFadd{
+\mathbb{L}(\mathcal{G}) = \{ d_O  \in \dist{}(\expr{}(\mathcal{G})) \mid (\forall O,O' \in \mathcal{G})\,\, d_O|O \cap O' = d_O'|O \cap O' \}.
+}\end{equation}
+\DIFadd{These conditions mean that any two distributions $d_O$ and $d_{O'}$ in the }\emph{\DIFadd{compatible family}} \DIFadd{of distributions marginalize to the same disribution over the intersection of $O$ with $O'$. If these constraints are not satisfied, then there is no way to make a consistent assignment of probabilities to the states of even a single variable. In this case one of the constraints will be eliminated or duplication of a variable may allow for the independent satisfaction of both constraints.
+}
+
+\DIFadd{If, moreover, this first condition implies the existence of $d \in \mathcal{D}( \mathcal{E}(L))$ such that $d|O = d_O$ for all $O \in \mathcal{G}$ then the system is said to satisfy the global consistency condition. The space of all such globally consistent distributions for a given covering, $\mathcal{G}$, is referred to as $\mathbb{M}(\mathcal{G})$ where
+}\begin{equation}\DIFadd{
+\mathbb{M}(\mathcal{G}) = \{ d_O \in \dist{}(\expr{}(\mathcal{G})) \mid (\exists d ) \,\, d|O = d_O \}.
+}\end{equation}
+\DIFadd{In general, the system of equations $d|O = d_O$ for all $O \in \mathcal{G}$ is underdetermined and so local consistency does not imply global consistency. The local and global consistency conditions are related to the mathematical concepts from which they derive in }\refsupp{} \DIFadd{\ref{secsupp:compatibilityofgpms}. We will now examine the situation more closely to determine under what circumstances global consistency holds.
+}
+
+\DIFadd{For a cover of the space of variables, $\mathcal{G}$, we can construct a matrix, $\mathbf{G}$, representing the relationship,
+between }\gnpm{} \DIFadd{having as domain particular network modules given by the $O \in \mathcal{G}$ and those global }\gnpm{} \DIFadd{defined on $L$.
+$\mathbf{G}$ can be specified for all $e^O_{\vec{i}} \in \mathcal{E}(\mathcal{G})$ and $e^{L}_{\vec{j}} \in \mathcal{E}(L)$:
+}\begin{eqnarray}\DIFadd{\label{eq:margmat}
+\mathbf{G}(e^O_{\vec{i}},e^L_{\vec{j}}) =
+\begin{cases}
+1, & e^L_{\vec{j}}|O = e^O_{\vec{i}},\\
+0, & \text{otherwise}.
+\end{cases}
+}\end{eqnarray}
+\DIFadd{For example, given the covering $\mathcal{G} = \{ \{l_1\}, \{l_2\} \}$ of a set of two variables $L = \{ l_1, l_2 \}$ the associated matrix $\mathbf{G}$ is shown in \ref{fig:efunctor}B.
+}
+
+
+\DIFadd{The locally, $\mathbb{L}(\mathcal{G})$, and globally, $\mathbb{M}(\mathcal{G})$, consistent polytopes correspond to the spaces of probability distributions satisfying the local and global consistency conditions described above. The globally consistent polytope is a subspace of the locally consistent one. This is because an ostensible inverse to $\mathbf{G}$ is underdetermined and can only be estimated in general (most commonly using the maximum entropy principle).
+To determine explicit conditions on the probabilities we express $\mathbb{L}(\mathcal{G})$ and $\mathbb{M}(\mathcal{G})$ in terms of the fundamental subspaces associated to the linear map $\mathbf{G}$. In order for a vector $v$ to lie in $\mathbf{G}(\mathbb{R}^{\mathcal{E}(L)})$, we must have $v=\mathbf{G}x$ for some $x \in \mathbb{R}^{\mathcal{E}(L)}$.  The cokernel of $\mathbf{G}$ gives the obstructions to this system $v=\mathbf{G}x$ having a solution. In order to eliminate these obstructions, constraints must be imposed on $\mathbb{R}^{\mathcal{E}(\mathcal{G})}$ and these constraints are given precisely via annihilating the cokernel, i.e. $\mathbf{G}(\mathbb{R}^{\mathcal{E}(L)}) = \{ v \; | \; (\forall u \in coker \mathbf{G}) \; u \cdot v = 0\}$.  We then take the appropriate intersection to determine $\mathbb{L}(\mathcal{G})$ by requiring $v \in \mathcal{D}(\mathcal{E}(\mathcal{G}))$
+}\begin{eqnarray}\DIFadd{\label{eq:localpolytope}
+\mathbb{L}(\mathcal{G}) }&\DIFadd{=}& \DIFadd{\{ v \in \dist{}(\expr{}(\mathcal{G})) \; | \; (\forall u \in coker \mathbf{G}) \; u \cdot v = 0\}.
+}\end{eqnarray}
+\DIFadd{Since $\mathbf{G}$ is not invertible the equation $v = \mathbf{G}x$ can only be solved up to an element of $ker \mathbf{G}$. $v = \mathbf{G}x$ can thus be solved on a subspace $T$ of $\mathbb{R}^{\mathcal{E}(L)}$ such that $T \oplus ker \mathbf{G} = \mathbb{R}^{\mathcal{E}(L)}$ to yield
+}\begin{eqnarray}\DIFadd{\label{eq:globalpolytope}
+\mathbb{M}(\mathcal{G}) }&\DIFadd{=}& \DIFadd{\{ v \; | v = \mathbf{G} x,\; (\exists x \in T) \; (\exists y \in \dist{}(\expr{}(L)))\; x-y \in ker \mathbf{G}  \}.
+}\end{eqnarray}
+\DIFadd{In order to obtain inequalities that define $\mathbb{M}(\mathcal{G})$, Fourier-Motzkin elimination can be used to eliminate $x$ and $y$. Alternatively one can use the fact, \mbox{%DIFAUXCMD
+\cite{Wainwright2007}
+}%DIFAUXCMD
+proposition 8.3, that $\mathbb{M}(\mathcal{G})$ is given by removing the non-integer vertices from a vertex represntation of $\mathbb{L}(\mathcal{G})$ and the ability to interconvert between vertex and inequality representations to compute the same inequalities as described in }\refsupp{} \DIFadd{\ref{secsupp:fourcycleexample}.
+}
+
+\DIFaddend Recall from \ref{sec:compatibilityofgpms} that given a covering of the space of \DIFdelbegin \DIFdel{genes }\DIFdelend \DIFaddbegin \DIFadd{variables }\DIFaddend $\mathcal{G}$, a compatible family for $\mathcal{G}$ with respect to $\mathcal{D} \circ \mathcal{E}$ is given by a family of distributions $\{d_O \in \dist (\mathcal{E}(O)) | O \in \mathcal{G}\}$ such that for all $O, O' \in \mathcal{G}$
+\begin{eqnarray}
+d_O|O \cap O' = d_{O'}|O \cap O'.
+\end{eqnarray}
+This first set of conditions is later referred to as local consistency. These conditions mean that any two distributions $d_O$ and $d_{O'}$ in the \emph{compatible family} of distributions marginalize to the same disribution over the intersection of $O$ with $O'$.
+
+If, moreover, this first condition implies the existence of $d \in \mathcal{D}( \mathcal{E}(L))$ such that $d|O = d_O$ for all $O \in \mathcal{G}$ then the system is said to satisfy the global consistency condition.  This latter condition is also referred to as the \emph{sheaf condition}.  $\mathcal{E}$ alone turns out to be a sheaf because it satisfies the analogous conditions: for $\{e_O \in \mathcal{E}(O) | O \in \mathcal{G}\}$ such that $e_{O_{1}} | O_1 \cap O_2 = e_{O_{2}} | O_1 \cap O_2$ there exists $e \in \mathcal{E}(\cup_{O \in \mathcal{G}} O)$ such that $e_O = e|O$ for all $O \in \mathcal{G}$.  However, for $\dist \circ \mathcal{E}$ the sheaf condition is not automatically satisfied and it only defines a presheaf.  We will now examine the situation more closely to determine under what circumstances global consistency holds.
+
+For a cover of the \DIFdelbegin \DIFdel{genotype space }\DIFdelend \DIFaddbegin \DIFadd{space of variables}\DIFaddend , $\mathcal{G}$, we can construct a matrix, $\mathbf{G}$, representing the relationship, $R = \coprod_{O \in \mathcal{G}} \mathcal{E}(O \subset L) \subseteq \mathcal{E}(L) \times \expr (\mathcal{G})$, between \gnpm{} having as domain particular \DIFdelbegin \DIFdel{gene regulatory }\DIFdelend network modules given by the $O \in \mathcal{G}$ and those global \gnpm{} defined on $L$. We would like to construct the matrix representation of $\mathbf{G}$. In the first factor, $\mathcal{E}(L) = P^L = \{e^{L}_{\vec{j}} | \vec{j} \in P^{|L|}\}$.
+For the second factor, $ \mathcal{E}(\mathcal{G}) = \coprod_{O \in \mathcal{G}} \mathcal{E}(O) = \{e^O_{\vec{i}} | O \in \mathcal{G}, \vec{i} \in P^{|O|} \}$.
+ So we have two sets of maps, one defined on $P^L$ and the other defined on $\mathcal{E}(O) = P^O$ for each $O \in \mathcal{G}$. This yields the method of specifying the intended relationship that defines $\mathbf{G}$ for all $e^O_{\vec{i}} \in \mathcal{E}(\mathcal{G})$ and $e^{L}_{\vec{j}} \in \mathcal{E}(L)$ given in \ref{eq:margmat}.
+This matrix can be viewed as an operator acting via matrix multiplication on distributions
+\begin{eqnarray*}
+\mathbf{G} \colon \mathcal{D}(\mathcal{E}(L)) &\rightarrow& \mathcal{D}( \mathcal{E}(\mathcal{G})),\\
+d &\mapsto& \coprod_{O \in \mathcal{G}} d|O,
+\end{eqnarray*}
+and thereby taking a global distribution, $\dist (\mathcal{E}(L))$, defined on \gnpm{} whose domain is the full set of \DIFdelbegin \DIFdel{genes }\DIFdelend \DIFaddbegin \DIFadd{variables }\DIFaddend $L$ into the local distributions, $\dist (\mathcal{E}(\mathcal{G}))$, that are defined relative to \DIFdelbegin \DIFdel{gene regulatory }\DIFdelend network modules contained in a covering of the \DIFdelbegin \DIFdel{genotype space }\DIFdelend \DIFaddbegin \DIFadd{space of variables }\DIFaddend $\mathcal{G}$. $\mathbf{G}$ provides a way of determining the distributions on \gnpm{} for a given context (i.e. $\coprod_{O \in \mathcal{G}} d|O$) that can be derived from distributions (i.e. $\mathcal{D} ( \mathcal{E}(L) )$) defined on the global \gnpm{} (i.e. $\mathcal{E}(L)$ as opposed to $\mathcal{E}(O)$).
+
+Combining the marginalization matrix $\mathbf{G}$ with the maps previously defined in \ref{eq:emb} the following diagram demonstrates the relationships between the spaces of probability distributions and the linear spaces in which they are embedded
+
+% \begin{equation*}
+% \xymatrix{
+%  \mathbb{R}^{\mathcal{E}(L)} \ar[r]^{\mathbf{G}} &
+%    \mathbb{R}^{\mathcal{E}(\mathcal{G})} \\
+%  \dist (\mathcal{E}(L)) \ar[r]^{\mathbf{G}} \ar@{^{(}->}[u]^{emb_{\mathcal{E}(L)}}& \ar@{^{(}->}[u]_{emb_{\mathcal{E}(\mathcal{G})}}
+%   \dist (\mathcal{E}(\mathcal{G}))
+%   }
+% \end{equation*}
+The locally, $\mathbb{L}(\mathcal{G})$, and globally, $\mathbb{M}(\mathcal{G})$, consistent polytopes embedded within $\mathbb{R}^{\mathcal{E}(\mathcal{G})}$ correspond to the spaces of probability distributions satisfying the local and global consistency conditions described above. The globally consistent polytope is a subspace of the locally consistent one. This is because an ostensible inverse to $\mathbf{G}$ is underdetermined and can only be estimated in general (most commonly using the maximum entropy principle). In terms of the diagram $\mathbb{M}(\mathcal{G})$ is given by $\mathbf{G}(emb_{\mathcal{E}(L)}(\mathcal{D}(\mathcal{E}(L))))$ and $\mathbb{L}(\mathcal{G})$ is given by $emb_{\mathcal{E}(\mathcal{G})}(\mathcal{D}(\mathcal{E}(\mathcal{G}))) \cap \mathbf{G}(\mathbb{R}^{\mathcal{E}(L)})$, where
+\begin{eqnarray}
+emb_{\mathcal{E}(\mathcal{G})}(\mathcal{D}(\mathcal{E}(\mathcal{G}))) &=& \left\{ p^{O}_{\vec{i}} \; \bigg| \; (\forall\, O \in \mathcal{G}) \; (\forall\, \vec{i} \in P^{|O|}) \;\; p^O_{\vec{i}} \geq 0, \; (\forall\, O \in \mathcal{G}) \sum_{\vec{i} \in P^{|O|}} p^{O}_{\vec{i}} = 1 \right\}, \label{eq:embdeg}\\
+emb_{\mathcal{E}(L)}(\mathcal{D}(\mathcal{E}(L))) &=& \left\{ p^L_{\vec{i}} \; \bigg| \; (\forall\, \vec{i} \in P^{|L|}) \; p^L_{\vec{i}} \geq 0, \; \sum_{\vec{i} \in P^{|L|}} p^L_{\vec{i}} = 1 \right\}. \label{eq:embdel}
+\end{eqnarray}
+If the embedding into linear spaces is to be considered explicitly, then \ref{eq:embdeg} and \ref{eq:embdel} can be substituted for $\dist{}(\expr{}(\mathcal{G}))$ and $\dist{}(\expr{}(L))$ in \ref{eq:localpolytope} and \ref{eq:globalpolytope}.
+
+\subsection{Example of apparent satisfaction of unsatisfiable constraints}\label{secsupp:apparentinconsistency}
+The inequalities defining $\mathbb{M}(\mathcal{G})$ were derived under the assumption that the two-element probabilities were obtained by mariginalizing a three-element distribution.  If some other procedure, such as conditionalization, is used to obtain them instead, these inequalities need not apply. For example, suppose now that $L = \{l_1,l_2,l_3 \}$, $P = \{0,1,2\}$, $\mathcal{G} = \{\{l_1,l_2\},\{l_2,l_3\},\{l_3,l_1\}\}$ where we have simply added an element to $P$ relative to the example described above. In the previous example the marginal maps were given by $\dist (\expr (O \subset L))$ with one for each $O \in \mathcal{G}$. If we combine these marginal maps with conditioning on one out of the three \DIFdelbegin \DIFdel{genes }\DIFdelend \DIFaddbegin \DIFadd{variables }\DIFaddend being in state two and each of the other two being in states zero or one, then we have instead $\dist (\pi_1), \dist (\pi_2), \dist (\pi_3)$ where $\pi_1 = \expr (\{l_1,l_2\} \subset L)|\{ e^{123}_{ij2} \mid i,j \in \{ 0,1 \} \},\; \pi_2 = \expr (\{l_2,l_3\} \subset L)|\{ e^{123}_{2ij} \mid i,j \in \{ 0,1 \} \},\; \pi_3 = \expr (\{l_3,l_1\} \subset L)|\{ e^{123}_{i2j} \mid i,j \in \{ 0,1 \} \}$. In this case, if we have the following assignment of probabilities for a distribution $d$
+\begin{equation}\label{eq:condprobs}
+\begin{aligned}
+p^{123}_{002} &= 1/30 & p^{123}_{020} &= 2/15 & p^{123}_{200} &= 2/15\\
+p^{123}_{012} &= 2/15 & p^{123}_{021} &= 1/30 & p^{123}_{201} &= 1/30\\
+p^{123}_{102} &= 2/15 & p^{123}_{120} &= 1/30 & p^{123}_{210} &= 1/30\\
+p^{123}_{112} &= 1/30 & p^{123}_{121} &= 2/15 & p^{123}_{211} &= 2/15
+\end{aligned}
+\end{equation}
+with all other probabilities being zero, then $\dist (\pi_1)(d), \dist (\pi_2)(d), \dist (\pi_3)(d)$ are equivalent to the probability tables in \ref{fig:inconsistentthreecycle}A, which as shown in \ref{sec:inconsistency}, could not be achieved by marginalization alone. For example, given that $dom(\pi_1) = \{ e^{123}_{002}, e^{123}_{012}, e^{123}_{102}, e^{123}_{112} \}$ then $d(dom(\pi_1)) = \frac{1}{30} + \frac{2}{30} + \frac{2}{30} + \frac{1}{30} = \frac{1}{3}$. Substituting this factor and the fact that ${\pi_1}^{-1}(e^{12}_{ij}) = e^{123}_{ij2}$ into \ref{eq:distfunctor}
+$$
+p^{12}_{ij} = \dist (\pi_1)(d)(e^{12}_{ij}) = \frac{d({\pi_1}^{-1}(e^{12}_{ij}))}{d(dom(\pi_1))} = 3 p^{123}_{ij2},
+$$
+then renormalizes probabilities resulting in $p^{12}_{00} = 0.1, p^{12}_{01} = 0.4, p^{12}_{10} = 0.4, p^{12}_{11} = 0.1$ along with the analogs for $p^{23}_{ij}$ and $p^{13}_{ij}$, which are precisely equivalent to what appears in \ref{fig:inconsistentthreecycle}A as suggested above.
+
+If constraints consistent with those of \ref{fig:inconsistentthreecycle}A are placed on the given network, either the network must add another \DIFdelbegin \DIFdel{gene }\DIFdelend \DIFaddbegin \DIFadd{variable }\DIFaddend in order to satisfy them directly or the network context imposing those constraints must coarse-grain the network in a suitable way. In what follows, we argue that the former is much more plausible than the latter. This ultimately suggests conditions in which cycle breakage \DIFdelbegin \DIFdel{via gene duplication }\DIFdelend may be selected for to relieve inconsistent constraints that can arise when cycles are present.
+
+
+\section{Example volume ratio computation for the four-cycle \DIFdelbegin \DIFdel{GRNA}\DIFdelend \DIFaddbegin \DIFadd{network architecture}\DIFaddend }\label{secsupp:fourcycleexample}
+
+For the purposes of this example, we take the full set of \DIFdelbegin \DIFdel{genes }\DIFdelend \DIFaddbegin \DIFadd{variables }\DIFaddend to be $L = \{ l_1,l_2,l_3,l_4 \}$. Consider the case in which each of the \DIFdelbegin \DIFdel{gene regulatory }\DIFdelend network modules under consideration has two \DIFdelbegin \DIFdel{genes }\DIFdelend \DIFaddbegin \DIFadd{variables }\DIFaddend and we specify the covering of the \DIFdelbegin \DIFdel{genotype space }\DIFdelend \DIFaddbegin \DIFadd{space of variables }\DIFaddend given by $\mathcal{G} = \{\{l_1,l_2 \},\{l_1,l_4 \},\{l_3,l_2\},\{l_3,l_4\} \}$.  We will compute $\mathbb{L}(\mathcal{G})$ using the same method which was used for the example of three \DIFdelbegin \DIFdel{genes}\DIFdelend \DIFaddbegin \DIFadd{variables}\DIFaddend .  By analogy with \ref{eq:localconsistencythreegenes}, the local consistency conditions now are as follows:
+\begin{equation}
+\begin{aligned}\label{eq:pparsys}
+p^1_0 &= p^{12}_{00} + p^{12}_{01} = p^{14}_{00} + p^{14}_{01}, &
+p^1_1 &= p^{12}_{10} + p^{12}_{11} = p^{14}_{10} + p^{14}_{11},\\
+p^3_0 &= p^{32}_{00} + p^{32}_{01} = p^{34}_{00} + p^{34}_{01},&
+p^3_1 &= p^{32}_{10} + p^{32}_{11} = p^{34}_{11} + p^{34}_{11},\\
+p^2_0 &= p^{12}_{00} + p^{12}_{10} = p^{32}_{00} + p^{32}_{10},&
+p^2_1 &= p^{12}_{01} + p^{12}_{11} = p^{32}_{01} + p^{32}_{11},\\
+p^4_0 &= p^{14}_{00} + p^{14}_{10} = p^{34}_{00} + p^{34}_{10},&
+p^4_1 &= p^{14}_{01} + p^{14}_{11} = p^{34}_{01} + p^{34}_{11}.
+\end{aligned}
+\end{equation}
+Likewise, the equations determined by the conditions $v = \mathbf{G}(x)$ which are analogous to the matrix $\mathbf{G}$ in \ref{fig:efunctor}B are now
+\begin{equation}
+\begin{aligned}\label{eq:globsys}
+p^{12}_{00} &= p^{1234}_{0000} + p^{1234}_{0010} + p^{1234}_{0001} + p^{1234}_{0011} &
+p^{12}_{10} &= p^{1234}_{1000} + p^{1234}_{1010} + p^{1234}_{1001} + p^{1234}_{1011} \\
+p^{12}_{01} &= p^{1234}_{0100} + p^{1234}_{0110} + p^{1234}_{0101} + p^{1234}_{0111} &
+p^{12}_{11} &= p^{1234}_{1100} + p^{1234}_{1110} + p^{1234}_{1101} + p^{1234}_{1111} \\
+p^{14}_{00} &= p^{1234}_{0000} + p^{1234}_{0001} + p^{1234}_{1000} + p^{1234}_{1001} &
+p^{14}_{10} &= p^{1234}_{0010} + p^{1234}_{0011} + p^{1234}_{1010} + p^{1234}_{1011} \\
+p^{14}_{01} &= p^{1234}_{0100} + p^{1234}_{0101} + p^{1234}_{1100} + p^{1234}_{1101} &
+p^{14}_{11} &= p^{1234}_{0110} + p^{1234}_{0111} + p^{1234}_{1110} + p^{1234}_{1111} \\
+p^{32}_{00} &= p^{1234}_{0000} + p^{1234}_{0010} + p^{1234}_{0100} + p^{1234}_{0110} &
+p^{32}_{10} &= p^{1234}_{1000} + p^{1234}_{1010} + p^{1234}_{1100} + p^{1234}_{1110} \\
+p^{32}_{01} &= p^{1234}_{0001} + p^{1234}_{0011} + p^{1234}_{0101} + p^{1234}_{0111} &
+p^{32}_{11} &= p^{1234}_{1001} + p^{1234}_{1011} + p^{1234}_{1101} + p^{1234}_{1111}\\
+p^{34}_{00} &= p^{1234}_{0000} + p^{1234}_{1000} + p^{1234}_{0100} + p^{1234}_{1100} &
+p^{34}_{10} &= p^{1234}_{0010} + p^{1234}_{1010} + p^{1234}_{0110} + p^{1234}_{1110} \\
+p^{34}_{01} &= p^{1234}_{0001} + p^{1234}_{1001} + p^{1234}_{0101} + p^{1234}_{1101} &
+p^{34}_{11} &= p^{1234}_{0011} + p^{1234}_{1011} + p^{1234}_{0111} + p^{1234}_{1111},
+\end{aligned}
+\end{equation}
+which are displayed in matrix form in \ref{tab:logmat222}.
+
+Rather than proceeding to compute $\mathbb{L}(\mathcal{G})$ using elimination of inequalities as before, we will instead make use of the fact that the extremal points of $\mathbb{L}(\mathcal{G})$ happen to be the extremal points of $\mathbb{L}(\mathcal{G})$ with integer coordinates.  This is the approach which was used to compute the volume ratios shown in \ref{fig:ncycvolrat}.  More specifically, those computations were done using a computer program based on the following algorithm which is available via a virtual machine that can be reconstructed using the instructions available on \href{https://github.com/cameronraysmith/sep}{github}:
+
+\begin{enumerate}
+\item Compute (a basis for) the cokernel of $\mathbf{G}$. The cokernel gives the obstructions to the system $\mathbf{G}\mathbf{X}=\mathbf{V}$ having a solution. In order to eliminate these obstructions constraints must be imposed on $\mathbb{R}^{\mathcal{E}(\mathcal{G})}$ and these constraints are given precisely via annihilating the cokernel.
+\item Use the constraints on $\mathbb{R}^{\mathcal{E}(\mathcal{G})}$ from step 1 necessary for the system $\mathbf{G}\mathbf{X}=\mathbf{V}$ to have a solution to eliminate variables from the system of inequalities $\mathbf{V} \geq 0$ giving a half-space representation or H-representation of the polytope $\mathbb{L}(\mathcal{G})$. This can be used to compute $\text{Vol}(\mathbb{L}(\mathcal{G}))$.
+\item Compute the vertices of $\mathbb{L}(\mathcal{G})$ from the H-representation determined in step 2 giving a vertex representation or V-representation of $\mathbb{L}(\mathcal{G})$.
+\item Filter the non-integer rational vertices from the collection computed in step 3 to produce a corresponding V-representation of $\mathbb{M}(\mathcal{G})$ \cite{Wainwright2007} proposition 8.3.
+\item Compute $\text{Vol}(\mathbb{M}(\mathcal{G}))$ from the V-represention of $\mathbb{M}(\mathcal{G})$.
+\end{enumerate}
+
+For standard computations on polytopes, we make use of the standard algorithms incorporated by the polymake project \cite{Gawrilow2000}. In some cases, the volume computation is too costly to perform exactly. In those cases we use the approximation given in \cite{Cousins}.  We now return to our example of four \DIFdelbegin \DIFdel{genes }\DIFdelend \DIFaddbegin \DIFadd{variables }\DIFaddend $\mathcal{G} = \{\{l_1,l_2 \},\{l_1,l_4 \},\{l_3,l_2\},\{l_3,l_4\} \}$ and $P=\{0,1\}$ and use it to walk through key components of the algorithm.
+
+The equalities derived by computing the cokernel of the matrix $\mathbf{G}$ given in \ref{tab:logmat222} and adjoining rows that enforce the normalization of the marginal distributions are represented as a matrix in \ref{eq:eqmat}.
+\begin{equation}\label{eq:eqmat}
+\begin{aligned}
+\begin{bmatrix}
+  -1 & -1 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+  0 & 0 & -1 & -1 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+  -1 & 0 & -1 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+  0 & -1 & 0 & -1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0\\
+  0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & -1 & 0 & -1 & 0 & 1 & 1 & 0 & 0 & 0\\
+  0 & 0 & 0 & 0 & -1 & 0 & -1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0\\
+  -1 & -1 & -1 & -1 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & -1 & 0 & 0 & 1 & 0\\
+  1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1\\
+  0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1\\
+  0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 1\\
+  0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1\\
+\end{bmatrix}
+\end{aligned}
+\end{equation}
+The final column represents the right-hand side of each equality. It turns out all but one of the normalization conditions is linearly dependent with respect to the other equalities and so we can reduce this set of $7+4=11$ constraints to the $8$ represented again in matrix form in \ref{eq:kceqsrefa}.
+\begin{equation}\label{eq:kceqsrefa}
+\begin{aligned}
+\begin{bmatrix}
+  1 & 0 & 0 & -1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 1\\
+  0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & -1 & -1 & 0 & 0 & 0 & 0 & 0\\
+  0 & 0 & 1 & 1 & 0 & 0 & -1 & -1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+  0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 1\\
+  0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & -1 & 0 & -1 & 0\\
+  0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 1 & 1 & 1\\
+  0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & -1 & -1 & 0\\
+  0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1\\
+\end{bmatrix}
+\end{aligned}
+\end{equation}
+These equalities can now be substituted into the positivity inequalities necessary to define any space of probability distributions. This yields a set of inequalities \ref{eq:polrepindineqs} that specify an H-representation of the polytope $\mathbb{L}(\mathcal{G})$. This is the modular polytope, which is a subspace of $\Delta_3^{\oplus 4}$ associated to distributions consistent with the linear transformation $\mathbf{G}$
+\begin{equation}\label{eq:polrepindineqs}
+\begin{aligned}
+\begin{bmatrix}
+  1 & 1 & -1 & -1 & -1 & -1 & 0 & 0 & 0\\
+  0 & -1 & 0 & 0 & 1 & 1 & 0 & 0 & 0\\
+  0 & -1 & 1 & 1 & 0 & 0 & 0 & 0 & 0\\
+  1 & 0 & -1 & 0 & 0 & 0 & -1 & 0 & -1\\
+  0 & 0 & 0 & -1 & 0 & 0 & 1 & 0 & 1\\
+  1 & 0 & 0 & 0 & -1 & 0 & 0 & -1 & -1\\
+  0 & 0 & 0 & 0 & 0 & -1 & 0 & 1 & 1\\
+  1 & 0 & 0 & 0 & 0 & 0 & -1 & -1 & -1\\
+  0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+  0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0\\
+  0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0\\
+  0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0\\
+  0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0\\
+  0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0\\
+  0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0\\
+  0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1\\
+\end{bmatrix}
+\end{aligned}
+\end{equation}
+A row $(a_0,a_1,...,a_d)$ corresponds to the inequality $a_0 + a_1 x_1 + ... + a_d x_d >= 0$. The embedded identity matrix has, in this particular case eight, rows that specify the positivity of the variables corresponding to each of the, in this particular case eight, dimensions. Transforming this inequality or H-representation to a vertex or V-representation of the modular polytope produces \ref{eq:vrepfromhrep}.
+\begin{equation}\label{eq:vrepfromhrep}
+\begin{aligned}
+\begin{bmatrix}
+  1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1\\
+  1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0\\
+  1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0\\
+  1 & 1/2 & 1/2 & 0 & 1/2 & 0 & 1/2 & 1/2 & 0\\
+  1 & 1/2 & 0 & 1/2 & 0 & 1/2 & 1/2 & 1/2 & 0\\
+  1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+  1 & 1/2 & 1/2 & 0 & 0 & 1/2 & 0 & 0 & 1/2\\
+  1 & 1/2 & 0 & 1/2 & 1/2 & 0 & 0 & 0 & 1/2\\
+  1 & 0 & 0 & 1/2 & 0 & 1/2 & 0 & 0 & 1/2\\
+  1 & 0 & 1/2 & 0 & 1/2 & 0 & 0 & 0 & 1/2\\
+  1 & 0 & 1/2 & 0 & 0 & 1/2 & 1/2 & 1/2 & 0\\
+  1 & 0 & 0 & 1/2 & 1/2 & 0 & 1/2 & 1/2 & 0\\
+  1 & 1 & 1 & 0 & 1 & 0 & 0 & 0 & 0\\
+  1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0\\
+  1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0\\
+  1 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 0\\
+  1 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0\\
+  1 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0\\
+  1 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 0\\
+  1 & 1 & 0 & 1 & 0 & 1 & 0 & 0 & 1\\
+  1 & 1 & 0 & 1 & 1 & 0 & 1 & 0 & 0\\
+  1 & 1 & 1 & 0 & 0 & 1 & 0 & 1 & 0\\
+  1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 1\\
+  1 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 1\\
+\end{bmatrix}
+\end{aligned}
+\end{equation}
+This completes steps 1-3 of the algorithm outlined above. Step 4 is trivial; to obtain the V-represention of $\mathbb{M}(\mathcal{G})$, we strike out the rows in which $1/2$ appears.  Finally, we compute the volume of the polytope whose vertices are the rows of \ref{eq:vrepfromhrep} to obtain $\text{Vol}(\mathbb{L}(\mathcal{G})) = \frac{1}{120}$ and the volume of the polytope whose vertices are rows of integers to obtain $\text{Vol}(\mathbb{M}(\mathcal{G})) = \frac{1}{180}$ yielding a ratio $\frac{\text{Vol}(\mathbb{M}(\mathcal{G}))}{\text{Vol}(\mathbb{L}(\mathcal{G}))} = \frac{2}{3}$.
+
+
+
+
+
+
+
+
+
+\FloatBarrier
+\pagebreak
+
+\begin{figure}[!ht]
+\centering
+\noindent\includegraphics[width=0.8\columnwidth]{fig/efunctor.pdf}
+\caption{{\bf Example of the functor mapping subsets of \DIFdelbeginFL \DIFdelFL{genes }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{variables }\DIFaddendFL to measurable spaces.} (A) On the left hand side are subsets of $L=\{l_1,l_2\}$ ordered by inclusion. On the right hand side are the spaces of \DIFdelbeginFL \DIFdelFL{gene network-phenotype maps }\DIFdelendFL \DIFaddbeginFL \gnpm{} \DIFaddendFL also ordered by inclusion. The labels for the maps define them. For example, $e^{12}_{01}(l_1) = 0$ and $e^{12}_{01}(l_2) = 1$. (B) For the given covering, $\mathcal{G}$, the associated marginalization matrix acting on the probability vector $\{ p^{12}_{00},p^{12}_{01},p^{12}_{10},p^{12}_{11} \}$ to give $\{ p^{1}_{0},p^{1}_{1},p^{2}_{0},p^{2}_{1} \}$ is $\mathbf{G}$.}
+\label{fig:efunctor}
+\end{figure}
+
+\pagebreak
+
+\begin{figure}[!ht]
+\centering
+\noindent\DIFaddbeginFL \includegraphics[width=0.9\columnwidth]{fig/phenotypehierarchy.pdf}
+\caption{{\bf \DIFaddFL{Example coarse-graining of phenotypes.}} \DIFaddFL{(A) Consider the example where $L = \{l_1,l_2,l_3,l_4\}$, $\mathcal{G} = \{ O_1, O_2 \}$, $O_1 = \{l_1, l_2, l_3\}$ and $O_2 = \{ l_3, l_4 \}$. The top left panel shows two higher-level phenotypes $X$ and $Y$. The bottom left corner shows the five different expression states of four genes in $L$ from which these phenotypes are coarse-grained. The right side shows the respective projections onto genes $\{l_3,l_4\}$. The projection maps $\pi_i^{L,O_2}$ and $\pi_{i+1}^{L,O_2}$ are defined in }\refsupp{} \DIFaddFL{\ref{secsupp:coarsegrainingphenotypes}. (B) The different combinations of expression states of genes $\{l_3,l_4\}$ result in two different phenotypes. If both genes are expressed metabolite $y$ is produced whereas if only one of the two genes is expressed metabolite $x$ is produced. The red and green boxes represent arbitrary promoters.}}
+\label{fig:phenotypehierarchy}
+\end{figure}
+
+\pagebreak
+
+\begin{figure}[!ht]
+\centering
+\noindent\DIFaddendFL \includegraphics[width=0.4\columnwidth]{fig/abstractroadmap.pdf}
+\caption{{\bf Mathematical relationships defining the hierarchy of \DIFdelbeginFL \DIFdelFL{phenotypes }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{network states }\DIFaddendFL via coarse-graining.} }
+\label{fig:abstractroadmap}
+\end{figure}
+
+\pagebreak
+
+\begin{figure}[!ht]
+\centering
+\noindent\includegraphics[width=1.0\columnwidth]{fig/condgenescenario.pdf}
+\caption{{\bf Schematic synthetic gene circuit capable of exhibiting apparent inconsistency.} A synthetic gene circuit consisting of four genes possesses one gene (purple) whose product is assumed to be present at low copy number and binds randomly with equal affinity to operator sites existing within the operons of each of the other three genes (red, blue, and green). These latter three genes each possess operator sites for the other two, but do not possess autoregulatory operators. They also each exhibit three states represented by three dynamical modes that may involve intermediates not explicitly represented here \cite{Cai2008,Dolmetsch1998}. If the first gene is bound to the operator of another gene, the output is forced into a zero frequency infinite period, or DC, mode (state 2) regardless of the binding state of the other operators. If the first gene is unbound, then the expression state can be switched between low (state 0) and high (state 1) frequency modes depending upon the binding states of other genes as indicated. Note that operators for each of genes one to three are insensitive to the DC mode. Observing pairs of genes one to three and ignoring the state corresponding to the DC mode can lead to apparent inconsistency.}
+\label{fig:condgenescenario}
+\end{figure}
+
+
+
+\pagebreak
+
+\begin{figure}[!ht]
+\centering
+\noindent\includegraphics[width=1.0\columnwidth]{fig/non2uniformcyclichypergraphhasse.pdf}
+\caption{{\bf Hierarchical relationships among all possible classes of hypergraphs that are not graphs (i.e. not 2-uniform) but have cycles.} (A) There is a Hasse diagram for the lattice of \DIFdelbeginFL \DIFdelFL{GRNAs }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{network architectures }\DIFaddendFL analogous to that of \ref{fig:conediagram}A but defined on four rather than only three \DIFdelbeginFL \DIFdelFL{genes}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{variables}\DIFaddendFL . Within this lattice some of the graphs have cycles and some do not. (B) The highest levels of the Hasse diagram associated to the lattice of \DIFdelbeginFL \DIFdelFL{GRNAs }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{network architectures }\DIFaddendFL on four \DIFdelbeginFL \DIFdelFL{genes }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{variables }\DIFaddendFL containing hypergraphs having cycles. (C) and (D) contain lower levels of \DIFdelbeginFL \DIFdelFL{GRNAs }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{network architectures }\DIFaddendFL containing cycles. Each of the four panels in (D) are on the same level. In total, each level represents an isomorphism class of hypergraphs. Therefore, there are five isomorphism classes of non-2-uniform hypergraphs representing \DIFdelbeginFL \DIFdelFL{GRNAs }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{network architectures }\DIFaddendFL on four \DIFdelbeginFL \DIFdelFL{genes }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{variables }\DIFaddendFL that contain cycles leading to the relationship between spaces of probability distsributions on associated genotype-phentoype maps analogous to that of \ref{fig:conediagram}C.}
+\label{fig:non2uniformcyclichypergraphhasse}
+\end{figure}
+
+
+
+
+
+
+\FloatBarrier
+\pagebreak
+\makeatletter{}\begin{table}[!ht]
+\centering
+\begin{tabular}{ r || c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c }
+		 &	\begin{sideways}$e^{1234}_{0000}$\end{sideways} & \begin{sideways}$e^{1234}_{0010}$\end{sideways} & \begin{sideways}$e^{1234}_{0001}$\end{sideways} & \begin{sideways}$e^{1234}_{0011}$\end{sideways}
+			  & \begin{sideways}$e^{1234}_{1000}$\end{sideways} & \begin{sideways}$e^{1234}_{1010}$\end{sideways} & \begin{sideways}$e^{1234}_{1001}$\end{sideways} & \begin{sideways}$e^{1234}_{1011}$\end{sideways}
+			  &	\begin{sideways}$e^{1234}_{0100}$\end{sideways} & \begin{sideways}$e^{1234}_{0110}$\end{sideways} & \begin{sideways}$e^{1234}_{0101}$\end{sideways} & \begin{sideways}$e^{1234}_{0111}$\end{sideways}
+			  &	\begin{sideways}$e^{1234}_{1100}$\end{sideways} & \begin{sideways}$e^{1234}_{1110}$\end{sideways} & \begin{sideways}$e^{1234}_{1101}$\end{sideways} & \begin{sideways}$e^{1234}_{1111}$\end{sideways}\\ \hline \hline
+    $e^{12}_{00}$ & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ \hline
+    $e^{12}_{10}$ & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ \hline
+    $e^{12}_{01}$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 &  0 & 0 & 0 & 0\\ \hline
+    $e^{12}_{11}$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1\\ \hline
+
+    $e^{32}_{00}$ & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ \hline
+    $e^{32}_{10}$ & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ \hline
+    $e^{32}_{01}$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0\\ \hline
+    $e^{32}_{11}$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1\\ \hline
+
+    $e^{14}_{00}$ & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0\\ \hline
+    $e^{14}_{10}$ & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0\\ \hline
+    $e^{14}_{01}$ & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0\\ \hline
+    $e^{14}_{11}$ & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1\\ \hline
+
+    $e^{34}_{00}$ & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0\\ \hline
+    $e^{34}_{10}$ & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 0\\ \hline
+    $e^{34}_{01}$ & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 0\\ \hline
+    $e^{34}_{11}$ & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 1\\
+    \end{tabular}
+\caption{Explicit construction of $\mathbf{G}_{n \times m}$ for the case $L = \{ l_1,l_2,l_3,l_4 \}$, $\mathcal{G} = \{\{l_1,l_2 \},\{l_1,l_4 \},\{l_3,l_2\},\{l_3,l_4\} \}$, $P=\{0,1\}$ and thus $\mathbf{G}_{(2 \cdot 2)^2 \times 2^{2 \cdot 2}} = \mathbf{G}_{16 \times 16}$.}
+\label{tab:logmat222}
+\end{table}
+
+
+\FloatBarrier
+\pagebreak
+
+
+\end{document}
