@@ -1,7 +1,7 @@
 %!TEX root = ../plos_template.tex
 
 \section{Outline}\label{secsupp:outline}
-In the \refsupp{} we provide a more formal mathematical description of the results we make use of in the main text. In \ref{sec:covergenotypespace} we characterize biological network architectures as a collection of subsets, each individually referred to as a module, of network variables that defines a hypergraph over those network variables. \ref{secsupp:probabilitydistributionsonnetworks} provides a functorial description of probability distributions defined over such network architectures and the mappings between those network architectures and the states of the modules of the network. \ref{secsupp:coarsegrainingphenotypes} characterizes the manner in which a hierarchy of coarse-grained network states can be viewed as a refinement of the genotype-phenotype map, where the genotype and phenotype correspond to two different levels within this hierarchy, but maps between any two levels are considered to define valid coarse-grainings. \ref{secsupp:compatibilityofgpms} provides a sheaf theoretic formulation of the local and global consistency conditions that are logically imposed upon probability distributions over collections of such maps from some lower- to some higher-level in the hierarchy of coarse-grainings. \ref{secsupp:fourcycleexample} complements \ref{sec:compatibilityofgpms} of the main text providing a detailed example computation of the ratio of volumes between the polytopes corresponding to the global and local consistency conditions for the four-cycle network architecture.
+In the \refsupp{} we provide a more formal mathematical description of the results we make use of in the main text. In \autoref{sec:covergenotypespace} we characterize biological network architectures as a collection of subsets, each individually referred to as a module, of network variables that defines a hypergraph over those network variables. \autoref{secsupp:probabilitydistributionsonnetworks} provides a functorial description of probability distributions defined over such network architectures and the mappings between those network architectures and the states of the modules of the network. \autoref{secsupp:coarsegrainingphenotypes} characterizes the manner in which a hierarchy of coarse-grained network states can be viewed as a refinement of the genotype-phenotype map, where the genotype and phenotype correspond to two different levels within this hierarchy, but maps between any two levels are considered to define valid coarse-grainings. \autoref{secsupp:compatibilityofgpms} provides a sheaf theoretic formulation of the local and global consistency conditions that are logically imposed upon probability distributions over collections of such maps from some lower- to some higher-level in the hierarchy of coarse-grainings. \autoref{secsupp:fourcycleexample} complements \autoref{sec:compatibilityofgpms} of the main text providing a detailed example computation of the ratio of volumes between the polytopes corresponding to the global and local consistency conditions for the four-cycle network architecture.
 
 \section{Biological network architecture}\label{sec:covergenotypespace}
 A module of a biological network is represented by a subset of variables, $O \subseteq L$. A biological network architecture, $\mathcal{G}$, may then be represented by a subset of all possible such modules. This is to say that $\mathcal{G}$ is a subset of the set of all subsets of $L$, $\mathcal{G} \subseteq \mathcal{P}(L)$, that satisfies the following two conditions
@@ -15,7 +15,7 @@ Mathematically, the two conditions given above state that $\mathcal{G}$ is a \em
 
 \section{Functorial formulation of probability distributions over network modules}\label{secsupp:probabilitydistributionsonnetworks}
 
-As stated in \ref{sec:probabilitydistributionsonnetworks}, in addition to the expression state of the whole genome, we usually will be interested in the expression states of portions of the genome that interact either directly or indirectly.  We will represent these portions as subsets of $L$ and their expression states as functions from these subsets to $P$.
+As stated in \autoref{sec:probabilitydistributionsonnetworks}, in addition to the expression state of the whole genome, we usually will be interested in the expression states of portions of the genome that interact either directly or indirectly.  We will represent these portions as subsets of $L$ and their expression states as functions from these subsets to $P$.
 
 The power set of $L$, which we shall denote as $\mathcal{P}(L)$, can be regarded  as a category~\cite{Lane1998,MacLane1992,Awodey2006,Abramsky2011} in which the objects are subsets of $L$ and morphisms represent inclusion of a smaller subset into a larger superset (i.e. $O \subseteq O' \Rightarrow O \rightarrow O'$).  Then we will represent our expression states of subsets by the functor $\expr = \mathrm{Hom}(-,P)$.  Specifically, this functor may be described as
 \begin{equation}\label{eq:gpfunctor}
@@ -25,8 +25,8 @@ O &\mapsto P^O,\\
 O \subseteq O' &\mapsto (S \in P^{O'} \mapsto \{e|_O \mid e \in S\}). % res^{O'}_{O}.
 \end{split}
 \end{equation}
-For example, if we consider the case in which we have two variables $L=\{l_1,l_2\}$ and there are two potential states, $P=\{0,1\}$, then $\expr$ operates on the lattice of subsets generated by $L$ to give spaces of functions containing the possible \gnpm{} as exemplified in \ref{fig:efunctor}.
-% If we consider the case in which we have two variables $L=\{l_1,l_2\}$ and there are two states, $P=\{0,1\}$, then $\expr$ operates on each of the possible subsets of $L$ (i.e. $\{\}$, $\{l_1\}$, $\{l_2\}$, $\{l_1,l_2\}$) to give spaces of functions containing the possible \gnpm{} as exemplified in \ref{fig:efunctor}.
+For example, if we consider the case in which we have two variables $L=\{l_1,l_2\}$ and there are two potential states, $P=\{0,1\}$, then $\expr$ operates on the lattice of subsets generated by $L$ to give spaces of functions containing the possible \gnpm{} as exemplified in \autoref{fig:efunctor}.
+% If we consider the case in which we have two variables $L=\{l_1,l_2\}$ and there are two states, $P=\{0,1\}$, then $\expr$ operates on each of the possible subsets of $L$ (i.e. $\{\}$, $\{l_1\}$, $\{l_2\}$, $\{l_1,l_2\}$) to give spaces of functions containing the possible \gnpm{} as exemplified in \autoref{fig:efunctor}.
 For example, $\mathcal{E}(\{l_1,l_2\}) = \{ e^{12}_{00},e^{12}_{01},e^{12}_{10},e^{12}_{11} \}$ where $e^{12}_{01}(l_1) = 0$ and $e^{12}_{01}(l_2) = 1$. As another example, $\mathcal{E}(\{l_1\}) = \{ e^{1}_{0},e^{1}_{1} \}$ where $e^{1}_{0}(l_1)=0$ and $e^{1}_{1}(l_1)=1$. $\expr ( \{ l_1 \} \! \subseteq \! \{ l_1, l_2 \} )$ is given explicitly by
 \begin{equation}
 \begin{aligned}
@@ -84,15 +84,15 @@ In order to admit the basic tools of linear algebra for the purpose of calculati
 \begin{equation}\label{eq:emb}
 \rm{emb}(S) : \dist(S) \to \mathbb{R}^S.
 \end{equation}
-Because a convex combination of two probability distributions is again a probability distribution, the image of $\mathrm{emb}(S)$ consists of a convex set and the origin point (corresponding to the degenerate zero distribution).  Furthermore, if $n$ is the number of elements of the set $S$, this convex set works out to be the probability simplex with $n$ vertices, which we denote $\Delta_{n-1}$.  In our example above, $\mathcal{D}(\mathcal{E}(\{l_1,l_2\}))$ is the tetrahedron $\Delta_3$. Since any vector $v \in \mathbb{R}^S$ may be written as $v = c_{+} p_{+} - c_{-} p_{-}$ where $c_{+}, c_{-} \in [0,\infty)$ and $p_{+}$ and $p_{-}$ are probability distributions, the image of $\mathrm{emb}(S)$ spans the vector space $\mathbb{R}^S$.  For purposes of later reference, note that, if $f \colon S \to S'$ is a partial surjection, then $\mathcal{D}$ extends to a fractional linear map, as in \ref{eq:condexample}, from $\mathbb{R}^S$ to $\mathbb{R}^{S'}$ and that, in the special case where $f$ is a total surjection, as in \ref{eq:margexample}, it is in fact a linear map.
+Because a convex combination of two probability distributions is again a probability distribution, the image of $\mathrm{emb}(S)$ consists of a convex set and the origin point (corresponding to the degenerate zero distribution).  Furthermore, if $n$ is the number of elements of the set $S$, this convex set works out to be the probability simplex with $n$ vertices, which we denote $\Delta_{n-1}$.  In our example above, $\mathcal{D}(\mathcal{E}(\{l_1,l_2\}))$ is the tetrahedron $\Delta_3$. Since any vector $v \in \mathbb{R}^S$ may be written as $v = c_{+} p_{+} - c_{-} p_{-}$ where $c_{+}, c_{-} \in [0,\infty)$ and $p_{+}$ and $p_{-}$ are probability distributions, the image of $\mathrm{emb}(S)$ spans the vector space $\mathbb{R}^S$.  For purposes of later reference, note that, if $f \colon S \to S'$ is a partial surjection, then $\mathcal{D}$ extends to a fractional linear map, as in \autoref{eq:condexample}, from $\mathbb{R}^S$ to $\mathbb{R}^{S'}$ and that, in the special case where $f$ is a total surjection, as in \autoref{eq:margexample}, it is in fact a linear map.
 
 \section{Precise formulation of coarse-graining network states}\label{secsupp:coarsegrainingphenotypes}
 
-As described in \ref{sec:genenetworkphenmap} it is also possible to consider network states that derive from coarse-graining lower-level network states. Once this is done, one arrives at probability distributions over network modules like that introduced in \ref{sec:probabilitydistributionsonnetworks}. As a result of this, our conclusions that are formulated in terms of a single level of coarse-graining \gnpm{} also apply to coarse-graining over multiple levels at once despite the fact that the parameters of the relevant probabilistic model are likely to be different.
+As described in \autoref{sec:genenetworkphenmap} it is also possible to consider network states that derive from coarse-graining lower-level network states. Once this is done, one arrives at probability distributions over network modules like that introduced in \autoref{sec:probabilitydistributionsonnetworks}. As a result of this, our conclusions that are formulated in terms of a single level of coarse-graining \gnpm{} also apply to coarse-graining over multiple levels at once despite the fact that the parameters of the relevant probabilistic model are likely to be different.
 
-% For a subset of genes $O \subseteq L$, let $\phi_i (O)$ be the set of phenotype values at level $i$, which can be determined from the expression levels of genes in $O$.  Note that $\phi_i (O)$ may be empty if the set $O$ does not contain enough genes to determine the values of any phenotype at level $i$. If $i \le j$, let $\Omega_{ij}(O) : \phi_i(O) \to \phi_j(O)$ be the coarse-graining map which describes how higher level phenotypes are determined from lower level phenotypes. This map is formulated precisely in \refsupp{} \ref{secsupp:coarsegrainingphenotypes}.
+% For a subset of genes $O \subseteq L$, let $\phi_i (O)$ be the set of phenotype values at level $i$, which can be determined from the expression levels of genes in $O$.  Note that $\phi_i (O)$ may be empty if the set $O$ does not contain enough genes to determine the values of any phenotype at level $i$. If $i \le j$, let $\Omega_{ij}(O) : \phi_i(O) \to \phi_j(O)$ be the coarse-graining map which describes how higher level phenotypes are determined from lower level phenotypes. This map is formulated precisely in \refsupp{} \autoref{secsupp:coarsegrainingphenotypes}.
 
-% Recall from \ref{sec:coarsegrainingphenotypes} that
+% Recall from \autoref{sec:coarsegrainingphenotypes} that
 
 For each subset of variables $O \in \mathcal{P}(L)$, let $\phi_i (O)$ be the set of network states at level $i$, which can be determined from the expression levels of variables in $O$.  Note that $\phi_i (O)$ may be empty if the set $O$ does not contain enough variables to determine the values of any network state at level $i$. When $O_1 \subseteq O_2 \in \mathcal{P}(L)$, we have a restriction map $\pi_i^{O_2 O_1} \colon \phi_i(O_2) \to \phi_i(O_1)$.  These maps satisfy the consistency conditions that $\pi_i^{OO}$ is the identity map and that $\pi_i^{O_3 O_2} \circ \pi_i^{O_2 O_1} = \pi_i^{O_3 O_1}$, i.e. $\pi_i$ is a functor on $(\mathcal{P}(L), \subseteq)$.  As stated earlier, we set $\phi_1 (O) = P^O$ and $\pi_1^{O_2 O_1}$ to be the restriction map from $P^{O_2}$ to $P^{O_1}$.  If $i \le j$, let $\Omega_{ij}(O) : \phi_i(O) \to \phi_j(O)$ be the coarse-graining map which describes how higher level network states are determined from lower level network states.  These maps are all surjections and, for consistency, we will require the following conditions:
 \begin{enumerate}
@@ -102,10 +102,10 @@ For each subset of variables $O \in \mathcal{P}(L)$, let $\phi_i (O)$ be the set
 \end{enumerate}
 In other words, $\Omega$ must be suitably functorial in both of its arguments.
 
-For example, if our lower level network states for a set of variables $O_1 = \{ l_1,l_2,l_3,l_4 \}$ are given by a set of binary sequences, then the projection of these network states down to the set $O_2 = \{l_3,l_4\}$ followed by mapping to the higher level network states $x=\{01,10\}$ and $y=\{11\}$ is equivalent to first mapping to the higher-level network states $X$ and $Y$ and then projecting down to $O_2$ shown by the equivalent paths from the top-left to the bottom-right in \ref{fig:phenotypehierarchy}A.
+For example, if our lower level network states for a set of variables $O_1 = \{ l_1,l_2,l_3,l_4 \}$ are given by a set of binary sequences, then the projection of these network states down to the set $O_2 = \{l_3,l_4\}$ followed by mapping to the higher level network states $x=\{01,10\}$ and $y=\{11\}$ is equivalent to first mapping to the higher-level network states $X$ and $Y$ and then projecting down to $O_2$ shown by the equivalent paths from the top-left to the bottom-right in \autoref{fig:phenotypehierarchy}A.
 Of course, there is an equivalent diagram for the subset $\{ l_1,l_2,l_3 \}$.
 
-Since the map $\Omega_{1i}(O)$ is a surjection from $P^O$ onto $\phi_i(O)$, we can use it to map our probabilistic structures to $\phi_i(O)$.  Set $\mathcal{E}_i = \Omega_{1i}(O)^{-1} \circ \mathcal{E}$ and $\dist_i = \Omega_{1i}(O)^{-1} \circ \dist$.  Then we end up with the overall relationships summarized in \ref{fig:abstractroadmap}. As a consequence of the consistency conditions the coarse-graining maps $\phi$ and $\Omega$, there is a natural transformation between the functors $\expr_i$ and $\expr_{i+1}$ implying that the following diagram commutes
+Since the map $\Omega_{1i}(O)$ is a surjection from $P^O$ onto $\phi_i(O)$, we can use it to map our probabilistic structures to $\phi_i(O)$.  Set $\mathcal{E}_i = \Omega_{1i}(O)^{-1} \circ \mathcal{E}$ and $\dist_i = \Omega_{1i}(O)^{-1} \circ \dist$.  Then we end up with the overall relationships summarized in \autoref{fig:abstractroadmap}. As a consequence of the consistency conditions the coarse-graining maps $\phi$ and $\Omega$, there is a natural transformation between the functors $\expr_i$ and $\expr_{i+1}$ implying that the following diagram commutes
 $$
 \xymatrix{
 \expr_{i+1}(O_1) \ar[r]^{\expr_{i+1}(\subseteq)} \ar[d]_{t_{O_1}} & \expr_{i+1}(O_2) \ar[d]^{t_{O_2}} \\
@@ -113,7 +113,7 @@ $$
 $$
 for any $O_2 \subseteq O_1$.
 
-Given a covering $\mathcal{G}$ of the space of biological network variables, we can consider the higher order network states associated to the elements of $\mathcal{G}$.  For a suitable choice of cover and a suitable level of network states, it may happen that the network states associated to different elements of $\mathcal{G}$ are distinct.  For instance, in the example of \ref{fig:phenotypehierarchy}, if we take $\mathcal{G} = \{O_1, O_2\}$ where $O_1 = \{l_1, l_2, l_3\}$ and $O_2 = \{l_3, l_4\}$, we have $\phi_{i+1}(O_1) = \{u,v\}$ and $\phi_{i+1}(O_2) = \{x,y\}$.  In such a case, if we were to perform one experiment which measured the network states $\{u,v\}$ and another experiment which measured $\{x,y\}$, then the result could be understood as examining the covering $\{O_1, O_2\}$ at network state level $i+1$.
+Given a covering $\mathcal{G}$ of the space of biological network variables, we can consider the higher order network states associated to the elements of $\mathcal{G}$.  For a suitable choice of cover and a suitable level of network states, it may happen that the network states associated to different elements of $\mathcal{G}$ are distinct.  For instance, in the example of \autoref{fig:phenotypehierarchy}, if we take $\mathcal{G} = \{O_1, O_2\}$ where $O_1 = \{l_1, l_2, l_3\}$ and $O_2 = \{l_3, l_4\}$, we have $\phi_{i+1}(O_1) = \{u,v\}$ and $\phi_{i+1}(O_2) = \{x,y\}$.  In such a case, if we were to perform one experiment which measured the network states $\{u,v\}$ and another experiment which measured $\{x,y\}$, then the result could be understood as examining the covering $\{O_1, O_2\}$ at network state level $i+1$.
 
 
 
@@ -135,7 +135,7 @@ If, moreover, this first condition implies the existence of $d \in \mathcal{D}( 
 \begin{equation}
 \mathbb{M}(\mathcal{G}) = \{ d_O \in \dist{}(\expr{}(\mathcal{G})) \mid (\exists d ) \,\, d|O = d_O \}.
 \end{equation}
-In general, the system of equations $d|O = d_O$ for all $O \in \mathcal{G}$ is underdetermined and so local consistency does not imply global consistency. The local and global consistency conditions are related to the mathematical concepts from which they derive in \refsupp{} \ref{secsupp:compatibilityofgpms}. We will now examine the situation more closely to determine under what circumstances global consistency holds.
+In general, the system of equations $d|O = d_O$ for all $O \in \mathcal{G}$ is underdetermined and so local consistency does not imply global consistency. The local and global consistency conditions are related to the mathematical concepts from which they derive in \refsupp{} \autoref{secsupp:compatibilityofgpms}. We will now examine the situation more closely to determine under what circumstances global consistency holds.
 
 For a cover of the space of variables, $\mathcal{G}$, we can construct a matrix, $\mathbf{G}$, representing the relationship,
 % $R = \coprod_{O \in \mathcal{G}} \mathcal{E}(O \subset L) \subseteq \mathcal{E}(L) \times \expr (\mathcal{G})$,
@@ -153,9 +153,9 @@ $\mathbf{G}$ can be specified for all $e^O_{\vec{i}} \in \mathcal{E}(\mathcal{G}
 0, & \text{otherwise}.
 \end{cases}
 \end{eqnarray}
-For example, given the covering $\mathcal{G} = \{ \{l_1\}, \{l_2\} \}$ of a set of two variables $L = \{ l_1, l_2 \}$ the associated matrix $\mathbf{G}$ is shown in \ref{fig:efunctor}B.
+For example, given the covering $\mathcal{G} = \{ \{l_1\}, \{l_2\} \}$ of a set of two variables $L = \{ l_1, l_2 \}$ the associated matrix $\mathbf{G}$ is shown in \autoref{fig:efunctor}B.
 
-% Combining the marginalization matrix $\mathbf{G}$ with the maps previously defined in \ref{eq:emb} the following diagram demonstrates the relationships between the spaces of probability distributions and the linear spaces in which they are embedded
+% Combining the marginalization matrix $\mathbf{G}$ with the maps previously defined in \autoref{eq:emb} the following diagram demonstrates the relationships between the spaces of probability distributions and the linear spaces in which they are embedded
 
 % \begin{equation*}
 % \xymatrix{
@@ -179,9 +179,9 @@ Since $\mathbf{G}$ is not invertible the equation $v = \mathbf{G}x$ can only be 
 \begin{eqnarray}\label{eq:globalpolytope}
 \mathbb{M}(\mathcal{G}) &=& \{ v \; | v = \mathbf{G} x,\; (\exists x \in T) \; (\exists y \in \dist{}(\expr{}(L)))\; x-y \in ker \mathbf{G}  \}.
 \end{eqnarray}
-In order to obtain inequalities that define $\mathbb{M}(\mathcal{G})$, Fourier-Motzkin elimination can be used to eliminate $x$ and $y$. Alternatively one can use the fact, \cite{Wainwright2007} proposition 8.3, that $\mathbb{M}(\mathcal{G})$ is given by removing the non-integer vertices from a vertex represntation of $\mathbb{L}(\mathcal{G})$ and the ability to interconvert between vertex and inequality representations to compute the same inequalities as described in \refsupp{} \ref{secsupp:fourcycleexample}.
+In order to obtain inequalities that define $\mathbb{M}(\mathcal{G})$, Fourier-Motzkin elimination can be used to eliminate $x$ and $y$. Alternatively one can use the fact, \cite{Wainwright2007} proposition 8.3, that $\mathbb{M}(\mathcal{G})$ is given by removing the non-integer vertices from a vertex represntation of $\mathbb{L}(\mathcal{G})$ and the ability to interconvert between vertex and inequality representations to compute the same inequalities as described in \refsupp{} \autoref{secsupp:fourcycleexample}.
 
-Recall from \ref{sec:compatibilityofgpms} that given a covering of the space of variables $\mathcal{G}$, a compatible family for $\mathcal{G}$ with respect to $\mathcal{D} \circ \mathcal{E}$ is given by a family of distributions $\{d_O \in \dist (\mathcal{E}(O)) | O \in \mathcal{G}\}$ such that for all $O, O' \in \mathcal{G}$
+Recall from \autoref{sec:compatibilityofgpms} that given a covering of the space of variables $\mathcal{G}$, a compatible family for $\mathcal{G}$ with respect to $\mathcal{D} \circ \mathcal{E}$ is given by a family of distributions $\{d_O \in \dist (\mathcal{E}(O)) | O \in \mathcal{G}\}$ such that for all $O, O' \in \mathcal{G}$
 \begin{eqnarray}
 %\forall O \in \mathcal{G} \left[ \exists d_O \in \mathcal{D}_R\mathcal{E}(O) \right],\\
 d_O|O \cap O' = d_{O'}|O \cap O'.
@@ -194,7 +194,7 @@ For a cover of the space of variables, $\mathcal{G}$, we can construct a matrix,
 %$\{t_1, \ldots t_m\} = \{t_j | t_j \in P^L\}$.
 For the second factor, $ \mathcal{E}(\mathcal{G}) = \coprod_{O \in \mathcal{G}} \mathcal{E}(O) = \{e^O_{\vec{i}} | O \in \mathcal{G}, \vec{i} \in P^{|O|} \}$.
 %$\{e_1, \ldots e_n\} = \coprod_{O \in \mathcal{G}} \mathcal{E}(O)$.
- So we have two sets of maps, one defined on $P^L$ and the other defined on $\mathcal{E}(O) = P^O$ for each $O \in \mathcal{G}$. This yields the method of specifying the intended relationship that defines $\mathbf{G}$ for all $e^O_{\vec{i}} \in \mathcal{E}(\mathcal{G})$ and $e^{L}_{\vec{j}} \in \mathcal{E}(L)$ given in \ref{eq:margmat}.
+ So we have two sets of maps, one defined on $P^L$ and the other defined on $\mathcal{E}(O) = P^O$ for each $O \in \mathcal{G}$. This yields the method of specifying the intended relationship that defines $\mathbf{G}$ for all $e^O_{\vec{i}} \in \mathcal{E}(\mathcal{G})$ and $e^{L}_{\vec{j}} \in \mathcal{E}(L)$ given in \autoref{eq:margmat}.
 This matrix can be viewed as an operator acting via matrix multiplication on distributions
 \begin{eqnarray*}
 \mathbf{G} \colon \mathcal{D}(\mathcal{E}(L)) &\rightarrow& \mathcal{D}( \mathcal{E}(\mathcal{G})),\\
@@ -202,7 +202,7 @@ d &\mapsto& \coprod_{O \in \mathcal{G}} d|O,
 \end{eqnarray*}
 and thereby taking a global distribution, $\dist (\mathcal{E}(L))$, defined on \gnpm{} whose domain is the full set of variables $L$ into the local distributions, $\dist (\mathcal{E}(\mathcal{G}))$, that are defined relative to network modules contained in a covering of the space of variables $\mathcal{G}$. $\mathbf{G}$ provides a way of determining the distributions on \gnpm{} for a given context (i.e. $\coprod_{O \in \mathcal{G}} d|O$) that can be derived from distributions (i.e. $\mathcal{D} ( \mathcal{E}(L) )$) defined on the global \gnpm{} (i.e. $\mathcal{E}(L)$ as opposed to $\mathcal{E}(O)$).
 
-Combining the marginalization matrix $\mathbf{G}$ with the maps previously defined in \ref{eq:emb} the following diagram demonstrates the relationships between the spaces of probability distributions and the linear spaces in which they are embedded
+Combining the marginalization matrix $\mathbf{G}$ with the maps previously defined in \autoref{eq:emb} the following diagram demonstrates the relationships between the spaces of probability distributions and the linear spaces in which they are embedded
 
 \begin{equation*}
 \xymatrix{
@@ -217,7 +217,7 @@ The locally, $\mathbb{L}(\mathcal{G})$, and globally, $\mathbb{M}(\mathcal{G})$,
 emb_{\mathcal{E}(\mathcal{G})}(\mathcal{D}(\mathcal{E}(\mathcal{G}))) &=& \left\{ p^{O}_{\vec{i}} \; \bigg| \; (\forall\, O \in \mathcal{G}) \; (\forall\, \vec{i} \in P^{|O|}) \;\; p^O_{\vec{i}} \geq 0, \; (\forall\, O \in \mathcal{G}) \sum_{\vec{i} \in P^{|O|}} p^{O}_{\vec{i}} = 1 \right\}, \label{eq:embdeg}\\
 emb_{\mathcal{E}(L)}(\mathcal{D}(\mathcal{E}(L))) &=& \left\{ p^L_{\vec{i}} \; \bigg| \; (\forall\, \vec{i} \in P^{|L|}) \; p^L_{\vec{i}} \geq 0, \; \sum_{\vec{i} \in P^{|L|}} p^L_{\vec{i}} = 1 \right\}. \label{eq:embdel}
 \end{eqnarray}
-If the embedding into linear spaces is to be considered explicitly, then \ref{eq:embdeg} and \ref{eq:embdel} can be substituted for $\dist{}(\expr{}(\mathcal{G}))$ and $\dist{}(\expr{}(L))$ in \ref{eq:localpolytope} and \ref{eq:globalpolytope}.
+If the embedding into linear spaces is to be considered explicitly, then \autoref{eq:embdeg} and \autoref{eq:embdel} can be substituted for $\dist{}(\expr{}(\mathcal{G}))$ and $\dist{}(\expr{}(L))$ in \autoref{eq:localpolytope} and \autoref{eq:globalpolytope}.
 % To determine explicit conditions on the probabilities we express these in terms of the fundamental subspaces associated to the linear map $\mathbf{G}$. In order for a vector $v$ to lie in $\mathbf{G}(\mathbb{R}^{\mathcal{E}(L)})$, we must have $v=\mathbf{G}x$ for some $x \in \mathbb{R}^{\mathcal{E}(L)}$.  The cokernel of $\mathbf{G}$ gives the obstructions to this system $v=\mathbf{G}x$ having a solution. In order to eliminate these obstructions, constraints must be imposed on $\mathbb{R}^{\mathcal{E}(\mathcal{G})}$ and these constraints are given precisely via annihilating the cokernel, i.e. $\mathbf{G}(\mathbb{R}^{\mathcal{E}(L)}) = \{ v \; | \; (\forall u \in coker \mathbf{G}) \; u \cdot v = 0\}$.  We then take the appropriate intersection to determine $\mathbb{L}(\mathcal{G})$ by requiring $v \in emb_{\mathcal{E}(\mathcal{G})}(\mathcal{D}(\mathcal{E}(\mathcal{G})))$
 % \begin{eqnarray}\label{eq:localpolytope}
 % \mathbb{L}(\mathcal{G}) &=& \{ v \in emb_{\mathcal{E}(\mathcal{G})}(\mathcal{D}(\mathcal{E}(\mathcal{G}))) \; | \; (\forall u \in coker \mathbf{G}) \; u \cdot v = 0\}.
@@ -238,18 +238,18 @@ p^{123}_{102} &= 2/15 & p^{123}_{120} &= 1/30 & p^{123}_{210} &= 1/30\\
 p^{123}_{112} &= 1/30 & p^{123}_{121} &= 2/15 & p^{123}_{211} &= 2/15
 \end{aligned}
 \end{equation}
-with all other probabilities being zero, then $\dist (\pi_1)(d), \dist (\pi_2)(d), \dist (\pi_3)(d)$ are equivalent to the probability tables in \ref{fig:inconsistentthreecycle}A, which as shown in \ref{sec:inconsistency}, could not be achieved by marginalization alone. For example, given that $dom(\pi_1) = \{ e^{123}_{002}, e^{123}_{012}, e^{123}_{102}, e^{123}_{112} \}$ then $d(dom(\pi_1)) = \frac{1}{30} + \frac{2}{30} + \frac{2}{30} + \frac{1}{30} = \frac{1}{3}$. Substituting this factor and the fact that ${\pi_1}^{-1}(e^{12}_{ij}) = e^{123}_{ij2}$ into \ref{eq:distfunctor}
+with all other probabilities being zero, then $\dist (\pi_1)(d), \dist (\pi_2)(d), \dist (\pi_3)(d)$ are equivalent to the probability tables in \autoref{fig:inconsistentthreecycle}A, which as shown in \autoref{sec:inconsistency}, could not be achieved by marginalization alone. For example, given that $dom(\pi_1) = \{ e^{123}_{002}, e^{123}_{012}, e^{123}_{102}, e^{123}_{112} \}$ then $d(dom(\pi_1)) = \frac{1}{30} + \frac{2}{30} + \frac{2}{30} + \frac{1}{30} = \frac{1}{3}$. Substituting this factor and the fact that ${\pi_1}^{-1}(e^{12}_{ij}) = e^{123}_{ij2}$ into \autoref{eq:distfunctor}
 $$
 p^{12}_{ij} = \dist (\pi_1)(d)(e^{12}_{ij}) = \frac{d({\pi_1}^{-1}(e^{12}_{ij}))}{d(dom(\pi_1))} = 3 p^{123}_{ij2},
 $$
-then renormalizes probabilities resulting in $p^{12}_{00} = 0.1, p^{12}_{01} = 0.4, p^{12}_{10} = 0.4, p^{12}_{11} = 0.1$ along with the analogs for $p^{23}_{ij}$ and $p^{13}_{ij}$, which are precisely equivalent to what appears in \ref{fig:inconsistentthreecycle}A as suggested above.
+then renormalizes probabilities resulting in $p^{12}_{00} = 0.1, p^{12}_{01} = 0.4, p^{12}_{10} = 0.4, p^{12}_{11} = 0.1$ along with the analogs for $p^{23}_{ij}$ and $p^{13}_{ij}$, which are precisely equivalent to what appears in \autoref{fig:inconsistentthreecycle}A as suggested above.
 
-If constraints consistent with those of \ref{fig:inconsistentthreecycle}A are placed on the given network, either the network must add another variable in order to satisfy them directly or the network context imposing those constraints must coarse-grain the network in a suitable way. In what follows, we argue that the former is much more plausible than the latter. This ultimately suggests conditions in which cycle breakage may be selected for to relieve inconsistent constraints that can arise when cycles are present.
+If constraints consistent with those of \autoref{fig:inconsistentthreecycle}A are placed on the given network, either the network must add another variable in order to satisfy them directly or the network context imposing those constraints must coarse-grain the network in a suitable way. In what follows, we argue that the former is much more plausible than the latter. This ultimately suggests conditions in which cycle breakage may be selected for to relieve inconsistent constraints that can arise when cycles are present.
 
 
 \section{Example volume ratio computation for the four-cycle network architecture}\label{secsupp:fourcycleexample}
 
-For the purposes of this example, we take the full set of variables to be $L = \{ l_1,l_2,l_3,l_4 \}$. Consider the case in which each of the network modules under consideration has two variables and we specify the covering of the space of variables given by $\mathcal{G} = \{\{l_1,l_2 \},\{l_1,l_4 \},\{l_3,l_2\},\{l_3,l_4\} \}$.  We will compute $\mathbb{L}(\mathcal{G})$ using the same method which was used for the example of three variables.  By analogy with \ref{eq:localconsistencythreegenes}, the local consistency conditions now are as follows:
+For the purposes of this example, we take the full set of variables to be $L = \{ l_1,l_2,l_3,l_4 \}$. Consider the case in which each of the network modules under consideration has two variables and we specify the covering of the space of variables given by $\mathcal{G} = \{\{l_1,l_2 \},\{l_1,l_4 \},\{l_3,l_2\},\{l_3,l_4\} \}$.  We will compute $\mathbb{L}(\mathcal{G})$ using the same method which was used for the example of three variables.  By analogy with \autoref{eq:localconsistencythreegenes}, the local consistency conditions now are as follows:
 \begin{equation}
 \begin{aligned}\label{eq:pparsys}
 p^1_0 &= p^{12}_{00} + p^{12}_{01} = p^{14}_{00} + p^{14}_{01}, &
@@ -262,7 +262,7 @@ p^4_0 &= p^{14}_{00} + p^{14}_{10} = p^{34}_{00} + p^{34}_{10},&
 p^4_1 &= p^{14}_{01} + p^{14}_{11} = p^{34}_{01} + p^{34}_{11}.
 \end{aligned}
 \end{equation}
-Likewise, the equations determined by the conditions $v = \mathbf{G}(x)$ which are analogous to the matrix $\mathbf{G}$ in \ref{fig:efunctor}B are now
+Likewise, the equations determined by the conditions $v = \mathbf{G}(x)$ which are analogous to the matrix $\mathbf{G}$ in \autoref{fig:efunctor}B are now
 \begin{equation}
 \begin{aligned}\label{eq:globsys}
 p^{12}_{00} &= p^{1234}_{0000} + p^{1234}_{0010} + p^{1234}_{0001} + p^{1234}_{0011} &
@@ -283,9 +283,9 @@ p^{34}_{01} &= p^{1234}_{0001} + p^{1234}_{1001} + p^{1234}_{0101} + p^{1234}_{1
 p^{34}_{11} &= p^{1234}_{0011} + p^{1234}_{1011} + p^{1234}_{0111} + p^{1234}_{1111},
 \end{aligned}
 \end{equation}
-which are displayed in matrix form in \ref{tab:logmat222}.
+which are displayed in matrix form in \autoref{tab:logmat222}.
 
-Rather than proceeding to compute $\mathbb{L}(\mathcal{G})$ using elimination of inequalities as before, we will instead make use of the fact that the extremal points of $\mathbb{L}(\mathcal{G})$ happen to be the extremal points of $\mathbb{L}(\mathcal{G})$ with integer coordinates.  This is the approach which was used to compute the volume ratios shown in \ref{fig:ncycvolrat}.  More specifically, those computations were done using a computer program based on the following algorithm which is available via a virtual machine that can be reconstructed using the instructions available on \href{https://github.com/cameronraysmith/sep}{github}:
+Rather than proceeding to compute $\mathbb{L}(\mathcal{G})$ using elimination of inequalities as before, we will instead make use of the fact that the extremal points of $\mathbb{L}(\mathcal{G})$ happen to be the extremal points of $\mathbb{L}(\mathcal{G})$ with integer coordinates.  This is the approach which was used to compute the volume ratios shown in \autoref{fig:ncycvolrat}.  More specifically, those computations were done using a computer program based on the following algorithm which is available via a virtual machine that can be reconstructed using the instructions available on \href{https://github.com/cameronraysmith/sep}{github}:
 
 \begin{enumerate}
 \item Compute (a basis for) the cokernel of $\mathbf{G}$. The cokernel gives the obstructions to the system $\mathbf{G}\mathbf{X}=\mathbf{V}$ having a solution. In order to eliminate these obstructions constraints must be imposed on $\mathbb{R}^{\mathcal{E}(\mathcal{G})}$ and these constraints are given precisely via annihilating the cokernel.
@@ -297,7 +297,7 @@ Rather than proceeding to compute $\mathbb{L}(\mathcal{G})$ using elimination of
 
 For standard computations on polytopes, we make use of the standard algorithms incorporated by the polymake project \cite{Gawrilow2000}. In some cases, the volume computation is too costly to perform exactly. In those cases we use the approximation given in \cite{Cousins}.  We now return to our example of four variables $\mathcal{G} = \{\{l_1,l_2 \},\{l_1,l_4 \},\{l_3,l_2\},\{l_3,l_4\} \}$ and $P=\{0,1\}$ and use it to walk through key components of the algorithm.
 
-The equalities derived by computing the cokernel of the matrix $\mathbf{G}$ given in \ref{tab:logmat222} and adjoining rows that enforce the normalization of the marginal distributions are represented as a matrix in \ref{eq:eqmat}.
+The equalities derived by computing the cokernel of the matrix $\mathbf{G}$ given in \autoref{tab:logmat222} and adjoining rows that enforce the normalization of the marginal distributions are represented as a matrix in \autoref{eq:eqmat}.
 \begin{equation}\label{eq:eqmat}
 \begin{aligned}
 \begin{bmatrix}
@@ -315,7 +315,7 @@ The equalities derived by computing the cokernel of the matrix $\mathbf{G}$ give
 \end{bmatrix}
 \end{aligned}
 \end{equation}
-The final column represents the right-hand side of each equality. It turns out all but one of the normalization conditions is linearly dependent with respect to the other equalities and so we can reduce this set of $7+4=11$ constraints to the $8$ represented again in matrix form in \ref{eq:kceqsrefa}.
+The final column represents the right-hand side of each equality. It turns out all but one of the normalization conditions is linearly dependent with respect to the other equalities and so we can reduce this set of $7+4=11$ constraints to the $8$ represented again in matrix form in \autoref{eq:kceqsrefa}.
 \begin{equation}\label{eq:kceqsrefa}
 \begin{aligned}
 \begin{bmatrix}
@@ -330,7 +330,7 @@ The final column represents the right-hand side of each equality. It turns out a
 \end{bmatrix}
 \end{aligned}
 \end{equation}
-These equalities can now be substituted into the positivity inequalities necessary to define any space of probability distributions. This yields a set of inequalities \ref{eq:polrepindineqs} that specify an H-representation of the polytope $\mathbb{L}(\mathcal{G})$. This is the modular polytope, which is a subspace of $\Delta_3^{\oplus 4}$ associated to distributions consistent with the linear transformation $\mathbf{G}$
+These equalities can now be substituted into the positivity inequalities necessary to define any space of probability distributions. This yields a set of inequalities \autoref{eq:polrepindineqs} that specify an H-representation of the polytope $\mathbb{L}(\mathcal{G})$. This is the modular polytope, which is a subspace of $\Delta_3^{\oplus 4}$ associated to distributions consistent with the linear transformation $\mathbf{G}$
 \begin{equation}\label{eq:polrepindineqs}
 \begin{aligned}
 \begin{bmatrix}
@@ -353,7 +353,7 @@ These equalities can now be substituted into the positivity inequalities necessa
 \end{bmatrix}
 \end{aligned}
 \end{equation}
-A row $(a_0,a_1,...,a_d)$ corresponds to the inequality $a_0 + a_1 x_1 + ... + a_d x_d >= 0$. The embedded identity matrix has, in this particular case eight, rows that specify the positivity of the variables corresponding to each of the, in this particular case eight, dimensions. Transforming this inequality or H-representation to a vertex or V-representation of the modular polytope produces \ref{eq:vrepfromhrep}.
+A row $(a_0,a_1,...,a_d)$ corresponds to the inequality $a_0 + a_1 x_1 + ... + a_d x_d >= 0$. The embedded identity matrix has, in this particular case eight, rows that specify the positivity of the variables corresponding to each of the, in this particular case eight, dimensions. Transforming this inequality or H-representation to a vertex or V-representation of the modular polytope produces \autoref{eq:vrepfromhrep}.
 \begin{equation}\label{eq:vrepfromhrep}
 \begin{aligned}
 \begin{bmatrix}
@@ -384,7 +384,7 @@ A row $(a_0,a_1,...,a_d)$ corresponds to the inequality $a_0 + a_1 x_1 + ... + a
 \end{bmatrix}
 \end{aligned}
 \end{equation}
-This completes steps 1-3 of the algorithm outlined above. Step 4 is trivial; to obtain the V-represention of $\mathbb{M}(\mathcal{G})$, we strike out the rows in which $1/2$ appears.  Finally, we compute the volume of the polytope whose vertices are the rows of \ref{eq:vrepfromhrep} to obtain $\text{Vol}(\mathbb{L}(\mathcal{G})) = \frac{1}{120}$ and the volume of the polytope whose vertices are rows of integers to obtain $\text{Vol}(\mathbb{M}(\mathcal{G})) = \frac{1}{180}$ yielding a ratio $\frac{\text{Vol}(\mathbb{M}(\mathcal{G}))}{\text{Vol}(\mathbb{L}(\mathcal{G}))} = \frac{2}{3}$.
+This completes steps 1-3 of the algorithm outlined above. Step 4 is trivial; to obtain the V-represention of $\mathbb{M}(\mathcal{G})$, we strike out the rows in which $1/2$ appears.  Finally, we compute the volume of the polytope whose vertices are the rows of \autoref{eq:vrepfromhrep} to obtain $\text{Vol}(\mathbb{L}(\mathcal{G})) = \frac{1}{120}$ and the volume of the polytope whose vertices are rows of integers to obtain $\text{Vol}(\mathbb{M}(\mathcal{G})) = \frac{1}{180}$ yielding a ratio $\frac{\text{Vol}(\mathbb{M}(\mathcal{G}))}{\text{Vol}(\mathbb{L}(\mathcal{G}))} = \frac{2}{3}$.
 
 % \section{A generative process for apparently inconsistent pairwise distributions}\label{secsupp:generativeprocessapparentinconsistency}
 
@@ -473,15 +473,15 @@ This completes steps 1-3 of the algorithm outlined above. Step 4 is trivial; to 
 % $d_{11}$ & $f_1$ \\
 % \end{tabular}
 % \end{center}
-% \ref{fig:condmargprobspaces} shows these mappings in terms of colored subsets.
+% \autoref{fig:condmargprobspaces} shows these mappings in terms of colored subsets.
 
-% It is thus possible to generate what appear to be inconsistent pairwise distributions by embedding the system in \ref{fig:inconsistentthreecycle} into a consistent system represented by \ref{fig:controlnetwork}. In this system we consider the collection of pairwise probability distributions $p(l_1,l_2)$, $p(l_2,l_3)$, $p(l_1,l_3)$, and the joint probability distribution $p(m_1,m_2,m_3,m_4)$ where the states of genes $l_i \in \{ 0, 1\}$ and genes $m_i \in \{0,1,2\} \equiv \mathcal{M}$. The random variables representing the states of genes $l_1,l_2,l_3$ correspond to $m_1,m_2,m_3$ respectively and $m_4$ is a control random variable colored in dark gray in \ref{fig:controlnetwork}. We specify the control exhibited by $m_4$ over $m_1,m_2,m_3$ via the constraints
+% It is thus possible to generate what appear to be inconsistent pairwise distributions by embedding the system in \autoref{fig:inconsistentthreecycle} into a consistent system represented by \autoref{fig:controlnetwork}. In this system we consider the collection of pairwise probability distributions $p(l_1,l_2)$, $p(l_2,l_3)$, $p(l_1,l_3)$, and the joint probability distribution $p(m_1,m_2,m_3,m_4)$ where the states of genes $l_i \in \{ 0, 1\}$ and genes $m_i \in \{0,1,2\} \equiv \mathcal{M}$. The random variables representing the states of genes $l_1,l_2,l_3$ correspond to $m_1,m_2,m_3$ respectively and $m_4$ is a control random variable colored in dark gray in \autoref{fig:controlnetwork}. We specify the control exhibited by $m_4$ over $m_1,m_2,m_3$ via the constraints
 % \begin{align*}
 % p(m_1=2|m_4=0)=1,\\
 % p(m_2=2|m_4=1)=1,\\
 % p(m_3=2|m_4=2)=1.
 % \end{align*}
-% We set $p(l_1,l_2)$, $p(l_2,l_3)$, $p(l_1,l_3)$ equal to those along the respective edges in \ref{fig:inconsistentthreecycle}A and then enforce analogous constraints on $p(m_1,m_2,m_3,m_4)$
+% We set $p(l_1,l_2)$, $p(l_2,l_3)$, $p(l_1,l_3)$ equal to those along the respective edges in \autoref{fig:inconsistentthreecycle}A and then enforce analogous constraints on $p(m_1,m_2,m_3,m_4)$
 % \begin{align*}
 % p(m_1,m_2|m_4=2)=p(l_1,l_2),\\
 % p(m_2,m_3|m_4=0)=p(l_2,l_3),\\
@@ -552,7 +552,7 @@ This completes steps 1-3 of the algorithm outlined above. Step 4 is trivial; to 
 % %     0.4000    0.1000         0
 % %          0         0         0
 
-% This scenario may be implemented via a synthetic gene circuit with four genes, where each of the first three genes contains an operator site for each of the other two and all three genes contain an operator site for the fourth gene \ref{fig:condgenescenario}. If the fourth gene is constitutively expressed at a low rate so that it persists at low copy number it is uniformly, in time, likely to be bound to the operator site present on each of the first three genes. When gene four is bound to its operator site on any of the first three genes, that gene's state is $2$. If gene four is absent, the output state is determined by the presence or absence of the other two operator sites according to each of the tables depicted in \ref{fig:condgenescenario}.
+% This scenario may be implemented via a synthetic gene circuit with four genes, where each of the first three genes contains an operator site for each of the other two and all three genes contain an operator site for the fourth gene \autoref{fig:condgenescenario}. If the fourth gene is constitutively expressed at a low rate so that it persists at low copy number it is uniformly, in time, likely to be bound to the operator site present on each of the first three genes. When gene four is bound to its operator site on any of the first three genes, that gene's state is $2$. If gene four is absent, the output state is determined by the presence or absence of the other two operator sites according to each of the tables depicted in \autoref{fig:condgenescenario}.
 
 \FloatBarrier
 \pagebreak
@@ -569,7 +569,7 @@ This completes steps 1-3 of the algorithm outlined above. Step 4 is trivial; to 
 \begin{figure}[!ht]
 \centering
 \noindent\includegraphics[width=0.9\columnwidth]{fig/phenotypehierarchy.pdf}
-\caption{{\bf Example coarse-graining of phenotypes.} (A) Consider the example where $L = \{l_1,l_2,l_3,l_4\}$, $\mathcal{G} = \{ O_1, O_2 \}$, $O_1 = \{l_1, l_2, l_3\}$ and $O_2 = \{ l_3, l_4 \}$. The top left panel shows two higher-level phenotypes $X$ and $Y$. The bottom left corner shows the five different expression states of four genes in $L$ from which these phenotypes are coarse-grained. The right side shows the respective projections onto genes $\{l_3,l_4\}$. The projection maps $\pi_i^{L,O_2}$ and $\pi_{i+1}^{L,O_2}$ are defined in \refsupp{} \ref{secsupp:coarsegrainingphenotypes}. (B) The different combinations of expression states of genes $\{l_3,l_4\}$ result in two different phenotypes. If both genes are expressed metabolite $y$ is produced whereas if only one of the two genes is expressed metabolite $x$ is produced. The red and green boxes represent arbitrary promoters.}
+\caption{{\bf Example coarse-graining of phenotypes.} (A) Consider the example where $L = \{l_1,l_2,l_3,l_4\}$, $\mathcal{G} = \{ O_1, O_2 \}$, $O_1 = \{l_1, l_2, l_3\}$ and $O_2 = \{ l_3, l_4 \}$. The top left panel shows two higher-level phenotypes $X$ and $Y$. The bottom left corner shows the five different expression states of four genes in $L$ from which these phenotypes are coarse-grained. The right side shows the respective projections onto genes $\{l_3,l_4\}$. The projection maps $\pi_i^{L,O_2}$ and $\pi_{i+1}^{L,O_2}$ are defined in \refsupp{} \autoref{secsupp:coarsegrainingphenotypes}. (B) The different combinations of expression states of genes $\{l_3,l_4\}$ result in two different phenotypes. If both genes are expressed metabolite $y$ is produced whereas if only one of the two genes is expressed metabolite $x$ is produced. The red and green boxes represent arbitrary promoters.}
 \label{fig:phenotypehierarchy}
 \end{figure}
 
@@ -617,7 +617,7 @@ This completes steps 1-3 of the algorithm outlined above. Step 4 is trivial; to 
 \begin{figure}[!ht]
 \centering
 \noindent\includegraphics[width=1.0\columnwidth]{fig/non2uniformcyclichypergraphhasse.pdf}
-\caption{{\bf Hierarchical relationships among all possible classes of hypergraphs that are not graphs (i.e. not 2-uniform) but have cycles.} (A) There is a Hasse diagram for the lattice of network architectures analogous to that of \ref{fig:conediagram}A but defined on four rather than only three variables. Within this lattice some of the graphs have cycles and some do not. (B) The highest levels of the Hasse diagram associated to the lattice of network architectures on four variables containing hypergraphs having cycles. (C) and (D) contain lower levels of network architectures containing cycles. Each of the four panels in (D) are on the same level. In total, each level represents an isomorphism class of hypergraphs. Therefore, there are five isomorphism classes of non-2-uniform hypergraphs representing network architectures on four variables that contain cycles leading to the relationship between spaces of probability distsributions on associated genotype-phentoype maps analogous to that of \ref{fig:conediagram}C.}
+\caption{{\bf Hierarchical relationships among all possible classes of hypergraphs that are not graphs (i.e. not 2-uniform) but have cycles.} (A) There is a Hasse diagram for the lattice of network architectures analogous to that of \autoref{fig:conediagram}A but defined on four rather than only three variables. Within this lattice some of the graphs have cycles and some do not. (B) The highest levels of the Hasse diagram associated to the lattice of network architectures on four variables containing hypergraphs having cycles. (C) and (D) contain lower levels of network architectures containing cycles. Each of the four panels in (D) are on the same level. In total, each level represents an isomorphism class of hypergraphs. Therefore, there are five isomorphism classes of non-2-uniform hypergraphs representing network architectures on four variables that contain cycles leading to the relationship between spaces of probability distsributions on associated genotype-phentoype maps analogous to that of \autoref{fig:conediagram}C.}
 \label{fig:non2uniformcyclichypergraphhasse}
 \end{figure}
 
@@ -626,7 +626,7 @@ This completes steps 1-3 of the algorithm outlined above. Step 4 is trivial; to 
 % \begin{figure}[!ht]
 % \centering
 % \noindent\includegraphics[width=0.3\columnwidth]{fig/controlnetwork.pdf}
-% \caption{{\bf Embedding into a particular network context.} The network inside the blue circle is equivalent to that of \ref{fig:inconsistentthreecycle}A, embedded into a particular network context that provides inputs (dark gray node) and outputs (light gray nodes) to the focal subnetwork. As a result of their connectivity, the outputs depend here upon pairwise correlations within the three genes comprising the focal subnetwork.}
+% \caption{{\bf Embedding into a particular network context.} The network inside the blue circle is equivalent to that of \autoref{fig:inconsistentthreecycle}A, embedded into a particular network context that provides inputs (dark gray node) and outputs (light gray nodes) to the focal subnetwork. As a result of their connectivity, the outputs depend here upon pairwise correlations within the three genes comprising the focal subnetwork.}
 % \label{fig:controlnetwork}
 % \end{figure}
 
