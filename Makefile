@@ -91,7 +91,9 @@ $(TOPPDFFILE): $(TOPTEX) $(BIBFILES) $(TEMPLATE)
 
 clean:
 	rm -f *.aux *.bbl *.blg *.brf *.dvi *.fdb_latexmk *.fls *.lof *.log \
-	      *.lot *.nav *.out *.pre *.snm *.synctex.gz *.toc
+	      *.lot *.nav *.out *.pre *.snm *.synctex.gz *.toc *.html *.4ct \
+	      *.4tc *.idv *.lg *.xref $(TOPTEX:.tex=.md) $(TOPTEX:.tex=.css) \
+	      $(TOPTEX:.tex=.tmp) *.png
 
 cleanall: clean
 	rm -f $(TOPPDFFILE)
