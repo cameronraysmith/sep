@@ -83,7 +83,7 @@ html: $(TOPPDFFILE)
 	mkdir -p html
 	mkdir -p html/fig
 	htlatex $(TOPTEX) "html5mathjax,charset=utf-8,-css,3" " -cunihtf -utf8" "-dhtml/" "--interaction=nonstopmode"
-	cp./html/$(TOPTEX) ./html/index.html
+	cp./html/$(TOPTEX:.tex=.html) ./html/index.html
 	cp fig/*.png ./html/fig/
 
 servehtml:
