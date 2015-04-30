@@ -78,6 +78,9 @@ thesis:
 latexdiff:
 	git-latexdiff --ignore-latex-errors --latexmk --ignore-makefile --ln-untracked --main $(TOPTEX) $(PREVIOUSCOMMIT) HEAD
 
+html:
+	pandoc -s -S --mathjax --toc -sw html5 --bibliography=bib/papers.bib --bibliography=bib/books.bib --csl=proceedings-of-the-royal-society-b.csl $(TOPTEX) -o $(TOPTEX:.tex=.html)
+
 $(BIBFILES):
 	copybib
 
