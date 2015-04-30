@@ -1,4 +1,4 @@
-.PHONY: default copybib copydownloadsbib linkbib dropbox arxiv thesis latexdiff clean cleanall test
+.PHONY: default copybib copydownloadsbib linkbib dropbox arxiv thesis latexdiff clean cleanall test html htmlpandoc
 
 #---------------------------------------------
 # Define variables
@@ -78,7 +78,18 @@ thesis:
 latexdiff:
 	git-latexdiff --ignore-latex-errors --latexmk --ignore-makefile --ln-untracked --main $(TOPTEX) $(PREVIOUSCOMMIT) HEAD
 
-html:
+# TODO: automatically comment hypersetup colorlinks in header texfile
+html: $(TOPPDFFILE)
+	mkdir -p html
+	mkdir -p html/fig
+	htlatex $(TOPTEX) "html5mathjax,charset=utf-8,-css,3" " -cunihtf -utf8" "-dhtml/" "--interaction=nonstopmode"
+	cp./html/$(TOPTEX) ./html/index.html
+	cp fig/*.png ./html/fig/
+
+servehtml:
+	cd html; sudo python -m SimpleHTTPServer 80; cd ../
+
+htmlpandoc:
 	pandoc -s -S --mathjax --toc -sw html5 --bibliography=bib/papers.bib --bibliography=bib/books.bib --csl=proceedings-of-the-royal-society-b.csl $(TOPTEX) -o $(TOPTEX:.tex=.html)
 
 $(BIBFILES):
