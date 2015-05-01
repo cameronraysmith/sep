@@ -1,0 +1,173 @@
+body {
+    /* Serif options */
+    /*font-family: "Times New Roman", Times, serif;*/
+    /*font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif    */
+
+    /*Sans Serif options */
+    /*font-family: "Helvetica", Arial, Freesans, clean, sans-serif;*/
+    font-family: "Helvetica Neue", Arial, Freesans, clean, sans-serif;
+    /*font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;*/
+    /*font-family: "Trebuchet MS", Helvetica, sans-serif;*/
+    /*font-family: Verdana, Geneva, sans-serif;*/
+    /*font-family: Tahoma, Geneva, sans-serif;*/
+    /*font-family: Baskerville, 'Times New Roman', Times, serif;*/
+
+
+    /*padding-left:5em;
+    padding-right:5em;
+    padding-bottom:2em;*/
+    font-size: 14px;
+    font-weight:300;
+    line-height: 20px;
+    /*margin-left:auto;
+    margin-right:auto;*/
+    margin: 0;
+    padding: 0;
+    /*max-width:42em;*/
+    background:#fefefe;
+    color:#333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    /*margin: 2em 0px 15px 0px;*/
+}
+
+h1 {
+    color: #000;
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.6em;
+}
+
+h4 {
+    font-size: 1.3em;
+}
+
+h5 {
+    font-size: 1em;
+}
+
+h6 {
+    color: #777777;
+    background-color: inherit;
+    font-size: 1em;
+}
+
+hr {
+    height: 0.2em;
+    border: 0;
+    color: #CCCCCC;
+    background-color: #CCCCCC;
+}
+
+p, blockquote, ul, ol, dl, li, table, pre {
+    /*padding-left:5em;
+    padding-right:5em;*/
+    padding-left:70px;
+    padding-right:70px;
+    margin-left:auto;
+    margin-right:auto;
+    /*max-width:42em;*/
+    max-width:588px;
+    /*margin: 15px 0;*/
+}
+
+code, pre {
+    border-radius: 3px;
+    background-color: #F8F8F8;
+    color: inherit;
+}
+
+code {
+    border: 1px solid #EAEAEA;
+    margin: 0 2px;
+    padding: 0 5px;
+}
+
+pre {
+    border: 1px solid #CCCCCC;
+    line-height: 1.25em;
+    overflow: auto;
+    padding: 6px 10px;
+}
+
+pre > code {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+    background-color: inherit;
+    color: #27ae60;
+}
+
+a:hover {
+    text-decoration: underline;
+    background-color: inherit;
+    color: #2ecc71;
+}
+
+a:active {
+    text-decoration: none;
+    background-color: inherit;
+    color: #2ecc71;
+}
+
+img {
+    max-width: 100%;
+}
+
+.sectionHead {
+    padding-left:70px;
+    padding-right:70px;
+    margin-left:auto;
+    margin-right:auto;
+    max-width:588px;
+}
+
+.tableofcontents{
+    padding-left:70px;
+    padding-right:70px;
+    margin-left:auto;
+    margin-right:auto;
+    max-width:588px;
+}
+
+.crosslinks {
+    /*display: none;*/
+    background-color: rgb(248, 248, 248);
+    /*background-image: linear-gradient(rgb(189, 195, 199) 0%, rgb(127, 140, 141) 100%);*/
+    background-image: linear-gradient(rgb(26, 188, 156) 0%, rgb(22, 160, 133) 100%);
+    /*background-image: linear-gradient(rgb(39, 174, 96) 0%, rgb(11, 158, 9) 100%);*/
+
+    border-bottom-color: rgb(231, 231, 231);
+    border-top-color: rgb(231, 231, 231);
+    margin: 0;
+    padding: 5px;
+    /* Remove [ ] brackets around crosslinks by making the text transparent */
+    color: #000; /* Fallback for older browsers */
+    color: rgba(0, 0, 0, 0.0);
+}
+
+.crosslinks a {
+    text-decoration: none;
+    background-color: inherit;
+    color: #2c3e50;
+    font-size: 12pt;
+}
+
+.crosslinks a:hover {
+    text-decoration: underline;
+    background-color: inherit;
+    color: #2c3e50;
+    font-size: 12pt;
+}
