@@ -15,16 +15,46 @@ Mathematically, the two conditions given above state that $\mathcal{G}$ is a \em
 
 \section{Functorial formulation of probability distributions over network modules}\label{secsupp:probabilitydistributionsonnetworks}
 
-As stated in \autoref{sec:probabilitydistributionsonnetworks}, in addition to the expression state of the whole genome, we usually will be interested in the expression states of portions of the genome that interact either directly or indirectly.  We will represent these portions as subsets of $L$ and their expression states as functions from these subsets to $P$.
+As stated in \autoref{sec:probabilitydistributionsonnetworks}, essentially all studies of biological networks consider states of subsets of variables that interact either directly or indirectly.  We will represent these modules as subsets of $L$ and their states as functions from these subsets to $P$.
 
-The power set of $L$, which we shall denote as $\mathcal{P}(L)$, can be regarded  as a category~\cite{Lane1998,MacLane1992,Awodey2006,Abramsky2011} in which the objects are subsets of $L$ and morphisms represent inclusion of a smaller subset into a larger superset (i.e. $O \subseteq O' \Rightarrow O \rightarrow O'$).  Then we will represent our expression states of subsets by the functor $\expr = \mathrm{Hom}(-,P)$.  Specifically, this functor may be described as
+The power set of $L$, which we shall denote as $\mathcal{P}(L)$, can be regarded  as a category~\cite{Lane1998,MacLane1992,Awodey2006,Abramsky2011} in which the objects are subsets of $L$ and morphisms represent inclusion of a smaller subset into a larger superset (i.e. $O \subseteq O' \Rightarrow O \rightarrow O'$).
+
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+
+Before proceeding, we define a few technical terms from the theory of sheaves and presheaves. We do not provide all necessary definitions to make use of the theory in more abstract contexts for which we direct the reader to~\cite{Lane1998}. Given $L$ we define a \textbf{presheaf} over it to be a contravariant functor, $PSh \colon\mathcal{P}(L)^{opp} \rightarrow \mathbf{Set}$, from the category of subsets of $L$, $\mathcal{P}(L)$, to the category of sets, $\mathbf{Set}$. Thus for every $U \in \mathcal{P}(L)$, $PSh(U)$ is a set.
+
+$s \in PSh(U)$ is a \textbf{local section} over $U$ with respect to $PSh$. A \textbf{covering} of $L$ with respect to $\mathcal{P}(L)$ is an indexed set $\{O_i\}_{i \in I}$ where $O_i \subseteq L$ such that $\cup_{i \in I} O_i = L$.
+A \textbf{system of local sections} over a covering $\{O_i\}_{i \in I}$ is a set of ordered pairs of elements, $O_i$, of the covering and sections, $s_i \in PSh(O_i)$, that comprise a set of the form
+$$
+\{(O_i,s_i) \; \vert \; i \in I, \; s_i \in PSh(O_i) \}.
+$$
+A system of local sections is \textbf{globally consistent} when there exists $s \in PSh(L)$ such that for all $i \in I$
+$$
+[ PSh( O_i \rightarrow L) ] (s) = s_i,
+$$
+where, $s$ is called a \textbf{witness} to global consistency.
+A system of local sections is said to be \textbf{locally compatible} when for all $i,j \in I$ the following are satisfied
+$$
+[ PSh( O_{ij} \rightarrow O_i) ] (s_i) = [ PSh( O_{ij} \rightarrow O_j) ] (s_j),
+$$
+where $O_{ij} = O_i \cap O_j$.
+Note that if a system of local sections is globally consistent then it is locally compatible. A presheaf is said to be a \textbf{sheaf} when given any locally compatible system of local sections, the system of local sections is both globablly consistent and there exists a unique witness. We refer to a presheaf that satisfies the existence but not the uniqueness condition as a \textbf{half-sheaf}.
+
+Given a presheaf and an associated covering, we may ask when it is the case that every locally compatible system of local sections over the covering is globally consistent. If this is the case, the covering is said to be \textbf{half-sheaf-like} because for the presheaves we study there is, in general, more than one witness to global consistency.
+
+None of the presheaves we work with in this paper are sheaves, except in degenerate cases. We work exclusively with presheaves and their coverings. Some coverings are half-sheaf-like. Surprisingly, some are not. This is to say that, if a covering is not half-sheaf-like, then not every locally compatible system of local sections over the covering is globally consistent \cite{Boole1862,Vorobev1962,Bell1964,EthanAkin389,Abramsky2011}. The latter correspond to network architectures containing cycles whereas the former are acyclic.
+
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+
+A state of a subset of variables, $O \subseteq L$, is an assignment of values in $P$ to each variable in $O$ which is a tuple of length $|O|$ containing elements from $P$. This correspondence is determined by the presheaf functor $\expr = \mathrm{Hom}(-,P)$.  Specifically, this functor may be described as
 \begin{equation}\label{eq:gpfunctor}
 \begin{split}
-\expr \colon (\mathcal{P}(L), \subseteq) &\to \mathbf{Set} \\
+\expr \colon \mathcal{P}(L)^{opp} &\to \mathbf{Set} \\
 O &\mapsto P^O,\\
-O \subseteq O' &\mapsto (S \in P^{O'} \mapsto \{e|_O \mid e \in S\}). % res^{O'}_{O}.
+O \subseteq O' &\mapsto \{ e' \mapsto (e' \circ \iota) \mid e' \in P^{O'}\}, % res^{O'}_{O}.
 \end{split}
 \end{equation}
+where $\iota \colon O \rightarrow O'$ is the injection of the subset $O$ into $O'$ (i.e. $\iota (o) = o$ for all $o \in O$). In this case, $\expr$ is a sheaf, but note that this is not the case for the distribution presheaf, $\dist$, considered later.
 For example, if we consider the case in which we have two variables $L=\{l_1,l_2\}$ and there are two potential states, $P=\{0,1\}$, then $\expr$ operates on the lattice of subsets generated by $L$ to give spaces of functions containing the possible \gnpm{} as exemplified in \autoref{fig:efunctor}.
 % If we consider the case in which we have two variables $L=\{l_1,l_2\}$ and there are two states, $P=\{0,1\}$, then $\expr$ operates on each of the possible subsets of $L$ (i.e. $\{\}$, $\{l_1\}$, $\{l_2\}$, $\{l_1,l_2\}$) to give spaces of functions containing the possible \gnpm{} as exemplified in \autoref{fig:efunctor}.
 For example, $\mathcal{E}(\{l_1,l_2\}) = \{ e^{12}_{00},e^{12}_{01},e^{12}_{10},e^{12}_{11} \}$ where $e^{12}_{01}(l_1) = 0$ and $e^{12}_{01}(l_2) = 1$. As another example, $\mathcal{E}(\{l_1\}) = \{ e^{1}_{0},e^{1}_{1} \}$ where $e^{1}_{0}(l_1)=0$ and $e^{1}_{1}(l_1)=1$. $\expr ( \{ l_1 \} \! \subseteq \! \{ l_1, l_2 \} )$ is given explicitly by
@@ -37,7 +67,7 @@ e^{12}_{11} \mapsto e^{1}_{1}
 \end{aligned}.
 \end{equation}
 
-Next, we introduce extended probability distributions by defining a functor $\mathcal{D}$ that will compose with $\mathcal{E}$ to convert collections of \gnpm{} into probability distributions over them.  Given a finite set $S$, define $\dist(S)$ to be the set of all maps from $S$ to the interval $[0,1]$ which satisfy the following two conditions:  For all $d \in \dist(S)$, we have $d(S) \in \{0,1\}$.\footnote{Normally, we would only have $d(S) = 1$, but since we want to introduce conditionalization in a coherent way it becomes necessary to admit degenerate distributions where $d(S) = 0$ as well. This simplifies the exposition by not requiring us to worry about dividing by zero and having to introduce special cases when dealing with conditional probabilities and partial functions.  Of course, it also means that we cannot automatically assume that an element of $\dist(S)$ can be normalized without checking this fact but in our examples, this verification will turn out to be routine and trivial.}  For all  $d \in \dist(S)$ and all $A, B \subset S$, we have $d(A) + d(B) = d(A \cup B) + d(A \cap B)$.
+Next, we introduce extended probability distributions by defining a functor $\mathcal{D}$ that will compose with $\mathcal{E}$ to convert collections of \gnpm{} into probability distributions over them.  Given a finite set $S$, define $\dist(S)$ to be the set of all maps from $\mathcal{P}(S)$ to the interval $[0,1]$ which satisfy the following two conditions:  For all $d \in \dist(S)$, we have $d(S) \in \{0,1\}$.\footnote{Normally, we would only have $d(S) = 1$, but since we want to introduce conditionalization in a coherent way it becomes necessary to admit degenerate distributions where $d(S) = 0$ as well. This simplifies the exposition by not requiring us to worry about dividing by zero and having to introduce special cases when dealing with conditional probabilities and partial functions.  Of course, it also means that we cannot automatically assume that an element of $\dist(S)$ can be normalized without checking this fact but in our examples, this verification will turn out to be routine and trivial.}  For all  $d \in \dist(S)$ and all $A, B \subset S$, we have $d(A) + d(B) = d(A \cup B) + d(A \cap B)$.
 
 Returning to the running example,
 $$\mathcal{D}(\mathcal{E}(\{l_1,l_2\})) = \{p^{12}_{00},p^{12}_{01},p^{12}_{10},p^{12}_{11} \mid p^{12}_{00} \geq 0, p^{12}_{01} \geq 0,p^{12}_{10} \geq 0,p^{12}_{11} \geq 0, p^{12}_{00} + p^{12}_{01} + p^{12}_{10} + p^{12}_{11} = 1 \},$$
@@ -188,7 +218,13 @@ d_O|O \cap O' = d_{O'}|O \cap O'.
 \end{eqnarray}
 This first set of conditions is later referred to as local consistency. These conditions mean that any two distributions $d_O$ and $d_{O'}$ in the \emph{compatible family} of distributions marginalize to the same disribution over the intersection of $O$ with $O'$.
 
-If, moreover, this first condition implies the existence of $d \in \mathcal{D}( \mathcal{E}(L))$ such that $d|O = d_O$ for all $O \in \mathcal{G}$ then the system is said to satisfy the global consistency condition.  This latter condition is also referred to as the \emph{sheaf condition}.  $\mathcal{E}$ alone turns out to be a sheaf because it satisfies the analogous conditions: for $\{e_O \in \mathcal{E}(O) | O \in \mathcal{G}\}$ such that $e_{O_{1}} | O_1 \cap O_2 = e_{O_{2}} | O_1 \cap O_2$ there exists $e \in \mathcal{E}(\cup_{O \in \mathcal{G}} O)$ such that $e_O = e|O$ for all $O \in \mathcal{G}$.  However, for $\dist \circ \mathcal{E}$ the sheaf condition is not automatically satisfied and it only defines a presheaf.  We will now examine the situation more closely to determine under what circumstances global consistency holds.
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+
+If, moreover, this first condition implies the existence of $d \in \mathcal{D}( \mathcal{E}(L))$ such that $d|O = d_O$ for all $O \in \mathcal{G}$ then the system is said to satisfy the global consistency condition.
+%This latter condition is also referred to as the \emph{sheaf condition}.
+$\mathcal{E}$ alone turns out to be a sheaf because it satisfies the analogous conditions for all possible coverings $\mathcal{G}$ of $L$: for $\{e_O \in \mathcal{E}(O) | O \in \mathcal{G}\}$ such that $e_{O_{1}} | O_1 \cap O_2 = e_{O_{2}} | O_1 \cap O_2$ there exists a unique $e \in \mathcal{E}(\cup_{O \in \mathcal{G}} O)$ such that $e_O = e|O$ for all $O \in \mathcal{G}$.  However, for $\dist \circ \mathcal{E}$ the sheaf condition is not automatically satisfied and it only defines a presheaf.  We will now examine the situation more closely to determine under what circumstances global consistency holds.
+
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
 
 For a cover of the space of variables, $\mathcal{G}$, we can construct a matrix, $\mathbf{G}$, representing the relationship, $R = \coprod_{O \in \mathcal{G}} \mathcal{E}(O \subset L) \subseteq \mathcal{E}(L) \times \expr (\mathcal{G})$, between \gnpm{} having as domain particular network modules given by the $O \in \mathcal{G}$ and those global \gnpm{} defined on $L$. We would like to construct the matrix representation of $\mathbf{G}$. In the first factor, $\mathcal{E}(L) = P^L = \{e^{L}_{\vec{j}} | \vec{j} \in P^{|L|}\}$.
 %$\{t_1, \ldots t_m\} = \{t_j | t_j \in P^L\}$.
