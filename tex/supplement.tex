@@ -40,6 +40,38 @@ $$
 where $O_{ij} = O_i \cap O_j$.
 Note that if a system of local sections is globally consistent then it is locally compatible. A presheaf is said to be a \textbf{sheaf} when given any locally compatible system of local sections, the system of local sections is both globablly consistent and there exists a unique witness. We refer to a presheaf that satisfies the existence but not the uniqueness condition as a \textbf{half-sheaf}.
 
+The sheaf condition is also commonly expressed in terms of an equalizer diagram \cite{MacLane1992}. $PSh$ is a sheaf if beginning with the lattice of inclusions among subsets of network variables
+\begin{equation}\label{eq:variablecoequalizer}
+\xymatrix{
+L \ar @{<--}[r]^-{\rho}
+&
+\coprod\limits_{i \in I}
+O_{i}
+\ar@{<-}@<1ex>[r]^-{\rho_i} \ar@{<-}@<-1ex>[r]_-{\rho_j}
+&
+\coprod\limits_{i,j \in I \times I} O_{ij}
+},
+\end{equation}
+for any covering $\{O_i\}_{i \in I}$ and applying the $PSh$ functor to \autoref{eq:variablecoequalizer} results in
+\begin{equation}\label{eq:sheafequalizer}
+\xymatrix{
+PSh(L) \ar @{-->}[r]^-{PSh(\rho)}
+&
+\coprod\limits_{i \in I}
+PSh(O_i)
+\ar@<1ex>[r]^-{PSh(\rho_i)} \ar@<-1ex>[r]_-{PSh(\rho_j)}
+&
+\coprod\limits_{i,j \in I \times I} PSh(O_{ij})
+},
+\end{equation}
+where there exists $s \in PSh(L)$, such that all of the following conditions are satisfied
+\begin{enumerate}
+\item $[PSh(\rho)](s) = \{s|_{O_i} \; | \; i \in I\}$,
+\item for a family $s_i \in PSh(O_i)$: $[PSh(\rho_i)] (s_i) = \{ s_i|_{O_{ij}} \}$ and $[PSh(\rho_j)] (s_i) = \{ s_j|_{O_{ij}} \}$,
+\item $s$ is unique in satisfying conditions $1$ and $2$ among elements of $PSh(L)$.
+\end{enumerate}
+In this notation, if condition $3$ is not satisfied, then $PSh$ is a half-sheaf.
+
 Given a presheaf and an associated covering, we may ask when it is the case that every locally compatible system of local sections over the covering is globally consistent. If this is the case, the covering is said to be \textbf{half-sheaf-like} because for the presheaves we study there is, in general, more than one witness to global consistency.
 
 None of the presheaves we work with in this paper are sheaves, except in degenerate cases. We work exclusively with presheaves and their coverings. Some coverings are half-sheaf-like. Surprisingly, some are not. This is to say that, if a covering is not half-sheaf-like, then not every locally compatible system of local sections over the covering is globally consistent \cite{Boole1862,Vorobev1962,Bell1964,EthanAkin389,Abramsky2011}. The latter correspond to network architectures containing cycles whereas the former are acyclic.
@@ -70,8 +102,12 @@ e^{12}_{11} \mapsto e^{1}_{1}
 Next, we introduce extended probability distributions by defining a functor $\mathcal{D}$ that will compose with $\mathcal{E}$ to convert collections of \gnpm{} into probability distributions over them.  Given a finite set $S$, define $\dist(S)$ to be the set of all maps from $\mathcal{P}(S)$ to the interval $[0,1]$ which satisfy the following two conditions:  For all $d \in \dist(S)$, we have $d(S) \in \{0,1\}$.\footnote{Normally, we would only have $d(S) = 1$, but since we want to introduce conditionalization in a coherent way it becomes necessary to admit degenerate distributions where $d(S) = 0$ as well. This simplifies the exposition by not requiring us to worry about dividing by zero and having to introduce special cases when dealing with conditional probabilities and partial functions.  Of course, it also means that we cannot automatically assume that an element of $\dist(S)$ can be normalized without checking this fact but in our examples, this verification will turn out to be routine and trivial.}  For all  $d \in \dist(S)$ and all $A, B \subset S$, we have $d(A) + d(B) = d(A \cup B) + d(A \cap B)$.
 
 Returning to the running example,
-$$\mathcal{D}(\mathcal{E}(\{l_1,l_2\})) = \{p^{12}_{00},p^{12}_{01},p^{12}_{10},p^{12}_{11} \mid p^{12}_{00} \geq 0, p^{12}_{01} \geq 0,p^{12}_{10} \geq 0,p^{12}_{11} \geq 0, p^{12}_{00} + p^{12}_{01} + p^{12}_{10} + p^{12}_{11} = 1 \},$$
-$$\mathcal{D}(\mathcal{E}(\{l_1\})) = \{p^{1}_{0}, p^{1}_{1} \mid p^{1}_{0} \geq 0, p^{1}_{1} \geq 0, p^{1}_{0}+p^{1}_{1} = 1 \}.$$
+\begin{equation}\label{eq:exampledistfromfunctors}
+\begin{aligned}
+\mathcal{D}(\mathcal{E}(\{l_1,l_2\})) &= \{p^{12}_{00},p^{12}_{01},p^{12}_{10},p^{12}_{11} \mid p^{12}_{00} \geq 0, p^{12}_{01} \geq 0,p^{12}_{10} \geq 0,p^{12}_{11} \geq 0, p^{12}_{00} + p^{12}_{01} + p^{12}_{10} + p^{12}_{11} = 1 \},\\
+\mathcal{D}(\mathcal{E}(\{l_1\})) &= \{p^{1}_{0}, p^{1}_{1} \mid p^{1}_{0} \geq 0, p^{1}_{1} \geq 0, p^{1}_{0}+p^{1}_{1} = 1 \}.
+\end{aligned}
+\end{equation}
 
 If $S$ and $S'$ are finite sets, which in our case will usually be sets of \gnpm{} given by $\mathcal{E}(O)$, $d \in \dist(S)$ and $d' \in \dist(S')$ are probability distributions over these spaces, and $f \colon S \to S'$ is a partial function, we will say that $f$ is compatible with $d$ and $d'$ when, for all $X \in \mathrm{img}(f)$, we have
 \begin{equation}
@@ -149,84 +185,48 @@ Given a covering $\mathcal{G}$ of the space of biological network variables, we 
 
 \section{Sheaf-theoretic formulation of compatibility of distributions on \gnpm{}}\label{secsupp:compatibilityofgpms}
 
-% \section{Compatibility of distributions on \gnpm{}}\label{sec:compatibilityofgpms}
 Given a covering of the space of variables $\mathcal{G}$, a compatible family for $\mathcal{G}$ with respect to $\mathcal{D} \circ \mathcal{E}$ is given by a family of distributions $\dist{}(\expr{}(\mathcal{G})) = \{d_O \in \dist (\mathcal{E}(O)) | O \in \mathcal{G}\}$ such that for all $O, O' \in \mathcal{G}$
 \begin{eqnarray}\label{eq:sheafcond}
-%\forall O \in \mathcal{G} \left[ \exists d_O \in \mathcal{D}_R\mathcal{E}(O) \right],\\
 d_O|O \cap O' = d_{O'}|O \cap O'.
 \end{eqnarray}
 This first set of conditions is later referred to as local consistency. The space of all such locally consistent distributions for a given covering, $\mathcal{G}$, is referred to as $\mathbb{L}(\mathcal{G})$ where
 \begin{equation}
 \mathbb{L}(\mathcal{G}) = \{ d_O  \in \dist{}(\expr{}(\mathcal{G})) \mid (\forall O,O' \in \mathcal{G})\,\, d_O|O \cap O' = d_O'|O \cap O' \}.
 \end{equation}
-These conditions mean that any two distributions $d_O$ and $d_{O'}$ in the \emph{compatible family} of distributions marginalize to the same disribution over the intersection of $O$ with $O'$. If these constraints are not satisfied, then there is no way to make a consistent assignment of probabilities to the states of even a single variable. In this case one of the constraints will be eliminated or duplication of a variable may allow for the independent satisfaction of both constraints.
-
-If, moreover, this first condition implies the existence of $d \in \mathcal{D}( \mathcal{E}(L))$ such that $d|O = d_O$ for all $O \in \mathcal{G}$ then the system is said to satisfy the global consistency condition. The space of all such globally consistent distributions for a given covering, $\mathcal{G}$, is referred to as $\mathbb{M}(\mathcal{G})$ where
-\begin{equation}
-\mathbb{M}(\mathcal{G}) = \{ d_O \in \dist{}(\expr{}(\mathcal{G})) \mid (\exists d ) \,\, d|O = d_O \}.
-\end{equation}
-In general, the system of equations $d|O = d_O$ for all $O \in \mathcal{G}$ is underdetermined and so local consistency does not imply global consistency. The local and global consistency conditions are related to the mathematical concepts from which they derive in \refsupp{} \autoref{secsupp:compatibilityofgpms}. We will now examine the situation more closely to determine under what circumstances global consistency holds.
-
-For a cover of the space of variables, $\mathcal{G}$, we can construct a matrix, $\mathbf{G}$, representing the relationship,
-% $R = \coprod_{O \in \mathcal{G}} \mathcal{E}(O \subset L) \subseteq \mathcal{E}(L) \times \expr (\mathcal{G})$,
-between \gnpm{} having as domain particular network modules given by the $O \in \mathcal{G}$ and those global \gnpm{} defined on $L$.
-% We would like to construct the matrix representation of $\mathbf{G}$. In the first factor, $\mathcal{E}(L) = P^L = \{e^{L}_{\vec{j}} | \vec{j} \in P^{|L|}\}$.
-%%$\{t_1, \ldots t_m\} = \{t_j | t_j \in P^L\}$.
-% For the second factor, $ \mathcal{E}(\mathcal{G}) = \coprod_{O \in \mathcal{G}} \mathcal{E}(O) = \{e^O_{\vec{i}} | O \in \mathcal{G}, \vec{i} \in P^{|O|} \}$.
-% %$\{e_1, \ldots e_n\} = \coprod_{O \in \mathcal{G}} \mathcal{E}(O)$.
-%  So we have two sets of maps, one defined on $P^L$ and the other defined on $\mathcal{E}(O) = P^O$ for each $O \in \mathcal{G}$. This yields a method of specifying the intended relationship that defines
-$\mathbf{G}$ can be specified for all $e^O_{\vec{i}} \in \mathcal{E}(\mathcal{G})$ and $e^{L}_{\vec{j}} \in \mathcal{E}(L)$:
-\begin{eqnarray}\label{eq:margmat}
-\mathbf{G}(e^O_{\vec{i}},e^L_{\vec{j}}) =
-\begin{cases}
-1, & e^L_{\vec{j}}|O = e^O_{\vec{i}},\\
-0, & \text{otherwise}.
-\end{cases}
-\end{eqnarray}
-For example, given the covering $\mathcal{G} = \{ \{l_1\}, \{l_2\} \}$ of a set of two variables $L = \{ l_1, l_2 \}$ the associated matrix $\mathbf{G}$ is shown in \autoref{fig:efunctor}B.
-
-% Combining the marginalization matrix $\mathbf{G}$ with the maps previously defined in \autoref{eq:emb} the following diagram demonstrates the relationships between the spaces of probability distributions and the linear spaces in which they are embedded
-
-% \begin{equation*}
-% \xymatrix{
-%  \mathbb{R}^{\mathcal{E}(L)} \ar[r]^{\mathbf{G}} &
-%    \mathbb{R}^{\mathcal{E}(\mathcal{G})} \\
-%  \dist (\mathcal{E}(L)) \ar[r]^{\mathbf{G}} \ar@{^{(}->}[u]^{emb_{\mathcal{E}(L)}}& \ar@{^{(}->}[u]_{emb_{\mathcal{E}(\mathcal{G})}}
-%   \dist (\mathcal{E}(\mathcal{G}))
-%   }
-% \end{equation*}
-The locally, $\mathbb{L}(\mathcal{G})$, and globally, $\mathbb{M}(\mathcal{G})$, consistent polytopes correspond to the spaces of probability distributions satisfying the local and global consistency conditions described above. The globally consistent polytope is a subspace of the locally consistent one. This is because an ostensible inverse to $\mathbf{G}$ is underdetermined and can only be estimated in general (most commonly using the maximum entropy principle).
-% In terms of the diagram $\mathbb{M}(\mathcal{G})$ is given by $\mathbf{G}(emb_{\mathcal{E}(L)}(\mathcal{D}(\mathcal{E}(L))))$ and $\mathbb{L}(\mathcal{G})$ is given by $emb_{\mathcal{E}(\mathcal{G})}(\mathcal{D}(\mathcal{E}(\mathcal{G}))) \cap \mathbf{G}(\mathbb{R}^{\mathcal{E}(L)})$, where
-% \begin{eqnarray}
-% emb_{\mathcal{E}(\mathcal{G})}(\mathcal{D}(\mathcal{E}(\mathcal{G}))) &=& \left\{ p^{O}_{\vec{i}} \; \bigg| \; (\forall\, O \in \mathcal{G}) \; (\forall\, \vec{i} \in P^{|O|}) \;\; p^O_{\vec{i}} \geq 0, \; (\forall\, O \in \mathcal{G}) \sum_{\vec{i} \in P^{|O|}} p^{O}_{\vec{i}} = 1 \right\},\\
-% emb_{\mathcal{E}(L)}(\mathcal{D}(\mathcal{E}(L))) &=& \left\{ p^L_{\vec{i}} \; \bigg| \; (\forall\, \vec{i} \in P^{|L|}) \; p^L_{\vec{i}} \geq 0, \; \sum_{\vec{i} \in P^{|L|}} p^L_{\vec{i}} = 1 \right\}.
-% \end{eqnarray}
-To determine explicit conditions on the probabilities we express $\mathbb{L}(\mathcal{G})$ and $\mathbb{M}(\mathcal{G})$ in terms of the fundamental subspaces associated to the linear map $\mathbf{G}$. In order for a vector $v$ to lie in $\mathbf{G}(\mathbb{R}^{\mathcal{E}(L)})$, we must have $v=\mathbf{G}x$ for some $x \in \mathbb{R}^{\mathcal{E}(L)}$.  The cokernel of $\mathbf{G}$ gives the obstructions to this system $v=\mathbf{G}x$ having a solution. In order to eliminate these obstructions, constraints must be imposed on $\mathbb{R}^{\mathcal{E}(\mathcal{G})}$ and these constraints are given precisely via annihilating the cokernel, i.e. $\mathbf{G}(\mathbb{R}^{\mathcal{E}(L)}) = \{ v \; | \; (\forall u \in coker \mathbf{G}) \; u \cdot v = 0\}$.  We then take the appropriate intersection to determine $\mathbb{L}(\mathcal{G})$ by requiring $v \in \mathcal{D}(\mathcal{E}(\mathcal{G}))$
-\begin{eqnarray}\label{eq:localpolytope}
-\mathbb{L}(\mathcal{G}) &=& \{ v \in \dist{}(\expr{}(\mathcal{G})) \; | \; (\forall u \in coker \mathbf{G}) \; u \cdot v = 0\}.
-\end{eqnarray}
-Since $\mathbf{G}$ is not invertible the equation $v = \mathbf{G}x$ can only be solved up to an element of $ker \mathbf{G}$. $v = \mathbf{G}x$ can thus be solved on a subspace $T$ of $\mathbb{R}^{\mathcal{E}(L)}$ such that $T \oplus ker \mathbf{G} = \mathbb{R}^{\mathcal{E}(L)}$ to yield
-\begin{eqnarray}\label{eq:globalpolytope}
-\mathbb{M}(\mathcal{G}) &=& \{ v \; | v = \mathbf{G} x,\; (\exists x \in T) \; (\exists y \in \dist{}(\expr{}(L)))\; x-y \in ker \mathbf{G}  \}.
-\end{eqnarray}
-In order to obtain inequalities that define $\mathbb{M}(\mathcal{G})$, Fourier-Motzkin elimination can be used to eliminate $x$ and $y$. Alternatively one can use the fact, \cite{Wainwright2007} proposition 8.3, that $\mathbb{M}(\mathcal{G})$ is given by removing the non-integer vertices from a vertex represntation of $\mathbb{L}(\mathcal{G})$ and the ability to interconvert between vertex and inequality representations to compute the same inequalities as described in \refsupp{} \autoref{secsupp:fourcycleexample}.
-
-Recall from \autoref{sec:compatibilityofgpms} that given a covering of the space of variables $\mathcal{G}$, a compatible family for $\mathcal{G}$ with respect to $\mathcal{D} \circ \mathcal{E}$ is given by a family of distributions $\{d_O \in \dist (\mathcal{E}(O)) | O \in \mathcal{G}\}$ such that for all $O, O' \in \mathcal{G}$
-\begin{eqnarray}
-%\forall O \in \mathcal{G} \left[ \exists d_O \in \mathcal{D}_R\mathcal{E}(O) \right],\\
-d_O|O \cap O' = d_{O'}|O \cap O'.
-\end{eqnarray}
-This first set of conditions is later referred to as local consistency. These conditions mean that any two distributions $d_O$ and $d_{O'}$ in the \emph{compatible family} of distributions marginalize to the same disribution over the intersection of $O$ with $O'$.
+These conditions mean that any two distributions $d_O$ and $d_{O'}$ in the \emph{compatible family} of distributions marginalize to the same disribution over the intersection of $O$ with $O'$. If these constraints are not satisfied, then there is no way to make a consistent assignment of probabilities to the states of even a single variable. In this case in order to restore consistency one of the constraints must be eliminated or duplication of a variable may allow for the independent satisfaction of both constraints.
 
 \noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
 
 If, moreover, this first condition implies the existence of $d \in \mathcal{D}( \mathcal{E}(L))$ such that $d|O = d_O$ for all $O \in \mathcal{G}$ then the system is said to satisfy the global consistency condition.
 %This latter condition is also referred to as the \emph{sheaf condition}.
-$\mathcal{E}$ alone turns out to be a sheaf because it satisfies the analogous conditions for all possible coverings $\mathcal{G}$ of $L$: for $\{e_O \in \mathcal{E}(O) | O \in \mathcal{G}\}$ such that $e_{O_{1}} | O_1 \cap O_2 = e_{O_{2}} | O_1 \cap O_2$ there exists a unique $e \in \mathcal{E}(\cup_{O \in \mathcal{G}} O)$ such that $e_O = e|O$ for all $O \in \mathcal{G}$.  However, for $\dist \circ \mathcal{E}$ the sheaf condition is not automatically satisfied and it only defines a presheaf.  We will now examine the situation more closely to determine under what circumstances global consistency holds.
+The space of all such globally consistent distributions for a given covering, $\mathcal{G}$, is referred to as $\mathbb{M}(\mathcal{G})$ where
+\begin{equation}
+\mathbb{M}(\mathcal{G}) = \{ d_O \in \dist{}(\expr{}(\mathcal{G})) \mid (\exists d ) \,\, d|O = d_O \}.
+\end{equation}
+In general, the system of equations $d|O = d_O$ for all $O \in \mathcal{G}$ is underdetermined and so local consistency does not imply global consistency.  Local and global consistency are formalized as described in \ref{secsupp:probabilitydistributionsonnetworks} in terms of sheaf theory as applied to the presheaf functors $\expr$ and $\dist \circ \expr$. $\mathcal{E}$ alone turns out to be a sheaf because it satisfies the analogous conditions for all possible coverings $\mathcal{G}$ of $L$: for $\{e_O \in \mathcal{E}(O) | O \in \mathcal{G}\}$ such that $e_{O_{1}} | O_1 \cap O_2 = e_{O_{2}} | O_1 \cap O_2$ there exists a unique $e \in \mathcal{E}(\cup_{O \in \mathcal{G}} O)$ such that $e_O = e|O$ for all $O \in \mathcal{G}$. By analogy to \autoref{eq:sheafequalizer} this is expressed by applying the same conditions to the equalizer diagram
+\begin{equation}\label{eq:tuplesheaf}
+\xymatrix{
+\expr(L) \ar @{-->}[r]^-{e}
+&
+\coprod\limits_{i \in I}
+\expr(O_i)
+\ar@<1ex>[r]^-{e_{O_i}} \ar@<-1ex>[r]_-{e_{O_j}}
+&
+\coprod\limits_{i,j \in I \times I} \expr(O_{ij})
+}.
+\end{equation}
+For $\dist \circ \mathcal{E}$ the sheaf condition is not automatically satisfied and it only defines a presheaf. We examine the situation more closely to explicitly determine the necessary conditions for global consistency.
 
 \noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
 
-For a cover of the space of variables, $\mathcal{G}$, we can construct a matrix, $\mathbf{G}$, representing the relationship, $R = \coprod_{O \in \mathcal{G}} \mathcal{E}(O \subset L) \subseteq \mathcal{E}(L) \times \expr (\mathcal{G})$, between \gnpm{} having as domain particular network modules given by the $O \in \mathcal{G}$ and those global \gnpm{} defined on $L$. We would like to construct the matrix representation of $\mathbf{G}$. In the first factor, $\mathcal{E}(L) = P^L = \{e^{L}_{\vec{j}} | \vec{j} \in P^{|L|}\}$.
+% If, moreover, this first condition implies the existence of $d \in \mathcal{D}( \mathcal{E}(L))$ such that $d|O = d_O$ for all $O \in \mathcal{G}$ then the system is said to satisfy the global consistency condition.
+
+% The local and global consistency conditions are related to the mathematical concepts from which they derive in \refsupp{} \autoref{secsupp:compatibilityofgpms}. We will now examine the situation more closely to determine under what circumstances global consistency holds.
+
+% For a cover of the space of variables, $\mathcal{G}$, we can construct a matrix, $\mathbf{G}$, representing the relationship,
+% between \gnpm{} having as domain particular network modules given by the $O \in \mathcal{G}$ and those global \gnpm{} defined on $L$.
+
+For a cover of the space of variables, $\mathcal{G}$, we can construct a linear operator, $\mathbf{G}$, representing the relationship, $R = \coprod_{O \in \mathcal{G}} \mathcal{E}(O \subset L) \subseteq \mathcal{E}(L) \times \expr (\mathcal{G})$, between \gnpm{} having as domain particular network modules given by the $O \in \mathcal{G}$ and those global \gnpm{} defined on $L$. We would like to construct the matrix representation of $\mathbf{G}$. In the first factor, $\mathcal{E}(L) = P^L = \{e^{L}_{\vec{j}} | \vec{j} \in P^{|L|}\}$.
 %$\{t_1, \ldots t_m\} = \{t_j | t_j \in P^L\}$.
 For the second factor, $ \mathcal{E}(\mathcal{G}) = \coprod_{O \in \mathcal{G}} \mathcal{E}(O) = \{e^O_{\vec{i}} | O \in \mathcal{G}, \vec{i} \in P^{|O|} \}$.
 %$\{e_1, \ldots e_n\} = \coprod_{O \in \mathcal{G}} \mathcal{E}(O)$.
@@ -236,33 +236,75 @@ This matrix can be viewed as an operator acting via matrix multiplication on dis
 \mathbf{G} \colon \mathcal{D}(\mathcal{E}(L)) &\rightarrow& \mathcal{D}( \mathcal{E}(\mathcal{G})),\\
 d &\mapsto& \coprod_{O \in \mathcal{G}} d|O,
 \end{eqnarray*}
-and thereby taking a global distribution, $\dist (\mathcal{E}(L))$, defined on \gnpm{} whose domain is the full set of variables $L$ into the local distributions, $\dist (\mathcal{E}(\mathcal{G}))$, that are defined relative to network modules contained in a covering of the space of variables $\mathcal{G}$. $\mathbf{G}$ provides a way of determining the distributions on \gnpm{} for a given context (i.e. $\coprod_{O \in \mathcal{G}} d|O$) that can be derived from distributions (i.e. $\mathcal{D} ( \mathcal{E}(L) )$) defined on the global \gnpm{} (i.e. $\mathcal{E}(L)$ as opposed to $\mathcal{E}(O)$).
+and thereby taking a global distribution, $\dist (\mathcal{E}(L))$, defined on \gnpm{} whose domain is the full set of variables $L$ into the local distributions, $\dist (\mathcal{E}(\mathcal{G}))$, that are defined relative to network modules contained in a covering of the space of variables $\mathcal{G}$.
+$\mathbf{G}$ can be specified for all $e^O_{\vec{i}} \in \mathcal{E}(\mathcal{G})$ and $e^{L}_{\vec{j}} \in \mathcal{E}(L)$:
+\begin{eqnarray}\label{eq:margmat}
+\mathbf{G}(e^O_{\vec{i}},e^L_{\vec{j}}) =
+\begin{cases}
+1, & e^L_{\vec{j}}|O = e^O_{\vec{i}},\\
+0, & \text{otherwise}.
+\end{cases}
+\end{eqnarray}
+For example, given the covering $\mathcal{G} = \{ \{l_1\}, \{l_2\} \}$ of a set of two variables $L = \{ l_1, l_2 \}$ the associated matrix $\mathbf{G}$ is shown in \autoref{fig:efunctor}B.
+$\mathbf{G}$ provides a way of determining the distributions on \gnpm{} for a given context (i.e. $\coprod_{O \in \mathcal{G}} d|O$) that can be derived from distributions (i.e. $\mathcal{D} ( \mathcal{E}(L) )$) defined on the global \gnpm{} (i.e. $\mathcal{E}(L)$ as opposed to $\mathcal{E}(O)$).
 
-Combining the marginalization matrix $\mathbf{G}$ with the maps previously defined in \autoref{eq:emb} the following diagram demonstrates the relationships between the spaces of probability distributions and the linear spaces in which they are embedded
-
-\begin{equation*}
+Having expressed the relationship between global and local network-network state maps in terms of $\mathbf{G}$ we now make use of sheaf theory in order to extract the global consistency conditions. Given \autoref{eq:tuplesheaf} and the associated conditions making $\expr$ a sheaf, $\mathbb{R}^{\expr}$ given by
+\begin{equation}\label{eq:realtuplesheaf}
+\xymatrix{
+\mathbb{R}^{\expr(L)} \ar @{->}[r]^-{\mathbf{G}}
+&
+\bigoplus\limits_{i \in I}
+\mathbb{R}^{\expr(O_i)}
+\ar@<1ex>[r]^-{\mathbf{H_1}} \ar@<-1ex>[r]_-{\mathbf{H_2}}
+&
+\bigoplus\limits_{i,j \in I \times I} \mathbb{R}^{\expr(O_{ij})}
+},
+\end{equation}
+is a half-sheaf, in the sense that it satisfies the first two conditions but not the third uniqueness condition given in \autoref{secsupp:probabilitydistributionsonnetworks}. It follows from this fact that $ker(\mathbf{H}_1 - \mathbf{H}_2) = im(\mathbf{G})$.  Moreover, although $\dist \circ \expr$ is a mere presheaf, it can be embedded into $\mathbb{R}^{\expr}$ using the map defined in \autoref{eq:emb} thereby allowing for the expression of consistency conditions on $\dist \circ \expr$ in terms of linear equations constituting constraints on the relevant probabilities.
+% Combining the marginalization matrix $\mathbf{G}$ with the maps previously defined in \autoref{eq:emb}
+The following diagram demonstrates the relationships between the spaces of probability distributions and the linear spaces in which they are embedded:
+\begin{equation}\label{eq:embeddingdiagram}
 \xymatrix{
  \mathbb{R}^{\mathcal{E}(L)} \ar[r]^{\mathbf{G}} &
    \mathbb{R}^{\mathcal{E}(\mathcal{G})} \\
  \dist (\mathcal{E}(L)) \ar[r]^{\mathbf{G}} \ar@{^{(}->}[u]^{emb_{\mathcal{E}(L)}}& \ar@{^{(}->}[u]_{emb_{\mathcal{E}(\mathcal{G})}}
   \dist (\mathcal{E}(\mathcal{G}))
   }
-\end{equation*}
-The locally, $\mathbb{L}(\mathcal{G})$, and globally, $\mathbb{M}(\mathcal{G})$, consistent polytopes embedded within $\mathbb{R}^{\mathcal{E}(\mathcal{G})}$ correspond to the spaces of probability distributions satisfying the local and global consistency conditions described above. The globally consistent polytope is a subspace of the locally consistent one. This is because an ostensible inverse to $\mathbf{G}$ is underdetermined and can only be estimated in general (most commonly using the maximum entropy principle). In terms of the diagram $\mathbb{M}(\mathcal{G})$ is given by $\mathbf{G}(emb_{\mathcal{E}(L)}(\mathcal{D}(\mathcal{E}(L))))$ and $\mathbb{L}(\mathcal{G})$ is given by $emb_{\mathcal{E}(\mathcal{G})}(\mathcal{D}(\mathcal{E}(\mathcal{G}))) \cap \mathbf{G}(\mathbb{R}^{\mathcal{E}(L)})$, where
+\end{equation}
+% The locally, $\mathbb{L}(\mathcal{G})$, and globally, $\mathbb{M}(\mathcal{G})$, consistent polytopes embedded within $\mathbb{R}^{\mathcal{E}(\mathcal{G})}$ correspond to the spaces of probability distributions satisfying the local and global consistency conditions described above. The globally consistent polytope is a subspace of the locally consistent one. This is because an ostensible inverse to $\mathbf{G}$ is underdetermined and can only be estimated in general (most commonly using the maximum entropy principle).
+The locally, $\mathbb{L}(\mathcal{G})$, and globally, $\mathbb{M}(\mathcal{G})$, consistent polytopes correspond to the spaces of probability distributions satisfying the local and global consistency conditions described above.
+In terms of the diagrams expressing the half-sheaf condition, \autoref{eq:realtuplesheaf}, and embedding map, \autoref{eq:embeddingdiagram},
+\begin{equation}
+\begin{aligned}
+\mathbb{M}(\mathcal{G}) &= \mathbf{G}(emb_{\mathcal{E}(L)}(\mathcal{D}(\mathcal{E}(L))))\\
+\mathbb{L}(\mathcal{G}) &= emb_{\mathcal{E}(\mathcal{G})}(\mathcal{D}(\mathcal{E}(\mathcal{G}))) \cap ker(\mathbf{H}_1(\mathbb{R}^{\mathcal{E}(\mathcal{G})})-\mathbf{H}_2(\mathbb{R}^{\mathcal{E}(\mathcal{G})})) = emb_{\mathcal{E}(\mathcal{G})}(\mathcal{D}(\mathcal{E}(\mathcal{G})))\cap\mathbf{G}(\mathbb{R}^{\mathcal{E}(L)}).
+\end{aligned}
+\end{equation}
+As in \autoref{eq:exampledistfromfunctors}
 \begin{eqnarray}
 emb_{\mathcal{E}(\mathcal{G})}(\mathcal{D}(\mathcal{E}(\mathcal{G}))) &=& \left\{ p^{O}_{\vec{i}} \; \bigg| \; (\forall\, O \in \mathcal{G}) \; (\forall\, \vec{i} \in P^{|O|}) \;\; p^O_{\vec{i}} \geq 0, \; (\forall\, O \in \mathcal{G}) \sum_{\vec{i} \in P^{|O|}} p^{O}_{\vec{i}} = 1 \right\}, \label{eq:embdeg}\\
 emb_{\mathcal{E}(L)}(\mathcal{D}(\mathcal{E}(L))) &=& \left\{ p^L_{\vec{i}} \; \bigg| \; (\forall\, \vec{i} \in P^{|L|}) \; p^L_{\vec{i}} \geq 0, \; \sum_{\vec{i} \in P^{|L|}} p^L_{\vec{i}} = 1 \right\}. \label{eq:embdel}
 \end{eqnarray}
+In general the globally consistent polytope is a proper subspace of the locally consistent one because $\mathbf{G}$ is not invertible (the maximum entropy principle is commonly used to make an arbitrary choice in the face of this underdetermination).
+To determine explicit conditions on the probabilities we express $\mathbb{L}(\mathcal{G})$ and $\mathbb{M}(\mathcal{G})$ in terms of the fundamental subspaces associated to the linear map $\mathbf{G}$. In order for a vector $v$ to lie in $\mathbf{G}(\mathbb{R}^{\mathcal{E}(L)})$, we must have $v=\mathbf{G}x$ for some $x \in \mathbb{R}^{\mathcal{E}(L)}$.  The cokernel of $\mathbf{G}$ gives the obstructions to this system $v=\mathbf{G}x$ having a solution. In order to eliminate these obstructions, constraints must be imposed on $\mathbb{R}^{\mathcal{E}(\mathcal{G})}$ and these constraints are given precisely via annihilating the cokernel, i.e. $\mathbf{G}(\mathbb{R}^{\mathcal{E}(L)}) = \{ v \; | \; (\forall u \in coker \mathbf{G}) \; u \cdot v = 0\}$.
+% Furthermore, the half-sheaf condition on $\mathbb{R}^{\expr}$ demonstrates this to be an equality, i.e. $\mathbf{G}(\mathbb{R}^{\mathcal{E}(L)}) = \{ v \; | \; (\forall u \in coker \mathbf{G}) \; u \cdot v = 0\}$.
+We then take the appropriate intersection to determine $\mathbb{L}(\mathcal{G})$ by requiring $v \in \mathcal{D}(\mathcal{E}(\mathcal{G}))$
+\begin{eqnarray}\label{eq:localpolytope}
+\mathbb{L}(\mathcal{G}) &=& \{ v \in \dist{}(\expr{}(\mathcal{G})) \; | \; (\forall u \in coker \mathbf{G}) \; u \cdot v = 0\}.
+\end{eqnarray}
+Since $\mathbf{G}$ is not invertible the equation $v = \mathbf{G}x$ can only be solved up to an element of $ker \mathbf{G}$. $v = \mathbf{G}x$ can thus be solved on a subspace $T$ of $\mathbb{R}^{\mathcal{E}(L)}$ such that $T \oplus ker \mathbf{G} = \mathbb{R}^{\mathcal{E}(L)}$ to yield
+\begin{eqnarray}\label{eq:globalpolytope}
+\mathbb{M}(\mathcal{G}) &=& \{ v \; | v = \mathbf{G} x,\; (\exists x \in T) \; (\exists y \in \dist{}(\expr{}(L)))\; x-y \in ker \mathbf{G}  \}.
+\end{eqnarray}
 If the embedding into linear spaces is to be considered explicitly, then \autoref{eq:embdeg} and \autoref{eq:embdel} can be substituted for $\dist{}(\expr{}(\mathcal{G}))$ and $\dist{}(\expr{}(L))$ in \autoref{eq:localpolytope} and \autoref{eq:globalpolytope}.
-% To determine explicit conditions on the probabilities we express these in terms of the fundamental subspaces associated to the linear map $\mathbf{G}$. In order for a vector $v$ to lie in $\mathbf{G}(\mathbb{R}^{\mathcal{E}(L)})$, we must have $v=\mathbf{G}x$ for some $x \in \mathbb{R}^{\mathcal{E}(L)}$.  The cokernel of $\mathbf{G}$ gives the obstructions to this system $v=\mathbf{G}x$ having a solution. In order to eliminate these obstructions, constraints must be imposed on $\mathbb{R}^{\mathcal{E}(\mathcal{G})}$ and these constraints are given precisely via annihilating the cokernel, i.e. $\mathbf{G}(\mathbb{R}^{\mathcal{E}(L)}) = \{ v \; | \; (\forall u \in coker \mathbf{G}) \; u \cdot v = 0\}$.  We then take the appropriate intersection to determine $\mathbb{L}(\mathcal{G})$ by requiring $v \in emb_{\mathcal{E}(\mathcal{G})}(\mathcal{D}(\mathcal{E}(\mathcal{G})))$
-% \begin{eqnarray}\label{eq:localpolytope}
-% \mathbb{L}(\mathcal{G}) &=& \{ v \in emb_{\mathcal{E}(\mathcal{G})}(\mathcal{D}(\mathcal{E}(\mathcal{G}))) \; | \; (\forall u \in coker \mathbf{G}) \; u \cdot v = 0\}.
+In order to obtain inequalities that define $\mathbb{M}(\mathcal{G})$, Fourier-Motzkin elimination can be used to eliminate $x$ and $y$. Alternatively one can use the fact, \cite{Wainwright2007} proposition 8.3, that $\mathbb{M}(\mathcal{G})$ is given by removing the non-integer vertices from a vertex representation of $\mathbb{L}(\mathcal{G})$ and the ability to interconvert between vertex and inequality representations to compute the same inequalities as described in \refsupp{} \autoref{secsupp:fourcycleexample}.
+
+% Recall from \autoref{sec:compatibilityofgpms} that given a covering of the space of variables $\mathcal{G}$, a compatible family for $\mathcal{G}$ with respect to $\mathcal{D} \circ \mathcal{E}$ is given by a family of distributions $\{d_O \in \dist (\mathcal{E}(O)) | O \in \mathcal{G}\}$ such that for all $O, O' \in \mathcal{G}$
+% \begin{eqnarray}
+% %\forall O \in \mathcal{G} \left[ \exists d_O \in \mathcal{D}_R\mathcal{E}(O) \right],\\
+% d_O|O \cap O' = d_{O'}|O \cap O'.
 % \end{eqnarray}
-% Since $\mathbf{G}$ is not invertible the equation $v = \mathbf{G}x$ can only be solved up to an element of $ker \mathbf{G}$. $v = \mathbf{G}x$ can thus be solved on a subspace $T$ of $\mathbb{R}^{\mathcal{E}(L)}$ such that $T \oplus ker \mathbf{G} = \mathbb{R}^{\mathcal{E}(L)}$ to yield
-% \begin{eqnarray}\label{eq:globalpolytope}
-% \mathbb{M}(\mathcal{G}) &=& \{ v \; | v = \mathbf{G} x,\; (\exists x \in T) \; (\exists y \in emb_{\mathcal{E}(L)}(\mathcal{D}(\mathcal{E}(L))))\; x-y \in ker \mathbf{G})  \}.
-% \end{eqnarray}
-% In order to obtain inequalities that define $\mathbb{M}(\mathcal{G})$, Fourier-Motzkin elimination can be used to eliminate $x$ and $y$. Alternatively one can use the fact, \cite{Wainwright2007} proposition 8.3, that $\mathbb{M}(\mathcal{G})$ is given by removing the non-integer vertices from a vertex represntation of $\mathbb{L}(\mathcal{G})$ and the ability to interconvert between vertex and inequality representations to compute the same inequalities as described in the \refsupp{}.
+% This first set of conditions is later referred to as local consistency. These conditions mean that any two distributions $d_O$ and $d_{O'}$ in the \emph{compatible family} of distributions marginalize to the same disribution over the intersection of $O$ with $O'$.
 
 \subsection{Example of apparent satisfaction of unsatisfiable constraints}\label{secsupp:apparentinconsistency}
 The inequalities defining $\mathbb{M}(\mathcal{G})$ were derived under the assumption that the two-element probabilities were obtained by mariginalizing a three-element distribution.  If some other procedure, such as conditionalization, is used to obtain them instead, these inequalities need not apply. For example, suppose now that $L = \{l_1,l_2,l_3 \}$, $P = \{0,1,2\}$, $\mathcal{G} = \{\{l_1,l_2\},\{l_2,l_3\},\{l_3,l_1\}\}$ where we have simply added an element to $P$ relative to the example described above. In the previous example the marginal maps were given by $\dist (\expr (O \subset L))$ with one for each $O \in \mathcal{G}$. If we combine these marginal maps with conditioning on one out of the three variables being in state two and each of the other two being in states zero or one, then we have instead $\dist (\pi_1), \dist (\pi_2), \dist (\pi_3)$ where $\pi_1 = \expr (\{l_1,l_2\} \subset L)|\{ e^{123}_{ij2} \mid i,j \in \{ 0,1 \} \},\; \pi_2 = \expr (\{l_2,l_3\} \subset L)|\{ e^{123}_{2ij} \mid i,j \in \{ 0,1 \} \},\; \pi_3 = \expr (\{l_3,l_1\} \subset L)|\{ e^{123}_{i2j} \mid i,j \in \{ 0,1 \} \}$. In this case, if we have the following assignment of probabilities for a distribution $d$
