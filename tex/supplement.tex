@@ -19,7 +19,7 @@ As stated in \autoref{sec:probabilitydistributionsonnetworks}, essentially all s
 
 The power set of $L$, which we shall denote as $\mathcal{P}(L)$, can be regarded  as a category~\cite{Lane1998,MacLane1992,Awodey2006,Abramsky2011} in which the objects are subsets of $L$ and morphisms represent inclusion of a smaller subset into a larger superset (i.e. $O \subseteq O' \Rightarrow O \rightarrow O'$).
 
-\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+% \noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
 
 Before proceeding, we define a few technical terms from the theory of sheaves and presheaves. We do not provide all necessary definitions to make use of the theory in more abstract contexts for which we direct the reader to~\cite{Lane1998}. Given $L$ we define a \textbf{presheaf} over it to be a contravariant functor, $PSh \colon\mathcal{P}(L)^{opp} \rightarrow \mathbf{Set}$, from the category of subsets of $L$, $\mathcal{P}(L)$, to the category of sets, $\mathbf{Set}$. Thus for every $U \in \mathcal{P}(L)$, $PSh(U)$ is a set.
 
@@ -76,7 +76,7 @@ Given a presheaf and an associated covering, we may ask when it is the case that
 
 None of the presheaves we work with in this paper are sheaves, except in degenerate cases. We work exclusively with presheaves and their coverings. Some coverings are half-sheaf-like. Surprisingly, some are not. This is to say that, if a covering is not half-sheaf-like, then not every locally compatible system of local sections over the covering is globally consistent \cite{Boole1862,Vorobev1962,Bell1964,EthanAkin389,Abramsky2011}. The latter correspond to network architectures containing cycles whereas the former are acyclic.
 
-\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+% \noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
 
 A state of a subset of variables, $O \subseteq L$, is an assignment of values in $P$ to each variable in $O$ which is a tuple of length $|O|$ containing elements from $P$. This correspondence is determined by the presheaf functor $\expr = \mathrm{Hom}(-,P)$.  Specifically, this functor may be described as
 \begin{equation}\label{eq:gpfunctor}
@@ -195,7 +195,7 @@ This first set of conditions is later referred to as local consistency. The spac
 \end{equation}
 These conditions mean that any two distributions $d_O$ and $d_{O'}$ in the \emph{compatible family} of distributions marginalize to the same disribution over the intersection of $O$ with $O'$. If these constraints are not satisfied, then there is no way to make a consistent assignment of probabilities to the states of even a single variable. In this case in order to restore consistency one of the constraints must be eliminated or duplication of a variable may allow for the independent satisfaction of both constraints.
 
-\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+% \noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
 
 If, moreover, this first condition implies the existence of $d \in \mathcal{D}( \mathcal{E}(L))$ such that $d|O = d_O$ for all $O \in \mathcal{G}$ then the system is said to satisfy the global consistency condition.
 %This latter condition is also referred to as the \emph{sheaf condition}.
@@ -217,7 +217,7 @@ In general, the system of equations $d|O = d_O$ for all $O \in \mathcal{G}$ is u
 \end{equation}
 For $\dist \circ \mathcal{E}$ the sheaf condition is not automatically satisfied and it only defines a presheaf. We examine the situation more closely to explicitly determine the necessary conditions for global consistency.
 
-\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+% \noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
 
 % If, moreover, this first condition implies the existence of $d \in \mathcal{D}( \mathcal{E}(L))$ such that $d|O = d_O$ for all $O \in \mathcal{G}$ then the system is said to satisfy the global consistency condition.
 
